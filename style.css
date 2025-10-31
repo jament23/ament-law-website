@@ -1,0 +1,771 @@
+/* ==================
+   1. GLOBAL STYLES & VARIABLES
+   ================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather:wght@700&display=swap');
+
+:root {
+    --primary-blue: #0f1d40;
+    --accent-gray: #7d8598;
+    --text-dark: #000000;
+    --text-light: #FFFFFF;
+    --bg-light: #FFFFFF;
+
+    --font-heading: 'Merriweather', serif;
+    --font-body: 'Lato', sans-serif;
+}
+
+body {
+    font-family: var(--font-body); 
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.7;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: var(--accent-gray);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+    margin-top: 0;
+    line-height: 1.3;
+}
+
+h1 { font-size: 3em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.5em; }
+
+p {
+    margin-bottom: 1.2em;
+}
+
+/* ==================
+   2. HEADER & NAVIGATION
+   ================== */
+header {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    padding: 20px 0;
+    border-bottom: 4px solid var(--accent-gray);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--text-light);
+    font-family: var(--font-heading);
+}
+
+header .logo:hover {
+    text-decoration: none;
+    color: var(--text-light);
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+header nav li {
+    margin-left: 25px;
+}
+
+header nav a {
+    color: var(--text-light);
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    text-decoration: none;
+    color: var(--accent-gray);
+}
+
+/* ==================
+   3. MAIN CONTENT SECTIONS
+   ================== */
+main section {
+    padding: 80px 0;
+}
+
+/* --- Hero Section --- */
+#hero {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    text-align: center;
+    padding: 100px 0;
+}
+
+#hero h1 {
+    color: var(--text-light);
+    font-size: 3.5em;
+    margin-bottom: 20px;
+}
+
+#hero p {
+    font-size: 1.3em;
+    color: var(--accent-gray);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    background-color: var(--accent-gray);
+    color: var(--text-light);
+    padding: 18px 35px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #a0a8b9;
+    text-decoration: none;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* --- Practice Areas Preview --- */
+#practice-areas-preview {
+    background-color: #fcfcfc;
+}
+
+#practice-areas-preview h2 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.service-card {
+    border: 1px solid #eee;
+    padding: 30px;
+    border-radius: 5px;
+    background-color: var(--bg-light);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.service-card h3 {
+    margin-top: 0;
+    font-size: 1.6em;
+}
+
+.service-card h3 a:hover {
+    text-decoration: none;
+}
+
+/* --- "Why Us" Section --- */
+#why-us {
+    background-color: var(--bg-light);
+    text-align: center;
+}
+
+#why-us p {
+    font-size: 1.2em;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button-secondary {
+    display: inline-block;
+    margin-top: 20px;
+    border: 2px solid var(--primary-blue);
+    color: var(--primary-blue);
+    padding: 18px 35px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.cta-button-secondary:hover {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    text-decoration: none;
+    transform: translateY(-3px);
+}
+
+/* ==================
+   4. FOOTER
+   ================== */
+footer {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    padding: 60px 0 30px 0;
+    font-size: 0.95em;
+}
+
+footer .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+}
+
+footer a {
+    color: var(--text-light);
+}
+
+footer a:hover {
+    color: var(--accent-gray);
+    text-decoration: underline;
+}
+
+footer h4 {
+    color: var(--accent-gray);
+    text-transform: uppercase;
+    font-size: 1em;
+    letter-spacing: 1px;
+    font-family: var(--font-body);
+    font-weight: bold;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer li {
+    margin-bottom: 10px;
+}
+
+.footer-contact p {
+    margin-bottom: 10px;
+}
+
+.footer-contact p:first-of-type {
+    font-family: var(--font-heading);
+    font-size: 1.2em;
+    color: var(--text-light);
+    margin-bottom: 15px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 1px solid var(--accent-gray);
+    color: var(--accent-gray);
+    font-size: 0.9em;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+/* ==================
+   5. RESPONSIVE DESIGN (Mobile-First)
+   ================== */
+
+/* --- For Tablets (screens below 992px) --- */
+@media (max-width: 992px) {
+    
+    h1 { font-size: 2.5em; }
+    h2 { font-size: 2em; }
+    #hero h1 { font-size: 2.8em; }
+
+    /* Stack the footer columns */
+    footer .container {
+        grid-template-columns: 1fr; /* Make footer 1 column */
+        gap: 30px;
+    }
+}
+
+
+/* --- For Mobile Phones (screens below 768px) --- */
+@media (max-width: 768px) {
+    
+    /* --- Mobile Navigation --- */
+    header .container {
+        flex-direction: column; /* Stack logo and nav */
+    }
+
+    header .logo {
+        margin-bottom: 15px;
+    }
+
+    header nav ul {
+        flex-direction: column; /* Stack nav links */
+        align-items: center;
+        width: 100%;
+    }
+
+    header nav li {
+        margin: 5px 0; /* Space out stacked links */
+        margin-left: 0;
+    }
+
+    /* --- Stacked Content --- */
+    main section {
+        padding: 40px 0; /* Less padding on mobile */
+    }
+
+    #hero {
+        padding: 60px 0;
+    }
+
+    #hero h1 {
+        font-size: 2.2em;
+    }
+    
+    #hero p {
+        font-size: 1.1em;
+    }
+
+    /* Make service cards 1 column */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- Mobile Footer --- */
+    footer .container {
+        text-align: center; /* Center footer text */
+    }
+}
+
+/* ==================
+   6. INTERIOR PAGE STYLES (About, Contact, etc.)
+   ================== */
+
+/* This styles the simple blue header on pages that aren't the Home Page */
+.simple-header {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    padding: 60px 0;
+}
+
+.simple-header h1 {
+    color: var(--text-light);
+    margin-bottom: 0;
+}
+
+.simple-header p {
+    color: var(--accent-gray);
+    font-size: 1.2em;
+    margin-bottom: 0;
+}
+
+/* This styles the main content area */
+#about-content .container {
+    /* Constrain the width of the text to make it easier to read */
+    max-width: 800px; 
+}
+/* ==================
+   7. ATTORNEY PAGE STYLES
+   ================== */
+
+/* This styles the main grid */
+.attorney-grid {
+    display: grid;
+    /* This will create 3 columns on desktop, 2 on tablet, and 1 on mobile */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.attorney-card {
+    border: 1px solid #eee;
+    border-radius: 5px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    background: #fff;
+    text-align: center;
+    padding: 30px;
+    transition: all 0.3s ease-in-out;
+}
+
+.attorney-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* This is a placeholder for the headshot */
+.attorney-photo-placeholder {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Makes it a circle */
+    background-color: #eee;
+    margin: 0 auto 20px auto;
+    /* We'll replace this with an <img> tag later */
+}
+
+.attorney-card h3 {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+}
+
+.attorney-title {
+    font-family: var(--font-body);
+    color: var(--accent-gray);
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* We reuse the secondary button style, but make it smaller */
+.attorney-card .cta-button-secondary {
+    padding: 10px 20px;
+    font-size: 0.9em;
+}
+/* ==================
+   8. ATTORNEY PROFILE PAGE
+   ================== */
+
+.attorney-profile-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 1/3 sidebar, 2/3 main content */
+    gap: 50px;
+}
+
+.attorney-sidebar {
+    /* You can add a light border or background if you want */
+}
+
+.attorney-sidebar .attorney-photo-placeholder {
+    width: 100%; /* Make the photo fill the sidebar width */
+    height: auto;
+    aspect-ratio: 1 / 1; /* Makes it a square */
+    border-radius: 5px; /* Change from circle to square */
+}
+
+.attorney-sidebar h2 {
+    font-size: 2em;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+.attorney-sidebar .attorney-title {
+    margin-bottom: 25px;
+}
+
+.attorney-contact-info {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+}
+
+.attorney-contact-info h4 {
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+/* --- Main Bio Content --- */
+.attorney-bio h3 {
+    font-size: 1.8em;
+    color: var(--primary-blue);
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.attorney-bio ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.attorney-bio li {
+    margin-bottom: 10px;
+}
+
+
+/* --- Responsive rules for this layout --- */
+@media (max-width: 992px) {
+    .attorney-profile-layout {
+        grid-template-columns: 1fr; /* Stack columns on tablet/mobile */
+    }
+}
+/* ==================
+   9. PRACTICE AREA PAGE
+   ================== */
+
+/* Add spacing to the main section */
+#practice-area-list {
+    padding: 80px 0;
+    background-color: #fcfcfc; /* Same light bg as home page section */
+}
+
+/* This is a helper to make the "Learn More" buttons line up */
+.service-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card p {
+    flex-grow: 1; /* This pushes the button to the bottom */
+}
+
+.service-card .cta-button-secondary {
+    padding: 10px 20px;
+    font-size: 0.9em;
+}
+/* ==================
+   10. PRACTICE AREA DETAIL PAGE
+   ================== */
+
+#practice-area-content {
+    padding: 80px 0;
+}
+
+.practice-area-layout {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr; /* Main content is ~2.5x wider than sidebar */
+    gap: 60px;
+}
+
+.practice-area-main h2 {
+    font-size: 2em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+/* First h2 on the page */
+.practice-area-main h2:first-of-type {
+    margin-top: 0;
+}
+
+.practice-area-main ul {
+    list-style-type: disc;
+    padding-left: 30px;
+}
+.practice-area-main li {
+    margin-bottom: 10px;
+}
+
+/* --- Sidebar Styles --- */
+.practice-area-sidebar {
+    /* You can add a border here if you like */
+}
+
+.sidebar-widget {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.sidebar-widget h4 {
+    font-size: 1.3em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-links li {
+    margin-bottom: 12px;
+}
+
+.sidebar-links a {
+    font-weight: bold;
+}
+
+.contact-widget {
+    background-color: var(--primary-blue);
+    color: var(--text-light);
+    text-align: center;
+}
+.contact-widget h4 {
+    color: var(--text-light);
+    border-bottom-color: var(--accent-gray);
+}
+.contact-widget p {
+    color: var(--accent-gray);
+}
+.contact-widget .cta-button {
+    background-color: var(--accent-gray);
+    color: var(--text-light);
+}
+
+/* --- Responsive rules for this layout --- */
+@media (max-width: 992px) {
+    .practice-area-layout {
+        grid-template-columns: 1fr; /* Stack columns */
+    }
+}
+
+/* ==================
+   11. AREAS WE SERVE PAGE
+   ================== */
+
+.location-heading {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary-blue);
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+/* ==================
+   12. BLOG PAGE STYLES
+   ================== */
+
+#blog-list .container {
+    max-width: 800px; /* Constrain width for readability */
+}
+
+.blog-post-item {
+    background: #fff;
+    border-bottom: 2px solid #eee;
+    padding: 40px 0;
+}
+
+.blog-post-item:first-of-type {
+    padding-top: 20px;
+}
+
+.blog-post-item h2 {
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.blog-post-item h2 a {
+    text-decoration: none;
+}
+.blog-post-item h2 a:hover {
+    text-decoration: underline;
+    color: var(--accent-gray);
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: var(--accent-gray);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.blog-post-item .cta-button-secondary {
+    padding: 10px 20px;
+    font-size: 0.9em;
+    margin-top: 15px;
+}
+/* ==================
+   13. CONTACT PAGE STYLES
+   ================== */
+
+#contact-page {
+    padding: 80px 0;
+}
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Info column, Form column */
+    gap: 60px;
+}
+
+.contact-info h3 {
+    font-size: 1.6em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.contact-info h3:first-of-type {
+    margin-top: 0;
+}
+
+.contact-info p {
+    line-height: 1.8;
+}
+
+.map-embed {
+    margin-top: 30px;
+    border-radius: 5px;
+    overflow: hidden; /* Clips the iframe to the border-radius */
+    border: 1px solid #eee;
+}
+
+/* --- Form Styles --- */
+.contact-form h3 {
+    font-size: 1.6em;
+    margin-top: 0;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: var(--font-body);
+    /* Sizing fix */
+    -webkit-box-sizing: border-box; 
+    -moz-box-sizing: border-box;    
+    box-sizing: border-box;         
+}
+
+.form-group textarea {
+    resize: vertical; /* Allow user to resize height */
+}
+
+.form-group button.cta-button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+}
+
+/* --- Responsive rules --- */
+@media (max-width: 992px) {
+    .contact-layout {
+        grid-template-columns: 1fr; /* Stack columns */
+    }
+}
