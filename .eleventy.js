@@ -1,7 +1,6 @@
 module.exports = function(eleventyConfig) {
-
-  // The only thing we need to copy is the stylesheet.
-  // Eleventy will now process all HTML files in all folders.
+  
+  // Copy the 'style.css' file to the final site
   eleventyConfig.addPassthroughCopy("style.css");
 
   // Tell Eleventy to find and process all .html files
@@ -12,6 +11,8 @@ module.exports = function(eleventyConfig) {
       "html",
       "liquid"
     ],
+
+    // This makes sure all .html files are processed correctly
     htmlTemplateEngine: "liquid"
   };
 };
