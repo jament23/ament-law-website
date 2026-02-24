@@ -163,13 +163,13 @@ header {
 header .container {
     display: flex;
     align-items: center;
-    height: 72px;
+    height: 90px;
 }
 
 /* Logo */
 .logo { display: flex; align-items: center; flex-shrink: 0; margin-right: var(--space-md); }
 .logo:hover { text-decoration: none; }
-.logo-img { height: 56px; width: auto; }
+.logo-img { height: 110px; width: auto; }
 
 /* Navigation - takes the center */
 nav#main-nav { margin-right: auto; }
@@ -2479,7 +2479,7 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
 
     .header-contact { margin-left: 0; gap: 2px; }
 
-    .logo-img { height: 44px; }
+    .logo-img { height: 80px; }
 
     /* Spacing */
     main section { padding: var(--space-lg) 0; }
