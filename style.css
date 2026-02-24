@@ -163,11 +163,11 @@ header {
 header .container {
     display: flex;
     align-items: center;
-    height: 90px;
+    height: 120px;
 }
 
 /* Logo */
-.logo { display: flex; align-items: center; flex-shrink: 0; margin-right: var(--space-md); }
+.logo { display: flex; align-items: center; flex-shrink: 0; margin-right: var(--space-lg); }
 .logo:hover { text-decoration: none; }
 .logo-img { height: 110px; width: auto; }
 
@@ -185,10 +185,10 @@ nav > ul > li { position: relative; }
 
 nav a {
     color: var(--color-body);
-    font-size: 0.84rem;
+    font-size: 0.95rem;
     font-weight: 500;
     letter-spacing: 0.01em;
-    padding: 8px 11px;
+    padding: 10px 14px;
     display: block;
     white-space: nowrap;
     border-radius: 6px;
@@ -215,8 +215,8 @@ nav > ul > li:hover > a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     color: var(--color-heading);
     transition: background var(--transition), color var(--transition);
@@ -228,7 +228,7 @@ nav > ul > li:hover > a {
     text-decoration: none;
 }
 
-.header-icon-link svg { display: block; }
+.header-icon-link svg { display: block; width: 24px; height: 24px; }
 
 /* Navigation */
 nav ul {
