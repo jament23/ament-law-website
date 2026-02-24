@@ -1,0 +1,109 @@
+backend:
+  name: github
+  repo: jament23/ament-law-website
+  branch: main
+  auth_type: pkce
+  app_id: ""  # FILL IN: GitHub OAuth App Client ID (see setup instructions below)
+
+# SETUP INSTRUCTIONS:
+# 1. Go to https://github.com/settings/developers
+# 2. Click "New OAuth App"
+# 3. Application name: Ament Law Blog Editor
+# 4. Homepage URL: https://www.ament.law
+# 5. Authorization callback URL: https://api.decap-cms.org/callback
+# 6. Copy the Client ID and paste it as app_id above
+# 7. Do NOT need a client secret (PKCE flow)
+
+media_folder: "images/blog"
+public_folder: "/images/blog"
+
+slug:
+  encoding: "ascii"
+  clean_accents: true
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "blog/posts"
+    create: true
+    slug: "{{slug}}"
+    extension: "md"
+    editor:
+      preview: false
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "layouts/blog-post.njk" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description (for SEO — 1-2 sentences)", name: "description", widget: "text" }
+      - { label: "Publish Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - label: "Author"
+        name: "author"
+        widget: "select"
+        options:
+          - { label: "John W. Ament, Esq.", value: "John W. Ament, Esq." }
+          - { label: "W. Robert Ament, Esq.", value: "W. Robert Ament, Esq." }
+          - { label: "Katlynn Oliver, Esq.", value: "Katlynn Oliver, Esq." }
+          - { label: "Laura Cohen, Esq.", value: "Laura Cohen, Esq." }
+          - { label: "Patrick J. Shannon, Esq.", value: "Patrick J. Shannon, Esq." }
+          - { label: "Ament Law Group", value: "Ament Law Group" }
+        default: "John W. Ament, Esq."
+      - label: "Author Type"
+        name: "author_type"
+        widget: "hidden"
+        default: "Person"
+      - label: "Author Profile URL"
+        name: "author_url"
+        widget: "select"
+        options:
+          - { label: "John W. Ament", value: "/attorneys/john-ament/" }
+          - { label: "W. Robert Ament", value: "/attorneys/robert-ament/" }
+          - { label: "Katlynn Oliver", value: "/attorneys/katlynn-oliver/" }
+          - { label: "Laura Cohen", value: "/attorneys/laura-cohen/" }
+          - { label: "Patrick J. Shannon", value: "/attorneys/patrick-shannon/" }
+          - { label: "None (firm)", value: "" }
+        default: "/attorneys/john-ament/"
+      - label: "Author Job Title"
+        name: "author_jobtitle"
+        widget: "select"
+        options:
+          - { label: "Partner", value: "Partner" }
+          - { label: "Associate", value: "Associate" }
+          - { label: "Of Counsel", value: "Of Counsel" }
+        default: "Partner"
+      - label: "Author Credentials"
+        name: "author_credentials"
+        widget: "select"
+        options:
+          - { label: "J.D./M.B.A., Duquesne University", value: "J.D./M.B.A., Duquesne University" }
+          - { label: "J.D., Duquesne University School of Law", value: "J.D., Duquesne University School of Law" }
+          - { label: "J.D.", value: "J.D." }
+        default: "J.D./M.B.A., Duquesne University"
+      - label: "Author Bio"
+        name: "author_bio"
+        widget: "text"
+        required: false
+        default: "John W. Ament is a partner and co-founder of Ament Law Group, P.C. in Murrysville, PA. He holds a J.D./M.B.A. from Duquesne University and is a member of the National Academy of Elder Law Attorneys (NAELA), PAELA, and the Pittsburgh Estate Planning Council."
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        allow_add: true
+        default: ["estate planning"]
+        field: { label: "Tag", name: "tag", widget: "string" }
+      - label: "Related Services"
+        name: "related_services"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Service Name", name: "name", widget: "string" }
+          - label: "URL"
+            name: "url"
+            widget: "select"
+            options:
+              - { label: "Estate Planning", value: "/practice-areas/estate-planning/" }
+              - { label: "Probate Administration", value: "/practice-areas/probate-administration/" }
+              - { label: "Real Estate Law", value: "/practice-areas/real-estate-law/" }
+              - { label: "Business Formation", value: "/practice-areas/business-formation/" }
+              - { label: "Business Services", value: "/practice-areas/business-law/" }
+              - { label: "Elder Law", value: "/practice-areas/elder-law/" }
+              - { label: "Buyer Representation", value: "/practice-areas/buyer-representation/" }
+              - { label: "Real Estate Services", value: "/practice-areas/real-estate-services/" }
+      - { label: "Body", name: "body", widget: "markdown" }
