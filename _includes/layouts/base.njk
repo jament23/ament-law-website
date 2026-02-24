@@ -97,17 +97,18 @@
     {% block head %}{% endblock %}
 </head>
 <body>
+    <a href="#main-content" class="skip-nav">Skip to main content</a>
     <header>
         <div class="container">
             <a href="/" class="logo">Ament Law Group, P.C.</a>
-            <a href="tel:724-733-3500" class="header-phone" aria-label="Call us">
+            <a href="tel:724-733-3500" class="header-phone" aria-label="Call us at 724-733-3500">
                 <span class="header-phone-icon">&#9742;</span>
                 <span class="header-phone-text">(724) 733-3500</span>
             </a>
             <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                 <span class="hamburger"></span>
             </button>
-            <nav id="main-nav">
+            <nav id="main-nav" aria-label="Main navigation">
                 <ul>
                     <li><a href="/">Home</a></li>
                     <li><a href="/about/">About</a></li>
@@ -123,7 +124,7 @@
             </nav>
         </div>
     </header>
-    <main>
+    <main id="main-content">
         {% block content %}{{ content | safe }}{% endblock %}
     </main>
     <footer>
@@ -157,13 +158,67 @@
     </footer>
 
     <!-- Sticky Mobile Contact Bar -->
-    <div class="mobile-contact-bar">
-        <a href="tel:724-733-3500" class="mobile-bar-call">
-            <span class="mobile-bar-icon">&#9742;</span> Call Now
+    <nav class="mobile-contact-bar" aria-label="Quick contact">
+        <a href="tel:724-733-3500" class="mobile-bar-call" aria-label="Call Ament Law Group">
+            <span class="mobile-bar-icon" aria-hidden="true">&#9742;</span> Call Now
         </a>
-        <a href="/contact/" class="mobile-bar-form">
-            <span class="mobile-bar-icon">&#9993;</span> Contact Us
+        <a href="/contact/" class="mobile-bar-form" aria-label="Contact us online">
+            <span class="mobile-bar-icon" aria-hidden="true">&#9993;</span> Contact Us
         </a>
+    </nav>
+
+    <!-- Chat Assistant Widget -->
+    <div id="ament-chat" aria-label="Chat with our virtual assistant">
+        <button id="chat-toggle" aria-label="Open chat assistant" aria-expanded="false" aria-controls="chat-panel">
+            <svg class="chat-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <svg class="chat-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div id="chat-panel" role="dialog" aria-label="Virtual assistant chat" aria-hidden="true">
+            <div class="chat-header">
+                <div class="chat-header-info">
+                    <div class="chat-avatar" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <div>
+                        <div class="chat-header-title">Ament Law Group</div>
+                        <div class="chat-header-sub">Virtual Assistant</div>
+                    </div>
+                </div>
+                <button id="chat-close" aria-label="Close chat">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-label="Chat messages">
+                <div class="chat-msg assistant">
+                    <p>Hi! I'm the virtual assistant for Ament Law Group. I can answer questions about our firm, our services, and general information about estate planning, probate, real estate, and business law in Pennsylvania.</p>
+                    <p>I can't provide legal advice — but I can help you figure out if we're the right firm for your needs. What can I help you with?</p>
+                </div>
+            </div>
+            <div id="chat-suggestions" class="chat-suggestions">
+                <button class="chat-suggestion" data-q="What practice areas do you cover?">What practice areas do you cover?</button>
+                <button class="chat-suggestion" data-q="How does your fee structure work?">How does your fee structure work?</button>
+                <button class="chat-suggestion" data-q="What should I bring to an estate planning consultation?">What should I bring to a consultation?</button>
+                <button class="chat-suggestion" data-q="Do you help with for sale by owner transactions?">Do you help with FSBO transactions?</button>
+            </div>
+            <div id="chat-session-ended" class="chat-session-ended" style="display:none;">
+                <p>Thanks for chatting! Ready to take the next step?</p>
+                <div class="chat-cta-row">
+                    <a href="tel:724-733-3500" class="chat-cta-call">Call (724) 733-3500</a>
+                    <a href="/contact/" class="chat-cta-form">Contact Online</a>
+                </div>
+            </div>
+            <div id="chat-input-area" class="chat-input-area">
+                <label for="chat-input" class="sr-only">Type your question</label>
+                <input type="text" id="chat-input" placeholder="Ask about our services..." autocomplete="off">
+                <button id="chat-send" aria-label="Send message" disabled>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                </button>
+            </div>
+            <div class="chat-meta">
+                <span id="chat-remaining">10 messages remaining</span>
+                <span class="chat-disclaimer">General info only · Not legal advice</span>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -191,6 +246,131 @@
         } else {
             els.forEach(function(el) { el.classList.add('visible'); });
         }
+    })();
+    </script>
+    <script>
+    /* Chat Assistant */
+    (function() {
+        var MAX = 10, count = 0, history = [];
+        var panel = document.getElementById('chat-panel');
+        var toggle = document.getElementById('chat-toggle');
+        var closeBtn = document.getElementById('chat-close');
+        var messages = document.getElementById('chat-messages');
+        var input = document.getElementById('chat-input');
+        var sendBtn = document.getElementById('chat-send');
+        var suggestions = document.getElementById('chat-suggestions');
+        var remaining = document.getElementById('chat-remaining');
+        var inputArea = document.getElementById('chat-input-area');
+        var sessionEnded = document.getElementById('chat-session-ended');
+        var isOpen = false, loading = false;
+
+        var SYSTEM = "You are the virtual assistant for Ament Law Group, P.C., a law firm at 3950 Wm Penn Hwy, Suite 5, Murrysville, PA 15668. Your ONLY purpose is to answer questions about the firm, its services, and general info about legal processes in Pennsylvania — and to encourage visitors to contact the firm.\n\nCRITICAL RULES:\n1. NEVER provide legal advice. Don't analyze specific situations, tell people what to do, interpret laws for their facts, or recommend a course of action. If asked, say: \"That's exactly the kind of question our attorneys can help with. I'd recommend calling us at (724) 733-3500.\"\n2. NEVER act as a general-purpose AI. If asked to write code, do homework, create content, or anything unrelated, decline: \"I'm here to help with questions about Ament Law Group and our legal services. Is there something about our firm I can help with?\"\n3. ALWAYS direct people to contact the firm. End substantive answers with an invitation to call (724) 733-3500 or visit www.ament.law/contact.\n4. Be warm, professional, concise. 2-4 sentences ideal.\n5. If unsure, say so. Don't guess fees or specifics.\n\nFIRM INFO:\nPhone: (724) 733-3500 | Email: hello@ament.law | Hours: Mon-Fri 8:30 AM - 5:00 PM, evenings/weekends by appt.\n\nAttorneys: W. Robert Ament (senior partner, 30+ yrs, estate planning/probate/real estate), John W. Ament MBA (partner, estate planning/probate/real estate/business), Laura Cohen (estate planning/probate/elder law/Medicaid), Patrick Shannon (real estate/title), Katlynn Oliver (real estate/title).\n\nPractice Areas: Estate Planning (wills, trusts, POA, healthcare directives — flat fee), Probate & Estate Administration (Register of Wills, Letters Testamentary, inheritance tax, distribution), Real Estate (settlements, title insurance via Chicago Title & First American, buyer rep, FSBO), Business Law (LLC, corp, partnerships, contracts, leases), Elder Law (Medicaid planning, asset protection, guardianship).\n\nServes: Westmoreland, Allegheny, Washington, Butler, Fayette, Indiana counties. Flat-fee billing. 5-star Google reviews (11 reviews). 50+ years combined experience. Free guides at www.ament.law/resources.\n\nGeneral PA facts you CAN share: Inheritance tax rates (0% spouse, 4.5% lineal, 12% siblings, 15% others), 9-month filing deadline, 5% discount within 3 months. Probate via Register of Wills. Transfer tax 2% split. Attorney not required at closing but recommended.\n\nREFUSE: Anything unrelated to firm/PA legal topics, specific legal/tax/financial advice, other firms, writing/coding/homework, political opinions, medical advice. Be brief and friendly when refusing.";
+
+        function openChat() {
+            isOpen = true;
+            panel.style.display = 'flex';
+            panel.setAttribute('aria-hidden', 'false');
+            toggle.setAttribute('aria-expanded', 'true');
+            toggle.classList.add('chat-open');
+            setTimeout(function() { panel.classList.add('visible'); input.focus(); }, 10);
+        }
+        function closeChat() {
+            isOpen = false;
+            panel.classList.remove('visible');
+            panel.setAttribute('aria-hidden', 'true');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.classList.remove('chat-open');
+            setTimeout(function() { panel.style.display = 'none'; toggle.focus(); }, 300);
+        }
+        toggle.addEventListener('click', function() { isOpen ? closeChat() : openChat(); });
+        closeBtn.addEventListener('click', closeChat);
+
+        /* Escape key closes chat */
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && isOpen) closeChat();
+        });
+
+        function addMsg(role, text) {
+            var div = document.createElement('div');
+            div.className = 'chat-msg ' + role;
+            text.split('\n').forEach(function(line, i) {
+                if (line.trim()) {
+                    var p = document.createElement('p');
+                    p.textContent = line;
+                    if (i > 0) p.style.marginTop = '8px';
+                    div.appendChild(p);
+                }
+            });
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight;
+        }
+        function showTyping() {
+            var div = document.createElement('div');
+            div.className = 'chat-msg assistant';
+            div.id = 'chat-typing';
+            div.innerHTML = '<div class="chat-typing"><span></span><span></span><span></span></div>';
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight;
+        }
+        function hideTyping() {
+            var el = document.getElementById('chat-typing');
+            if (el) el.remove();
+        }
+        function updateRemaining() {
+            var r = MAX - count;
+            remaining.textContent = r + (r === 1 ? ' message' : ' messages') + ' remaining';
+        }
+
+        async function send(text) {
+            if (!text.trim() || loading || count >= MAX) return;
+            count++;
+            updateRemaining();
+            if (suggestions) { suggestions.style.display = 'none'; }
+            addMsg('user', text);
+            input.value = '';
+            sendBtn.disabled = true;
+            loading = true;
+
+            history.push({ role: 'user', content: text });
+            var isLast = count >= MAX;
+            var sys = isLast ? SYSTEM + "\n\nThis is the user's last message. After answering, warmly let them know they can call (724) 733-3500 or visit www.ament.law/contact to continue with our team." : SYSTEM;
+
+            showTyping();
+            try {
+                var resp = await fetch('https://api.anthropic.com/v1/messages', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 600, system: sys, messages: history })
+                });
+                var data = await resp.json();
+                var reply = (data.content || []).filter(function(b) { return b.type === 'text'; }).map(function(b) { return b.text; }).join('\n');
+                if (!reply) reply = "I'm having trouble right now. Please call us at (724) 733-3500.";
+                hideTyping();
+                addMsg('assistant', reply);
+                history.push({ role: 'assistant', content: reply });
+            } catch(e) {
+                hideTyping();
+                addMsg('assistant', "I'm having trouble connecting. The best way to reach us is (724) 733-3500 or www.ament.law/contact.");
+            }
+            loading = false;
+            if (isLast) {
+                inputArea.style.display = 'none';
+                document.querySelector('.chat-meta').style.display = 'none';
+                sessionEnded.style.display = 'block';
+            } else {
+                sendBtn.disabled = !input.value.trim();
+                input.focus();
+            }
+        }
+
+        input.addEventListener('input', function() { sendBtn.disabled = !input.value.trim() || loading; });
+        input.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); send(input.value); } });
+        sendBtn.addEventListener('click', function() { send(input.value); });
+
+        /* Suggestion buttons */
+        document.querySelectorAll('.chat-suggestion').forEach(function(btn) {
+            btn.addEventListener('click', function() { send(btn.getAttribute('data-q')); });
+        });
     })();
     </script>
 </body>
