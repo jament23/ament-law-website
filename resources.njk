@@ -16,59 +16,6 @@ permalink: /resources/index.html
         "name": "Ament Law Group, P.C.",
         "url": "https://www.ament.law"
     },
-    "mainEntity": {
-        "@type": "ItemList",
-        "itemListElement": [
-            {
-                "@type": "ListItem",
-                "position": 1,
-                "item": {
-                    "@type": "DigitalDocument",
-                    "name": "Pennsylvania Executor's Checklist",
-                    "description": "Step-by-step checklist covering every phase of estate administration in Pennsylvania.",
-                    "url": "https://www.ament.law/downloads/pa-executors-checklist.pdf",
-                    "encodingFormat": "application/pdf",
-                    "author": { "@type": "LegalService", "name": "Ament Law Group, P.C." }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 2,
-                "item": {
-                    "@type": "DigitalDocument",
-                    "name": "Estate Planning Preparation Worksheet",
-                    "description": "What to gather before your first estate planning consultation.",
-                    "url": "https://www.ament.law/downloads/estate-planning-preparation-worksheet.pdf",
-                    "encodingFormat": "application/pdf",
-                    "author": { "@type": "LegalService", "name": "Ament Law Group, P.C." }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 3,
-                "item": {
-                    "@type": "DigitalDocument",
-                    "name": "Pennsylvania Inheritance Tax Quick Reference",
-                    "description": "Tax rates, exemptions, deadlines, and the 5% early payment discount.",
-                    "url": "https://www.ament.law/downloads/pa-inheritance-tax-guide.pdf",
-                    "encodingFormat": "application/pdf",
-                    "author": { "@type": "LegalService", "name": "Ament Law Group, P.C." }
-                }
-            },
-            {
-                "@type": "ListItem",
-                "position": 4,
-                "item": {
-                    "@type": "DigitalDocument",
-                    "name": "First 30 Days After a Death in Pennsylvania",
-                    "description": "A compassionate guide to the immediate legal and practical steps after losing a loved one.",
-                    "url": "https://www.ament.law/downloads/first-30-days-after-a-death-in-pa.pdf",
-                    "encodingFormat": "application/pdf",
-                    "author": { "@type": "LegalService", "name": "Ament Law Group, P.C." }
-                }
-            }
-        ]
-    },
     "speakable": {
         "@type": "SpeakableSpecification",
         "cssSelector": ["h2", ".resource-card p"]
@@ -85,12 +32,39 @@ permalink: /resources/index.html
     <div class="container">
         <p style="max-width: 680px; font-size: 1.05rem; line-height: 1.7; margin-bottom: var(--space-lg);">
             We believe informed clients make better decisions. These free guides cover the most common questions
-            we hear from families across Western Pennsylvania. Download, print, and share — no email required.
+            we hear from families across Western Pennsylvania.
         </p>
 
-        <div class="resources-grid">
+        <!-- Lead Capture Form (shown when not unlocked) -->
+        <div id="resource-gate" class="resource-gate">
+            <div class="resource-gate-inner">
+                <h2>Get Instant Access to All 5 Guides</h2>
+                <p>Enter your information below and we'll unlock all downloads immediately.</p>
+                <form id="resource-form" class="resource-form">
+                    <div class="resource-form-fields">
+                        <div class="form-field">
+                            <label for="res-name">Full Name</label>
+                            <input type="text" id="res-name" name="name" required placeholder="John Smith">
+                        </div>
+                        <div class="form-field">
+                            <label for="res-email">Email</label>
+                            <input type="email" id="res-email" name="email" required placeholder="john@example.com">
+                        </div>
+                        <div class="form-field">
+                            <label for="res-phone">Phone</label>
+                            <input type="tel" id="res-phone" name="phone" placeholder="(724) 555-1234">
+                        </div>
+                        <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+                    </div>
+                    <button type="submit" class="cta-button resource-submit">Unlock Free Downloads</button>
+                    <p class="resource-form-note">We respect your privacy. Your information is only used to follow up if you have questions.</p>
+                </form>
+            </div>
+        </div>
 
-            <!-- Guide 1: Executor's Checklist -->
+        <!-- Resource Cards (shown when unlocked) -->
+        <div id="resource-cards" class="resources-grid" style="display: none;">
+
             <div class="resource-card">
                 <div class="resource-icon">&#9745;</div>
                 <div class="resource-meta">
@@ -104,7 +78,6 @@ permalink: /resources/index.html
                 </a>
             </div>
 
-            <!-- Guide 2: Planning Worksheet -->
             <div class="resource-card">
                 <div class="resource-icon">&#9997;</div>
                 <div class="resource-meta">
@@ -118,7 +91,6 @@ permalink: /resources/index.html
                 </a>
             </div>
 
-            <!-- Guide 3: Inheritance Tax -->
             <div class="resource-card">
                 <div class="resource-icon">&#36;</div>
                 <div class="resource-meta">
@@ -132,7 +104,6 @@ permalink: /resources/index.html
                 </a>
             </div>
 
-            <!-- Guide 4: First 30 Days -->
             <div class="resource-card">
                 <div class="resource-icon">&#9200;</div>
                 <div class="resource-meta">
@@ -146,7 +117,6 @@ permalink: /resources/index.html
                 </a>
             </div>
 
-            <!-- Guide 5: FSBO Seller's Checklist -->
             <div class="resource-card">
                 <div class="resource-icon">&#127968;</div>
                 <div class="resource-meta">
@@ -163,12 +133,57 @@ permalink: /resources/index.html
         </div>
 
         <!-- CTA -->
-        <div style="text-align: center; margin-top: var(--space-xl); padding: var(--space-lg); background: var(--color-warm-bg); border-radius: var(--radius);">
-            <h2 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: var(--space-xs);">Need personalized guidance?</h2>
-            <p style="color: var(--color-body); max-width: 480px; margin: 0 auto var(--space-md); line-height: 1.6;">
-                These guides cover the basics, but every situation is different. We're here to help you navigate yours.
-            </p>
+        <div class="resource-bottom-cta">
+            <h2>Need personalized guidance?</h2>
+            <p>These guides cover the basics, but every situation is different. We're here to help you navigate yours.</p>
             <a href="/contact/" class="cta-button">Schedule a Consultation</a>
         </div>
     </div>
 </section>
+
+<script>
+(function() {
+    var gate = document.getElementById('resource-gate');
+    var cards = document.getElementById('resource-cards');
+    var form = document.getElementById('resource-form');
+
+    // Check if already unlocked
+    try {
+        if (localStorage.getItem('ament_resources_unlocked') === 'true') {
+            gate.style.display = 'none';
+            cards.style.display = '';
+        }
+    } catch(e) {}
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = form.querySelector('[name="name"]').value.trim();
+        var email = form.querySelector('[name="email"]').value.trim();
+        var phone = form.querySelector('[name="phone"]').value.trim();
+        var honeypot = form.querySelector('[name="website"]').value;
+
+        if (honeypot) return;
+        if (!name || !email) return;
+
+        // Send lead data
+        try {
+            fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    type: 'resource_download',
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    source: 'resources_page'
+                })
+            }).catch(function() {});
+        } catch(err) {}
+
+        // Unlock downloads
+        gate.style.display = 'none';
+        cards.style.display = '';
+        try { localStorage.setItem('ament_resources_unlocked', 'true'); } catch(e) {}
+    });
+})();
+</script>
