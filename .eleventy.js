@@ -2,6 +2,8 @@ module.exports = function(eleventyConfig) {
   
   eleventyConfig.addPassthroughCopy("style.css");
   eleventyConfig.addPassthroughCopy("images");
+  eleventyConfig.addPassthroughCopy("_headers");
+  eleventyConfig.addPassthroughCopy("_redirects");
 
   // Blog post collection sorted by date (newest first)
   eleventyConfig.addCollection("posts", function(collectionApi) {
