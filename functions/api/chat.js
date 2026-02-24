@@ -10,6 +10,7 @@
 const ALLOWED_ORIGINS = [
   "https://www.ament.law",
   "https://ament.law",
+  "https://ament-law-website.pages.dev",
 ];
 
 const SYSTEM_PROMPT = `You are the virtual assistant for Ament Law Group, P.C., a law firm at 3950 Wm Penn Hwy, Suite 5, Murrysville, PA 15668. Your ONLY purpose is to answer questions about the firm, its services, and general info about legal processes in Pennsylvania — and to encourage visitors to contact the firm.
@@ -40,6 +41,7 @@ export async function onRequestPost(context) {
   // --- Origin validation ---
   const origin = request.headers.get("Origin") || "";
   const isAllowed = ALLOWED_ORIGINS.includes(origin) ||
+    origin.endsWith(".ament-law-website.pages.dev") ||
     origin.startsWith("http://localhost") ||
     origin.startsWith("http://127.0.0.1");
 
