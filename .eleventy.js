@@ -6,6 +6,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("downloads");
   eleventyConfig.addPassthroughCopy("_headers");
   eleventyConfig.addPassthroughCopy("_redirects");
+  eleventyConfig.addPassthroughCopy("favicon.ico");
 
   // Blog post collection sorted by date (newest first)
   eleventyConfig.addCollection("posts", function(collectionApi) {

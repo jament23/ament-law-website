@@ -25,7 +25,10 @@
     <meta name="geo.placename" content="Murrysville">
     <meta name="geo.position" content="40.4532;-79.6919">
 
-    <link rel="stylesheet" href="/style.css?v=2025022403">
+    <link rel="stylesheet" href="/style.css?v=2025022404">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    <link rel="icon" href="/images/favicon-32.png" type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
     <!-- LocalBusiness Schema -->
     <script type="application/ld+json">
@@ -100,25 +103,66 @@
     <a href="#main-content" class="skip-nav">Skip to main content</a>
     <header>
         <div class="container">
-            <a href="/" class="logo">Ament Law Group, P.C.</a>
-            <a href="tel:724-733-3500" class="header-phone" aria-label="Call us at 724-733-3500">
-                <span class="header-phone-icon">&#9742;</span>
-                <span class="header-phone-text">(724) 733-3500</span>
+            <a href="/" class="logo" aria-label="Ament Law Group, P.C. - Home">
+                <img src="/images/logo.svg" alt="Ament Law Group, P.C." class="logo-img">
             </a>
+            <div class="header-contact">
+                <a href="tel:724-733-3500" class="header-phone" aria-label="Call us at 724-733-3500">
+                    <span class="header-phone-icon">&#9742;</span>
+                    <span>(724) 733-3500</span>
+                </a>
+                <a href="mailto:hello@ament.law" class="header-email" aria-label="Email us">hello@ament.law</a>
+            </div>
             <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                 <span class="hamburger"></span>
             </button>
             <nav id="main-nav" aria-label="Main navigation">
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/about/">About</a></li>
-                    <li><a href="/attorneys/">Attorneys</a></li>
-                    <li><a href="/practice-areas/">Practice Areas</a></li>
-                    <li><a href="/areas-we-serve/">Areas We Serve</a></li>
+                    <li class="has-dropdown">
+                        <a href="/about/" class="dropdown-trigger">About</a>
+                        <ul class="dropdown">
+                            <li><a href="/about/">Our Firm</a></li>
+                            <li><a href="/attorneys/">Our Attorneys</a></li>
+                            <li><a href="/reviews/">Client Reviews</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="/practice-areas/" class="dropdown-trigger">Services</a>
+                        <ul class="dropdown">
+                            <li><a href="/practice-areas/estate-planning/">Estates & Trusts</a></li>
+                            <li><a href="/practice-areas/probate-administration/">Probate & Trust Administration</a></li>
+                            <li><a href="/practice-areas/real-estate-law/">Real Estate Settlement</a></li>
+                            <li><a href="/practice-areas/buyer-representation/">Buyer Representation</a></li>
+                            <li><a href="/practice-areas/for-sale-by-owner/">For Sale By Owner</a></li>
+                            <li><a href="/practice-areas/business-formation/">Business Formation</a></li>
+                            <li><a href="/practice-areas/business-law/">Business Services</a></li>
+                            <li><a href="/practice-areas/elder-law/">Elder Law & Medicaid</a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="/areas-we-serve/" class="dropdown-trigger">Areas</a>
+                        <ul class="dropdown">
+                            <li><a href="/areas-we-serve/murrysville/">Murrysville</a></li>
+                            <li><a href="/areas-we-serve/monroeville/">Monroeville</a></li>
+                            <li><a href="/areas-we-serve/greensburg/">Greensburg</a></li>
+                            <li><a href="/areas-we-serve/irwin/">Irwin</a></li>
+                            <li><a href="/areas-we-serve/latrobe/">Latrobe</a></li>
+                            <li><a href="/areas-we-serve/delmont/">Delmont</a></li>
+                            <li><a href="/areas-we-serve/jeannette/">Jeannette</a></li>
+                            <li><a href="/areas-we-serve/pittsburgh/">Pittsburgh</a></li>
+                            <li><a href="/areas-we-serve/cranberry-township/">Cranberry Township</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/blog/">Blog</a></li>
-                    <li><a href="/resources/">Resources</a></li>
-                    <li><a href="/reviews/">Reviews</a></li>
-                    <li><a href="/faq/">FAQ</a></li>
+                    <li class="has-dropdown">
+                        <a href="/resources/" class="dropdown-trigger">Resources</a>
+                        <ul class="dropdown">
+                            <li><a href="/resources/">Guides & Downloads</a></li>
+                            <li><a href="/faq/">FAQ</a></li>
+                            <li><a href="/refer/">Refer a Client</a></li>
+                        </ul>
+                    </li>
                     <li><a href="/contact/">Contact</a></li>
                 </ul>
             </nav>
@@ -234,6 +278,33 @@
                 toggle.classList.toggle('active');
             });
         }
+
+        /* Mobile dropdown toggles */
+        var dropdownTriggers = document.querySelectorAll('.has-dropdown > .dropdown-trigger');
+        dropdownTriggers.forEach(function(trigger) {
+            trigger.addEventListener('click', function(e) {
+                if (window.innerWidth <= 900) {
+                    e.preventDefault();
+                    var parent = trigger.parentElement;
+                    var wasOpen = parent.classList.contains('dropdown-open');
+                    /* Close all other dropdowns */
+                    document.querySelectorAll('.has-dropdown.dropdown-open').forEach(function(el) {
+                        el.classList.remove('dropdown-open');
+                    });
+                    if (!wasOpen) parent.classList.add('dropdown-open');
+                }
+            });
+        });
+
+        /* Close nav on outside click */
+        document.addEventListener('click', function(e) {
+            if (nav && !nav.contains(e.target) && !toggle.contains(e.target)) {
+                nav.classList.remove('nav-open');
+                toggle.classList.remove('active');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
         /* Scroll fade-in */
         var els = document.querySelectorAll('.fade-in');
         if (els.length && 'IntersectionObserver' in window) {
