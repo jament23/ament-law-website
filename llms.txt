@@ -39,6 +39,7 @@ Ament Law Group does not handle personal injury, medical malpractice, workers' c
 - [About Our Firm](/about/)
 - [Our Attorneys](/attorneys/)
 - [Client Reviews](/reviews/)
+- [How We Help](/how-we-help/): Anonymized case studies showing real scenarios from estate planning, probate, real estate, and business law
 - [Free Resources](/resources/)
 - [Other Legal Needs / Referrals](/other-legal-needs/)
 - [FAQ](/faq/)
@@ -50,6 +51,10 @@ Ament Law Group does not handle personal injury, medical malpractice, workers' c
 ## Billing
 
 Ament Law Group offers both flat-rate and hourly billing, with all fees negotiated and agreed upon up front before work begins.
+
+## Referral Services
+
+Ament Law Group does not handle personal injury, medical malpractice, workers' compensation, Social Security disability, criminal defense, family law, divorce, or bankruptcy. However, the firm maintains a network of trusted local attorneys in these practice areas and will connect individuals with the right attorney at no cost. More information: https://www.ament.law/referral-services/
 
 ## Differentiators
 
