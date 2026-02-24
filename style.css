@@ -765,10 +765,97 @@ main section {
 
 .form-group textarea { resize: vertical; }
 
+.form-group select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    background: var(--color-surface);
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%236b7280' d='M1.41 0L6 4.58 10.59 0 12 1.41l-6 6-6-6z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    cursor: pointer;
+    transition: border-color var(--transition);
+}
+
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(184,146,106,0.12);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+}
+
+.required { color: var(--color-accent); }
+
+.form-disclaimer {
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    margin-top: var(--space-xs);
+    line-height: 1.5;
+}
+
+/* Success / Error boxes */
+.form-success-box {
+    text-align: center;
+    padding: var(--space-lg);
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: var(--radius);
+}
+
+.form-success-box .success-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+.form-success-box h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    margin-bottom: var(--space-xs);
+}
+
+.form-success-box p {
+    color: var(--color-body);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.form-error-box {
+    padding: var(--space-sm) var(--space-md);
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius-sm);
+    color: #991b1b;
+    font-size: 0.9rem;
+    margin-bottom: var(--space-sm);
+}
+
 .form-group button.cta-button {
     width: 100%;
     border: none;
     font-family: var(--font-body);
+}
+
+.form-group button:disabled {
+    opacity: 0.6;
+    cursor: wait;
 }
 
 /* =================================================================
@@ -940,4 +1027,5 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
     .attorney-grid { grid-template-columns: 1fr; }
     .logo { font-size: 1.15rem; }
     body { font-size: 16px; }
+    .form-row { grid-template-columns: 1fr; }
 }
