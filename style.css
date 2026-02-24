@@ -222,7 +222,8 @@ nav > ul > li:hover > a {
 }
 
 .header-phone:hover { color: var(--color-accent-hover); text-decoration: none; }
-.header-phone-icon { font-size: 1rem; }
+.header-phone-icon { display: inline-flex; align-items: center; }
+.header-phone-icon svg { vertical-align: middle; }
 
 .header-email {
     color: var(--color-muted);
@@ -369,7 +370,7 @@ nav > ul > li:hover > a {
     pointer-events: none;
 }
 
-.hero-content { max-width: 680px; }
+.hero-content { max-width: 740px; margin: 0 auto; text-align: center; }
 
 #hero h1 {
     color: #fff;
@@ -390,6 +391,7 @@ nav > ul > li:hover > a {
 .hero-ctas {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-md);
     flex-wrap: wrap;
 }
@@ -547,6 +549,14 @@ main section {
 
 #why-us h2 { margin-bottom: var(--space-md); }
 #why-us p { color: var(--color-body); font-size: 1.02rem; margin-bottom: var(--space-md); line-height: 1.75; }
+
+/* Section headings centered */
+#practice-areas-preview h4,
+#practice-areas-preview h2,
+#reviews-preview h4,
+#reviews-preview h2 {
+    text-align: center;
+}
 
 /* =================================================================
    PRACTICE AREA LAYOUT (sidebar + main)
@@ -1616,10 +1626,26 @@ main section {
 }
 
 .review-stars {
-    color: var(--color-accent-text);
-    font-size: 1rem;
-    letter-spacing: 2px;
+    display: flex;
+    gap: 3px;
     margin-bottom: var(--space-xs);
+}
+
+.star-icon {
+    width: 16px;
+    height: 16px;
+    fill: #c8a45a;
+}
+
+.stars {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+}
+
+.stars .star-icon {
+    width: 20px;
+    height: 20px;
 }
 
 .review-text {
@@ -2220,7 +2246,8 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
 .mobile-bar-call { background: #fff; }
 .mobile-bar-call, .mobile-bar-call:hover { color: var(--color-heading) !important; }
 .mobile-bar-form { background: var(--color-hero); }
-.mobile-bar-icon { margin-right: 8px; font-size: 1.1rem; }
+.mobile-bar-icon { margin-right: 8px; display: inline-flex; vertical-align: middle; }
+.mobile-bar-icon svg { vertical-align: middle; }
 
 .mobile-contact-bar a:hover { text-decoration: none; opacity: 0.92; }
 
