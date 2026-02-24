@@ -1,0 +1,66 @@
+---
+layout: layouts/base.njk
+---
+{% block head %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "name": "Ament Law Group, P.C. — {{ city_name }} {{ service_label | default('Attorney') }}",
+    "description": "{{ description }}",
+    "url": "https://www.ament.law{{ page.url }}",
+    "telephone": "+1-724-733-3500",
+    "email": "hello@ament.law",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3950 Wm Penn Hwy, Suite 5",
+        "addressLocality": "Murrysville",
+        "addressRegion": "PA",
+        "postalCode": "15668",
+        "addressCountry": "US"
+    },
+    "areaServed": {
+        "@type": "City",
+        "name": "{{ city_name }}, Pennsylvania"
+    }
+}
+</script>
+{% endblock %}
+<section class="simple-header">
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <p>{{ tagline }}</p>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="practice-area-layout">
+            <article class="practice-area-main">
+                {{ content | safe }}
+                <div class="blog-cta">
+                    <h3>Ready to Get Started?</h3>
+                    <p>Ament Law Group serves {{ city_name }} and surrounding communities from our Murrysville office, just {{ distance }}. Call us today to schedule your consultation.</p>
+                    <p><strong><a href="tel:724-733-3500">(724) 733-3500</a></strong></p>
+                </div>
+            </article>
+            <aside class="practice-area-sidebar">
+                <div class="sidebar-widget">
+                    <h4>Our Services</h4>
+                    <ul class="sidebar-links">
+                        <li><a href="/practice-areas/estate-planning/">Estate Planning</a></li>
+                        <li><a href="/practice-areas/probate-administration/">Probate Administration</a></li>
+                        <li><a href="/practice-areas/real-estate-law/">Real Estate</a></li>
+                        <li><a href="/practice-areas/business-formation/">Business Formation</a></li>
+                        <li><a href="/practice-areas/elder-law/">Elder Law</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-widget contact-widget">
+                    <h4>Contact Us</h4>
+                    <p>Serving {{ city_name }} from our Murrysville office.</p>
+                    <p class="sidebar-phone"><a href="tel:724-733-3500">(724) 733-3500</a></p>
+                    <a href="/contact/" class="cta-button">Schedule a Consultation</a>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

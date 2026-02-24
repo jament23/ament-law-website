@@ -151,6 +151,7 @@
 
     <script>
     (function() {
+        /* Nav toggle */
         var toggle = document.querySelector('.nav-toggle');
         var nav = document.getElementById('main-nav');
         if (toggle && nav) {
@@ -160,6 +161,18 @@
                 nav.classList.toggle('nav-open');
                 toggle.classList.toggle('active');
             });
+        }
+        /* Scroll fade-in */
+        var els = document.querySelectorAll('.fade-in');
+        if (els.length && 'IntersectionObserver' in window) {
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+                });
+            }, { threshold: 0.1 });
+            els.forEach(function(el) { obs.observe(el); });
+        } else {
+            els.forEach(function(el) { el.classList.add('visible'); });
         }
     })();
     </script>
