@@ -846,7 +846,51 @@ footer li {
 }
 
 /* ==================
-   14. HAMBURGER MENU
+   14. SITE BANNER
+   ================== */
+
+.site-banner {
+    background-color: #1a3a6e;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+.site-banner a {
+    color: #f0c040;
+    text-decoration: none;
+}
+
+.site-banner a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+/* ==================
+   15. BOI ALERT
+   ================== */
+
+.boi-alert {
+    background-color: #f0f7f0;
+    border-left: 5px solid #2e7d32;
+    padding: 25px 30px;
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+
+.boi-alert h2 {
+    margin-top: 0;
+    color: #2e7d32;
+    font-size: 1.4em;
+}
+
+.boi-alert p {
+    margin-bottom: 0;
+}
+
+/* ==================
+   16. HAMBURGER MENU
    ================== */
 
 .nav-toggle {
