@@ -1,6 +1,31 @@
 ---
 layout: layouts/base.njk
 ---
+{% block head %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ title }}",
+    "description": "{{ description }}",
+    "datePublished": "{{ date | dateFormat }}",
+    "author": {
+        "@type": "Organization",
+        "name": "{{ author | default('Ament Law Group') }}",
+        "url": "https://www.ament.law"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Ament Law Group, P.C.",
+        "url": "https://www.ament.law"
+    },
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.ament.law{{ page.url }}"
+    }
+}
+</script>
+{% endblock %}
 <section class="simple-header">
     <div class="container">
         <h1>{{ title }}</h1>
@@ -36,6 +61,7 @@ layout: layouts/base.njk
                 <div class="sidebar-widget contact-widget">
                     <h4>Schedule a Consultation</h4>
                     <p>We're here to help with your legal needs.</p>
+                    <p class="sidebar-phone"><a href="tel:724-733-3500">(724) 733-3500</a></p>
                     <a href="/contact/" class="cta-button">Contact Us</a>
                 </div>
             </aside>

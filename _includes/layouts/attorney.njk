@@ -1,6 +1,31 @@
 ---
 layout: layouts/base.njk
 ---
+{% block head %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Attorney",
+    "name": "{{ attorney_name }}",
+    "jobTitle": "{{ attorney_role }}",
+    "email": "{{ attorney_email }}",
+    "telephone": "+1-724-733-3500",
+    "url": "https://www.ament.law{{ page.url }}",
+    "worksFor": {
+        "@type": "LegalService",
+        "@id": "https://www.ament.law/#organization"
+    },
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3950 Wm Penn Hwy, Suite 5",
+        "addressLocality": "Murrysville",
+        "addressRegion": "PA",
+        "postalCode": "15668",
+        "addressCountry": "US"
+    }
+}
+</script>
+{% endblock %}
 <section id="attorney-profile">
     <div class="container">
         <div class="attorney-profile-layout">

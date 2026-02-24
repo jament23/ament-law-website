@@ -3,15 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} | Ament Law Group, P.C.</title>
+    <title>{{ title }}{% if title != "Ament Law Group | Murrysville & Westmoreland County Law Firm" %} | Ament Law Group, P.C.{% endif %}</title>
     <meta name="description" content="{{ description }}">
+    <link rel="canonical" href="https://www.ament.law{{ page.url }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:url" content="https://www.ament.law{{ page.url }}">
+    <meta property="og:site_name" content="Ament Law Group, P.C.">
+    <meta property="og:type" content="{% if layout == 'layouts/blog-post.njk' %}article{% else %}website{% endif %}">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+
+    <!-- Geo -->
+    <meta name="geo.region" content="US-PA">
+    <meta name="geo.placename" content="Murrysville">
+    <meta name="geo.position" content="40.4532;-79.6919">
+
     <link rel="stylesheet" href="/style.css">
+
+    <!-- LocalBusiness Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "LegalService",
+        "@id": "https://www.ament.law/#organization",
         "name": "Ament Law Group, P.C.",
-        "description": "Trusted legal guidance for families and businesses in Western Pennsylvania. Estate planning, probate, real estate, and business law.",
+        "description": "Trusted legal guidance for families and businesses in Western Pennsylvania. Estate planning, probate, real estate, elder law, and business law.",
         "url": "https://www.ament.law",
         "telephone": "+1-724-733-3500",
         "email": "hello@ament.law",
@@ -36,25 +59,40 @@
                 "closes": "17:00"
             }
         ],
-        "areaServed": {
-            "@type": "State",
-            "name": "Pennsylvania"
-        },
+        "areaServed": [
+            { "@type": "AdministrativeArea", "name": "Westmoreland County, PA" },
+            { "@type": "AdministrativeArea", "name": "Allegheny County, PA" },
+            { "@type": "AdministrativeArea", "name": "Washington County, PA" },
+            { "@type": "AdministrativeArea", "name": "Butler County, PA" },
+            { "@type": "AdministrativeArea", "name": "Fayette County, PA" },
+            { "@type": "AdministrativeArea", "name": "Indiana County, PA" }
+        ],
         "priceRange": "$$",
+        "knowsAbout": ["Estate Planning","Probate","Trust Administration","Real Estate Law","Business Formation","Elder Law","Medicaid Planning","Title Insurance"],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Legal Services",
+            "itemListElement": [
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estate Planning", "url": "https://www.ament.law/practice-areas/estate-planning/" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Probate & Trust Administration", "url": "https://www.ament.law/practice-areas/probate-administration/" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Real Estate Settlement Services", "url": "https://www.ament.law/practice-areas/real-estate-law/" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business Formation", "url": "https://www.ament.law/practice-areas/business-formation/" } },
+                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Elder Law", "url": "https://www.ament.law/practice-areas/elder-law/" } }
+            ]
+        },
         "sameAs": []
     }
     </script>
     {% block head %}{% endblock %}
 </head>
 <body>
-    <div class="site-banner">
-        <div class="container">
-            <a href="/boi-reporting/">Corporate Transparency Act Update (March 2025)</a>
-        </div>
-    </div>
     <header>
         <div class="container">
             <a href="/" class="logo">Ament Law Group, P.C.</a>
+            <a href="tel:724-733-3500" class="header-phone" aria-label="Call us">
+                <span class="header-phone-icon">&#9742;</span>
+                <span class="header-phone-text">(724) 733-3500</span>
+            </a>
             <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
                 <span class="hamburger"></span>
             </button>
@@ -100,6 +138,17 @@
             <p class="disclaimer-text">This website constitutes attorney advertising and is designed for general information only. The information presented on this site should not be construed as formal legal advice nor the formation of a lawyer/client relationship.</p>
         </div>
     </footer>
+
+    <!-- Sticky Mobile Contact Bar -->
+    <div class="mobile-contact-bar">
+        <a href="tel:724-733-3500" class="mobile-bar-call">
+            <span class="mobile-bar-icon">&#9742;</span> Call Now
+        </a>
+        <a href="/contact/" class="mobile-bar-form">
+            <span class="mobile-bar-icon">&#9993;</span> Contact Us
+        </a>
+    </div>
+
     <script>
     (function() {
         var toggle = document.querySelector('.nav-toggle');

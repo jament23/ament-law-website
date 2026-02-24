@@ -846,29 +846,78 @@ footer li {
 }
 
 /* ==================
-   14. SITE BANNER
+   14. HEADER PHONE NUMBER
    ================== */
 
-.site-banner {
-    background-color: #1a3a6e;
-    text-align: center;
-    padding: 8px 0;
-    font-size: 0.85em;
+.header-phone {
+    display: flex;
+    align-items: center;
+    color: var(--text-light);
     font-weight: bold;
+    font-size: 1em;
+    text-decoration: none;
+    margin-left: auto;
+    margin-right: 25px;
+    white-space: nowrap;
 }
 
-.site-banner a {
+.header-phone:hover {
     color: #f0c040;
     text-decoration: none;
 }
 
-.site-banner a:hover {
-    text-decoration: underline;
-    color: #fff;
+.header-phone-icon {
+    font-size: 1.2em;
+    margin-right: 6px;
 }
 
 /* ==================
-   15. BOI ALERT
+   15. STICKY MOBILE CONTACT BAR
+   ================== */
+
+.mobile-contact-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: var(--primary-blue);
+}
+
+.mobile-contact-bar a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    padding: 14px 0;
+    color: var(--text-light);
+    font-weight: bold;
+    font-size: 1em;
+    text-decoration: none;
+    text-align: center;
+}
+
+.mobile-bar-call {
+    background-color: #2e7d32;
+}
+
+.mobile-bar-form {
+    background-color: var(--primary-blue);
+}
+
+.mobile-contact-bar a:hover {
+    text-decoration: none;
+    opacity: 0.9;
+}
+
+.mobile-bar-icon {
+    margin-right: 6px;
+    font-size: 1.1em;
+}
+
+/* ==================
+   15b. BOI ALERT (retained for BOI page)
    ================== */
 
 .boi-alert {
@@ -887,6 +936,16 @@ footer li {
 
 .boi-alert p {
     margin-bottom: 0;
+}
+
+/* ==================
+   15c. SIDEBAR PHONE
+   ================== */
+
+.sidebar-phone {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin: 10px 0;
 }
 
 /* ==================
@@ -1101,5 +1160,25 @@ footer li {
 
     main section {
         padding: 50px 0;
+    }
+
+    /* --- Header Phone (icon only on mobile) --- */
+    .header-phone-text {
+        display: none;
+    }
+
+    .header-phone {
+        margin-right: 10px;
+        font-size: 1.3em;
+    }
+
+    /* --- Sticky Mobile Contact Bar --- */
+    .mobile-contact-bar {
+        display: flex;
+    }
+
+    /* Add padding to footer so content isn't hidden behind sticky bar */
+    footer {
+        padding-bottom: 60px;
     }
 }
