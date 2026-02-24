@@ -390,25 +390,43 @@ main section {
 }
 
 .service-card {
+    display: block;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-top: 3px solid var(--color-heading);
     border-radius: var(--radius);
-    padding: var(--space-lg) var(--space-md);
+    overflow: hidden;
     transition: all var(--transition);
+    text-decoration: none;
+    color: inherit;
 }
 
 .service-card:hover {
     border-color: var(--color-accent-dim);
-    border-top-color: var(--color-heading);
     box-shadow: var(--shadow-md);
     transform: translateY(-3px);
+    text-decoration: none;
+    color: inherit;
 }
 
-.service-card h3 { margin-bottom: var(--space-xs); }
-.service-card h3 a { color: var(--color-heading); }
-.service-card h3 a:hover { color: var(--color-accent-hover); text-decoration: none; }
-.service-card p { color: var(--color-muted); font-size: 0.92rem; line-height: 1.65; }
+.service-card-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.service-card h3 {
+    margin: var(--space-md) var(--space-md) var(--space-xs);
+    color: var(--color-heading);
+    font-size: 1.15rem;
+}
+
+.service-card p {
+    color: var(--color-muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin: 0 var(--space-md) var(--space-md);
+}
 
 /* --- Why Us / Trust Section --- */
 #why-us {
@@ -544,6 +562,21 @@ main section {
     border-radius: 50%;
     background: linear-gradient(135deg, var(--color-border), #d8d8dd);
     margin: 0 auto var(--space-md);
+}
+
+.attorney-headshot {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto var(--space-md);
+    display: block;
+    border: 3px solid var(--color-border);
+}
+
+.attorney-card .attorney-headshot {
+    width: 100px;
+    height: 100px;
 }
 
 .attorney-card h3 {

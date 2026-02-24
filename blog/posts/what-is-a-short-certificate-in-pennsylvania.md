@@ -49,6 +49,6 @@ Obtaining the Short Certificate is just the beginning of the probate process. Th
 
 ## Get Help with the Probate Process
 
-Due to the complexity of the probate process, many individuals find it helpful to consult with an attorney who specializes in estate law. An attorney can provide guidance on the necessary steps, help prepare and file documents, and ensure compliance with all legal requirements.
+Due to the complexity of the probate process, many individuals find it helpful to consult with an attorney experienced in estate law. An attorney can provide guidance on the necessary steps, help prepare and file documents, and ensure compliance with all legal requirements.
 
 Contact the attorneys at the Ament Law Group today at [(724) 733-3500](tel:724-733-3500) for help with the probate process.

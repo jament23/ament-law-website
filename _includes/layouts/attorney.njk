@@ -30,7 +30,11 @@ layout: layouts/base.njk
     <div class="container">
         <div class="attorney-profile-layout">
             <aside class="attorney-sidebar">
+                {% if attorney_photo %}
+                <img src="{{ attorney_photo }}" alt="Photo of {{ attorney_name }}" class="attorney-headshot">
+                {% else %}
                 <div class="attorney-photo-placeholder"></div>
+                {% endif %}
                 <h2>{{ attorney_name }}</h2>
                 <p class="attorney-title">{{ attorney_role }}</p>
                 <div class="attorney-contact-info">
