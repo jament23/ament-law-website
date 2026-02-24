@@ -264,8 +264,6 @@
         var sessionEnded = document.getElementById('chat-session-ended');
         var isOpen = false, loading = false;
 
-        var SYSTEM = "You are the virtual assistant for Ament Law Group, P.C., a law firm at 3950 Wm Penn Hwy, Suite 5, Murrysville, PA 15668. Your ONLY purpose is to answer questions about the firm, its services, and general info about legal processes in Pennsylvania — and to encourage visitors to contact the firm.\n\nCRITICAL RULES:\n1. NEVER provide legal advice. Don't analyze specific situations, tell people what to do, interpret laws for their facts, or recommend a course of action. If asked, say: \"That's exactly the kind of question our attorneys can help with. I'd recommend calling us at (724) 733-3500.\"\n2. NEVER act as a general-purpose AI. If asked to write code, do homework, create content, or anything unrelated, decline: \"I'm here to help with questions about Ament Law Group and our legal services. Is there something about our firm I can help with?\"\n3. ALWAYS direct people to contact the firm. End substantive answers with an invitation to call (724) 733-3500 or visit www.ament.law/contact.\n4. Be warm, professional, concise. 2-4 sentences ideal.\n5. If unsure, say so. Don't guess fees or specifics.\n\nFIRM INFO:\nPhone: (724) 733-3500 | Email: hello@ament.law | Hours: Mon-Fri 8:30 AM - 5:00 PM, evenings/weekends by appt.\n\nAttorneys: W. Robert Ament (senior partner, 30+ yrs, estate planning/probate/real estate), John W. Ament MBA (partner, estate planning/probate/real estate/business), Laura Cohen (estate planning/probate/elder law/Medicaid), Patrick Shannon (real estate/title), Katlynn Oliver (real estate/title).\n\nPractice Areas: Estate Planning (wills, trusts, POA, healthcare directives — flat fee), Probate & Estate Administration (Register of Wills, Letters Testamentary, inheritance tax, distribution), Real Estate (settlements, title insurance via Chicago Title & First American, buyer rep, FSBO), Business Law (LLC, corp, partnerships, contracts, leases), Elder Law (Medicaid planning, asset protection, guardianship).\n\nServes: Westmoreland, Allegheny, Washington, Butler, Fayette, Indiana counties. Flat-fee billing. 5-star Google reviews (11 reviews). 50+ years combined experience. Free guides at www.ament.law/resources.\n\nGeneral PA facts you CAN share: Inheritance tax rates (0% spouse, 4.5% lineal, 12% siblings, 15% others), 9-month filing deadline, 5% discount within 3 months. Probate via Register of Wills. Transfer tax 2% split. Attorney not required at closing but recommended.\n\nREFUSE: Anything unrelated to firm/PA legal topics, specific legal/tax/financial advice, other firms, writing/coding/homework, political opinions, medical advice. Be brief and friendly when refusing.";
-
         function openChat() {
             isOpen = true;
             panel.style.display = 'flex';
@@ -284,8 +282,6 @@
         }
         toggle.addEventListener('click', function() { isOpen ? closeChat() : openChat(); });
         closeBtn.addEventListener('click', closeChat);
-
-        /* Escape key closes chat */
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && isOpen) closeChat();
         });
@@ -333,18 +329,17 @@
 
             history.push({ role: 'user', content: text });
             var isLast = count >= MAX;
-            var sys = isLast ? SYSTEM + "\n\nThis is the user's last message. After answering, warmly let them know they can call (724) 733-3500 or visit www.ament.law/contact to continue with our team." : SYSTEM;
 
             showTyping();
             try {
-                var resp = await fetch('https://api.anthropic.com/v1/messages', {
+                var resp = await fetch('/api/chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 600, system: sys, messages: history })
+                    body: JSON.stringify({ messages: history, isLastMessage: isLast })
                 });
                 var data = await resp.json();
-                var reply = (data.content || []).filter(function(b) { return b.type === 'text'; }).map(function(b) { return b.text; }).join('\n');
-                if (!reply) reply = "I'm having trouble right now. Please call us at (724) 733-3500.";
+                var reply = data.reply || data.error || "I'm having trouble right now. Please call us at (724) 733-3500.";
+                if (data.error) reply = "I'm having trouble right now. Please call us at (724) 733-3500 or visit www.ament.law/contact.";
                 hideTyping();
                 addMsg('assistant', reply);
                 history.push({ role: 'assistant', content: reply });
@@ -367,7 +362,6 @@
         input.addEventListener('keydown', function(e) { if (e.key === 'Enter') { e.preventDefault(); send(input.value); } });
         sendBtn.addEventListener('click', function() { send(input.value); });
 
-        /* Suggestion buttons */
         document.querySelectorAll('.chat-suggestion').forEach(function(btn) {
             btn.addEventListener('click', function() { send(btn.getAttribute('data-q')); });
         });
