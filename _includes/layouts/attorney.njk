@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+---
+<section id="attorney-profile">
+    <div class="container">
+        <div class="attorney-profile-layout">
+            <aside class="attorney-sidebar">
+                <div class="attorney-photo-placeholder"></div>
+                <h2>{{ attorney_name }}</h2>
+                <p class="attorney-title">{{ attorney_role }}</p>
+                <div class="attorney-contact-info">
+                    <h4>Contact</h4>
+                    <p>Email: <a href="mailto:{{ attorney_email }}">{{ attorney_email }}</a></p>
+                    <p>Phone: <a href="tel:724-733-3500">(724) 733-3500</a></p>
+                </div>
+            </aside>
+            <article class="attorney-bio">
+                {{ content | safe }}
+            </article>
+        </div>
+    </div>
+</section>

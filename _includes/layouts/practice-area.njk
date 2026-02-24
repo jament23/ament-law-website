@@ -4,19 +4,14 @@ layout: layouts/base.njk
 <section class="simple-header">
     <div class="container">
         <h1>{{ title }}</h1>
-        <p>{{ date | dateFormat }}{% if author %} &bull; By {{ author }}{% endif %}</p>
+        <p>{{ subtitle }}</p>
     </div>
 </section>
-<section id="blog-post-content">
+<section id="practice-area-content">
     <div class="container">
         <div class="practice-area-layout">
-            <article class="practice-area-main blog-article">
+            <article class="practice-area-main">
                 {{ content | safe }}
-                <div class="blog-cta">
-                    <h3>Need Help with Your Estate?</h3>
-                    <p>At Ament Law Group, P.C., we help Pennsylvania families protect their wealth and plan for the future. Whether you need a trust, will, or probate administration assistance, our team is here to guide you every step of the way.</p>
-                    <p><strong>Call us today at <a href="tel:724-733-3500">(724) 733-3500</a> to schedule your consultation.</strong></p>
-                </div>
             </article>
             <aside class="practice-area-sidebar">
                 <div class="sidebar-widget">
@@ -29,13 +24,27 @@ layout: layouts/base.njk
                         {% else %}
                         <li><a href="/practice-areas/estate-planning/">Estates & Trusts</a></li>
                         <li><a href="/practice-areas/probate-administration/">Probate Administration</a></li>
-                        <li><a href="/practice-areas/real-estate-law/">Real Estate Law</a></li>
+                        <li><a href="/practice-areas/real-estate-law/">Real Estate Settlement</a></li>
+                        <li><a href="/practice-areas/elder-law/">Elder Law</a></li>
+                        <li><a href="/practice-areas/business-formation/">Business Formation</a></li>
+                        <li><a href="/practice-areas/business-law/">Business Services</a></li>
                         {% endif %}
                     </ul>
                 </div>
+                {% if attorneys %}
+                <div class="sidebar-widget">
+                    <h4>Attorneys</h4>
+                    <p>This service is handled by:</p>
+                    <ul class="sidebar-links">
+                        {% for attorney in attorneys %}
+                        <li><a href="{{ attorney.url }}">{{ attorney.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
                 <div class="sidebar-widget contact-widget">
-                    <h4>Schedule a Consultation</h4>
-                    <p>We're here to help with your legal needs.</p>
+                    <h4>Get Help Today</h4>
+                    <p>Contact us to schedule a consultation.</p>
                     <a href="/contact/" class="cta-button">Contact Us</a>
                 </div>
             </aside>

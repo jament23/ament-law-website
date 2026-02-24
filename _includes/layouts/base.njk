@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | Ament Law Group, P.C.</title>
+    <meta name="description" content="{{ description }}">
+    <link rel="stylesheet" href="/style.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LegalService",
+        "name": "Ament Law Group, P.C.",
+        "description": "Trusted legal guidance for families and businesses in Western Pennsylvania. Estate planning, probate, real estate, and business law.",
+        "url": "https://www.ament.law",
+        "telephone": "+1-724-733-3500",
+        "email": "hello@ament.law",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "3950 Wm Penn Hwy, Suite 5",
+            "addressLocality": "Murrysville",
+            "addressRegion": "PA",
+            "postalCode": "15668",
+            "addressCountry": "US"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 40.4532,
+            "longitude": -79.6919
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                "opens": "09:00",
+                "closes": "17:00"
+            }
+        ],
+        "areaServed": {
+            "@type": "State",
+            "name": "Pennsylvania"
+        },
+        "priceRange": "$$",
+        "sameAs": []
+    }
+    </script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="/" class="logo">Ament Law Group, P.C.</a>
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about/">About</a></li>
+                    <li><a href="/attorneys/">Attorneys</a></li>
+                    <li><a href="/practice-areas/">Practice Areas</a></li>
+                    <li><a href="/areas-we-serve/">Areas We Serve</a></li>
+                    <li><a href="/blog/">Blog</a></li>
+                    <li><a href="/faq/">FAQ</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        {% block content %}{{ content | safe }}{% endblock %}
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Ament Law Group, P.C.</p>
+                <p>3950 Wm Penn Hwy, Suite 5<br>
+                   Murrysville, PA 15668</p>
+                <p>Phone: <a href="tel:724-733-3500">(724) 733-3500</a></p>
+                <p>Email: <a href="mailto:hello@ament.law">hello@ament.law</a></p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/attorneys/">Attorneys</a></li>
+                    <li><a href="/practice-areas/">Practice Areas</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ament Law Group, P.C. All rights reserved. | <a href="/privacy/">Privacy Policy</a> | <a href="/disclaimer/">Disclaimer</a></p>
+            <p class="disclaimer-text">This website constitutes attorney advertising and is designed for general information only. The information presented on this site should not be construed as formal legal advice nor the formation of a lawyer/client relationship.</p>
+        </div>
+    </footer>
+    <script>
+    (function() {
+        var toggle = document.querySelector('.nav-toggle');
+        var nav = document.getElementById('main-nav');
+        if (toggle && nav) {
+            toggle.addEventListener('click', function() {
+                var expanded = toggle.getAttribute('aria-expanded') === 'true';
+                toggle.setAttribute('aria-expanded', !expanded);
+                nav.classList.toggle('nav-open');
+                toggle.classList.toggle('active');
+            });
+        }
+    })();
+    </script>
+</body>
+</html>

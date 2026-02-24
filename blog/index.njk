@@ -1,80 +1,28 @@
 ---
+layout: layouts/base.njk
+title: "Blog & Legal Insights"
+description: "Read helpful articles on estate planning, probate, real estate, and business law from the attorneys at Ament Law Group in Murrysville, PA."
 permalink: /blog/index.html
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal Blog & Resources | Ament Law Group | Westmoreland County</title>
-    <meta name="description" content="Read helpful articles on estate planning, probate, real estate, and business law from the attorneys at Ament Law Group in Murrysville, PA.">
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-    <header>
-        <div class="container">
-            <a href="/" class="logo">Ament Law Group, P.C.</a>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about/">About</a></li>
-                    <li><a href="/attorneys/">Attorneys</a></li>
-                    <li><a href="/practice-areas/">Practice Areas</a></li>
-                    <li><a href="/areas-we-serve/">Areas We Serve</a></li>
-                    <li><a href="/blog/">Blog</a></li>
-                    <li><a href="/contact/">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <section class="simple-header">
-            <div class="container">
-                <h1>Firm Blog & Legal Insights</h1>
-                <p>Answering your questions about Pennsylvania law.</p>
-            </div>
-        </section>
-        <section id="blog-list">
-            <div class="container">
-                <p class="blog-disclaimer">This blog provides general information and does not constitute legal advice. For guidance on your specific situation, please consult a licensed attorney.</p>
-                {% for post in collections.posts %}
-                <article class="blog-post-item">
-                    <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
-                    <p class="post-meta">{{ post.date | dateFormat }}{% if post.data.author %} | By {{ post.data.author }}{% endif %}</p>
-                    <p>{{ post.data.description }}</p>
-                    <a href="{{ post.url }}" class="cta-button-secondary">Read More</a>
-                </article>
-                {% endfor %}
-                {% if collections.posts.length == 0 %}
-                <p>No blog posts yet. Check back soon for legal insights from our team.</p>
-                {% endif %}
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div class="container">
-            <div class="footer-contact">
-                <h4>Contact Us</h4>
-                <p>Ament Law Group, P.C.</p>
-                <p>3950 Wm Penn Hwy, Suite 5<br>
-                   Murrysville, PA 15668</p>
-                <p>Phone: <a href="tel:724-733-3500">(724) 733-3500</a></p>
-                <p>Email: <a href="mailto:hello@ament.law">hello@ament.law</a></p>
-            </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/attorneys/">Attorneys</a></li>
-                    <li><a href="/practice-areas/">Practice Areas</a></li>
-                    <li><a href="/contact/">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Ament Law Group, P.C. All rights reserved. | <a href="/privacy/">Privacy Policy</a> | <a href="/disclaimer/">Disclaimer</a></p>
-            <p class="disclaimer-text">This website constitutes attorney advertising and is designed for general information only. The information presented on this site should not be construed as formal legal advice nor the formation of a lawyer/client relationship.</p>
-        </div>
-    </footer>
-</body>
-</html>
+<section class="simple-header">
+    <div class="container">
+        <h1>Firm Blog & Legal Insights</h1>
+        <p>Answering your questions about Pennsylvania law.</p>
+    </div>
+</section>
+<section id="blog-list">
+    <div class="container">
+        <p class="blog-disclaimer">This blog provides general information and does not constitute legal advice. For guidance on your specific situation, please consult a licensed attorney.</p>
+        {% for post in collections.posts %}
+        <article class="blog-post-item">
+            <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+            <p class="post-meta">{{ post.date | dateFormat }}{% if post.data.author %} | By {{ post.data.author }}{% endif %}</p>
+            <p>{{ post.data.description }}</p>
+            <a href="{{ post.url }}" class="cta-button-secondary">Read More</a>
+        </article>
+        {% endfor %}
+        {% if collections.posts.length == 0 %}
+        <p>No blog posts yet. Check back soon for legal insights from our team.</p>
+        {% endif %}
+    </div>
+</section>

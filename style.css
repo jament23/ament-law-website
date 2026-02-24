@@ -844,3 +844,218 @@ footer li {
         grid-template-columns: 1fr; /* Stack columns */
     }
 }
+
+/* ==================
+   14. HAMBURGER MENU
+   ================== */
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-light);
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-light);
+    left: 0;
+    transition: transform 0.3s ease;
+}
+
+.hamburger::before { top: -7px; }
+.hamburger::after { top: 7px; }
+
+/* Animate to X when active */
+.nav-toggle.active .hamburger {
+    background-color: transparent;
+}
+.nav-toggle.active .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+.nav-toggle.active .hamburger::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+/* ==================
+   15. FAQ STYLES
+   ================== */
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+    padding: 25px 0;
+}
+
+.faq-item:first-child {
+    padding-top: 0;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-item h3 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: var(--primary-blue);
+}
+
+.faq-item p {
+    margin: 0;
+    line-height: 1.8;
+}
+
+/* ==================
+   16. LEGAL TEXT STYLES (Privacy, Disclaimer)
+   ================== */
+
+.legal-text h2 {
+    font-size: 1.4em;
+    margin-top: 35px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.legal-text h2:first-of-type {
+    margin-top: 0;
+}
+
+.legal-text p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+/* ==================
+   17. BLOG LIST STYLES
+   ================== */
+
+.blog-post-item {
+    border-bottom: 1px solid #eee;
+    padding: 30px 0;
+}
+
+.blog-post-item:last-child {
+    border-bottom: none;
+}
+
+.blog-post-item h2 {
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+.blog-post-item h2 a {
+    color: var(--primary-blue);
+}
+
+.blog-post-item h2 a:hover {
+    color: var(--accent-gray);
+    text-decoration: none;
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: var(--accent-gray);
+    margin-bottom: 10px;
+}
+
+/* ==================
+   18. COMPREHENSIVE RESPONSIVE STYLES
+   ================== */
+
+@media (max-width: 768px) {
+
+    /* --- Mobile Nav --- */
+    .nav-toggle {
+        display: block;
+    }
+
+    header nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-blue);
+        border-top: 1px solid var(--accent-gray);
+        z-index: 1000;
+    }
+
+    header nav.nav-open {
+        display: block;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        padding: 10px 0;
+    }
+
+    header nav li {
+        margin-left: 0;
+    }
+
+    header nav a {
+        display: block;
+        padding: 12px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    header nav a:hover {
+        background-color: rgba(255,255,255,0.05);
+    }
+
+    header .container {
+        position: relative;
+    }
+
+    /* --- Typography --- */
+    h1 { font-size: 2em; }
+    #hero h1 { font-size: 2.2em; }
+    #hero { padding: 60px 0; }
+
+    /* --- Layout Stacking --- */
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .attorney-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .practice-area-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .attorney-profile-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        text-align: center;
+    }
+
+    header .logo {
+        font-size: 1.3em;
+    }
+
+    main section {
+        padding: 50px 0;
+    }
+}

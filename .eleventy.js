@@ -1,6 +1,5 @@
 module.exports = function(eleventyConfig) {
   
-  // Pass through static files
   eleventyConfig.addPassthroughCopy("style.css");
   eleventyConfig.addPassthroughCopy("images");
 
@@ -17,7 +16,7 @@ module.exports = function(eleventyConfig) {
     return new Date(date).toLocaleDateString('en-US', options);
   });
 
-  // Excerpt filter (first 200 chars of content, stripped of HTML)
+  // Excerpt filter
   eleventyConfig.addFilter("excerpt", function(content) {
     if (!content) return "";
     const stripped = content.replace(/<[^>]+>/g, '');
@@ -25,9 +24,9 @@ module.exports = function(eleventyConfig) {
   });
 
   return {
-    templateFormats: ["md", "njk", "html", "liquid"],
+    templateFormats: ["md", "njk"],
     markdownTemplateEngine: "njk",
-    htmlTemplateEngine: false,
+    htmlTemplateEngine: "njk",
     dir: {
       input: ".",
       includes: "_includes",
