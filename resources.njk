@@ -179,18 +179,19 @@ permalink: /resources/index.html
 
         if (honeypot || !name || !email) return;
 
-        // Send lead data
+        // Send lead data to AmentCase
         try {
-            fetch('/api/chat', {
+            fetch('https://amentcase.com/api/website-lead', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    type: 'resource_download',
-                    name: name,
+                    first_name: name.split(' ')[0] || name,
+                    last_name: name.split(' ').slice(1).join(' ') || '',
                     email: email,
                     phone: phone,
-                    guide: pendingFile,
-                    source: 'resources_page'
+                    matter_type: 'Resource Download',
+                    message: 'Downloaded: ' + pendingFile.split('/').pop(),
+                    website_url: ''
                 })
             }).catch(function() {});
         } catch(err) {}
