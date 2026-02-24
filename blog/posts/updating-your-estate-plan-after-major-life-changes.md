@@ -2,7 +2,12 @@
 title: "Top Tips for Updating Your Estate Plan After Major Life Changes"
 description: "Major life events can significantly impact your estate plan. Learn when and how to update your will, trust, power of attorney, and beneficiary designations."
 date: 2025-11-14
-author: "Ament Law Group"
+author: "John W. Ament, Esq."
+author_type: "Person"
+author_url: "/attorneys/john-ament/"
+author_jobtitle: "Partner"
+author_credentials: "J.D./M.B.A., Duquesne University"
+author_bio: "John W. Ament is a partner and co-founder of Ament Law Group, P.C. in Murrysville, PA. He holds a J.D./M.B.A. from Duquesne University and is a member of the National Academy of Elder Law Attorneys (NAELA), PAELA, and the Pittsburgh Estate Planning Council."
 tags:
   - estate planning
   - life changes

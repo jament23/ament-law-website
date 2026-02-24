@@ -3,6 +3,11 @@ title: "Understanding Pennsylvania Inheritance Tax: Rates, Exemptions, and Plann
 description: "Pennsylvania is one of only six states with an inheritance tax. Learn about the current tax rates, exemptions, filing deadlines, and strategies to reduce your family's tax burden."
 date: 2026-02-24
 author: "John W. Ament, Esq."
+author_type: "Person"
+author_url: "/attorneys/john-ament/"
+author_jobtitle: "Partner"
+author_credentials: "J.D./M.B.A., Duquesne University"
+author_bio: "John W. Ament is a partner and co-founder of Ament Law Group, P.C. in Murrysville, PA. He holds a J.D./M.B.A. from Duquesne University and is a member of the National Academy of Elder Law Attorneys (NAELA), PAELA, and the Pittsburgh Estate Planning Council."
 tags:
   - estate planning
   - inheritance tax

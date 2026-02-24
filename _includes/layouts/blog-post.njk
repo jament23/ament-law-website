@@ -9,10 +9,19 @@ layout: layouts/base.njk
     "headline": "{{ title }}",
     "description": "{{ description }}",
     "datePublished": "{{ date | dateFormat }}",
+    "url": "https://www.ament.law{{ page.url }}",
+    "inLanguage": "en-US",
+    "isPartOf": {
+        "@type": "Blog",
+        "name": "Ament Law Group Blog",
+        "url": "https://www.ament.law/blog/"
+    },
     "author": {
-        "@type": "Organization",
-        "name": "{{ author | default('Ament Law Group') }}",
-        "url": "https://www.ament.law"
+        "@type": "{% if author_type %}{{ author_type }}{% else %}Organization{% endif %}",
+        {% if author_url %}"url": "https://www.ament.law{{ author_url }}",{% endif %}
+        {% if author_credentials %}"hasCredential": "{{ author_credentials }}",{% endif %}
+        {% if author_jobtitle %}"jobTitle": "{{ author_jobtitle }}",{% endif %}
+        "name": "{{ author | default('Ament Law Group') }}"
     },
     "publisher": {
         "@type": "Organization",
@@ -22,6 +31,14 @@ layout: layouts/base.njk
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "https://www.ament.law{{ page.url }}"
+    },
+    "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".blog-article h2", ".blog-article p"]
+    },
+    "about": {
+        "@type": "Thing",
+        "name": "Pennsylvania Law"
     }
 }
 </script>
@@ -29,7 +46,7 @@ layout: layouts/base.njk
 <section class="simple-header">
     <div class="container">
         <h1>{{ title }}</h1>
-        <p>{{ date | dateFormat }}{% if author %} &bull; By {{ author }}{% endif %}</p>
+        <p class="post-meta-header">{{ date | dateFormat }}{% if author %} &bull; By {% if author_url %}<a href="{{ author_url }}" style="color:rgba(255,255,255,0.85);">{{ author }}</a>{% else %}{{ author }}{% endif %}{% endif %}</p>
     </div>
 </section>
 <section id="blog-post-content">
@@ -37,6 +54,18 @@ layout: layouts/base.njk
         <div class="practice-area-layout">
             <article class="practice-area-main blog-article">
                 {{ content | safe }}
+
+                {% if author_bio %}
+                <div class="author-box">
+                    <div class="author-box-photo"></div>
+                    <div class="author-box-info">
+                        <h4>About the Author</h4>
+                        <h3>{% if author_url %}<a href="{{ author_url }}">{{ author }}</a>{% else %}{{ author }}{% endif %}</h3>
+                        <p>{{ author_bio }}</p>
+                    </div>
+                </div>
+                {% endif %}
+
                 <div class="blog-cta">
                     <h3>Need Help with Your Estate?</h3>
                     <p>At Ament Law Group, P.C., we help Pennsylvania families protect their wealth and plan for the future. Whether you need a trust, will, or probate administration assistance, our team is here to guide you every step of the way.</p>

@@ -2,7 +2,12 @@
 title: "How to Handle Out-of-State Property in Your Estate Plan"
 description: "Owning real estate in multiple states can complicate your estate plan. Learn how to avoid ancillary probate and protect your out-of-state property."
 date: 2025-08-15
-author: "Ament Law Group"
+author: "John W. Ament, Esq."
+author_type: "Person"
+author_url: "/attorneys/john-ament/"
+author_jobtitle: "Partner"
+author_credentials: "J.D./M.B.A., Duquesne University"
+author_bio: "John W. Ament is a partner and co-founder of Ament Law Group, P.C. in Murrysville, PA. He holds a J.D./M.B.A. from Duquesne University and is a member of the National Academy of Elder Law Attorneys (NAELA), PAELA, and the Pittsburgh Estate Planning Council."
 tags:
   - estate planning
   - real estate

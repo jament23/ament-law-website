@@ -2,7 +2,12 @@
 title: "You've Been Told to Get a Short Certificate — What Does That Mean?"
 description: "When a loved one passes away, banks often tell you to get a 'Short Certificate.' Learn what it is, how to get one from the Register of Wills, and what comes next in the probate process."
 date: 2024-01-19
-author: "Ament Law Group"
+author: "John W. Ament, Esq."
+author_type: "Person"
+author_url: "/attorneys/john-ament/"
+author_jobtitle: "Partner"
+author_credentials: "J.D./M.B.A., Duquesne University"
+author_bio: "John W. Ament is a partner and co-founder of Ament Law Group, P.C. in Murrysville, PA. He holds a J.D./M.B.A. from Duquesne University and is a member of the National Academy of Elder Law Attorneys (NAELA), PAELA, and the Pittsburgh Estate Planning Council."
 tags:
   - probate
   - short certificate

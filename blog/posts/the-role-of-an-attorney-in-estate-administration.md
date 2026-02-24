@@ -2,7 +2,12 @@
 title: "The Role of an Attorney in Estate Administration"
 description: "Discover how attorneys guide executors, protect beneficiaries, and ensure legal compliance throughout the estate administration process in Pennsylvania."
 date: 2025-11-28
-author: "Ament Law Group"
+author: "John W. Ament, Esq."
+author_type: "Person"
+author_url: "/attorneys/john-ament/"
+author_jobtitle: "Partner"
+author_credentials: "J.D./M.B.A., Duquesne University"
+author_bio: "John W. Ament is a partner and co-founder of Ament Law Group, P.C. in Murrysville, PA. He holds a J.D./M.B.A. from Duquesne University and is a member of the National Academy of Elder Law Attorneys (NAELA), PAELA, and the Pittsburgh Estate Planning Council."
 tags:
   - probate
   - estate administration

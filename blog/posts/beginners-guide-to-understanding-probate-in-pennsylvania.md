@@ -2,7 +2,12 @@
 title: "A Beginner's Guide to Understanding Probate in Pennsylvania"
 description: "Probate can be confusing for those unfamiliar with the legal system. This guide breaks down what probate is, how it works in Pennsylvania, and what you can do to make the process smoother."
 date: 2024-09-06
-author: "Ament Law Group"
+author: "John W. Ament, Esq."
+author_type: "Person"
+author_url: "/attorneys/john-ament/"
+author_jobtitle: "Partner"
+author_credentials: "J.D./M.B.A., Duquesne University"
+author_bio: "John W. Ament is a partner and co-founder of Ament Law Group, P.C. in Murrysville, PA. He holds a J.D./M.B.A. from Duquesne University and is a member of the National Academy of Elder Law Attorneys (NAELA), PAELA, and the Pittsburgh Estate Planning Council."
 tags:
   - probate
   - estate administration

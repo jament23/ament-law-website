@@ -2,7 +2,12 @@
 title: "The Importance of Annual Estate Planning Reviews"
 description: "Regular estate planning reviews are crucial to ensure your legal documents reflect your current wishes. Learn why annual reviews are essential."
 date: 2024-06-21
-author: "Ament Law Group"
+author: "John W. Ament, Esq."
+author_type: "Person"
+author_url: "/attorneys/john-ament/"
+author_jobtitle: "Partner"
+author_credentials: "J.D./M.B.A., Duquesne University"
+author_bio: "John W. Ament is a partner and co-founder of Ament Law Group, P.C. in Murrysville, PA. He holds a J.D./M.B.A. from Duquesne University and is a member of the National Academy of Elder Law Attorneys (NAELA), PAELA, and the Pittsburgh Estate Planning Council."
 tags:
   - estate planning
   - annual review

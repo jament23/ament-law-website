@@ -2,7 +2,12 @@
 title: "Navigating Probate in Pennsylvania as an Out-of-State Heir"
 description: "If you're an out-of-state heir responsible for probating an estate in Pennsylvania, this step-by-step guide explains the key steps and how an attorney can help."
 date: 2024-10-11
-author: "Ament Law Group"
+author: "John W. Ament, Esq."
+author_type: "Person"
+author_url: "/attorneys/john-ament/"
+author_jobtitle: "Partner"
+author_credentials: "J.D./M.B.A., Duquesne University"
+author_bio: "John W. Ament is a partner and co-founder of Ament Law Group, P.C. in Murrysville, PA. He holds a J.D./M.B.A. from Duquesne University and is a member of the National Academy of Elder Law Attorneys (NAELA), PAELA, and the Pittsburgh Estate Planning Council."
 tags:
   - probate
   - estate administration

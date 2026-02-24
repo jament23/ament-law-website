@@ -1,13 +1,45 @@
 ---
 layout: layouts/base.njk
 ---
+{% block head %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "{{ title }}",
+    "description": "{{ description }}",
+    "url": "https://www.ament.law{{ page.url }}",
+    "provider": {
+        "@type": "LegalService",
+        "@id": "https://www.ament.law/#organization"
+    },
+    "areaServed": {
+        "@type": "State",
+        "name": "Pennsylvania"
+    },
+    "serviceType": "Legal Service"
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "{{ title }}",
+    "url": "https://www.ament.law{{ page.url }}",
+    "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".practice-area-main h2", ".practice-area-main p", ".quick-answer"]
+    }
+}
+</script>
+{% endblock %}
 <section class="simple-header">
     <div class="container">
         <h1>{{ title }}</h1>
         <p>{{ subtitle }}</p>
     </div>
 </section>
-<section id="practice-area-content">
+<section id="practice-area-content" class="fade-in">
     <div class="container">
         <div class="practice-area-layout">
             <article class="practice-area-main">
