@@ -689,6 +689,81 @@ footer li {
     margin-top: 15px;
 }
 /* ==================
+   13A. BLOG ARTICLE STYLES
+   ================== */
+
+.blog-article h2 {
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+}
+
+.blog-article h2:first-of-type {
+    margin-top: 0;
+}
+
+.blog-article h3 {
+    font-size: 1.4em;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.blog-article ul, .blog-article ol {
+    padding-left: 25px;
+    margin-bottom: 1.2em;
+}
+
+.blog-article li {
+    margin-bottom: 8px;
+}
+
+.blog-article hr {
+    border: none;
+    border-top: 2px solid #eee;
+    margin: 40px 0;
+}
+
+.blog-article strong {
+    color: var(--primary-blue);
+}
+
+.blog-cta {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-left: 4px solid var(--primary-blue);
+    padding: 25px 30px;
+    margin-top: 40px;
+    border-radius: 0 5px 5px 0;
+}
+
+.blog-cta h3 {
+    margin-top: 0;
+    font-size: 1.4em;
+}
+
+.blog-disclaimer {
+    font-size: 0.9em;
+    color: var(--accent-gray);
+    font-style: italic;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+/* ==================
+   13B. FOOTER DISCLAIMER
+   ================== */
+
+.disclaimer-text {
+    font-size: 0.8em;
+    color: var(--accent-gray);
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+/* ==================
    13. CONTACT PAGE STYLES
    ================== */
 
