@@ -25,7 +25,7 @@
     <meta name="geo.placename" content="Murrysville">
     <meta name="geo.position" content="40.4532;-79.6919">
 
-    <link rel="stylesheet" href="/style.css?v=2025022402">
+    <link rel="stylesheet" href="/style.css?v=2025022403">
     <link rel="icon" href="/favicon.ico" sizes="32x32">
     <link rel="icon" href="/images/favicon-32.png" type="image/png" sizes="32x32">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
@@ -113,7 +113,7 @@
             </button>
             <nav id="main-nav" aria-label="Main navigation">
                 <ul>
-                    <li><a href="/">Home</a></li>
+                    <li class="hide-mobile"><a href="/">Home</a></li>
                     <li class="has-dropdown">
                         <a href="/about/" class="dropdown-trigger">About</a>
                         <ul class="dropdown">
@@ -123,7 +123,7 @@
                             <li><a href="/how-we-help/">How We Help</a></li>
                         </ul>
                     </li>
-                    <li class="has-dropdown">
+                    <li class="has-dropdown mobile-link-only">
                         <a href="/practice-areas/" class="dropdown-trigger">Services</a>
                         <ul class="dropdown">
                             <li><a href="/practice-areas/estate-planning/">Estates & Trusts</a></li>
@@ -137,8 +137,8 @@
                             <li style="border-top: 1px solid #e2e2e5; margin-top: 4px; padding-top: 4px;"><a href="/other-legal-needs/">Other Legal Needs</a></li>
                         </ul>
                     </li>
-                    <li class="has-dropdown">
-                        <a href="/areas-we-serve/" class="dropdown-trigger">Areas</a>
+                    <li class="has-dropdown mobile-link-only">
+                        <a href="/areas-we-serve/" class="dropdown-trigger">Areas We Serve</a>
                         <ul class="dropdown">
                             <li><a href="/areas-we-serve/murrysville/">Murrysville</a></li>
                             <li><a href="/areas-we-serve/monroeville/">Monroeville</a></li>
@@ -294,8 +294,10 @@
         dropdownTriggers.forEach(function(trigger) {
             trigger.addEventListener('click', function(e) {
                 if (window.innerWidth <= 900) {
-                    e.preventDefault();
                     var parent = trigger.parentElement;
+                    /* mobile-link-only items: navigate directly, don't toggle dropdown */
+                    if (parent.classList.contains('mobile-link-only')) return;
+                    e.preventDefault();
                     var wasOpen = parent.classList.contains('dropdown-open');
                     /* Close all other dropdowns */
                     document.querySelectorAll('.has-dropdown.dropdown-open').forEach(function(el) {
