@@ -1,2 +1,3 @@
 # Redirect root domain to www (canonical)
 https://ament.law/* https://www.ament.law/:splat 301
+/referral-services/ /other-legal-needs/ 301
