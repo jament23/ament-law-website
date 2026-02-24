@@ -62,4 +62,4 @@ Yes. Being named as executor in someone's will does not obligate you to serve. I
 
 Pennsylvania law entitles executors to reasonable compensation for their services. While there is no fixed statutory fee schedule, compensation is typically based on the size and complexity of the estate, the time and effort required, and the degree of responsibility involved. Courts have approved compensation ranging from approximately 3% to 5% of the estate's value for routine administrations, though complex estates may warrant higher fees. Compensation is taxable income to the executor.
 
-If you have been named as executor and want to understand your obligations before you begin, or if you are currently serving and need guidance, contact us at [(724) 733-3500](tel:724-733-3500) to schedule a consultation.
+If you have been named as executor and want to understand your obligations before you begin, or if you are currently serving and need guidance, contact us at [(724) 733-3500](tel:724-733-3500) to schedule a consultation. You can also [contact us online](/contact/).

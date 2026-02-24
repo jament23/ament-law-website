@@ -83,4 +83,4 @@ The most effective inheritance tax strategies require advance planning. Many of 
 
 ---
 
-At Ament Law Group, we help Pennsylvania families understand and plan for inheritance tax as part of a comprehensive estate plan. If you have questions about how the tax will affect your family, call us at [(724) 733-3500](tel:724-733-3500) to schedule a consultation.
+At Ament Law Group, we help Pennsylvania families understand and plan for inheritance tax as part of a comprehensive estate plan. If you have questions about how the tax will affect your family, call us at [(724) 733-3500](tel:724-733-3500) to schedule a consultation. You can also [contact us online](/contact/).

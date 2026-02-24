@@ -48,4 +48,4 @@ Not reviewing documents thoroughly before signing, skipping the title search or 
 
 ---
 
-Ament Law Group has years of experience navigating real estate closings throughout Western Pennsylvania. Call us at [(724) 733-3500](tel:724-733-3500) for experienced legal support.
+Ament Law Group has years of experience navigating real estate closings throughout Western Pennsylvania. Call us at [(724) 733-3500](tel:724-733-3500) for experienced legal support. You can also [contact us online](/contact/).

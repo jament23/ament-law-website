@@ -58,4 +58,4 @@ Estate planning for blended families requires honest conversations — with your
 
 We encourage clients to discuss their plans openly with their families when appropriate, and we are available to help facilitate those conversations in a constructive way.
 
-Contact us at [(724) 733-3500](tel:724-733-3500) to discuss estate planning for your blended family.
+Contact us at [(724) 733-3500](tel:724-733-3500) to discuss estate planning for your blended family. You can also [contact us online](/contact/).

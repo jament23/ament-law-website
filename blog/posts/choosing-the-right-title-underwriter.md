@@ -36,4 +36,4 @@ Unlike non-attorney settlement companies, we bring legal expertise to every titl
 
 Your real estate transaction deserves the highest level of protection. Don't leave your property rights to chance — choose an attorney-run settlement company that works with top-tier title underwriters.
 
-Call the attorneys at Ament Law Group at [(724) 733-3500](tel:724-733-3500) to learn more about our settlement services.
+Call the attorneys at Ament Law Group at [(724) 733-3500](tel:724-733-3500) to learn more about our settlement services. You can also [contact us online](/contact/).

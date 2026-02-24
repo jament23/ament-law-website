@@ -47,4 +47,4 @@ This guide walks you through the process in practical terms, so you know what to
 
 ## When to Call an Attorney
 
-If your parent recently passed away and you are unsure where to start, contact Ament Law Group at [(724) 733-3500](/contact/). We help Westmoreland County, Allegheny County, and Western PA families navigate every step of the probate process — from the first filing at the Register of Wills through final distribution. Our goal is to handle the legal complexity so you can focus on your family.
+If your parent recently passed away and you are unsure where to start, contact Ament Law Group at [(724) 733-3500](tel:724-733-3500). We help Westmoreland County, Allegheny County, and Western PA families navigate every step of the probate process — from the first filing at the Register of Wills through final distribution. Our goal is to handle the legal complexity so you can focus on your family. You can also [contact us online](/contact/).

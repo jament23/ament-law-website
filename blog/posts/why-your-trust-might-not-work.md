@@ -54,4 +54,4 @@ A revocable living trust is not necessary for every family. In Pennsylvania, whe
 
 The key is to work with an attorney who will evaluate your specific situation and recommend the right plan — not one who is incentivized to sell you the most expensive option.
 
-If you have a trust and are not sure whether it is properly funded, or if you are considering whether a trust is right for your situation, contact us at [(724) 733-3500](tel:724-733-3500) for a review.
+If you have a trust and are not sure whether it is properly funded, or if you are considering whether a trust is right for your situation, contact us at [(724) 733-3500](tel:724-733-3500) for a review. You can also [contact us online](/contact/).

@@ -56,4 +56,4 @@ Estate planning laws vary from state to state. If you've moved since your last r
 
 ---
 
-If you've experienced a major life change, contact the attorneys at Ament Law Group at [(724) 733-3500](tel:724-733-3500) to update your estate plan.
+If you've experienced a major life change, contact the attorneys at Ament Law Group at [(724) 733-3500](tel:724-733-3500) to update your estate plan. You can also [contact us online](/contact/).

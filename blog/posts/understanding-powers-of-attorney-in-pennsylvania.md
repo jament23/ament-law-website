@@ -44,4 +44,4 @@ One of the most frustrating situations families face is when a bank, financial i
 
 Yes. A comprehensive estate plan should include both a durable financial power of attorney and a healthcare power of attorney (along with a living will). These documents work together to ensure that someone you trust can manage your finances and make medical decisions on your behalf if you are unable to do so. Without them, your family faces the prospect of a court-supervised guardianship proceeding — which costs more, takes longer, and removes your ability to choose who manages your affairs.
 
-If you do not have current powers of attorney, or if your existing documents are more than a few years old, contact us at [(724) 733-3500](tel:724-733-3500) to schedule a review.
+If you do not have current powers of attorney, or if your existing documents are more than a few years old, contact us at [(724) 733-3500](tel:724-733-3500) to schedule a review. You can also [contact us online](/contact/).

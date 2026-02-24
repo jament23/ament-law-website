@@ -41,4 +41,4 @@ When you work with Ament Law Group for your real estate closing, your title insu
 
 ## Ready to Close with Confidence?
 
-If you are purchasing a home in Westmoreland County, Allegheny County, or anywhere in Western Pennsylvania, contact Ament Law Group at [(724) 733-3500](/contact/) to schedule your real estate closing. We handle everything from title search to title insurance to settlement — so you can focus on moving into your new home.
+If you are purchasing a home in Westmoreland County, Allegheny County, or anywhere in Western Pennsylvania, contact Ament Law Group at [(724) 733-3500](tel:724-733-3500) to schedule your real estate closing. We handle everything from title search to title insurance to settlement — so you can focus on moving into your new home. You can also [contact us online](/contact/).

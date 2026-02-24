@@ -66,4 +66,4 @@ Review and update your will after major life events: marriage, divorce, birth of
 
 ---
 
-Ready to create your will or update an existing one? Call Ament Law Group at [(724) 733-3500](tel:724-733-3500) to schedule your consultation.
+Ready to create your will or update an existing one? Call Ament Law Group at [(724) 733-3500](tel:724-733-3500) to schedule your consultation. You can also [contact us online](/contact/).

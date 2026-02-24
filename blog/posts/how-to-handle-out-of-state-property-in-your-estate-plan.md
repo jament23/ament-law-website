@@ -53,4 +53,4 @@ Review whether your current will, trust, or estate plan addresses your out-of-st
 
 ---
 
-At Ament Law Group, we help clients create comprehensive estate plans that protect all their assets — including real estate in multiple states. Call us at [(724) 733-3500](tel:724-733-3500).
+At Ament Law Group, we help clients create comprehensive estate plans that protect all their assets — including real estate in multiple states. Call us at [(724) 733-3500](tel:724-733-3500). You can also [contact us online](/contact/).

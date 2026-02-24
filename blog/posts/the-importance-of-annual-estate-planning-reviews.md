@@ -50,4 +50,4 @@ Tax laws and estate planning regulations change frequently. An annual review wit
 
 ---
 
-Don't wait to ensure your estate plan reflects your current wishes. Contact Ament Law Group at [(724) 733-3500](tel:724-733-3500) for your annual estate planning review.
+Don't wait to ensure your estate plan reflects your current wishes. Contact Ament Law Group at [(724) 733-3500](tel:724-733-3500) for your annual estate planning review. You can also [contact us online](/contact/).
