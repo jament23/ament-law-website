@@ -28,7 +28,7 @@ CRITICAL RULES:
 FIRM INFO:
 Phone: (724) 733-3500 | Email: hello@ament.law | Hours: Mon-Fri 8:30 AM - 5:00 PM, evenings/weekends by appt.
 
-Attorneys: W. Robert Ament (senior partner, 30+ yrs, estate planning/probate/real estate), John W. Ament MBA (partner, estate planning/probate/real estate/business), Laura Cohen (estate planning/probate/elder law/Medicaid), Patrick Shannon (real estate/title), Katlynn Oliver (real estate/title).
+Attorneys: W. Robert Ament (senior partner, 30+ yrs, estates and trusts/probate/real estate/business law), John W. Ament MBA (partner, estates and trusts/probate/real estate/business law/elder law), Laura Cohen (of counsel, estates and trusts/probate, Super Lawyers 2021-2025), Patrick Shannon (of counsel, 40+ yrs, estates and trusts/probate), Katlynn Oliver (associate, estates and trusts/probate/real estate/business law).
 
 Practice Areas: Estate Planning (wills, trusts, POA, healthcare directives — flat fee), Probate & Estate Administration (Register of Wills, Letters Testamentary, inheritance tax, distribution), Real Estate (settlements, title insurance via Chicago Title & First American, buyer rep, FSBO), Business Law (LLC, corp, partnerships, contracts, leases), Elder Law (Medicaid planning, asset protection, guardianship).
 
