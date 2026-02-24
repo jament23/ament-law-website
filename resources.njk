@@ -35,35 +35,7 @@ permalink: /resources/index.html
             we hear from families across Western Pennsylvania.
         </p>
 
-        <!-- Lead Capture Form (shown when not unlocked) -->
-        <div id="resource-gate" class="resource-gate">
-            <div class="resource-gate-inner">
-                <h2>Get Instant Access to All 5 Guides</h2>
-                <p>Enter your information below and we'll unlock all downloads immediately.</p>
-                <form id="resource-form" class="resource-form">
-                    <div class="resource-form-fields">
-                        <div class="form-field">
-                            <label for="res-name">Full Name</label>
-                            <input type="text" id="res-name" name="name" required placeholder="John Smith">
-                        </div>
-                        <div class="form-field">
-                            <label for="res-email">Email</label>
-                            <input type="email" id="res-email" name="email" required placeholder="john@example.com">
-                        </div>
-                        <div class="form-field">
-                            <label for="res-phone">Phone</label>
-                            <input type="tel" id="res-phone" name="phone" placeholder="(724) 555-1234">
-                        </div>
-                        <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
-                    </div>
-                    <button type="submit" class="cta-button resource-submit">Unlock Free Downloads</button>
-                    <p class="resource-form-note">We respect your privacy. Your information is only used to follow up if you have questions.</p>
-                </form>
-            </div>
-        </div>
-
-        <!-- Resource Cards (shown when unlocked) -->
-        <div id="resource-cards" class="resources-grid" style="display: none;">
+        <div class="resources-grid">
 
             <div class="resource-card">
                 <div class="resource-icon">&#9745;</div>
@@ -73,9 +45,9 @@ permalink: /resources/index.html
                 </div>
                 <h3>Pennsylvania Executor's Checklist</h3>
                 <p>Named as executor? This step-by-step checklist covers every phase — from obtaining Letters Testamentary to final distributions. Includes key PA deadlines, inheritance tax rates, and the 5% early payment discount.</p>
-                <a href="/downloads/pa-executors-checklist.pdf" class="resource-download" download>
+                <button class="resource-download resource-unlock-btn" data-file="/downloads/pa-executors-checklist.pdf" data-title="PA Executor's Checklist">
                     Download PDF &#8594;
-                </a>
+                </button>
             </div>
 
             <div class="resource-card">
@@ -86,9 +58,9 @@ permalink: /resources/index.html
                 </div>
                 <h3>Estate Planning Preparation Worksheet</h3>
                 <p>Getting ready for your first estate planning consultation? This worksheet helps you gather the information your attorney needs — personal details, assets, family information, and the key decisions to think about ahead of time.</p>
-                <a href="/downloads/estate-planning-preparation-worksheet.pdf" class="resource-download" download>
+                <button class="resource-download resource-unlock-btn" data-file="/downloads/estate-planning-preparation-worksheet.pdf" data-title="Estate Planning Worksheet">
                     Download PDF &#8594;
-                </a>
+                </button>
             </div>
 
             <div class="resource-card">
@@ -99,9 +71,9 @@ permalink: /resources/index.html
                 </div>
                 <h3>PA Inheritance Tax Quick Reference</h3>
                 <p>Everything you need to know about Pennsylvania's inheritance tax in one place — rates by relationship (0%, 4.5%, 12%, 15%), key exemptions, filing deadlines, and how the 5% early payment discount works.</p>
-                <a href="/downloads/pa-inheritance-tax-guide.pdf" class="resource-download" download>
+                <button class="resource-download resource-unlock-btn" data-file="/downloads/pa-inheritance-tax-guide.pdf" data-title="PA Inheritance Tax Guide">
                     Download PDF &#8594;
-                </a>
+                </button>
             </div>
 
             <div class="resource-card">
@@ -112,9 +84,9 @@ permalink: /resources/index.html
                 </div>
                 <h3>First 30 Days After a Death in PA</h3>
                 <p>A compassionate, week-by-week guide to the legal and practical steps after losing a loved one. Covers funeral arrangements, securing property, starting probate, required notifications, and common mistakes to avoid.</p>
-                <a href="/downloads/first-30-days-after-a-death-in-pa.pdf" class="resource-download" download>
+                <button class="resource-download resource-unlock-btn" data-file="/downloads/first-30-days-after-a-death-in-pa.pdf" data-title="First 30 Days Guide">
                     Download PDF &#8594;
-                </a>
+                </button>
             </div>
 
             <div class="resource-card">
@@ -125,9 +97,9 @@ permalink: /resources/index.html
                 </div>
                 <h3>PA For Sale By Owner Seller's Checklist</h3>
                 <p>Selling your home without a realtor? This step-by-step checklist covers everything from listing to closing — pricing, disclosures, agreement of sale, inspections, transfer taxes, and what your attorney handles.</p>
-                <a href="/downloads/pa-fsbo-sellers-checklist.pdf" class="resource-download" download>
+                <button class="resource-download resource-unlock-btn" data-file="/downloads/pa-fsbo-sellers-checklist.pdf" data-title="FSBO Seller's Checklist">
                     Download PDF &#8594;
-                </a>
+                </button>
             </div>
 
         </div>
@@ -141,20 +113,63 @@ permalink: /resources/index.html
     </div>
 </section>
 
+<!-- Modal -->
+<div id="resource-modal" class="resource-modal" style="display:none;">
+    <div class="resource-modal-backdrop"></div>
+    <div class="resource-modal-content">
+        <button class="resource-modal-close" aria-label="Close">&times;</button>
+        <h2>Download <span id="modal-guide-title"></span></h2>
+        <p>Enter your information to receive your free guide.</p>
+        <form id="resource-form" class="resource-form">
+            <div class="resource-form-fields">
+                <div class="form-field">
+                    <label for="res-name">Full Name</label>
+                    <input type="text" id="res-name" name="name" required placeholder="John Smith">
+                </div>
+                <div class="form-field">
+                    <label for="res-email">Email</label>
+                    <input type="email" id="res-email" name="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-field">
+                    <label for="res-phone">Phone <span style="color: var(--color-muted); font-weight: 400;">(optional)</span></label>
+                    <input type="tel" id="res-phone" name="phone" placeholder="(724) 555-1234">
+                </div>
+                <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+            </div>
+            <button type="submit" class="cta-button resource-submit">Download Now</button>
+            <p class="resource-form-note">We respect your privacy. Your information is only used to follow up if you have questions.</p>
+        </form>
+    </div>
+</div>
+
 <script>
 (function() {
-    var gate = document.getElementById('resource-gate');
-    var cards = document.getElementById('resource-cards');
+    var modal = document.getElementById('resource-modal');
+    var modalTitle = document.getElementById('modal-guide-title');
     var form = document.getElementById('resource-form');
+    var backdrop = modal.querySelector('.resource-modal-backdrop');
+    var closeBtn = modal.querySelector('.resource-modal-close');
+    var pendingFile = '';
 
-    // Check if already unlocked
-    try {
-        if (localStorage.getItem('ament_resources_unlocked') === 'true') {
-            gate.style.display = 'none';
-            cards.style.display = '';
-        }
-    } catch(e) {}
+    // Open modal on download click
+    document.querySelectorAll('.resource-unlock-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            pendingFile = btn.getAttribute('data-file');
+            modalTitle.textContent = btn.getAttribute('data-title');
+            modal.style.display = 'flex';
+            form.querySelector('[name="name"]').focus();
+        });
+    });
 
+    // Close modal
+    function closeModal() { modal.style.display = 'none'; }
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+    });
+
+    // Form submit
     form.addEventListener('submit', function(e) {
         e.preventDefault();
         var name = form.querySelector('[name="name"]').value.trim();
@@ -162,8 +177,7 @@ permalink: /resources/index.html
         var phone = form.querySelector('[name="phone"]').value.trim();
         var honeypot = form.querySelector('[name="website"]').value;
 
-        if (honeypot) return;
-        if (!name || !email) return;
+        if (honeypot || !name || !email) return;
 
         // Send lead data
         try {
@@ -175,15 +189,20 @@ permalink: /resources/index.html
                     name: name,
                     email: email,
                     phone: phone,
+                    guide: pendingFile,
                     source: 'resources_page'
                 })
             }).catch(function() {});
         } catch(err) {}
 
-        // Unlock downloads
-        gate.style.display = 'none';
-        cards.style.display = '';
-        try { localStorage.setItem('ament_resources_unlocked', 'true'); } catch(e) {}
+        // Trigger download
+        closeModal();
+        var a = document.createElement('a');
+        a.href = pendingFile;
+        a.download = '';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
     });
 })();
 </script>
