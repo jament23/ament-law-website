@@ -5,19 +5,24 @@ layout: layouts/base.njk
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
-    "@type": "Service",
+    "@type": "LegalService",
     "name": "{{ title }}",
     "description": "{{ description }}",
     "url": "https://www.ament.law{{ page.url }}",
-    "provider": {
-        "@type": "LegalService",
-        "@id": "https://www.ament.law/#organization"
+    "telephone": "+1-724-733-3500",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "3950 Wm Penn Hwy, Suite 5",
+        "addressLocality": "Murrysville",
+        "addressRegion": "PA",
+        "postalCode": "15668",
+        "addressCountry": "US"
     },
     "areaServed": {
         "@type": "State",
         "name": "Pennsylvania"
     },
-    "serviceType": "Legal Service"
+    "serviceType": "{{ title }}"
 }
 </script>
 <script type="application/ld+json">
