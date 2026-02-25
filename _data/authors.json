@@ -1,0 +1,44 @@
+{
+  "John W. Ament, Esq.": {
+    "type": "Person",
+    "url": "/attorneys/john-ament/",
+    "jobtitle": "Partner",
+    "credentials": "J.D./M.B.A., Duquesne University",
+    "bio": "John W. Ament is a partner and co-founder of Ament Law Group, P.C. in Murrysville, PA."
+  },
+  "W. Robert Ament, Esq.": {
+    "type": "Person",
+    "url": "/attorneys/robert-ament/",
+    "jobtitle": "Partner",
+    "credentials": "J.D., Duquesne University School of Law",
+    "bio": "W. Robert Ament is a founding partner of Ament Law Group, P.C. with over 50 years of legal experience in Western Pennsylvania."
+  },
+  "Katlynn Oliver, Esq.": {
+    "type": "Person",
+    "url": "/attorneys/katlynn-oliver/",
+    "jobtitle": "Associate Attorney",
+    "credentials": "J.D., Duquesne University Kline School of Law",
+    "bio": "Katlynn Oliver is an associate attorney at Ament Law Group, P.C. in Murrysville, PA, focusing on estate planning, estate administration, real estate, and business law."
+  },
+  "Laura Cohen, Esq.": {
+    "type": "Person",
+    "url": "/attorneys/laura-cohen/",
+    "jobtitle": "Of Counsel",
+    "credentials": "J.D., University of Pittsburgh School of Law",
+    "bio": "Laura Cohen is Of Counsel at Ament Law Group, P.C., with over 30 years of experience in estate planning and estate administration."
+  },
+  "Patrick J. Shannon, Esq.": {
+    "type": "Person",
+    "url": "/attorneys/patrick-shannon/",
+    "jobtitle": "Of Counsel",
+    "credentials": "J.D., Duquesne University School of Law",
+    "bio": "Patrick J. Shannon is Of Counsel at Ament Law Group, P.C., with over 40 years of experience in estate planning and estate administration."
+  },
+  "Ament Law Group": {
+    "type": "Organization",
+    "url": "",
+    "jobtitle": "",
+    "credentials": "",
+    "bio": "Ament Law Group, P.C. is a Murrysville, PA law firm serving Western Pennsylvania in estate planning, probate, real estate, and business law."
+  }
+}
