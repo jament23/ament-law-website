@@ -5,6 +5,8 @@ backend:
   auth_type: pkce
   app_id: "Ov23liu9fKXPdNTcDuzD"
 
+site_url: https://www.ament.law
+
 media_folder: "images/blog"
 public_folder: "/images/blog"
 
