@@ -4,8 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Editor | Ament Law Group</title>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <style>
+        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+        #loading { display: flex; align-items: center; justify-content: center; height: 100vh; flex-direction: column; color: #555; }
+        #loading p { margin-top: 16px; font-size: 16px; }
+    </style>
 </head>
 <body>
+    <div id="loading">
+        <p>Loading Blog Editor…</p>
+    </div>
+    <script src="https://unpkg.com/decap-cms@3.3.3/dist/decap-cms.js"></script>
 </body>
 </html>
