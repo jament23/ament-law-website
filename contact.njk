@@ -155,4 +155,15 @@ permalink: /contact/index.html
         });
     });
 })();
+
+/* Pre-fill form when arriving from referral partner page */
+(function() {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('ref') === 'partner') {
+        var mt = document.getElementById('matter-type');
+        var msg = document.getElementById('message');
+        if (mt) mt.value = 'general';
+        if (msg) msg.value = 'I would like to set up a referral portal to refer clients to your firm.';
+    }
+})();
 </script>
