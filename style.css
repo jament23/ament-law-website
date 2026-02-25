@@ -174,7 +174,7 @@ header .container {
 .logo-img { height: 110px; width: auto; }
 
 /* Navigation - takes the center */
-nav#main-nav { margin-right: auto; }
+nav#main-nav { margin-right: auto; order: 2; }
 
 nav ul {
     display: flex;
@@ -204,13 +204,14 @@ nav > ul > li:hover > a {
     text-decoration: none;
 }
 
-/* Header contact info - right side */
+/* Header contact info */
 .header-contact {
     display: flex;
     align-items: center;
     gap: var(--space-md);
     flex-shrink: 0;
     margin-left: var(--space-sm);
+    order: 3;
 }
 
 .header-icon-link {
@@ -2678,7 +2679,7 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
 @media (max-width: 900px) {
 
     /* Nav */
-    .nav-toggle { display: block; }
+    .nav-toggle { display: block; margin-left: auto; order: 4; }
 
     #main-nav {
         display: none;
@@ -2754,7 +2755,7 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
 
     header .container { position: relative; }
 
-    .header-contact { margin-left: 0; gap: 2px; }
+    .header-contact { margin-left: 0; gap: 4px; order: 2; }
 
     .logo-img { height: 80px; }
 
