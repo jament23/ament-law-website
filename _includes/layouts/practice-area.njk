@@ -41,10 +41,10 @@ layout: layouts/base.njk
 <section class="simple-header">
     <div class="container">
         <h1>{{ title }}</h1>
-        <p>{{ subtitle }}</p>
+        <p>{{ subtitle | safe }}</p>
     </div>
 </section>
-<section id="practice-area-content" class="fade-in">
+<section id="practice-area-content">
     <div class="container">
         <div class="practice-area-layout">
             <article class="practice-area-main">
