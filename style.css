@@ -2679,7 +2679,7 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
 @media (max-width: 900px) {
 
     /* Nav */
-    .nav-toggle { display: block; margin-left: auto; order: 4; }
+    .nav-toggle { display: block; order: 4; }
 
     #main-nav {
         display: none;
@@ -2755,7 +2755,7 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
 
     header .container { position: relative; }
 
-    .header-contact { margin-left: 0; gap: 4px; order: 2; }
+    .header-contact { margin-left: auto; gap: 4px; order: 3; }
 
     .logo-img { height: 80px; }
 
