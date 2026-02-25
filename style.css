@@ -851,6 +851,40 @@ main section {
 .attorney-bio ul { padding-left: var(--space-md); margin-bottom: var(--space-md); }
 .attorney-bio li { margin-bottom: 6px; }
 
+/* Attorney page reviews */
+.attorney-reviews {
+    display: grid;
+    gap: var(--space-md);
+    margin-top: var(--space-md);
+}
+
+.attorney-review-card {
+    background: var(--color-canvas);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+}
+
+.attorney-review-stars {
+    color: #f59e0b;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.attorney-review-text {
+    color: var(--color-body);
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 8px;
+}
+
+.attorney-review-source {
+    color: var(--color-muted);
+    font-size: 0.82rem;
+    margin-bottom: 0;
+}
+
 /* =================================================================
    BLOG
    ================================================================= */
@@ -2527,6 +2561,13 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Guarantee content-heavy sections are never invisible */
+#practice-area-content.fade-in,
+#about-content.fade-in {
+    opacity: 1;
+    transform: none;
 }
 
 /* =================================================================

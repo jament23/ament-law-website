@@ -44,6 +44,20 @@ layout: layouts/base.njk
             </aside>
             <article class="attorney-bio">
                 {{ content | safe }}
+                {% if reviews and reviews.length %}
+                <h3>Client Reviews</h3>
+                <div class="attorney-reviews">
+                    {% for review in reviews %}
+                    <div class="attorney-review-card">
+                        <div class="attorney-review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p class="attorney-review-text">"{{ review.text }}"</p>
+                        {% if review.source %}
+                        <p class="attorney-review-source">— {{ review.source }}</p>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
             </article>
         </div>
     </div>
