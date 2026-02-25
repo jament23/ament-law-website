@@ -144,6 +144,16 @@ permalink: /contact/index.html
         .then(function(data) {
             // Success — hide form, show confirmation
             form.style.display = 'none';
+            if (data.email_sent === false) {
+                // API accepted but email failed
+                successDiv.innerHTML = '<div class="form-success-box">' +
+                    '<div class="success-icon">✓</div>' +
+                    '<h3>Message Received</h3>' +
+                    '<p>We received your information but had trouble sending the intake form to your email. ' +
+                    'Our team has been notified and will follow up with you directly.</p>' +
+                    '<p>If you need immediate assistance, call us at <a href="tel:724-733-3500">(724) 733-3500</a>.</p>' +
+                    '</div>';
+            }
             successDiv.style.display = 'block';
         })
         .catch(function(err) {
