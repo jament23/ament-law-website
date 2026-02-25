@@ -1898,6 +1898,42 @@ main section {
     border-radius: 10px;
 }
 
+.review-source {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #666;
+    background: rgba(0,0,0,0.04);
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+.review-attorney {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-accent-text);
+    background: rgba(15,29,64,0.05);
+    padding: 3px 10px;
+    border-radius: 10px;
+}
+
+/* Attorney profile reviews */
+.attorney-reviews {
+    display: grid;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+}
+
+.attorney-reviews .review-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+}
+
+.attorney-reviews .review-text {
+    font-size: 0.9rem;
+}
+
 /* =================================================================
    SEMINAR PAGE
    ================================================================= */
