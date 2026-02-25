@@ -71,6 +71,14 @@ permalink: /contact/index.html
                         <input type="text" id="website_url" name="website_url" tabindex="-1" autocomplete="off">
                     </div>
 
+                    <!-- Human confirmation -->
+                    <div class="form-group confirm-group">
+                        <label class="confirm-label">
+                            <input type="checkbox" id="confirm-human" required>
+                            <span>I confirm this is a genuine inquiry and I am not a robot.</span>
+                        </label>
+                    </div>
+
                     <div class="form-group">
                         <button type="submit" class="cta-button" id="submit-btn">
                             Send Message
@@ -103,15 +111,34 @@ permalink: /contact/index.html
 <script>
 (function() {
     var AMENTCASE_URL = 'https://amentcase.com/api/website-lead';
+    var PAGE_LOAD_TIME = Date.now();
 
     var form = document.getElementById('main-contact-form');
     var btn  = document.getElementById('submit-btn');
     var successDiv = document.getElementById('form-success');
     var errorDiv   = document.getElementById('form-error');
     var errorText  = document.getElementById('error-text');
+    var confirmBox = document.getElementById('confirm-human');
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
+
+        // Bot check 1: honeypot filled
+        if (form.website_url.value) return;
+
+        // Bot check 2: submitted too fast (under 3 seconds)
+        if (Date.now() - PAGE_LOAD_TIME < 3000) {
+            errorText.textContent = 'Please wait a moment before submitting.';
+            errorDiv.style.display = 'block';
+            return;
+        }
+
+        // Bot check 3: checkbox not checked
+        if (!confirmBox.checked) {
+            errorText.textContent = 'Please confirm you are not a robot.';
+            errorDiv.style.display = 'block';
+            return;
+        }
 
         // Disable button
         btn.disabled = true;
@@ -125,7 +152,8 @@ permalink: /contact/index.html
             phone:       form.phone.value.trim(),
             matter_type: form.matter_type.value,
             message:     form.message.value.trim(),
-            website_url: form.website_url.value  // honeypot
+            website_url: form.website_url.value,  // honeypot
+            _time_on_page: Math.round((Date.now() - PAGE_LOAD_TIME) / 1000)
         };
 
         fetch(AMENTCASE_URL, {

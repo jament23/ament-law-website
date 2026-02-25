@@ -1215,6 +1215,24 @@ main section {
 
 .required { color: var(--color-accent-text); }
 
+.confirm-group { margin-top: var(--space-xs); }
+.confirm-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.88rem;
+    color: var(--color-body);
+    cursor: pointer;
+    line-height: 1.4;
+}
+.confirm-label input[type="checkbox"] {
+    margin-top: 3px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    accent-color: var(--color-heading);
+}
+
 .form-disclaimer {
     font-size: 0.78rem;
     color: var(--color-muted);
