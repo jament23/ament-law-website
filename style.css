@@ -2648,6 +2648,7 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
 
 @media (max-width: 992px) {
     .contact-layout { grid-template-columns: 1fr; }
+    .contact-form { order: -1; }
     .practice-area-layout { grid-template-columns: 1fr; }
     .attorney-profile-layout { grid-template-columns: 1fr; }
     footer .container { grid-template-columns: 1fr; }
