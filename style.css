@@ -2225,7 +2225,7 @@ main section {
     height: 56px;
     border-radius: 50%;
     border: none;
-    background: var(--color-hero);
+    background: #5c6578;
     color: #fff;
     cursor: pointer;
     display: flex;
@@ -2236,6 +2236,7 @@ main section {
 }
 #chat-toggle:hover {
     transform: scale(1.05);
+    background: #4a5568;
     box-shadow: 0 6px 24px rgba(0,0,0,0.22), 0 2px 6px rgba(0,0,0,0.1);
 }
 #chat-toggle .chat-icon-close { display: none; }
@@ -2338,7 +2339,7 @@ main section {
 }
 .chat-msg.user {
     align-self: flex-end;
-    background: var(--color-hero);
+    background: #5c6578;
     color: #fff;
     border-radius: 14px 14px 4px 14px;
 }
