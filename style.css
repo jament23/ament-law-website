@@ -544,6 +544,28 @@ nav > ul > li:hover > a {
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
+.cta-button-outline {
+    display: inline-block;
+    background: transparent;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    transition: all var(--transition);
+    border: 2px solid rgba(255,255,255,0.5);
+    cursor: pointer;
+}
+
+.cta-button-outline:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: #fff;
+    color: #fff;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
 .cta-button-secondary {
     display: inline-block;
     color: var(--color-accent-text);
@@ -640,6 +662,35 @@ main section {
 
 #why-us h2 { margin-bottom: var(--space-md); }
 #why-us p { color: var(--color-body); font-size: 1.02rem; margin-bottom: var(--space-md); line-height: 1.75; }
+
+.stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--color-heading);
+    line-height: 1.1;
+}
+
+.stat-label {
+    font-size: 0.82rem;
+    color: var(--color-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: 500;
+}
 
 /* Section headings centered */
 #practice-areas-preview h4,
@@ -2043,6 +2094,25 @@ main section {
 
 .seminar-table tbody tr:hover { background: var(--color-canvas); }
 
+.seminar-details-box {
+    background: var(--color-canvas);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    margin: var(--space-md) 0;
+}
+.seminar-details-box p { margin-bottom: 8px; }
+.seminar-details-box p:last-child { margin-bottom: 0; }
+
+.seminar-cta {
+    background: var(--color-canvas);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    padding: var(--space-md);
+    margin: var(--space-lg) 0;
+}
+.seminar-cta h3 { margin-top: 0; margin-bottom: var(--space-xs); }
+
 .review-bottom-cta,
 .resource-bottom-cta,
 .referral-bottom-cta {
@@ -2683,6 +2753,7 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
 
     /* Grids */
     .services-grid { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); gap: var(--space-sm); }
     .attorney-grid { grid-template-columns: 1fr 1fr; }
 
     /* Mobile contact bar */
