@@ -14,7 +14,7 @@
  * no cache for single-parcel lookups.
  */
 
-const WPRDC_BASE = "https://data.wprdc.org/api/3/action/datastore_search";
+const WPRDC_BASE = "https://data.wprdc.org/en/api/action/datastore_search";
 const UA = "Mozilla/5.0 (compatible; AmentLaw/1.0; +https://www.ament.law)";
 
 const CORS = {
@@ -48,10 +48,14 @@ export async function onRequestGet(context) {
   const cacheSeconds = isMuniQuery ? 300 : 0; // 5 min for muni, none for parcel
 
   try {
-    const resp = await fetch(`${WPRDC_BASE}?${params.toString()}`, {
+    const fetchOptions = {
       headers: { "User-Agent": UA },
-      cf: isMuniQuery ? { cacheTtl: cacheSeconds, cacheEverything: true } : {},
-    });
+    };
+    if (isMuniQuery) {
+      fetchOptions.cf = { cacheTtl: cacheSeconds, cacheEverything: true };
+    }
+
+    const resp = await fetch(`${WPRDC_BASE}?${params.toString()}`, fetchOptions);
 
     if (!resp.ok) {
       const body = await resp.text();

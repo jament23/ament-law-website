@@ -512,9 +512,13 @@ function runAllegheny() {
 
   var p1 = new URLSearchParams({ resource_id: RESOURCE, limit: 1, filters: JSON.stringify({ PARID: rawId }) });
   fetch(WPRDC + "?" + p1)
-    .then(function(r) { return r.json(); })
+    .then(function(r) {
+      if (!r.ok) throw new Error("Proxy returned " + r.status + " for parcel lookup");
+      return r.json();
+    })
     .then(function(d) {
-      if (!d.result.records.length) { setStatus("alleg-status","Parcel ID not found.","error"); document.getElementById("alleg-btn").disabled=false; return; }
+      if (!d.success) throw new Error("WPRDC error: " + (d.error || "unknown"));
+      if (!d.result || !d.result.records.length) { setStatus("alleg-status","Parcel ID not found. Check the ID and try again.","error"); document.getElementById("alleg-btn").disabled=false; return; }
       var s = d.result.records[0];
       var addr    = (s.PROPERTYADDRESS || "Unknown").trim();
       var muni    = (s.MUNIDESC || "").trim();
@@ -530,7 +534,12 @@ function runAllegheny() {
 
       var filters = mcode ? { MUNICODE: String(mcode) } : { MUNIDESC: muni.toUpperCase() };
       var p2 = new URLSearchParams({ resource_id: RESOURCE, limit: 5000, filters: JSON.stringify(filters) });
-      return fetch(WPRDC + "?" + p2).then(function(r) { return r.json(); }).then(function(md) {
+      return fetch(WPRDC + "?" + p2)
+        .then(function(r) {
+          if (!r.ok) throw new Error("Proxy returned " + r.status + " for comparable sales");
+          return r.json();
+        })
+        .then(function(md) {
         var all = md.result.records || [];
         var cutoff = new Date(); cutoff.setMonth(cutoff.getMonth() - lookback);
         var comps = all.filter(function(r) {
@@ -604,7 +613,10 @@ function runAllegheny() {
       });
     })
     .catch(function(err) {
-      setStatus("alleg-status","Error: " + (err.message||"Could not retrieve data."), "error");
+      var msg = err.message || "Could not retrieve data.";
+      // "Failed to fetch" means network/CORS — give a more helpful message
+      if (msg === "Failed to fetch") msg = "Could not reach the data service. Please try again in a moment.";
+      setStatus("alleg-status", "Error: " + msg, "error");
       document.getElementById("alleg-btn").disabled = false;
     });
 }
