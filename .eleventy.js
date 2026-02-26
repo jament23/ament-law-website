@@ -23,6 +23,11 @@ module.exports = function(eleventyConfig) {
     return new Date(date).toLocaleDateString('en-US', options);
   });
 
+  // ISO date filter (for sitemap lastmod)
+  eleventyConfig.addFilter("dateISO", function(date) {
+    return new Date(date).toISOString().split('T')[0];
+  });
+
   // Excerpt filter
   eleventyConfig.addFilter("excerpt", function(content) {
     if (!content) return "";

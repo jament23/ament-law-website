@@ -8,6 +8,9 @@ eleventyExcludeFromCollections: true
 {%- if page.url and page.url != "/sitemap.xml" and page.url != "/robots.txt" %}
     <url>
         <loc>https://www.ament.law{{ page.url }}</loc>
+        {%- if page.date %}
+        <lastmod>{{ page.date | dateISO }}</lastmod>
+        {%- endif %}
         <changefreq>monthly</changefreq>
     </url>
 {%- endif %}
