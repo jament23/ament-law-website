@@ -1,17 +1,53 @@
 ---
 layout: layouts/base.njk
-title: "Allegheny County Assessment Appeal Analyzer"
-description: "Is your Allegheny County property over-assessed? Enter your parcel ID to see comparable sales, your implied market value, and estimated annual tax savings if you appeal."
+title: "PA Property Assessment Appeal Analyzer"
+description: "Is your Allegheny or Westmoreland County property over-assessed? Use our free tool to check your implied market value, find comparable sales, and estimate your potential tax savings."
 permalink: /assessment-appeal/index.html
 ---
 
 <style>
-/* ── Tool layout ───────────────────────────────────────────── */
-.appeal-wrap {
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 0 var(--space-md) var(--space-xl);
+/* ── County tab switcher ───────────────────────────────────── */
+.county-tabs {
+  display: flex;
+  border: 1px solid #e0e4ed;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 28px;
+  background: #fff;
 }
+.county-tab {
+  flex: 1;
+  padding: 16px 20px;
+  border: none;
+  border-right: 1px solid #e0e4ed;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #666;
+  transition: background .15s, color .15s;
+  text-align: center;
+}
+.county-tab:last-child { border-right: none; }
+.county-tab:hover:not(.active) { background: #f8f9fc; }
+.county-tab.active { background: var(--color-heading); color: #fff; }
+.tab-badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 10px;
+  margin-left: 6px;
+  background: rgba(255,255,255,.18);
+  vertical-align: middle;
+}
+.county-tab:not(.active) .tab-badge { background: #eef0f6; color: #666; }
+
+/* ── Layout ────────────────────────────────────────────────── */
+.appeal-wrap { max-width: 920px; margin: 0 auto; padding: 0 var(--space-md) var(--space-xl); }
+.county-panel { display: none; }
+.county-panel.active { display: block; }
 
 /* ── Search card ───────────────────────────────────────────── */
 .appeal-search {
@@ -22,255 +58,95 @@ permalink: /assessment-appeal/index.html
   margin-bottom: 28px;
   box-shadow: 0 2px 8px rgba(15,29,64,.06);
 }
-.appeal-search h2 {
-  font-size: 1.1rem;
-  margin: 0 0 6px;
-  color: var(--color-heading);
-}
-.appeal-search p {
-  font-size: 0.9rem;
-  color: #666;
-  margin: 0 0 18px;
-}
-.search-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-items: flex-end;
-}
+.appeal-search h2 { font-size: 1.1rem; margin: 0 0 6px; color: var(--color-heading); }
+.appeal-search p  { font-size: 0.9rem; color: #666; margin: 0 0 18px; }
+.appeal-search p a { color: var(--color-heading); }
+.search-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
 .search-row input[type="text"] {
-  flex: 1;
-  min-width: 200px;
-  padding: 11px 14px;
-  border: 1.5px solid #c8cee0;
-  border-radius: 7px;
-  font-size: 1rem;
-  font-family: var(--font-body);
-  color: var(--color-heading);
+  flex: 1; min-width: 200px; padding: 11px 14px;
+  border: 1.5px solid #c8cee0; border-radius: 7px;
+  font-size: 1rem; font-family: var(--font-body); color: var(--color-heading);
   letter-spacing: .04em;
-  transition: border-color .15s;
 }
-.search-row input[type="text"]:focus {
-  outline: none;
-  border-color: var(--color-accent);
+.search-row input[type="text"]:focus { outline: none; border-color: var(--color-accent); }
+.btn-analyze {
+  padding: 11px 26px; background: var(--color-accent); color: #fff;
+  border: none; border-radius: 7px; font-size: 0.95rem; font-weight: 600;
+  cursor: pointer; white-space: nowrap;
 }
-.search-row button {
-  padding: 11px 26px;
-  background: var(--color-accent);
-  color: #fff;
-  border: none;
-  border-radius: 7px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: background .15s;
-}
-.search-row button:hover { background: var(--color-accent-hover); }
-.search-row button:disabled { opacity: .55; cursor: not-allowed; }
+.btn-analyze:hover { background: var(--color-accent-hover); }
+.btn-analyze:disabled { opacity: .55; cursor: not-allowed; }
 
-/* ── Settings row ──────────────────────────────────────────── */
-.settings-row {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 14px;
-  padding-top: 14px;
-  border-top: 1px solid #eef0f5;
-}
-.setting-group {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.setting-group label {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #666;
-  text-transform: uppercase;
-  letter-spacing: .05em;
-}
+.settings-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; padding-top: 14px; border-top: 1px solid #eef0f5; }
+.setting-group { display: flex; flex-direction: column; gap: 4px; }
+.setting-group label { font-size: 0.78rem; font-weight: 600; color: #666; text-transform: uppercase; letter-spacing: .05em; }
 .setting-group select,
-.setting-group input[type="number"] {
-  padding: 7px 10px;
-  border: 1.5px solid #c8cee0;
-  border-radius: 6px;
-  font-size: 0.88rem;
-  font-family: var(--font-body);
-  color: var(--color-heading);
-  background: #fff;
-  min-width: 130px;
+.setting-group input[type="number"],
+.setting-group input[type="text"] {
+  padding: 7px 10px; border: 1.5px solid #c8cee0; border-radius: 6px;
+  font-size: 0.88rem; font-family: var(--font-body); color: var(--color-heading);
+  background: #fff; min-width: 130px;
 }
-.setting-group select:focus,
-.setting-group input[type="number"]:focus {
-  outline: none;
-  border-color: var(--color-accent);
-}
+.setting-group select:focus, .setting-group input:focus { outline: none; border-color: var(--color-accent); }
 
-/* ── Status / error ────────────────────────────────────────── */
-#appeal-status {
-  display: none;
-  padding: 12px 16px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  margin-bottom: 20px;
-}
-#appeal-status.loading {
-  display: block;
-  background: #f0f4ff;
-  color: #334;
-  border: 1px solid #c7d2fe;
-}
-#appeal-status.error {
-  display: block;
-  background: #fef2f2;
-  color: #991b1b;
-  border: 1px solid #fecaca;
-}
+/* ── Status ────────────────────────────────────────────────── */
+.appeal-status { display: none; padding: 12px 16px; border-radius: 8px; font-size: 0.9rem; margin-bottom: 20px; }
+.appeal-status.loading { display: block; background: #f0f4ff; color: #334; border: 1px solid #c7d2fe; }
+.appeal-status.error   { display: block; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
 
-/* ── Metrics strip ─────────────────────────────────────────── */
-.metrics-strip {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 14px;
-  margin-bottom: 24px;
-}
-.metric-card {
-  background: #fff;
-  border: 1px solid #e0e4ed;
-  border-radius: 10px;
-  padding: 18px 20px;
-  box-shadow: 0 2px 8px rgba(15,29,64,.05);
-}
-.metric-card .metric-label {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  color: #888;
-  margin-bottom: 6px;
-}
-.metric-card .metric-value {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-heading);
-  line-height: 1.1;
-}
-.metric-card .metric-note {
-  font-size: 0.75rem;
-  color: #999;
-  margin-top: 4px;
-}
-.metric-card.highlight {
-  border-color: var(--color-accent);
-  background: #f5f7fd;
-}
+/* ── Metrics ───────────────────────────────────────────────── */
+.metrics-strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 24px; }
+.metric-card { background: #fff; border: 1px solid #e0e4ed; border-radius: 10px; padding: 18px 20px; box-shadow: 0 2px 8px rgba(15,29,64,.05); }
+.metric-card .metric-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #888; margin-bottom: 6px; }
+.metric-card .metric-value { font-size: 1.5rem; font-weight: 700; color: var(--color-heading); line-height: 1.1; }
+.metric-card .metric-note  { font-size: 0.75rem; color: #999; margin-top: 4px; }
+.metric-card.highlight     { border-color: var(--color-accent); background: #f5f7fd; }
 .metric-card.highlight .metric-value { color: var(--color-accent); }
-.metric-card.savings-positive {
-  border-color: #15803d;
-  background: #f0fdf4;
-}
+.metric-card.savings-positive { border-color: #15803d; background: #f0fdf4; }
 .metric-card.savings-positive .metric-value { color: #15803d; }
-.metric-card.savings-none {
-  border-color: #d1d5db;
-  background: #f9fafb;
-}
+.metric-card.savings-none { border-color: #d1d5db; background: #f9fafb; }
 .metric-card.savings-none .metric-value { color: #6b7280; }
 
-/* ── Section headers ───────────────────────────────────────── */
-.result-section {
-  background: #fff;
-  border: 1px solid #e0e4ed;
-  border-radius: 10px;
-  padding: 24px 28px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(15,29,64,.05);
-}
-.result-section h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--color-heading);
-  margin: 0 0 16px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #eef0f5;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  font-size: .8rem;
-}
+/* ── Result sections ───────────────────────────────────────── */
+.result-section { background: #fff; border: 1px solid #e0e4ed; border-radius: 10px; padding: 24px 28px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(15,29,64,.05); }
+.result-section h3 { font-size: .8rem; font-weight: 700; color: var(--color-heading); margin: 0 0 16px; padding-bottom: 10px; border-bottom: 1px solid #eef0f5; text-transform: uppercase; letter-spacing: .04em; }
 
-/* ── Comparables table ─────────────────────────────────────── */
+/* ── Comps table ───────────────────────────────────────────── */
 .comps-table-wrap { overflow-x: auto; }
-.comps-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
-}
-.comps-table th {
-  background: var(--color-heading);
-  color: #fff;
-  padding: 9px 12px;
-  text-align: left;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .04em;
-  white-space: nowrap;
-}
-.comps-table td {
-  padding: 8px 12px;
-  border-bottom: 1px solid #eef0f5;
-  color: var(--color-body);
-  vertical-align: top;
-}
+.comps-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.comps-table th { background: var(--color-heading); color: #fff; padding: 9px 12px; text-align: left; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+.comps-table td { padding: 8px 12px; border-bottom: 1px solid #eef0f5; color: var(--color-body); vertical-align: top; }
 .comps-table tr:last-child td { border-bottom: none; }
 .comps-table tr:hover td { background: #f9fafc; }
 .comps-table .td-price { font-weight: 600; color: var(--color-heading); white-space: nowrap; }
-.comps-table .td-addr { max-width: 200px; }
-.comps-table .td-date { white-space: nowrap; color: #666; }
 
 /* ── Variance badge ────────────────────────────────────────── */
-.variance-badge {
-  display: inline-block;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 700;
-}
+.variance-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
 .variance-over  { background: #fef2f2; color: #991b1b; }
 .variance-fair  { background: #f0fdf4; color: #15803d; }
 .variance-under { background: #eff6ff; color: #1d4ed8; }
 
-/* ── CTA box ───────────────────────────────────────────────── */
-.appeal-cta {
-  background: var(--color-heading);
-  color: #fff;
-  border-radius: 12px;
-  padding: 32px 36px;
-  margin-top: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
+/* ── Westmoreland comp entry ───────────────────────────────── */
+.wm-comp-row { display: grid; grid-template-columns: 1fr 150px 140px auto; gap: 10px; margin-bottom: 10px; align-items: end; }
+@media (max-width: 600px) { .wm-comp-row { grid-template-columns: 1fr 1fr; } }
+.wm-comp-row input { width: 100%; padding: 9px 12px; border: 1.5px solid #c8cee0; border-radius: 6px; font-size: 0.88rem; font-family: var(--font-body); color: var(--color-heading); box-sizing: border-box; }
+.wm-comp-row input:focus { outline: none; border-color: var(--color-accent); }
+.wm-comp-row .col-label { font-size: 0.72rem; font-weight: 600; color: #888; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 4px; }
+.wm-comp-row .btn-remove { padding: 9px 10px; background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; border-radius: 6px; font-size: 0.8rem; cursor: pointer; white-space: nowrap; }
+.wm-comp-row .btn-remove:hover { background: #fecaca; }
+.wm-add-comp { background: none; border: 1.5px dashed #c8cee0; border-radius: 7px; padding: 9px 16px; font-size: 0.85rem; font-weight: 600; color: #666; cursor: pointer; width: 100%; margin-top: 4px; }
+.wm-add-comp:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* ── CTA ───────────────────────────────────────────────────── */
+.appeal-cta { background: var(--color-heading); color: #fff; border-radius: 12px; padding: 32px 36px; margin-top: 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
 .appeal-cta h3 { color: #fff; margin: 0 0 6px; font-size: 1.2rem; }
 .appeal-cta p  { color: rgba(255,255,255,.8); margin: 0; font-size: 0.93rem; }
 .appeal-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; flex-shrink: 0; }
+.appeal-disclaimer { font-size: 0.78rem; color: #999; line-height: 1.5; margin-top: 20px; padding-top: 16px; border-top: 1px solid #eef0f5; }
 
-/* ── Disclaimer ────────────────────────────────────────────── */
-.appeal-disclaimer {
-  font-size: 0.78rem;
-  color: #999;
-  line-height: 1.5;
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid #eef0f5;
-}
-
-/* ── Print ─────────────────────────────────────────────────── */
 @media print {
-  .simple-header, .appeal-search .settings-row, .search-row button,
-  .appeal-cta, nav, footer, .chat-widget { display: none !important; }
+  .simple-header, .county-tabs, .settings-row, .btn-analyze, .wm-add-comp,
+  .btn-remove, .appeal-cta, nav, footer, .chat-widget { display: none !important; }
   .appeal-wrap { padding: 0; }
   .result-section, .metric-card { box-shadow: none; border: 1px solid #ccc; }
 }
@@ -279,35 +155,46 @@ permalink: /assessment-appeal/index.html
 <section class="simple-header">
   <div class="container">
     <h1>Assessment Appeal Analyzer</h1>
-    <p>Find out if your Allegheny County property is over-assessed — and what you could save.</p>
+    <p>Find out if your property is over-assessed &mdash; and what you could save.</p>
   </div>
 </section>
 
 <div class="appeal-wrap">
 
-  {# ── Search & Settings ── #}
+<div class="county-tabs">
+  <button class="county-tab active" onclick="switchCounty('allegheny',this)">
+    Allegheny County <span class="tab-badge">Automated</span>
+  </button>
+  <button class="county-tab" onclick="switchCounty('westmoreland',this)">
+    Westmoreland County <span class="tab-badge">Calculator</span>
+  </button>
+</div>
+
+<!-- ══════════════════════════════════════
+     ALLEGHENY PANEL
+     ══════════════════════════════════════ -->
+<div id="panel-allegheny" class="county-panel active">
+
   <div class="appeal-search">
     <h2>Enter Your Parcel ID</h2>
     <p>Your 16-digit Parcel ID is on your tax bill or at <a href="https://www2.alleghenycounty.us/RealEstate/Search.aspx" target="_blank" rel="noopener">Allegheny County Real Estate</a>. Dashes are optional.</p>
     <div class="search-row">
-      <input type="text" id="parcel-input" placeholder="e.g. 0973B00334000000"
-             maxlength="20" autocomplete="off" autocorrect="off" spellcheck="false"
-             onkeydown="if(event.key==='Enter') runAnalysis()">
-      <button id="analyze-btn" onclick="runAnalysis()">Analyze Property</button>
+      <input type="text" id="alleg-parcel" placeholder="e.g. 0973B00334000000" maxlength="20" autocomplete="off" autocorrect="off" spellcheck="false">
+      <button class="btn-analyze" id="alleg-btn" onclick="runAllegheny()">Analyze Property</button>
     </div>
     <div class="settings-row">
       <div class="setting-group">
         <label>Sq. Ft. Variance</label>
-        <select id="sqft-variance">
-          <option value="10">± 10%</option>
-          <option value="20" selected>± 20%</option>
-          <option value="30">± 30%</option>
-          <option value="50">± 50%</option>
+        <select id="alleg-variance">
+          <option value="10">&plusmn; 10%</option>
+          <option value="20" selected>&plusmn; 20%</option>
+          <option value="30">&plusmn; 30%</option>
+          <option value="50">&plusmn; 50%</option>
         </select>
       </div>
       <div class="setting-group">
         <label>Sales Lookback</label>
-        <select id="lookback">
+        <select id="alleg-lookback">
           <option value="6">6 months</option>
           <option value="12" selected>12 months</option>
           <option value="18">18 months</option>
@@ -316,373 +203,411 @@ permalink: /assessment-appeal/index.html
       </div>
       <div class="setting-group">
         <label>Muni + County Millage</label>
-        <input type="number" id="muni-millage" value="9.73" step="0.01" min="0" max="30"
-               title="Combined municipal + county millage rate. School millage is looked up automatically.">
+        <input type="number" id="alleg-muni-mill" value="9.73" step="0.01" min="0" max="30">
       </div>
     </div>
   </div>
 
-  {# ── Status message ── #}
-  <div id="appeal-status"></div>
+  <div id="alleg-status" class="appeal-status"></div>
 
-  {# ── Results (hidden until search) ── #}
-  <div id="appeal-results" style="display:none;">
-
-    {# Property header #}
+  <div id="alleg-results" style="display:none;">
     <div style="margin-bottom:20px;">
       <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;margin-bottom:4px;">Subject Property</div>
-      <div id="result-address" style="font-size:1.3rem;font-weight:700;color:var(--color-heading);"></div>
-      <div id="result-municipality" style="font-size:.9rem;color:#666;margin-top:2px;"></div>
+      <div id="alleg-addr" style="font-size:1.3rem;font-weight:700;color:var(--color-heading);"></div>
+      <div id="alleg-muni" style="font-size:.9rem;color:#666;margin-top:2px;"></div>
     </div>
-
-    {# Metrics strip #}
     <div class="metrics-strip">
-      <div class="metric-card">
-        <div class="metric-label">Current Assessment</div>
-        <div class="metric-value" id="m-assessment">—</div>
-        <div class="metric-note">County record (CLR-adjusted)</div>
-      </div>
-      <div class="metric-card highlight">
-        <div class="metric-label">Implied Market Value</div>
-        <div class="metric-value" id="m-implied">—</div>
-        <div class="metric-note" id="m-clr-note">At 2026 CLR of 50.14%</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-label">Avg Comparable Sale</div>
-        <div class="metric-value" id="m-avg-sale">—</div>
-        <div class="metric-note" id="m-comp-count">—</div>
-      </div>
-      <div class="metric-card" id="m-savings-card">
-        <div class="metric-label">Est. Annual Tax Savings</div>
-        <div class="metric-value" id="m-savings">—</div>
-        <div class="metric-note" id="m-savings-note">—</div>
-      </div>
+      <div class="metric-card"><div class="metric-label">Current Assessment</div><div class="metric-value" id="alleg-m1">&#8212;</div><div class="metric-note">County record</div></div>
+      <div class="metric-card highlight"><div class="metric-label">Implied Market Value</div><div class="metric-value" id="alleg-m2">&#8212;</div><div class="metric-note">At 2026 CLR of 50.14%</div></div>
+      <div class="metric-card"><div class="metric-label">Avg Comparable Sale</div><div class="metric-value" id="alleg-m3">&#8212;</div><div class="metric-note" id="alleg-m3n">&#8212;</div></div>
+      <div class="metric-card" id="alleg-m4c"><div class="metric-label">Est. Annual Tax Savings</div><div class="metric-value" id="alleg-m4">&#8212;</div><div class="metric-note" id="alleg-m4n">&#8212;</div></div>
     </div>
-
-    {# Value Variance detail #}
     <div class="result-section">
       <h3>Market Analysis</h3>
-      <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;">
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
         <div style="flex:1;min-width:220px;">
-          <div style="margin-bottom:12px;">
-            <span style="font-size:.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em;">Value Variance</span><br>
-            <span id="variance-badge" class="variance-badge" style="margin-top:5px;font-size:1rem;"></span>
-          </div>
-          <p id="variance-explanation" style="font-size:.88rem;color:#555;margin:0;line-height:1.6;"></p>
+          <div style="font-size:.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em;">Value Variance</div>
+          <span id="alleg-vbadge" class="variance-badge" style="margin:6px 0;display:inline-block;font-size:1rem;"></span>
+          <p id="alleg-vexpl" style="font-size:.88rem;color:#555;margin:8px 0 0;line-height:1.6;"></p>
         </div>
         <div style="flex:1;min-width:220px;">
           <div style="font-size:.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Tax Estimate Breakdown</div>
           <table style="font-size:.85rem;width:100%;border-collapse:collapse;">
-            <tr><td style="padding:3px 0;color:#555;">School Millage</td><td id="td-school" style="text-align:right;font-weight:600;color:var(--color-heading);">—</td></tr>
-            <tr><td style="padding:3px 0;color:#555;">Muni + County Millage</td><td id="td-muni" style="text-align:right;font-weight:600;color:var(--color-heading);">—</td></tr>
-            <tr style="border-top:1px solid #eef0f5;"><td style="padding:5px 0 3px;font-weight:700;color:var(--color-heading);">Total Millage</td><td id="td-total" style="text-align:right;font-weight:700;color:var(--color-heading);">—</td></tr>
-            <tr><td style="padding:3px 0;color:#555;">Current Annual Tax</td><td id="td-current-tax" style="text-align:right;font-weight:600;">—</td></tr>
-            <tr><td style="padding:3px 0;color:#555;">Tax at Comparable Value</td><td id="td-target-tax" style="text-align:right;font-weight:600;">—</td></tr>
+            <tr><td style="padding:3px 0;color:#555;">School Millage</td><td id="alleg-t1" style="text-align:right;font-weight:600;">&#8212;</td></tr>
+            <tr><td style="padding:3px 0;color:#555;">Muni + County Millage</td><td id="alleg-t2" style="text-align:right;font-weight:600;">&#8212;</td></tr>
+            <tr style="border-top:1px solid #eef0f5;"><td style="padding:5px 0 3px;font-weight:700;">Total Millage</td><td id="alleg-t3" style="text-align:right;font-weight:700;">&#8212;</td></tr>
+            <tr><td style="padding:3px 0;color:#555;">Current Annual Tax</td><td id="alleg-t4" style="text-align:right;font-weight:600;">&#8212;</td></tr>
+            <tr><td style="padding:3px 0;color:#555;">Tax at Comparable Value</td><td id="alleg-t5" style="text-align:right;font-weight:600;">&#8212;</td></tr>
           </table>
         </div>
       </div>
     </div>
-
-    {# Comparable Sales Table #}
-    <div class="result-section" id="comps-section">
+    <div class="result-section">
       <h3>Comparable Sales Evidence</h3>
       <div class="comps-table-wrap">
-        <table class="comps-table" id="comps-table">
-          <thead>
-            <tr>
-              <th>Address</th>
-              <th>Sale Price</th>
-              <th>Sale Date</th>
-              <th>Sq. Ft.</th>
-              <th>Grade</th>
-              <th>Parcel ID</th>
-            </tr>
-          </thead>
-          <tbody id="comps-tbody"></tbody>
-        </table>
+        <table class="comps-table"><thead><tr><th>Address</th><th>Sale Price</th><th>Sale Date</th><th>Sq. Ft.</th><th>Grade</th><th>Parcel ID</th></tr></thead>
+        <tbody id="alleg-tbody"></tbody></table>
       </div>
-      <div id="comps-none" style="display:none;font-size:.9rem;color:#888;padding:12px 0;">
-        No comparable sales found within the selected variance and lookback period. Try widening the sq. ft. variance or extending the lookback.
-      </div>
+      <div id="alleg-no-comps" style="display:none;font-size:.9rem;color:#888;padding:12px 0;">No comparable sales found within the selected filters. Try widening the sq. ft. variance or extending the lookback.</div>
     </div>
-
-    {# Print button #}
-    <div style="text-align:right;margin-bottom:4px;">
-      <button onclick="window.print()" style="background:none;border:1px solid #d1d5db;border-radius:6px;padding:8px 18px;font-size:.85rem;font-weight:600;color:#555;cursor:pointer;">
-        🖨 Print / Save as PDF
-      </button>
-    </div>
-
-  </div>{# /appeal-results #}
-
-  {# ── CTA ── #}
-  <div class="appeal-cta">
-    <div>
-      <h3>Ready to appeal? We can help.</h3>
-      <p>Our attorneys represent property owners in Allegheny County assessment appeals before the Board of Property Assessment Appeals and the Court of Common Pleas.</p>
-    </div>
-    <div class="appeal-cta-btns">
-      <a href="/contact/" class="cta-button-light">Schedule a Consultation</a>
-      <a href="tel:724-733-3500" class="cta-button-outline">Call (724) 733-3500</a>
-    </div>
+    <div style="text-align:right;margin-bottom:4px;"><button onclick="window.print()" style="background:none;border:1px solid #d1d5db;border-radius:6px;padding:8px 18px;font-size:.85rem;font-weight:600;color:#555;cursor:pointer;">&#128424; Print / Save as PDF</button></div>
   </div>
 
-  <div class="appeal-disclaimer">
-    <strong>Disclaimer:</strong> This tool is for informational purposes only and does not constitute legal advice. Assessment data is sourced from the Western Pennsylvania Regional Data Center (WPRDC) and may not reflect recent changes. Tax estimates are approximations only. Actual appeal outcomes depend on many factors. Consult an attorney before filing an appeal.
+</div><!-- /allegheny -->
+
+
+<!-- ══════════════════════════════════════
+     WESTMORELAND PANEL
+     ══════════════════════════════════════ -->
+<div id="panel-westmoreland" class="county-panel">
+
+  <div class="appeal-search">
+    <h2>Enter Your Assessment &amp; Comparable Sales</h2>
+    <p>Look up your assessed value at <a href="https://realproperty.westmorelandcountypa.gov/EGSWM/RPSearch.do" target="_blank" rel="noopener">Westmoreland County Real Property Search</a>. Then find 3&ndash;5 recent sold homes at <a href="https://www.zillow.com/" target="_blank" rel="noopener">Zillow</a> or <a href="https://www.realtor.com/" target="_blank" rel="noopener">Realtor.com</a> (similar size, style, and neighborhood, sold within 12&ndash;24 months).</p>
+
+    <div class="settings-row" style="margin-top:0;padding-top:0;border:none;margin-bottom:20px;">
+      <div class="setting-group">
+        <label>Your Assessed Value ($)</label>
+        <input type="number" id="wm-assessed" placeholder="e.g. 28500" min="0" step="100" oninput="runWestmoreland()">
+      </div>
+      <div class="setting-group">
+        <label>Square Footage</label>
+        <input type="number" id="wm-sqft" placeholder="e.g. 1800" min="0" step="10" oninput="runWestmoreland()">
+      </div>
+      <div class="setting-group">
+        <label>Total Millage (all taxing bodies)</label>
+        <input type="number" id="wm-millage" value="116.5" step="0.1" min="0"
+               title="School + municipal + county combined. Murrysville area ~116.5. Check your tax bill." oninput="runWestmoreland()">
+      </div>
+    </div>
+
+    <div style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#888;margin-bottom:10px;">Comparable Sales</div>
+    <div style="display:grid;grid-template-columns:1fr 150px 140px auto;gap:10px;margin-bottom:6px;">
+      <div style="font-size:.72rem;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.04em;">Address (optional)</div>
+      <div style="font-size:.72rem;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.04em;">Sale Price</div>
+      <div style="font-size:.72rem;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.04em;">Sq. Ft. (opt.)</div>
+      <div></div>
+    </div>
+    <div id="wm-comps-container"></div>
+    <button class="wm-add-comp" onclick="wmAddComp()">+ Add Comparable Sale</button>
   </div>
 
+  <div id="wm-status" class="appeal-status"></div>
+
+  <div id="wm-results" style="display:none;">
+    <div style="margin-bottom:20px;">
+      <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;margin-bottom:4px;">Your Property</div>
+      <div style="font-size:1.1rem;font-weight:700;color:var(--color-heading);">Westmoreland County Assessment Analysis</div>
+      <div id="wm-sub" style="font-size:.9rem;color:#666;margin-top:2px;"></div>
+    </div>
+    <div class="metrics-strip">
+      <div class="metric-card"><div class="metric-label">Current Assessment</div><div class="metric-value" id="wm-m1">&#8212;</div><div class="metric-note">As entered</div></div>
+      <div class="metric-card highlight"><div class="metric-label">Implied Market Value</div><div class="metric-value" id="wm-m2">&#8212;</div><div class="metric-note">At 2026 CLR of 8.88%</div></div>
+      <div class="metric-card"><div class="metric-label">Avg Comparable Sale</div><div class="metric-value" id="wm-m3">&#8212;</div><div class="metric-note" id="wm-m3n">&#8212;</div></div>
+      <div class="metric-card" id="wm-m4c"><div class="metric-label">Est. Annual Tax Savings</div><div class="metric-value" id="wm-m4">&#8212;</div><div class="metric-note" id="wm-m4n">&#8212;</div></div>
+    </div>
+    <div class="result-section">
+      <h3>Appeal Analysis</h3>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:220px;">
+          <div style="font-size:.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em;">Value Variance</div>
+          <span id="wm-vbadge" class="variance-badge" style="margin:6px 0;display:inline-block;font-size:1rem;"></span>
+          <p id="wm-vexpl" style="font-size:.88rem;color:#555;margin:8px 0 0;line-height:1.6;"></p>
+          <div style="margin-top:14px;padding:12px 14px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;font-size:.82rem;color:#78350f;line-height:1.5;">
+            <strong>Westmoreland County context:</strong> With a CLR of 8.88%, your assessed value is expected to be far below market value &#8212; that is normal for this county. An appeal is worthwhile only when your implied value is meaningfully higher than what comparable homes are actually selling for.
+          </div>
+        </div>
+        <div style="flex:1;min-width:220px;">
+          <div style="font-size:.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Tax Estimate Breakdown</div>
+          <table style="font-size:.85rem;width:100%;border-collapse:collapse;">
+            <tr><td style="padding:3px 0;color:#555;">Current Assessment</td><td id="wm-t1" style="text-align:right;font-weight:600;">&#8212;</td></tr>
+            <tr><td style="padding:3px 0;color:#555;">Target Assessment (Comps &times; CLR)</td><td id="wm-t2" style="text-align:right;font-weight:600;">&#8212;</td></tr>
+            <tr style="border-top:1px solid #eef0f5;"><td style="padding:5px 0 3px;font-weight:700;">Total Millage</td><td id="wm-t3" style="text-align:right;font-weight:700;">&#8212;</td></tr>
+            <tr><td style="padding:3px 0;color:#555;">Current Annual Tax</td><td id="wm-t4" style="text-align:right;font-weight:600;">&#8212;</td></tr>
+            <tr><td style="padding:3px 0;color:#555;">Tax at Target Assessment</td><td id="wm-t5" style="text-align:right;font-weight:600;">&#8212;</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="result-section" id="wm-comps-out" style="display:none;">
+      <h3>Your Comparable Sales</h3>
+      <div class="comps-table-wrap">
+        <table class="comps-table"><thead><tr><th>Address</th><th>Sale Price</th><th>Sq. Ft.</th><th>$/Sq. Ft.</th></tr></thead>
+        <tbody id="wm-tbody"></tbody></table>
+      </div>
+    </div>
+    <div style="text-align:right;margin-bottom:4px;"><button onclick="window.print()" style="background:none;border:1px solid #d1d5db;border-radius:6px;padding:8px 18px;font-size:.85rem;font-weight:600;color:#555;cursor:pointer;">&#128424; Print / Save as PDF</button></div>
+  </div>
+
+</div><!-- /westmoreland -->
+
+
+<!-- ══════════════════════════════════════
+     SHARED CTA + DISCLAIMER
+     ══════════════════════════════════════ -->
+<div class="appeal-cta">
+  <div>
+    <h3>Ready to appeal? We can help.</h3>
+    <p>Our attorneys represent property owners in Allegheny and Westmoreland County assessment appeals before the Board of Property Assessment Appeals and the Court of Common Pleas.</p>
+  </div>
+  <div class="appeal-cta-btns">
+    <a href="/contact/" class="cta-button-light">Schedule a Consultation</a>
+    <a href="tel:724-733-3500" class="cta-button-outline">Call (724) 733-3500</a>
+  </div>
 </div>
 
+<div class="appeal-disclaimer">
+  <strong>Disclaimer:</strong> This tool is for informational purposes only and does not constitute legal advice. Allegheny County data is sourced from the Western Pennsylvania Regional Data Center (WPRDC). Westmoreland County data is entered manually by the user. Tax estimates are approximations only. The 2026 Allegheny County CLR is 50.14%; the 2026 Westmoreland County CLR is 8.88%. Actual appeal outcomes depend on many factors. Consult an attorney before filing an appeal.
+</div>
+
+</div><!-- /appeal-wrap -->
+
 <script>
-// ── Constants ────────────────────────────────────────────────
-const CLR = 0.5014;  // 2026 Common Level Ratio
-const WPRDC_BASE = "https://data.wprdc.org/api/3/action/datastore_search";
-const ASSESSMENT_RESOURCE = "65855e14-549e-4992-b5be-d629afc676fa";
-
-// ── State ────────────────────────────────────────────────────
-let millageRates = [];  // loaded once from /api/millage
-
-// ── Millage loader ───────────────────────────────────────────
-async function loadMillage() {
-  try {
-    const resp = await fetch("/api/millage");
-    if (resp.ok) {
-      const data = await resp.json();
-      if (data.rates && data.rates.length > 0) {
-        millageRates = data.rates;
-      }
-    }
-  } catch (e) {
-    // silently fall back to manual millage input
-  }
+// ── Tab switcher ─────────────────────────────────────────────
+function switchCounty(county, btn) {
+  document.querySelectorAll(".county-panel").forEach(p => p.classList.remove("active"));
+  document.querySelectorAll(".county-tab").forEach(b => b.classList.remove("active"));
+  document.getElementById("panel-" + county).classList.add("active");
+  btn.classList.add("active");
 }
 
-function getSchoolMillage(muniName) {
+// ── Shared helpers ───────────────────────────────────────────
+function fmt$(n) { return n == null || isNaN(n) ? "—" : "$" + Math.round(n).toLocaleString(); }
+function setEl(id, val) { var e = document.getElementById(id); if (e) e.textContent = val; }
+function setStatus(id, msg, type) {
+  var e = document.getElementById(id);
+  if (!e) return;
+  e.textContent = msg;
+  e.className = "appeal-status" + (type ? " " + type : "");
+}
+
+// ══════════════════════════════════════════════════════════
+//  ALLEGHENY COUNTY
+// ══════════════════════════════════════════════════════════
+var ALLEG_CLR = 0.5014;
+var WPRDC     = "https://data.wprdc.org/api/3/action/datastore_search";
+var RESOURCE  = "65855e14-549e-4992-b5be-d629afc676fa";
+var millageRates = [];
+
+(function loadMillage() {
+  fetch("/api/millage").then(function(r) { return r.json(); }).then(function(d) {
+    if (d.rates && d.rates.length) millageRates = d.rates;
+  }).catch(function(){});
+})();
+
+function getSchoolMill(muni) {
   if (!millageRates.length) return null;
-  const q = (muniName || "").toLowerCase();
-  const match = millageRates.find(r =>
-    r.municipality && r.municipality.toLowerCase().includes(q)
-  );
-  return match ? match.millage : null;
+  var q = (muni || "").toLowerCase();
+  var m = millageRates.find(function(r) { return r.municipality && r.municipality.toLowerCase().indexOf(q) >= 0; });
+  return m ? m.millage : null;
 }
 
-// ── WPRDC fetch ──────────────────────────────────────────────
-async function fetchWPRDC(filters, limit = 1) {
-  const params = new URLSearchParams({
-    resource_id: ASSESSMENT_RESOURCE,
-    limit: limit,
-    filters: JSON.stringify(filters),
-  });
-  const resp = await fetch(`${WPRDC_BASE}?${params}`);
-  if (!resp.ok) throw new Error(`WPRDC returned ${resp.status}`);
-  const data = await resp.json();
-  if (!data.success) throw new Error(data.error || "WPRDC query failed");
-  return data.result.records;
-}
+function runAllegheny() {
+  var rawId = document.getElementById("alleg-parcel").value.replace(/[-\s]/g,"").trim().toUpperCase();
+  if (rawId.length < 10) { setStatus("alleg-status","Please enter a valid parcel ID (at least 10 digits).","error"); return; }
 
-async function fetchMuniRecords(muniCode, muniDesc, limit = 5000) {
-  // Try by code first (more reliable), fall back to name
-  const filters = muniCode ? { MUNICODE: String(muniCode) } : { MUNIDESC: muniDesc.toUpperCase() };
-  const params = new URLSearchParams({
-    resource_id: ASSESSMENT_RESOURCE,
-    limit: limit,
-    filters: JSON.stringify(filters),
-  });
-  const resp = await fetch(`${WPRDC_BASE}?${params}`);
-  if (!resp.ok) throw new Error(`WPRDC returned ${resp.status}`);
-  const data = await resp.json();
-  return data.result.records || [];
-}
+  var sqftVar  = parseInt(document.getElementById("alleg-variance").value) / 100;
+  var lookback = parseInt(document.getElementById("alleg-lookback").value);
+  var muniMill = parseFloat(document.getElementById("alleg-muni-mill").value) || 9.73;
 
-// ── Utilities ────────────────────────────────────────────────
-function fmt$(n) {
-  return n == null ? "—" : "$" + Math.round(n).toLocaleString();
-}
-function fmtMillage(n) {
-  return n == null ? "—" : n.toFixed(2);
-}
-function setStatus(msg, type) {
-  const el = document.getElementById("appeal-status");
-  el.textContent = msg;
-  el.className = type; // "loading" | "error" | ""
-  el.style.display = msg ? "block" : "none";
-}
-function setMetric(id, val) {
-  document.getElementById(id).textContent = val;
-}
+  document.getElementById("alleg-btn").disabled = true;
+  document.getElementById("alleg-results").style.display = "none";
+  setStatus("alleg-status","Retrieving assessment record…","loading");
 
-// ── Main analysis ────────────────────────────────────────────
-async function runAnalysis() {
-  const rawId = document.getElementById("parcel-input").value.replace(/[-\s]/g, "").trim().toUpperCase();
-  if (rawId.length < 10) {
-    setStatus("Please enter a valid parcel ID (at least 10 digits).", "error");
-    return;
-  }
+  var p1 = new URLSearchParams({ resource_id: RESOURCE, limit: 1, filters: JSON.stringify({ PARID: rawId }) });
+  fetch(WPRDC + "?" + p1)
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      if (!d.result.records.length) { setStatus("alleg-status","Parcel ID not found.","error"); document.getElementById("alleg-btn").disabled=false; return; }
+      var s = d.result.records[0];
+      var addr    = (s.PROPERTYADDRESS || "Unknown").trim();
+      var muni    = (s.MUNIDESC || "").trim();
+      var mcode   = s.MUNICODE;
+      var cur     = parseFloat(s.FAIRMARKETTOTAL) || 0;
+      var ssqft   = parseFloat(s.FINISHEDLIVINGAREA) || null;
+      var schMill = getSchoolMill(muni) || 16.0;
+      var totMill = schMill + muniMill;
+      var taxRate = totMill / 1000;
+      var implied = cur / ALLEG_CLR;
 
-  const sqftVar    = parseInt(document.getElementById("sqft-variance").value) / 100;
-  const lookback   = parseInt(document.getElementById("lookback").value);
-  const muniMillage = parseFloat(document.getElementById("muni-millage").value) || 9.73;
+      setStatus("alleg-status","Running market analysis…","loading");
 
-  document.getElementById("analyze-btn").disabled = true;
-  document.getElementById("appeal-results").style.display = "none";
-  setStatus("Retrieving assessment record…", "loading");
+      var filters = mcode ? { MUNICODE: String(mcode) } : { MUNIDESC: muni.toUpperCase() };
+      var p2 = new URLSearchParams({ resource_id: RESOURCE, limit: 5000, filters: JSON.stringify(filters) });
+      return fetch(WPRDC + "?" + p2).then(function(r) { return r.json(); }).then(function(md) {
+        var all = md.result.records || [];
+        var cutoff = new Date(); cutoff.setMonth(cutoff.getMonth() - lookback);
+        var comps = all.filter(function(r) {
+          var price = parseFloat(r.SALEPRICE); var dt = new Date(r.SALEDATE);
+          if (isNaN(price)||price<10000||isNaN(dt.getTime())||dt<cutoff||r.PARID===rawId) return false;
+          if (ssqft) { var sq=parseFloat(r.FINISHEDLIVINGAREA); if (isNaN(sq)||sq<ssqft*(1-sqftVar)||sq>ssqft*(1+sqftVar)) return false; }
+          return true;
+        });
+        comps.sort(function(a,b){return new Date(b.SALEDATE)-new Date(a.SALEDATE);});
+        var disp = comps.slice(0,10);
+        var avg  = comps.length ? comps.reduce(function(s,r){return s+parseFloat(r.SALEPRICE);},0)/comps.length : null;
+        var tgt  = avg ? avg * ALLEG_CLR : null;
+        var sav  = (avg && tgt < cur) ? (cur - tgt) * taxRate : 0;
+        var vPct = avg ? (implied - avg) / avg * 100 : null;
 
-  try {
-    // 1. Fetch subject property
-    const records = await fetchWPRDC({ PARID: rawId }, 1);
-    if (!records.length) {
-      setStatus("Parcel ID not found. Check the ID and try again.", "error");
-      document.getElementById("analyze-btn").disabled = false;
-      return;
-    }
+        setStatus("alleg-status","","");
+        setEl("alleg-addr", addr);
+        setEl("alleg-muni", muni + (mcode ? " · Parcel " + rawId : ""));
+        setEl("alleg-m1", fmt$(cur));
+        setEl("alleg-m2", fmt$(implied));
+        setEl("alleg-m3", avg ? fmt$(avg) : "No comps");
+        setEl("alleg-m3n", comps.length ? comps.length + " sale" + (comps.length!==1?"s":"") + " in " + lookback + " months" : "No sales found");
 
-    const s = records[0];
-    const address    = (s.PROPERTYADDRESS || "Unknown Address").trim();
-    const muniName   = (s.MUNIDESC || "").trim();
-    const muniCode   = s.MUNICODE;
-    const curAssess  = parseFloat(s.FAIRMARKETTOTAL) || 0;
-    const subjectSqft = parseFloat(s.FINISHEDLIVINGAREA) || null;
+        var sc = document.getElementById("alleg-m4c");
+        if (sav > 0) { setEl("alleg-m4",fmt$(sav)); setEl("alleg-m4n","Appeal likely recommended"); sc.className="metric-card savings-positive"; }
+        else if (avg) { setEl("alleg-m4","$0"); setEl("alleg-m4n","Assessment appears fair"); sc.className="metric-card savings-none"; }
+        else { setEl("alleg-m4","—"); setEl("alleg-m4n","Insufficient comp data"); sc.className="metric-card"; }
 
-    // 2. Look up school millage (auto or fallback)
-    const schoolMillage = getSchoolMillage(muniName) || 16.0; // reasonable fallback
-    const totalMillage  = schoolMillage + muniMillage;
-    const taxRate       = totalMillage / 1000;
-    const impliedVal    = curAssess / CLR;
+        var vb = document.getElementById("alleg-vbadge"), ve = document.getElementById("alleg-vexpl");
+        if (vPct !== null) {
+          var sign = vPct > 0 ? "+" : "";
+          vb.textContent = sign + vPct.toFixed(1) + "%";
+          if (vPct > 10) { vb.className="variance-badge variance-over"; ve.textContent="Your implied value is " + sign + vPct.toFixed(1) + "% above comparable sales. Your property may be over-assessed."; }
+          else if (vPct < -10) { vb.className="variance-badge variance-under"; ve.textContent="Your implied value is " + vPct.toFixed(1) + "% below comparable sales. Your assessment appears conservative."; }
+          else { vb.className="variance-badge variance-fair"; ve.textContent="Your implied value is within ±10% of comparable sales. Your assessment appears in line with market values."; }
+        } else { vb.textContent="—"; vb.className="variance-badge"; ve.textContent="Not enough comparable sales to calculate variance. Try widening filters."; }
 
-    // Show address immediately
-    setStatus("Running market analysis…", "loading");
+        setEl("alleg-t1", schMill.toFixed(2));
+        setEl("alleg-t2", muniMill.toFixed(2));
+        setEl("alleg-t3", totMill.toFixed(2));
+        setEl("alleg-t4", fmt$(cur * taxRate));
+        setEl("alleg-t5", tgt ? fmt$(tgt * taxRate) : "—");
 
-    // 3. Fetch municipality comparables
-    const allRecords = await fetchMuniRecords(muniCode, muniName, 5000);
+        var tbody = document.getElementById("alleg-tbody"); tbody.innerHTML = "";
+        document.getElementById("alleg-no-comps").style.display = disp.length ? "none" : "block";
+        disp.forEach(function(r) {
+          var tr = document.createElement("tr");
+          var sq = parseFloat(r.FINISHEDLIVINGAREA);
+          tr.innerHTML = "<td style='max-width:200px;'>" + (r.PROPERTYADDRESS||"—").trim() + "</td>"
+            + "<td class='td-price'>" + fmt$(parseFloat(r.SALEPRICE)) + "</td>"
+            + "<td style='color:#666;white-space:nowrap;'>" + (r.SALEDATE||"—").substring(0,10) + "</td>"
+            + "<td>" + (isNaN(sq)?"—":sq.toLocaleString()) + "</td>"
+            + "<td>" + (r.GRADE||"—") + "</td>"
+            + "<td style='font-size:.78rem;color:#888;'>" + (r.PARID||"—") + "</td>";
+          tbody.appendChild(tr);
+        });
 
-    // 4. Filter comparables
-    const cutoffDate = new Date();
-    cutoffDate.setMonth(cutoffDate.getMonth() - lookback);
-
-    let comps = allRecords.filter(r => {
-      const price = parseFloat(r.SALEPRICE);
-      const saleDate = new Date(r.SALEDATE);
-      if (isNaN(price) || price < 10000) return false;
-      if (isNaN(saleDate.getTime()) || saleDate < cutoffDate) return false;
-      if (r.PARID === rawId) return false;
-      if (subjectSqft) {
-        const sqft = parseFloat(r.FINISHEDLIVINGAREA);
-        if (isNaN(sqft)) return false;
-        if (sqft < subjectSqft * (1 - sqftVar) || sqft > subjectSqft * (1 + sqftVar)) return false;
-      }
-      return true;
-    });
-
-    // Sort newest first, take top 10 for display
-    comps.sort((a, b) => new Date(b.SALEDATE) - new Date(a.SALEDATE));
-    const displayComps = comps.slice(0, 10);
-    const avgPrice = comps.length
-      ? comps.reduce((sum, r) => sum + parseFloat(r.SALEPRICE), 0) / comps.length
-      : null;
-
-    const targetAssess = avgPrice ? avgPrice * CLR : null;
-    const savings = (avgPrice && targetAssess < curAssess)
-      ? (curAssess - targetAssess) * taxRate
-      : 0;
-
-    const variancePct = avgPrice ? ((impliedVal - avgPrice) / avgPrice) * 100 : null;
-
-    // ── Populate UI ──
-    setStatus("", "");
-
-    // Header
-    document.getElementById("result-address").textContent = address;
-    document.getElementById("result-municipality").textContent =
-      `${muniName}${muniCode ? " · Parcel " + rawId : ""}`;
-
-    // Metrics
-    setMetric("m-assessment", fmt$(curAssess));
-    setMetric("m-implied",    fmt$(impliedVal));
-    setMetric("m-avg-sale",   avgPrice ? fmt$(avgPrice) : "No comps");
-    setMetric("m-comp-count", comps.length
-      ? `${comps.length} sale${comps.length !== 1 ? "s" : ""} in ${lookback} months`
-      : "No comparable sales found");
-
-    // Savings card
-    const savingsCard = document.getElementById("m-savings-card");
-    if (savings > 0) {
-      setMetric("m-savings", fmt$(savings));
-      setMetric("m-savings-note", "Appeal likely recommended");
-      savingsCard.className = "metric-card savings-positive";
-    } else if (avgPrice) {
-      setMetric("m-savings", "$0");
-      setMetric("m-savings-note", "Assessment appears fair");
-      savingsCard.className = "metric-card savings-none";
-    } else {
-      setMetric("m-savings", "—");
-      setMetric("m-savings-note", "Insufficient comp data");
-      savingsCard.className = "metric-card";
-    }
-
-    // Variance badge + explanation
-    const vBadge = document.getElementById("variance-badge");
-    const vExpl  = document.getElementById("variance-explanation");
-    if (variancePct !== null) {
-      const sign = variancePct > 0 ? "+" : "";
-      vBadge.textContent = `${sign}${variancePct.toFixed(1)}%`;
-      if (variancePct > 10) {
-        vBadge.className = "variance-badge variance-over";
-        vExpl.textContent = `Your implied value is ${sign}${variancePct.toFixed(1)}% above comparable sales. This suggests your property may be over-assessed, which typically supports an appeal.`;
-      } else if (variancePct < -10) {
-        vBadge.className = "variance-badge variance-under";
-        vExpl.textContent = `Your implied value is ${variancePct.toFixed(1)}% below comparable sales. Your property appears to be assessed conservatively.`;
-      } else {
-        vBadge.className = "variance-badge variance-fair";
-        vExpl.textContent = `Your implied value is within ±10% of comparable sales. Your assessment appears to be in line with market values.`;
-      }
-    } else {
-      vBadge.textContent = "—";
-      vBadge.className = "variance-badge";
-      vExpl.textContent = "Not enough comparable sales to calculate a variance. Try widening filters.";
-    }
-
-    // Tax breakdown
-    setMetric("td-school",       fmtMillage(schoolMillage));
-    setMetric("td-muni",         fmtMillage(muniMillage));
-    setMetric("td-total",        fmtMillage(totalMillage));
-    document.getElementById("td-current-tax").textContent  = fmt$(curAssess * taxRate);
-    document.getElementById("td-target-tax").textContent   = targetAssess ? fmt$(targetAssess * taxRate) : "—";
-
-    // Comparables table
-    const tbody = document.getElementById("comps-tbody");
-    tbody.innerHTML = "";
-    if (displayComps.length) {
-      document.getElementById("comps-section").style.display = "";
-      document.getElementById("comps-none").style.display = "none";
-      displayComps.forEach(r => {
-        const tr = document.createElement("tr");
-        const saleDate = r.SALEDATE ? r.SALEDATE.substring(0, 10) : "—";
-        const sqft = parseFloat(r.FINISHEDLIVINGAREA);
-        tr.innerHTML = `
-          <td class="td-addr">${(r.PROPERTYADDRESS || "—").trim()}</td>
-          <td class="td-price">${fmt$(parseFloat(r.SALEPRICE))}</td>
-          <td class="td-date">${saleDate}</td>
-          <td>${isNaN(sqft) ? "—" : sqft.toLocaleString()}</td>
-          <td>${r.GRADE || "—"}</td>
-          <td style="font-size:.78rem;color:#888;">${r.PARID || "—"}</td>`;
-        tbody.appendChild(tr);
+        document.getElementById("alleg-results").style.display = "block";
+        document.getElementById("alleg-results").scrollIntoView({behavior:"smooth",block:"start"});
+        document.getElementById("alleg-btn").disabled = false;
       });
-    } else {
-      document.getElementById("comps-section").style.display = "";
-      document.getElementById("comps-none").style.display = "block";
-    }
-
-    document.getElementById("appeal-results").style.display = "block";
-    document.getElementById("appeal-results").scrollIntoView({ behavior: "smooth", block: "start" });
-
-  } catch (err) {
-    setStatus("Error: " + (err.message || "Could not retrieve data. Please try again."), "error");
-    console.error(err);
-  }
-
-  document.getElementById("analyze-btn").disabled = false;
+    })
+    .catch(function(err) {
+      setStatus("alleg-status","Error: " + (err.message||"Could not retrieve data."), "error");
+      document.getElementById("alleg-btn").disabled = false;
+    });
 }
 
-// Load millage rates in the background on page load
-loadMillage();
+document.getElementById("alleg-parcel").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") runAllegheny();
+});
+
+// ══════════════════════════════════════════════════════════
+//  WESTMORELAND COUNTY
+// ══════════════════════════════════════════════════════════
+var WM_CLR = 0.0888;
+var wmId = 0;
+
+function wmAddComp(addr, price, sqft) {
+  wmId++;
+  var id = wmId;
+  var row = document.createElement("div");
+  row.className = "wm-comp-row";
+  row.id = "wm-row-" + id;
+  row.innerHTML =
+    "<div><input type='text' id='wm-a-" + id + "' placeholder='123 Oak St' oninput='runWestmoreland()' value='" + (addr||"") + "'></div>" +
+    "<div><input type='number' id='wm-p-" + id + "' placeholder='245000' min='0' step='1000' oninput='runWestmoreland()' value='" + (price||"") + "'></div>" +
+    "<div><input type='number' id='wm-s-" + id + "' placeholder='1800' min='0' step='10' oninput='runWestmoreland()' value='" + (sqft||"") + "'></div>" +
+    "<div><button class='btn-remove' onclick='wmRemove(" + id + ")'>&#x2715; Remove</button></div>";
+  document.getElementById("wm-comps-container").appendChild(row);
+  runWestmoreland();
+}
+
+function wmRemove(id) {
+  var r = document.getElementById("wm-row-" + id);
+  if (r) r.remove();
+  runWestmoreland();
+}
+
+function wmGetComps() {
+  var rows = document.querySelectorAll("[id^='wm-row-']");
+  var out = [];
+  rows.forEach(function(row) {
+    var id = row.id.replace("wm-row-","");
+    var price = parseFloat(document.getElementById("wm-p-"+id).value);
+    if (isNaN(price)||price<=0) return;
+    var addr = (document.getElementById("wm-a-"+id).value||"").trim() || "—";
+    var sqft = parseFloat(document.getElementById("wm-s-"+id).value) || null;
+    out.push({addr:addr, price:price, sqft:sqft});
+  });
+  return out;
+}
+
+function runWestmoreland() {
+  var assessed = parseFloat(document.getElementById("wm-assessed").value);
+  var millage  = parseFloat(document.getElementById("wm-millage").value) || 116.5;
+  var sqft     = parseFloat(document.getElementById("wm-sqft").value) || null;
+  var comps    = wmGetComps();
+
+  if (isNaN(assessed)||assessed<=0) { document.getElementById("wm-results").style.display="none"; return; }
+
+  var taxRate  = millage / 1000;
+  var implied  = assessed / WM_CLR;
+  var avg      = comps.length ? comps.reduce(function(s,c){return s+c.price;},0)/comps.length : null;
+  var tgt      = avg ? avg * WM_CLR : null;
+  var sav      = (avg && tgt < assessed) ? (assessed - tgt) * taxRate : 0;
+  var vPct     = avg ? (implied - avg) / avg * 100 : null;
+
+  var sub = [];
+  if (sqft) sub.push(sqft.toLocaleString() + " sq ft");
+  sub.push("Total millage: " + millage.toFixed(1));
+  setEl("wm-sub", sub.join(" · "));
+
+  setEl("wm-m1", fmt$(assessed));
+  setEl("wm-m2", fmt$(implied));
+  setEl("wm-m3", avg ? fmt$(avg) : "Enter comps below");
+  setEl("wm-m3n", comps.length ? comps.length + " comparable sale" + (comps.length!==1?"s":"") + " entered" : "No comparables yet");
+
+  var sc = document.getElementById("wm-m4c");
+  if (!avg) { setEl("wm-m4","—"); setEl("wm-m4n","Enter comparable sales to calculate"); sc.className="metric-card"; }
+  else if (sav > 0) { setEl("wm-m4",fmt$(sav)); setEl("wm-m4n","Appeal may be worthwhile"); sc.className="metric-card savings-positive"; }
+  else { setEl("wm-m4","$0"); setEl("wm-m4n","No savings identified"); sc.className="metric-card savings-none"; }
+
+  var vb = document.getElementById("wm-vbadge"), ve = document.getElementById("wm-vexpl");
+  if (vPct !== null) {
+    var sign = vPct > 0 ? "+" : "";
+    vb.textContent = sign + vPct.toFixed(1) + "%";
+    if (vPct > 10) { vb.className="variance-badge variance-over"; ve.textContent="Your implied value is " + sign + vPct.toFixed(1) + "% above your comparable sales. This gap supports an appeal."; }
+    else if (vPct < -10) { vb.className="variance-badge variance-under"; ve.textContent="Your implied value is " + vPct.toFixed(1) + "% below your comparable sales. Your assessment appears conservative."; }
+    else { vb.className="variance-badge variance-fair"; ve.textContent="Your implied value is within ±10% of your comparable sales. Your assessment appears roughly in line with market values."; }
+  } else { vb.textContent="—"; vb.className="variance-badge"; ve.textContent="Enter comparable sales above to see the variance analysis."; }
+
+  setEl("wm-t1", fmt$(assessed));
+  setEl("wm-t2", tgt ? fmt$(tgt) : "—");
+  setEl("wm-t3", millage.toFixed(1));
+  setEl("wm-t4", fmt$(assessed * taxRate));
+  setEl("wm-t5", tgt ? fmt$(tgt * taxRate) : "—");
+
+  var tbody = document.getElementById("wm-tbody"); tbody.innerHTML = "";
+  var co = document.getElementById("wm-comps-out");
+  if (comps.length) {
+    co.style.display = "";
+    comps.forEach(function(c) {
+      var tr = document.createElement("tr");
+      var ppsf = (c.price && c.sqft) ? fmt$(c.price/c.sqft) + "/sf" : "—";
+      tr.innerHTML = "<td>" + c.addr + "</td><td class='td-price'>" + fmt$(c.price) + "</td><td>" + (c.sqft?c.sqft.toLocaleString():"—") + "</td><td style='color:#666;'>" + ppsf + "</td>";
+      tbody.appendChild(tr);
+    });
+  } else { co.style.display = "none"; }
+
+  document.getElementById("wm-results").style.display = "block";
+}
+
+// Pre-populate 3 blank comp rows
+wmAddComp(); wmAddComp(); wmAddComp();
 </script>
