@@ -144,9 +144,77 @@ permalink: /assessment-appeal/index.html
 .appeal-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; flex-shrink: 0; }
 .appeal-disclaimer { font-size: 0.78rem; color: #999; line-height: 1.5; margin-top: 20px; padding-top: 16px; border-top: 1px solid #eef0f5; }
 
+/* ── Email capture ─────────────────────────────────────────── */
+.email-capture {
+  background: linear-gradient(135deg, #f0f4ff 0%, #f5f7fd 100%);
+  border: 1.5px solid #c7d2fe;
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 4px;
+}
+.email-capture h4 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-heading);
+}
+.email-capture p {
+  margin: 0 0 14px;
+  font-size: 0.88rem;
+  color: #555;
+  line-height: 1.5;
+}
+.email-capture-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.email-capture-row input[type="text"],
+.email-capture-row input[type="email"] {
+  flex: 1;
+  min-width: 150px;
+  padding: 10px 13px;
+  border: 1.5px solid #c8cee0;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  color: var(--color-heading);
+  background: #fff;
+}
+.email-capture-row input:focus { outline: none; border-color: var(--color-accent); }
+.btn-email-report {
+  padding: 10px 22px;
+  background: var(--color-heading);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-email-report:hover { background: var(--color-accent-hover); }
+.btn-email-report:disabled { opacity: .55; cursor: not-allowed; }
+.email-capture-success {
+  display: none;
+  padding: 12px 16px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #15803d;
+  font-weight: 600;
+}
+.email-capture-error {
+  display: none;
+  font-size: 0.82rem;
+  color: #991b1b;
+  margin-top: 6px;
+}
+
 @media print {
   .simple-header, .county-tabs, .settings-row, .btn-analyze, .wm-add-comp,
-  .btn-remove, .appeal-cta, nav, footer, .chat-widget { display: none !important; }
+  .btn-remove, .appeal-cta, .email-capture, nav, footer, .chat-widget { display: none !important; }
   .appeal-wrap { padding: 0; }
   .result-section, .metric-card { box-shadow: none; border: 1px solid #ccc; }
 }
@@ -250,7 +318,21 @@ permalink: /assessment-appeal/index.html
       </div>
       <div id="alleg-no-comps" style="display:none;font-size:.9rem;color:#888;padding:12px 0;">No comparable sales found within the selected filters. Try widening the sq. ft. variance or extending the lookback.</div>
     </div>
-    <div style="text-align:right;margin-bottom:4px;"><button onclick="window.print()" style="background:none;border:1px solid #d1d5db;border-radius:6px;padding:8px 18px;font-size:.85rem;font-weight:600;color:#555;cursor:pointer;">&#128424; Print / Save as PDF</button></div>
+    <div class="email-capture" id="alleg-email-capture">
+      <h4>&#128231; Email this report to yourself</h4>
+      <p>Get a formatted copy of this analysis — including all comparable sales — sent directly to your inbox.</p>
+      <div class="email-capture-success" id="alleg-email-success">&#10003; Report sent! Check your inbox.</div>
+      <div id="alleg-email-form">
+        <div class="email-capture-row">
+          <input type="text" id="alleg-first" placeholder="First name">
+          <input type="text" id="alleg-last" placeholder="Last name">
+          <input type="email" id="alleg-email" placeholder="your@email.com">
+          <button class="btn-email-report" id="alleg-email-btn" onclick="sendAllegReport()">Send Report</button>
+        </div>
+        <div class="email-capture-error" id="alleg-email-error"></div>
+      </div>
+    </div>
+    <div style="text-align:right;margin-bottom:4px;margin-top:8px;"><button onclick="window.print()" style="background:none;border:1px solid #d1d5db;border-radius:6px;padding:8px 18px;font-size:.85rem;font-weight:600;color:#555;cursor:pointer;">&#128424; Print / Save as PDF</button></div>
   </div>
 
 </div><!-- /allegheny -->
@@ -336,7 +418,21 @@ permalink: /assessment-appeal/index.html
         <tbody id="wm-tbody"></tbody></table>
       </div>
     </div>
-    <div style="text-align:right;margin-bottom:4px;"><button onclick="window.print()" style="background:none;border:1px solid #d1d5db;border-radius:6px;padding:8px 18px;font-size:.85rem;font-weight:600;color:#555;cursor:pointer;">&#128424; Print / Save as PDF</button></div>
+    <div class="email-capture" id="wm-email-capture">
+      <h4>&#128231; Email this report to yourself</h4>
+      <p>Get a formatted copy of this analysis sent directly to your inbox.</p>
+      <div class="email-capture-success" id="wm-email-success">&#10003; Report sent! Check your inbox.</div>
+      <div id="wm-email-form">
+        <div class="email-capture-row">
+          <input type="text" id="wm-first" placeholder="First name">
+          <input type="text" id="wm-last" placeholder="Last name">
+          <input type="email" id="wm-email" placeholder="your@email.com">
+          <button class="btn-email-report" id="wm-email-btn" onclick="sendWmReport()">Send Report</button>
+        </div>
+        <div class="email-capture-error" id="wm-email-error"></div>
+      </div>
+    </div>
+    <div style="text-align:right;margin-bottom:4px;margin-top:8px;"><button onclick="window.print()" style="background:none;border:1px solid #d1d5db;border-radius:6px;padding:8px 18px;font-size:.85rem;font-weight:600;color:#555;cursor:pointer;">&#128424; Print / Save as PDF</button></div>
   </div>
 
 </div><!-- /westmoreland -->
@@ -495,6 +591,16 @@ function runAllegheny() {
         document.getElementById("alleg-results").style.display = "block";
         document.getElementById("alleg-results").scrollIntoView({behavior:"smooth",block:"start"});
         document.getElementById("alleg-btn").disabled = false;
+        // Store for email
+        lastAllegReport = { county:"allegheny", address:addr, municipality:muni,
+          currentAssessment:cur, impliedValue:implied, avgComparableSale:avg,
+          variancePct:vPct, savings:sav, totalMillage:totMill,
+          comparables: disp.map(function(r){return{address:(r.PROPERTYADDRESS||"").trim(),price:parseFloat(r.SALEPRICE),date:(r.SALEDATE||"").substring(0,10),sqft:r.FINISHEDLIVINGAREA};}) };
+        // Reset email form
+        document.getElementById("alleg-email-success").style.display="none";
+        document.getElementById("alleg-email-form").style.display="block";
+        document.getElementById("alleg-email-error").style.display="none";
+        document.getElementById("alleg-email-btn").disabled=false;
       });
     })
     .catch(function(err) {
@@ -610,4 +716,79 @@ function runWestmoreland() {
 
 // Pre-populate 3 blank comp rows
 wmAddComp(); wmAddComp(); wmAddComp();
+
+// ══════════════════════════════════════════════════════════
+//  EMAIL REPORT
+// ══════════════════════════════════════════════════════════
+var lastAllegReport = null;
+
+function sendReport(county, reportData, emailId, firstId, lastId, errId, btnId, formId, successId) {
+  var email = (document.getElementById(emailId).value || "").trim();
+  var firstName = (document.getElementById(firstId).value || "").trim();
+  var lastName  = (document.getElementById(lastId).value || "").trim();
+  var errEl = document.getElementById(errId);
+
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    errEl.textContent = "Please enter a valid email address.";
+    errEl.style.display = "block";
+    return;
+  }
+  errEl.style.display = "none";
+
+  var btn = document.getElementById(btnId);
+  btn.disabled = true;
+  btn.textContent = "Sending…";
+
+  var payload = Object.assign({}, reportData, { county: county, email: email, firstName: firstName, lastName: lastName });
+
+  fetch("/api/appeal-report", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload)
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(d) {
+    if (d.ok) {
+      document.getElementById(formId).style.display = "none";
+      document.getElementById(successId).style.display = "block";
+    } else {
+      errEl.textContent = d.error || "Something went wrong. Please try again.";
+      errEl.style.display = "block";
+      btn.disabled = false;
+      btn.textContent = "Send Report";
+    }
+  })
+  .catch(function() {
+    errEl.textContent = "Could not connect. Please try again.";
+    errEl.style.display = "block";
+    btn.disabled = false;
+    btn.textContent = "Send Report";
+  });
+}
+
+function sendAllegReport() {
+  if (!lastAllegReport) return;
+  sendReport("allegheny", lastAllegReport,
+    "alleg-email","alleg-first","alleg-last","alleg-email-error",
+    "alleg-email-btn","alleg-email-form","alleg-email-success");
+}
+
+function sendWmReport() {
+  var assessed = parseFloat(document.getElementById("wm-assessed").value);
+  var millage  = parseFloat(document.getElementById("wm-millage").value) || 116.5;
+  var sqft     = parseFloat(document.getElementById("wm-sqft").value) || null;
+  var comps    = wmGetComps();
+  if (isNaN(assessed)||assessed<=0) return;
+  var taxRate = millage/1000, implied = assessed/WM_CLR;
+  var avg = comps.length ? comps.reduce(function(s,c){return s+c.price;},0)/comps.length : null;
+  var tgt = avg ? avg*WM_CLR : null;
+  var sav = (avg&&tgt<assessed)?(assessed-tgt)*taxRate:0;
+  var vPct = avg?(implied-avg)/avg*100:null;
+  var report = { county:"westmoreland", currentAssessment:assessed, impliedValue:implied,
+    avgComparableSale:avg, variancePct:vPct, savings:sav, totalMillage:millage,
+    comparables: comps.map(function(c){return{address:c.addr,price:c.price,sqft:c.sqft};}) };
+  sendReport("westmoreland", report,
+    "wm-email","wm-first","wm-last","wm-email-error",
+    "wm-email-btn","wm-email-form","wm-email-success");
+}
 </script>
