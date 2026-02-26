@@ -58,6 +58,7 @@ permalink: /contact/index.html
                             <option value="business">Business Law (Formation, Contracts, Counsel)</option>
                             <option value="elder-law">Elder Law & Medicaid Planning</option>
                             <option value="general">Other / Not Sure</option>
+                            <option value="marketing">Marketing / Vendor Inquiry</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -172,7 +173,14 @@ permalink: /contact/index.html
         .then(function(data) {
             // Success — hide form, show confirmation
             form.style.display = 'none';
-            if (data.email_sent === false) {
+            if (data.marketing) {
+                // Marketing/vendor inquiry — no intake form
+                successDiv.innerHTML = '<div class="form-success-box">' +
+                    '<div class="success-icon">✓</div>' +
+                    '<h3>Message Received</h3>' +
+                    '<p>Thank you for reaching out. A member of our team will review your message and follow up if appropriate.</p>' +
+                    '</div>';
+            } else if (data.email_sent === false) {
                 // API accepted but email failed
                 successDiv.innerHTML = '<div class="form-success-box">' +
                     '<div class="success-icon">✓</div>' +
