@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8ecf4"/>
+      <stop offset="100%" stop-color="#d5dce8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#bg3)"/>
+  <!-- House -->
+  <polygon points="300,70 210,140 390,140" fill="none" stroke="#0f1d40" stroke-width="2.5" stroke-linejoin="round" opacity=".55"/>
+  <rect x="225" y="140" width="150" height="100" fill="none" stroke="#0f1d40" stroke-width="2.5" opacity=".55"/>
+  <!-- Door -->
+  <rect x="278" y="185" width="44" height="55" rx="3" fill="#0f1d40" opacity=".12"/>
+  <circle cx="314" cy="215" r="3" fill="#0f1d40" opacity=".3"/>
+  <!-- Windows -->
+  <rect x="240" y="155" width="28" height="22" rx="2" fill="none" stroke="#0f1d40" stroke-width="1.5" opacity=".35"/>
+  <line x1="254" y1="155" x2="254" y2="177" stroke="#0f1d40" stroke-width="1" opacity=".25"/>
+  <rect x="332" y="155" width="28" height="22" rx="2" fill="none" stroke="#0f1d40" stroke-width="1.5" opacity=".35"/>
+  <line x1="346" y1="155" x2="346" y2="177" stroke="#0f1d40" stroke-width="1" opacity=".25"/>
+  <!-- Chimney -->
+  <rect x="340" y="85" width="20" height="45" fill="none" stroke="#0f1d40" stroke-width="2" opacity=".35"/>
+  <!-- Key -->
+  <g transform="translate(300,275)" opacity=".45">
+    <circle cx="0" cy="0" r="14" fill="none" stroke="#0f1d40" stroke-width="2.5"/>
+    <circle cx="0" cy="0" r="6" fill="none" stroke="#0f1d40" stroke-width="1.5"/>
+    <line x1="14" y1="0" x2="55" y2="0" stroke="#0f1d40" stroke-width="2.5"/>
+    <line x1="45" y1="0" x2="45" y2="8" stroke="#0f1d40" stroke-width="2"/>
+    <line x1="55" y1="0" x2="55" y2="10" stroke="#0f1d40" stroke-width="2"/>
+  </g>
+</svg>

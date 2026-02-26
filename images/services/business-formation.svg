@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
+  <defs>
+    <linearGradient id="bg8" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8ecf4"/>
+      <stop offset="100%" stop-color="#d5dce8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#bg8)"/>
+  <!-- Lightbulb -->
+  <g transform="translate(300,120)" opacity=".5">
+    <path d="M0,-45 C-28,-45 -45,-20 -45,5 C-45,25 -25,40 -15,50 L15,50 C25,40 45,25 45,5 C45,-20 28,-45 0,-45Z" fill="none" stroke="#0f1d40" stroke-width="2.5"/>
+    <line x1="-12" y1="55" x2="12" y2="55" stroke="#0f1d40" stroke-width="2"/>
+    <line x1="-10" y1="62" x2="10" y2="62" stroke="#0f1d40" stroke-width="2"/>
+    <line x1="-6" y1="69" x2="6" y2="69" stroke="#0f1d40" stroke-width="2"/>
+    <!-- Rays -->
+    <line x1="0" y1="-55" x2="0" y2="-65" stroke="#0f1d40" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+    <line x1="35" y1="-40" x2="42" y2="-47" stroke="#0f1d40" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+    <line x1="-35" y1="-40" x2="-42" y2="-47" stroke="#0f1d40" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+    <line x1="50" y1="0" x2="60" y2="0" stroke="#0f1d40" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+    <line x1="-50" y1="0" x2="-60" y2="0" stroke="#0f1d40" stroke-width="2" stroke-linecap="round" opacity=".4"/>
+  </g>
+  <!-- Small document/certificate below -->
+  <g transform="translate(300,255)" opacity=".3">
+    <rect x="-30" y="-15" width="60" height="40" rx="3" fill="none" stroke="#0f1d40" stroke-width="2"/>
+    <line x1="-18" y1="-3" x2="18" y2="-3" stroke="#0f1d40" stroke-width="1.5"/>
+    <line x1="-18" y1="7" x2="12" y2="7" stroke="#0f1d40" stroke-width="1.5"/>
+    <line x1="-18" y1="17" x2="8" y2="17" stroke="#0f1d40" stroke-width="1.5"/>
+  </g>
+</svg>

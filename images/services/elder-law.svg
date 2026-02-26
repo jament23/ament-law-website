@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
+  <defs>
+    <linearGradient id="bg9" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8ecf4"/>
+      <stop offset="100%" stop-color="#d5dce8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="340" fill="url(#bg9)"/>
+  <!-- Shield / protection -->
+  <g transform="translate(300,130)" opacity=".45">
+    <path d="M0,-60 C-50,-55 -65,-30 -65,5 C-65,50 -10,80 0,90 C10,80 65,50 65,5 C65,-30 50,-55 0,-60Z" fill="none" stroke="#0f1d40" stroke-width="2.5"/>
+    <!-- Heart inside shield -->
+    <path d="M0,15 C-5,5 -20,-5 -20,-15 C-20,-25 -10,-30 0,-20 C10,-30 20,-25 20,-15 C20,-5 5,5 0,15Z" fill="#0f1d40" opacity=".15" stroke="#0f1d40" stroke-width="1.5"/>
+  </g>
+  <!-- Two hands cupping from below -->
+  <g transform="translate(300,260)" opacity=".35">
+    <path d="M-50,10 C-40,-10 -20,-15 0,-5" fill="none" stroke="#0f1d40" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M50,10 C40,-10 20,-15 0,-5" fill="none" stroke="#0f1d40" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <line x1="255" y1="300" x2="345" y2="300" stroke="#0f1d40" stroke-width="1.5" opacity=".1"/>
+</svg>
