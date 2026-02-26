@@ -270,8 +270,14 @@ permalink: /assessment-appeal/index.html
         </select>
       </div>
       <div class="setting-group">
-        <label>Muni + County Millage <a href="https://apps.alleghenycounty.us/website/millsd.asp" target="_blank" rel="noopener" style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.75rem;color:var(--color-heading);margin-left:4px;">Look up &#8599;</a></label>
+        <label>Muni + County Millage</label>
         <input type="number" id="alleg-muni-mill" value="9.73" step="0.01" min="0" max="30">
+      </div>
+      <div class="setting-group">
+        <label>School Millage <a href="https://apps.alleghenycounty.us/website/millsd.asp" target="_blank" rel="noopener" style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.75rem;color:var(--color-heading);margin-left:4px;">Look up &#8599;</a></label>
+        <input type="number" id="alleg-school-mill" placeholder="Auto-loaded…" step="0.01" min="0" max="60"
+               title="School district millage — auto-loaded after you enter a parcel ID. You can override it manually.">
+        <div id="alleg-school-mill-note" style="font-size:.72rem;color:#aaa;margin-top:3px;"></div>
       </div>
     </div>
   </div>
@@ -491,11 +497,25 @@ var millageRates = [];
   }).catch(function(){});
 })();
 
+function normalizeMuniName(s) {
+  return (s || "")
+    .toLowerCase()
+    .replace(/\bborough\b/g, "boro")
+    .replace(/\btownship\b/g, "twp")
+    .replace(/\bcity of\b/g, "")
+    .replace(/[^a-z0-9 ]/g, "")
+    .trim();
+}
+
 function getSchoolMill(muni) {
   if (!millageRates.length) return null;
-  var q = (muni || "").toLowerCase();
-  var m = millageRates.find(function(r) { return r.municipality && r.municipality.toLowerCase().indexOf(q) >= 0; });
-  return m ? m.millage : null;
+  var q = normalizeMuniName(muni);
+  if (!q) return null;
+  // Try to match the normalized query against the (possibly multi-municipality) cell
+  var match = millageRates.find(function(r) {
+    return normalizeMuniName(r.municipality).indexOf(q) >= 0;
+  });
+  return match ? match.millage : null;
 }
 
 function runAllegheny() {
@@ -525,8 +545,19 @@ function runAllegheny() {
       var mcode   = s.MUNICODE;
       var cur     = parseFloat(s.FAIRMARKETTOTAL) || 0;
       var ssqft   = parseFloat(s.FINISHEDLIVINGAREA) || null;
-      var schMill = getSchoolMill(muni) || 16.0;
-      var totMill = schMill + muniMill;
+      var schMill = getSchoolMill(muni);
+      var schMillNote = document.getElementById("alleg-school-mill-note");
+      var schMillInput = document.getElementById("alleg-school-mill");
+      // Only auto-fill if user hasn't manually overridden
+      if (schMill !== null) {
+        schMillInput.value = schMill.toFixed(4);
+        if (schMillNote) schMillNote.textContent = "Auto-loaded for " + (s.SCHOOLDESC || muni);
+      } else {
+        if (!schMillInput.value) schMillInput.value = "16.0";
+        if (schMillNote) schMillNote.textContent = "Could not auto-load — enter manually";
+      }
+      var schMillVal = parseFloat(schMillInput.value) || 16.0;
+      var totMill = schMillVal + muniMill;
       var taxRate = totMill / 1000;
       var implied = cur / ALLEG_CLR;
 
@@ -577,7 +608,7 @@ function runAllegheny() {
           else { vb.className="variance-badge variance-fair"; ve.textContent="Your implied value is within ±10% of comparable sales. Your assessment appears in line with market values."; }
         } else { vb.textContent="—"; vb.className="variance-badge"; ve.textContent="Not enough comparable sales to calculate variance. Try widening filters."; }
 
-        setEl("alleg-t1", schMill.toFixed(2));
+        setEl("alleg-t1", schMillVal.toFixed(2));
         setEl("alleg-t2", muniMill.toFixed(2));
         setEl("alleg-t3", totMill.toFixed(2));
         setEl("alleg-t4", fmt$(cur * taxRate));
@@ -603,7 +634,7 @@ function runAllegheny() {
         // Store for email
         lastAllegReport = { county:"allegheny", address:addr, municipality:muni,
           currentAssessment:cur, impliedValue:implied, avgComparableSale:avg,
-          variancePct:vPct, savings:sav, totalMillage:totMill,
+          variancePct:vPct, savings:sav, totalMillage:totMill, schoolMillage:schMillVal,
           comparables: disp.map(function(r){return{address:(r.PROPERTYADDRESS||"").trim(),price:parseFloat(r.SALEPRICE),date:(r.SALEDATE||"").substring(0,10),sqft:r.FINISHEDLIVINGAREA};}) };
         // Reset email form
         document.getElementById("alleg-email-success").style.display="none";
