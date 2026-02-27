@@ -314,7 +314,6 @@ nav > ul > li:hover > a {
 
 /* Grouped mega-dropdown (Services menu) */
 .dropdown-grouped {
-    display: grid !important;
     grid-template-columns: repeat(2, 1fr);
     min-width: 400px;
     padding: 16px 8px;
@@ -322,6 +321,10 @@ nav > ul > li:hover > a {
     left: 50%;
     transform: translateX(-50%);
     align-items: start;
+}
+
+.has-dropdown.dropdown-open .dropdown-grouped {
+    display: grid;
 }
 
 .dropdown-col {
@@ -2815,7 +2818,6 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
 
     /* Grouped dropdown: collapse to single column on mobile */
     .dropdown-grouped {
-        display: flex !important;
         flex-direction: column;
         grid-template-columns: unset;
         min-width: auto;
