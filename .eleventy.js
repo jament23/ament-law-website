@@ -10,11 +10,16 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("llms.txt");
   eleventyConfig.addPassthroughCopy("CNAME");
 
-  // Blog post collection sorted by date (newest first)
+  // Blog post collection sorted by date (newest first), excluding future posts
   eleventyConfig.addCollection("posts", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("blog/posts/*.md").sort(function(a, b) {
-      return b.date - a.date;
-    });
+    const now = new Date();
+    return collectionApi.getFilteredByGlob("blog/posts/*.md")
+      .filter(function(post) {
+        return post.date <= now;
+      })
+      .sort(function(a, b) {
+        return b.date - a.date;
+      });
   });
 
   // Date formatting filter
