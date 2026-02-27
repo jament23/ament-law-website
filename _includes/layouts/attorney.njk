@@ -30,7 +30,9 @@ layout: layouts/base.njk
         <div class="attorney-profile-layout">
             <aside class="attorney-sidebar">
                 {% if attorney_photo %}
-                <img src="{{ attorney_photo }}" alt="{{ attorney_name }} attorney at Ament Law Group Murrysville PA" class="attorney-headshot" width="400" height="400">
+                <div class="headshot-wrap attorney-sidebar-headshot">
+                  <img src="{{ attorney_photo }}" alt="{{ attorney_name }} attorney at Ament Law Group Murrysville PA" class="attorney-headshot {{ headshot_class }}" width="400" height="400">
+                </div>
                 {% else %}
                 <div class="attorney-photo-placeholder"></div>
                 {% endif %}

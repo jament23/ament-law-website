@@ -898,19 +898,45 @@ main section {
 }
 
 .attorney-headshot {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    object-position: center 20%;
-    margin: 0 auto var(--space-md);
+    object-position: center top;
     display: block;
-    border: 3px solid var(--color-border);
+    transform-origin: center 20%;
 }
 
-.attorney-card .attorney-headshot {
+/* Per-attorney zoom — compensates for different photo framings */
+.hs-john    { transform: scale(2.1) translateY(6%); }   /* wide seated shot — needs significant zoom */
+.hs-robert  { transform: scale(1.35) translateY(4%); }  /* good headshot — slight zoom for consistency */
+.hs-katlynn { transform: scale(1.3) translateY(4%); }   /* medium headshot */
+.hs-laura   { transform: scale(1.25) translateY(2%); }  /* tight headshot */
+.hs-patrick { transform: scale(1.15) translateY(-2%); } /* very tight — minimal zoom */
+
+.headshot-wrap {
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto var(--space-md);
+    border: 3px solid var(--color-border);
+    flex-shrink: 0;
+}
+
+.attorney-card .headshot-wrap {
     width: 100px;
     height: 100px;
+}
+
+.attorney-sidebar .headshot-wrap,
+.attorney-sidebar-headshot {
+    width: 160px;
+    height: 160px;
+}
+
+.author-box .headshot-wrap {
+    width: 72px;
+    height: 72px;
+    min-width: 72px;
+    margin: 0;
 }
 
 .attorney-card h3 {
@@ -1092,20 +1118,7 @@ main section {
 }
 
 .author-box-photo {
-    width: 72px;
-    height: 72px;
-    min-width: 72px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--color-border), #d8d8dd);
-    overflow: hidden;
-}
-
-.author-box-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    display: block;
+    flex-shrink: 0;
 }
 
 .author-box-info h4 {
