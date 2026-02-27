@@ -314,19 +314,18 @@ nav > ul > li:hover > a {
 
 /* Grouped mega-dropdown (Services menu) */
 .dropdown-grouped {
-    min-width: 640px;
     display: grid !important;
     grid-template-columns: repeat(4, 1fr);
-    flex-direction: unset;
-    align-items: unset;
+    min-width: 660px;
+    padding: 16px 8px;
     gap: 0;
-    padding: 16px 12px;
     left: 50%;
     transform: translateX(-50%);
+    align-items: start;
 }
 
 .dropdown-group {
-    padding: 0 8px 8px;
+    padding: 0 10px;
     border-right: 1px solid var(--color-border);
 }
 
@@ -339,47 +338,40 @@ nav > ul > li:hover > a {
     text-transform: uppercase;
     letter-spacing: .08em;
     color: var(--color-heading);
-    padding: 2px 6px 7px;
+    padding: 2px 4px 7px;
     border-bottom: 1px solid var(--color-border);
     margin-bottom: 4px;
     white-space: nowrap;
     pointer-events: none;
 }
 
-/* Override nav ul flex for inner group lists */
-.dropdown-grouped ul {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 0 !important;
+.dropdown-group-links {
+    display: flex;
+    flex-direction: column;
 }
 
-.dropdown-grouped li { padding: 0 !important; }
-
-.dropdown-grouped > li { padding: 0 !important; }
-
-.dropdown-grouped a {
-    padding: 6px 8px !important;
+.dropdown-group-links a {
+    padding: 6px 6px !important;
     font-size: 0.82rem !important;
     font-weight: 400 !important;
     border-radius: 5px !important;
     white-space: normal !important;
-    display: block !important;
     color: var(--color-body) !important;
+    line-height: 1.3 !important;
 }
 
-.dropdown-grouped a:hover {
+.dropdown-group-links a:hover {
     background: var(--color-canvas) !important;
     color: var(--color-heading) !important;
 }
 
-.dropdown-grouped a.dropdown-sub {
-    padding-left: 16px !important;
+.dropdown-group-links a.dropdown-sub {
+    padding-left: 14px !important;
     font-size: 0.78rem !important;
     color: var(--color-muted) !important;
 }
 
-.dropdown-grouped a.dropdown-sub::before {
+.dropdown-group-links a.dropdown-sub::before {
     content: "›";
     margin-right: 4px;
     opacity: .5;
@@ -2811,7 +2803,7 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
     /* Grouped dropdown: collapse to single column on mobile */
     .dropdown-grouped {
         display: flex !important;
-        flex-direction: column !important;
+        flex-direction: column;
         grid-template-columns: unset;
         min-width: auto;
         transform: none;
@@ -2827,13 +2819,11 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
     .dropdown-group-label {
         padding: 8px calc(var(--space-md) + 16px) 4px;
         border-bottom: none;
-        font-size: 0.65rem;
-        color: var(--color-muted);
         margin-bottom: 0;
     }
 
-    .dropdown-grouped a,
-    .dropdown-grouped a.dropdown-sub {
+    .dropdown-group-links a,
+    .dropdown-group-links a.dropdown-sub {
         padding-left: calc(var(--space-md) + 24px) !important;
     }
 
