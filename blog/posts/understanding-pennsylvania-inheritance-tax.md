@@ -1,7 +1,7 @@
 ---
 title: "Understanding Pennsylvania Inheritance Tax: Rates, Exemptions, and Planning Strategies"
 description: "Pennsylvania is one of only six states with an inheritance tax. Learn about the current tax rates, exemptions, filing deadlines, and strategies to reduce your family's tax burden."
-date: 2026-02-24
+date: 2026-02-09
 author: "John W. Ament, Esq."
 author_type: "Person"
 author_url: "/attorneys/john-ament/"

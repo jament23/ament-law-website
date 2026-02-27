@@ -1,7 +1,7 @@
 ---
 title: "What to Do When a Parent Dies in Pennsylvania: A Step-by-Step Legal Guide"
 description: "A practical guide for adult children in Western PA who have lost a parent, covering the legal steps from obtaining a death certificate through probate and inheritance tax."
-date: 2026-02-12
+date: 2025-12-01
 tags: ["probate", "estate administration", "executors"]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "5 Things Every Western PA Homebuyer Needs to Know About Title Insurance"
 description: "What Murrysville, Greensburg, and Monroeville homebuyers should know about title insurance before closing on a house in Western Pennsylvania."
-date: 2026-02-18
+date: 2026-01-12
 tags: ["real estate", "title insurance", "homebuyers"]
 ---
 

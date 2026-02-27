@@ -1,7 +1,7 @@
 ---
 title: "Should Your Rental Property Be in an LLC? A Pennsylvania Landlord's Guide"
 description: "Holding rental property in an LLC can protect your personal assets — but it's not always the right move. Here's what Pennsylvania landlords need to consider."
-date: 2026-02-20
+date: 2026-01-26
 author: "John W. Ament, Esq."
 author_type: "Person"
 author_url: "/attorneys/john-ament/"

@@ -1,7 +1,7 @@
 ---
 title: "5 Things to Know Before Transferring a Deed in Pennsylvania"
 description: "Thinking about transferring property to a family member, trust, or LLC? Here are five critical things Pennsylvania property owners need to understand before signing a deed."
-date: 2026-02-25
+date: 2026-02-23
 author: "John W. Ament, Esq."
 author_type: "Person"
 author_url: "/attorneys/john-ament/"

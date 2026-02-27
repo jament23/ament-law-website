@@ -1,7 +1,7 @@
 ---
 title: "Commercial Lease Negotiation: 7 Clauses Pennsylvania Small Businesses Miss"
 description: "Signing a commercial lease in PA? These seven commonly overlooked clauses can cost you thousands. Know what to negotiate before you sign."
-date: 2026-02-15
+date: 2025-12-22
 author: "John W. Ament, Esq."
 author_type: "Person"
 author_url: "/attorneys/john-ament/"
