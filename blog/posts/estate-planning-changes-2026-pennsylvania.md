@@ -1,28 +1,36 @@
 ---
 title: "Estate Planning in Pennsylvania: Changes You Need to Know About in 2026"
-description: "From the federal estate tax exemption sunset to Pennsylvania's unclaimed property rules and small estate thresholds, here's what's changed and why your estate plan may need a review."
+description: "Congress made the elevated federal estate tax exemption permanent at $15 million per person. Here's what that means for Pennsylvania families — plus updates on annual gifting, unclaimed property, and small estate changes."
 date: 2026-03-13
 tags: ["estate-planning", "blog"]
 author: "John W. Ament, Esq."
 ---
 
 <div class="quick-answer">
-<p>Several significant changes have affected estate planning in Pennsylvania over the past two years — including the potential sunset of elevated federal estate tax exemptions, updates to Pennsylvania's unclaimed property law, and ongoing developments around small estate procedures. If you haven't reviewed your estate plan recently, now is the time.</p>
+<p>Congress has acted to make the elevated federal estate and gift tax exemption permanent — and increased it to $15 million per person. For Pennsylvania families, this changes the calculus on gifting strategies, irrevocable trusts, and business succession planning. Here is what you need to know.</p>
 </div>
 
 ## The Federal Estate Tax Exemption: The Biggest Planning Issue of the Decade
 
-The Tax Cuts and Jobs Act of 2017 (TCJA) roughly doubled the federal estate and gift tax exemption — from approximately $5.5 million per person to over $13 million per person. For a married couple, that meant over $27 million could pass free of federal estate tax.
+Congress acted before the scheduled sunset and made the elevated federal estate and gift tax exemption permanent — increasing it to **$15 million per person** (approximately $30 million for a married couple). This removes the uncertainty that had been hanging over estate planning for years and allows families to plan with confidence.
 
-Those elevated exemptions were always scheduled to sunset at the end of 2025, reverting to pre-TCJA levels (approximately $6–7 million per person, adjusted for inflation). Whether Congress acted to extend or permanently change the exemption is a critical factor in your estate plan.
+**What this means for most Pennsylvania families:** The vast majority of estates will never be subject to federal estate tax at a $15 million exemption. For these families, the focus of estate planning remains what it has always been — ensuring assets pass to the right people, minimizing Pennsylvania inheritance tax, avoiding probate complications, and protecting against incapacity.
 
-**Why this matters even for modest estates:** Most Pennsylvania families are not currently subject to federal estate tax at any exemption level. But the sunset affects estate planning strategy in important ways:
+**What this means for higher-net-worth families and business owners:** The permanent elevated exemption is an opportunity to revisit strategies that were designed around uncertainty. Irrevocable trusts, family limited partnerships, and other vehicles created specifically to minimize estate tax exposure should be reviewed to confirm they still serve your goals.
 
-- **Irrevocable trusts and gifting strategies** designed around the elevated exemption may need to be reviewed
-- **Portability elections** — the ability of a surviving spouse to use a deceased spouse's unused exemption — remain important regardless of where the exemption lands
-- **Business owners and farmers** with illiquid assets may face estate tax exposure that wasn't a concern under elevated exemptions
+**Portability remains important:** The ability of a surviving spouse to use a deceased spouse's unused exemption — known as portability — must be elected on a timely-filed estate tax return. Even for estates well below the exemption, the portability election can provide meaningful protection against future changes in the law.
 
-If your estate plan was drafted with the assumption of a $13 million exemption and that assumption has changed, your plan deserves a fresh look.
+## Annual Gift Tax Exclusion: Use It Every Year
+
+The annual gift tax exclusion — the amount you can give to any individual each year without using any of your lifetime exemption — has increased to **$19,000 per person per year** (up from $18,000 in 2024). For a married couple using gift-splitting, that is $38,000 per recipient per year, completely free of gift tax and without touching your lifetime exemption.
+
+Annual gifting is one of the simplest and most effective estate planning strategies available:
+
+- **Parents with multiple children** can transfer significant wealth each year without any tax consequence
+- **Grandparents** can gift to grandchildren directly, or to 529 accounts (with 5-year front-loading up to $95,000 per beneficiary)
+- **Business owners** can begin transferring business interests annually to the next generation
+
+The exclusion resets on January 1 each year — unused exclusion does not carry forward. If gifting is part of your strategy, make sure you are using it consistently.
 
 ## Pennsylvania Inheritance Tax: What Hasn't Changed (And Why That Matters)
 
