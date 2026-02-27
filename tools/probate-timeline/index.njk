@@ -1,0 +1,327 @@
+---
+layout: layouts/base.njk
+title: "Pennsylvania Probate Timeline Estimator | Ament Law Group, P.C."
+description: "Estimate how long probate will take in Pennsylvania based on your estate's specific circumstances. Free screening tool — not legal advice."
+permalink: /tools/probate-timeline/index.html
+---
+
+<style>
+  .timeline-layout { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-xl); align-items: start; }
+  .tool-card-main { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--space-lg); }
+  .tool-card-main h2 { font-size: 1.25rem; margin-bottom: var(--space-sm); margin-top: 0; }
+  .question-block { border-bottom: 1px solid var(--color-border); padding: var(--space-md) 0; }
+  .question-block:last-of-type { border-bottom: none; padding-bottom: 0; }
+  .question-label { font-weight: 600; font-size: 0.95rem; color: var(--color-heading); margin-bottom: 6px; display: block; }
+  .question-hint { font-size: 0.8rem; color: var(--color-muted); margin-bottom: 10px; line-height: 1.55; }
+  .option-group { display: flex; flex-direction: column; gap: 8px; }
+  .option-label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; padding: 10px 14px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: all 0.15s; font-size: 0.9rem; line-height: 1.45; }
+  .option-label:hover { border-color: var(--color-accent); background: var(--color-canvas); }
+  .option-label input { margin-top: 2px; flex-shrink: 0; accent-color: var(--color-accent); width: 16px; height: 16px; }
+  .option-label.selected { border-color: var(--color-accent); background: #f0f4ff; }
+  .result-panel { display: none; margin-top: var(--space-lg); border-top: 2px solid var(--color-accent); padding-top: var(--space-lg); }
+  .result-panel.visible { display: block; }
+  .estimate-headline { font-size: 2.2rem; font-weight: 700; color: var(--color-heading); margin-bottom: 4px; }
+  .estimate-sub { font-size: 0.9rem; color: var(--color-muted); margin-bottom: var(--space-md); }
+  .timeline-bar-wrap { margin: var(--space-md) 0; }
+  .timeline-bar-labels { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--color-muted); margin-bottom: 6px; }
+  .timeline-bar-track { height: 14px; background: var(--color-canvas); border: 1px solid var(--color-border); border-radius: 7px; overflow: hidden; }
+  .timeline-bar-fill { height: 100%; background: linear-gradient(90deg, var(--color-heading), #1a3060); border-radius: 7px; transition: width 0.5s ease; }
+  .timeline-bar-values { display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 600; color: var(--color-heading); margin-top: 6px; }
+  .factors-list { list-style: none; padding: 0; margin: var(--space-sm) 0; }
+  .factors-list li { display: flex; gap: 10px; font-size: 0.88rem; color: var(--color-body); padding: 6px 0; align-items: flex-start; line-height: 1.55; border-bottom: 1px solid var(--color-border); }
+  .factors-list li:last-child { border-bottom: none; }
+  .factor-icon { flex-shrink: 0; }
+  .phase-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: var(--space-md); }
+  .phase-table th { background: var(--color-heading); color: #fff; padding: 9px 13px; text-align: left; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+  .phase-table td { padding: 9px 13px; border-bottom: 1px solid var(--color-border); vertical-align: top; line-height: 1.5; }
+  .phase-table tr:last-child td { border-bottom: none; }
+  .phase-table tr:nth-child(even) td { background: var(--color-canvas); }
+  .result-disclaimer { font-size: 0.78rem; color: var(--color-muted); font-style: italic; margin-top: var(--space-md); padding: var(--space-sm) var(--space-md); background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius-sm); line-height: 1.65; }
+  .reset-btn { background: none; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 8px 18px; font-size: 0.82rem; font-family: var(--font-body); color: var(--color-muted); cursor: pointer; transition: all 0.2s; margin-top: var(--space-sm); }
+  .reset-btn:hover { border-color: var(--color-accent); color: var(--color-heading); }
+  @media (max-width: 900px) { .timeline-layout { grid-template-columns: 1fr; } }
+</style>
+
+<section class="simple-header">
+  <div class="container">
+    <h1>Pennsylvania Probate Timeline Estimator</h1>
+    <p>Answer a few questions about the estate to get a realistic timeframe estimate.</p>
+  </div>
+</section>
+
+<section style="padding: var(--space-xl) 0;">
+  <div class="container">
+    <div class="timeline-layout">
+
+      <div>
+        <div class="tool-card-main">
+          <h2>About the Estate</h2>
+          <p style="font-size:0.9rem; color:var(--color-muted); margin-bottom:var(--space-md);">Select the option that best describes each factor. The estimator adjusts the timeline range based on your answers.</p>
+
+          <div class="question-block">
+            <span class="question-label">1. Is there a will?</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="will" value="yes"> Yes — there is a signed will</label>
+              <label class="option-label"><input type="radio" name="will" value="no"> No will (intestate)</label>
+              <label class="option-label"><input type="radio" name="will" value="contested"> Will may be disputed or contested</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <span class="question-label">2. Does the estate include Pennsylvania real estate titled in the decedent's name alone?</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="realestate" value="none"> No real estate (or it's joint/trust-owned)</label>
+              <label class="option-label"><input type="radio" name="realestate" value="keep"> Yes — heirs will keep it</label>
+              <label class="option-label"><input type="radio" name="realestate" value="sell"> Yes — it needs to be listed and sold</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <span class="question-label">3. Does the estate include a business interest?</span>
+            <span class="question-hint">LLC membership, partnership interest, closely held stock, or sole proprietorship assets.</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="business" value="no"> No business interests</label>
+              <label class="option-label"><input type="radio" name="business" value="yes"> Yes — business interest requiring valuation</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <span class="question-label">4. Are there significant creditor claims or debts?</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="creditors" value="minimal"> Minimal — routine final bills only</label>
+              <label class="option-label"><input type="radio" name="creditors" value="moderate"> Moderate — mortgage, medical bills, personal loans</label>
+              <label class="option-label"><input type="radio" name="creditors" value="significant"> Significant — large debts or Medicaid estate recovery likely</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <span class="question-label">5. Are the heirs cooperative and easy to reach?</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="heirs" value="cooperative"> Yes — no disputes and all heirs are accessible</label>
+              <label class="option-label"><input type="radio" name="heirs" value="distant"> Some heirs are out of state or hard to reach</label>
+              <label class="option-label"><input type="radio" name="heirs" value="disputed"> Disputes among heirs are likely</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <span class="question-label">6. Where does the executor live?</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="executor" value="local"> In Pennsylvania</label>
+              <label class="option-label"><input type="radio" name="executor" value="outofstate"> Out of state</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <span class="question-label">7. Which county is the estate in?</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="county" value="westmoreland"> Westmoreland County</label>
+              <label class="option-label"><input type="radio" name="county" value="allegheny"> Allegheny County</label>
+              <label class="option-label"><input type="radio" name="county" value="other"> Other Western PA county</label>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="result-panel" id="result-panel">
+            <div class="estimate-headline" id="est-headline"></div>
+            <div class="estimate-sub" id="est-sub"></div>
+
+            <div class="timeline-bar-wrap">
+              <div class="timeline-bar-labels"><span>Faster estates</span><span>Complex estates</span></div>
+              <div class="timeline-bar-track"><div class="timeline-bar-fill" id="bar-fill" style="width:0%"></div></div>
+              <div class="timeline-bar-values"><span id="bar-min"></span><span id="bar-max"></span></div>
+            </div>
+
+            <h3 style="font-size:0.95rem; margin: var(--space-md) 0 10px;">Factors affecting this estimate</h3>
+            <ul class="factors-list" id="factors-list"></ul>
+
+            <h3 style="font-size:0.95rem; margin: var(--space-md) 0 10px;">Typical Phase Breakdown</h3>
+            <table class="phase-table">
+              <thead><tr><th>Phase</th><th>Typical Duration</th></tr></thead>
+              <tbody id="phase-tbody"></tbody>
+            </table>
+
+            <div class="result-disclaimer">
+              <strong>Estimate only — not legal advice.</strong> Actual probate timelines vary based on court scheduling, asset complexity, family circumstances, and factors specific to each estate. Pennsylvania inheritance tax deadlines run from the date of death regardless of when the estate is opened (9-month due date; 5% discount if paid within 3 months). This tool does not create an attorney-client relationship. Consult a licensed Pennsylvania attorney before making any legal decisions.
+            </div>
+
+            <div style="margin-top:var(--space-md); padding:var(--space-md); background:var(--color-canvas); border:1px solid var(--color-border); border-radius:var(--radius);">
+              <strong style="display:block; margin-bottom:6px;">Want to review this with an attorney?</strong>
+              <p style="font-size:0.88rem; color:var(--color-muted); margin-bottom:var(--space-sm);">We'll walk through your specific situation and give you a realistic plan — free, no obligation.</p>
+              <a href="/contact/" class="cta-button" style="display:inline-block;">Schedule Free Consultation</a>
+            </div>
+
+            <button class="reset-btn" id="reset-btn">Start Over</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="practice-area-sidebar">
+        <div class="sidebar-widget">
+          <h4>Key PA Deadlines</h4>
+          <ul class="sidebar-links">
+            <li><strong>3 months from death:</strong> Pay inheritance tax now to receive 5% discount</li>
+            <li><strong>9 months from death:</strong> Inheritance tax return (REV-1500) due</li>
+            <li><strong>No hard deadline</strong> to open the estate — but delays create problems</li>
+          </ul>
+        </div>
+        <div class="sidebar-widget contact-widget">
+          <h4>Need a Real Answer?</h4>
+          <p>This tool gives you a ballpark. We give you a plan.</p>
+          <p class="sidebar-phone"><a href="tel:724-733-3500">(724) 733-3500</a></p>
+          <a href="/contact/" class="cta-button-light">Free Consultation</a>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Related Tools</h4>
+          <ul class="sidebar-links">
+            <li><a href="/tools/inheritance-tax-calculator/">Inheritance Tax Calculator</a></li>
+            <li><a href="/tools/small-estate-checker/">Small Estate Eligibility Checker</a></li>
+            <li><a href="/tools/assessment-appeal/">Assessment Appeal Analyzer</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Related Pages</h4>
+          <ul class="sidebar-links">
+            <li><a href="/practice-areas/probate-administration/">Probate Administration</a></li>
+            <li><a href="/practice-areas/probate/westmoreland-county/">Westmoreland County Probate</a></li>
+            <li><a href="/practice-areas/probate/allegheny-county/">Allegheny County Probate</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  document.querySelectorAll('.option-label input').forEach(function (inp) {
+    inp.addEventListener('change', function () {
+      document.querySelectorAll('input[name="' + inp.name + '"]').forEach(function (i) {
+        i.closest('.option-label').classList.toggle('selected', i.checked);
+      });
+      tryCalc();
+    });
+  });
+
+  function val(name) { var e = document.querySelector('input[name="' + name + '"]:checked'); return e ? e.value : null; }
+  function ready() { return ['will','realestate','business','creditors','heirs','executor','county'].every(function(n){return val(n);}); }
+
+  function tryCalc() {
+    if (!ready()) return;
+
+    var will       = val('will');
+    var realestate = val('realestate');
+    var business   = val('business');
+    var creditors  = val('creditors');
+    var heirs      = val('heirs');
+    var executor   = val('executor');
+    var county     = val('county');
+
+    var min = 6, max = 12;
+    var factors = [];
+    var phases = [
+      ['Open estate &amp; qualify personal representative', '2–6 weeks'],
+      ['Publish creditor notice', '1 month (mandatory notice period)'],
+      ['Inventory &amp; appraisals', '1–3 months'],
+      ['Inheritance tax return &amp; payment', 'Due 9 months from date of death'],
+      ['Family settlement agreement or formal audit', '1–3 months'],
+      ['Final distribution &amp; close estate', '2–6 weeks after settlement']
+    ];
+
+    if (will === 'no') {
+      min += 1; max += 2;
+      factors.push(['⚠️', 'Intestate estates require administrator appointment — adds steps compared to a named executor.']);
+    } else if (will === 'contested') {
+      min += 6; max += 24;
+      factors.push(['🔴', 'Will contests can extend probate significantly — contested matters often take 1–3 years to resolve.']);
+      phases.splice(1, 0, ['Will contest litigation', '6 months – 3 years']);
+    }
+
+    if (realestate === 'sell') {
+      min += 2; max += 6;
+      factors.push(['🏠', 'Selling estate real estate adds time for listing, negotiation, and settlement — typically 2–6 months.']);
+      phases.splice(2, 0, ['List &amp; sell real estate', '2–6 months']);
+    } else if (realestate === 'keep') {
+      min += 1; max += 2;
+      factors.push(['🏠', 'Transferring real estate to heirs requires deed preparation and county recording.']);
+    }
+
+    if (business === 'yes') {
+      min += 2; max += 6;
+      factors.push(['📊', 'Business interests typically require a formal appraisal or valuation — adds 2–6 months.']);
+      phases.splice(3, 0, ['Business interest valuation', '2–6 months']);
+    }
+
+    if (creditors === 'moderate') {
+      min += 1; max += 2;
+      factors.push(['💳', 'Moderate debts extend administration while claims are resolved and paid.']);
+    } else if (creditors === 'significant') {
+      min += 3; max += 8;
+      factors.push(['🔴', 'Significant debts or Medicaid estate recovery claims can substantially delay final distribution.']);
+    }
+
+    if (heirs === 'distant') {
+      min += 1; max += 2;
+      factors.push(['📬', 'Out-of-state or hard-to-reach heirs slow document collection and approvals.']);
+    } else if (heirs === 'disputed') {
+      min += 4; max += 12;
+      factors.push(['🔴', 'Heir disputes significantly delay distribution and may require formal court involvement.']);
+    }
+
+    if (executor === 'outofstate') {
+      min += 1; max += 2;
+      factors.push(['✈️', 'Out-of-state executors typically require a PA resident co-executor or surety bond — adds steps at opening.']);
+    }
+
+    if (county === 'allegheny') {
+      factors.push(['ℹ️', 'Allegheny County: formal audits through the Orphans\' Court can add 3–6 months on complex or disputed estates.']);
+    } else if (county === 'westmoreland') {
+      factors.push(['ℹ️', 'Westmoreland County: most uncontested estates move efficiently through the Register of Wills.']);
+    }
+
+    if (factors.length === 0) {
+      factors.push(['✅', 'No significant complicating factors identified — good conditions for an efficient administration.']);
+    }
+
+    var headline = min + '–' + max + (max >= 24 ? '+' : '') + ' months';
+    var sub = max <= 10 ? 'Relatively straightforward — favorable conditions for an efficient probate.'
+            : max <= 18 ? 'Moderate complexity — plan for the longer end if any complications arise.'
+            : 'Complex estate — multiple factors that can meaningfully extend the timeline.';
+
+    document.getElementById('est-headline').textContent = headline;
+    document.getElementById('est-sub').textContent = sub;
+
+    var pct = Math.min(98, Math.round(((min + max) / 2) / 36 * 100));
+    document.getElementById('bar-fill').style.width = pct + '%';
+    document.getElementById('bar-min').textContent = min + ' months';
+    document.getElementById('bar-max').textContent = max + '+ months';
+
+    var fl = document.getElementById('factors-list');
+    fl.innerHTML = '';
+    factors.forEach(function (f) {
+      var li = document.createElement('li');
+      li.innerHTML = '<span class="factor-icon">' + f[0] + '</span><span>' + f[1] + '</span>';
+      fl.appendChild(li);
+    });
+
+    var pb = document.getElementById('phase-tbody');
+    pb.innerHTML = '';
+    phases.forEach(function (p) {
+      pb.innerHTML += '<tr><td>' + p[0] + '</td><td style="color:var(--color-muted);white-space:nowrap;">' + p[1] + '</td></tr>';
+    });
+
+    var panel = document.getElementById('result-panel');
+    panel.classList.add('visible');
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  document.getElementById('reset-btn').addEventListener('click', function () {
+    document.querySelectorAll('.option-label input').forEach(function (i) {
+      i.checked = false;
+      i.closest('.option-label').classList.remove('selected');
+    });
+    document.getElementById('result-panel').classList.remove('visible');
+  });
+})();
+</script>

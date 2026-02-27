@@ -1,0 +1,283 @@
+---
+layout: layouts/base.njk
+title: "Pennsylvania Small Estate Eligibility Checker | Ament Law Group, P.C."
+description: "Screen whether a Pennsylvania estate may qualify for simplified procedures — Voluntary Administration, family exemption, or direct payment. Free tool — not legal advice."
+permalink: /tools/small-estate-checker/index.html
+---
+
+<style>
+  .checker-layout { display: grid; grid-template-columns: 1fr 320px; gap: var(--space-xl); align-items: start; }
+  .tool-card-main { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--space-lg); }
+  .tool-card-main h2 { font-size: 1.25rem; margin-bottom: var(--space-sm); margin-top: 0; }
+  .question-block { border-bottom: 1px solid var(--color-border); padding: var(--space-md) 0; }
+  .question-block:last-of-type { border-bottom: none; padding-bottom: 0; }
+  .question-label { font-weight: 600; font-size: 0.95rem; color: var(--color-heading); margin-bottom: 6px; display: block; }
+  .question-hint { font-size: 0.8rem; color: var(--color-muted); margin-bottom: 10px; line-height: 1.55; }
+  .option-group { display: flex; flex-direction: column; gap: 8px; }
+  .option-label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; padding: 10px 14px; border: 1px solid var(--color-border); border-radius: var(--radius-sm); transition: all 0.15s; font-size: 0.9rem; line-height: 1.45; }
+  .option-label:hover { border-color: var(--color-accent); background: var(--color-canvas); }
+  .option-label input { margin-top: 2px; flex-shrink: 0; accent-color: var(--color-accent); width: 16px; height: 16px; }
+  .option-label.selected { border-color: var(--color-accent); background: #f0f4ff; }
+  .result-panel { display: none; margin-top: var(--space-lg); border-top: 2px solid var(--color-border); padding-top: var(--space-lg); }
+  .result-panel.visible { display: block; }
+  .result-badge { display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 30px; font-weight: 700; font-size: 1rem; margin-bottom: var(--space-md); }
+  .badge-likely   { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+  .badge-maybe    { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+  .badge-unlikely { background: #fef2f2; color: #991b1b; border: 1px solid #fecaca; }
+  .result-headline { font-size: 1.3rem; font-weight: 700; color: var(--color-heading); margin-bottom: 10px; }
+  .result-body { font-size: 0.92rem; color: var(--color-body); line-height: 1.7; margin-bottom: var(--space-md); }
+  .option-box { background: var(--color-canvas); border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--space-md); margin-bottom: var(--space-sm); }
+  .option-box.highlight { border-color: var(--color-accent); background: #f0f4ff; }
+  .option-box h4 { font-size: 0.9rem; color: var(--color-heading); margin: 0 0 5px; }
+  .option-box p { font-size: 0.85rem; color: var(--color-body); margin: 0; line-height: 1.6; }
+  .result-disclaimer { font-size: 0.78rem; color: var(--color-muted); font-style: italic; margin-top: var(--space-md); padding: var(--space-sm) var(--space-md); background: #fffbeb; border: 1px solid #fde68a; border-radius: var(--radius-sm); line-height: 1.65; }
+  .reset-btn { background: none; border: 1px solid var(--color-border); border-radius: var(--radius-sm); padding: 8px 18px; font-size: 0.82rem; font-family: var(--font-body); color: var(--color-muted); cursor: pointer; transition: all 0.2s; margin-top: var(--space-sm); }
+  .reset-btn:hover { border-color: var(--color-accent); color: var(--color-heading); }
+  @media (max-width: 900px) { .checker-layout { grid-template-columns: 1fr; } }
+</style>
+
+<section class="simple-header">
+  <div class="container">
+    <h1>Pennsylvania Small Estate Eligibility Checker</h1>
+    <p>A quick screening tool to assess whether simplified estate procedures may apply.</p>
+  </div>
+</section>
+
+<section style="padding: var(--space-xl) 0;">
+  <div class="container">
+    <div class="checker-layout">
+
+      <div>
+        <div class="tool-card-main">
+          <h2>Tell Us About the Estate</h2>
+          <p style="font-size:0.9rem; color:var(--color-muted); margin-bottom:var(--space-md);">Pennsylvania has several simplified procedures for smaller or simpler estates. Answer these questions to see which, if any, may apply.</p>
+
+          <div class="question-block">
+            <span class="question-label">1. Approximate value of assets titled solely in the decedent's name</span>
+            <span class="question-hint">Include bank accounts, brokerage accounts, vehicles, and personal property in the decedent's name only. Do not include joint accounts, accounts with named beneficiaries (POD/TOD), IRAs, or real estate.</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="assets" value="under25k"> Under $25,000</label>
+              <label class="option-label"><input type="radio" name="assets" value="25to50k"> $25,000 – $50,000</label>
+              <label class="option-label"><input type="radio" name="assets" value="over50k"> Over $50,000</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <span class="question-label">2. Does the estate include Pennsylvania real estate titled in the decedent's name alone?</span>
+            <span class="question-hint">Joint tenancy, tenancy by the entireties, and trust-owned real estate generally pass outside probate.</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="realestate" value="no"> No — no solely-owned PA real estate</label>
+              <label class="option-label"><input type="radio" name="realestate" value="yes"> Yes — real estate in the decedent's name alone</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <span class="question-label">3. Did the decedent have a surviving spouse?</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="spouse" value="yes"> Yes</label>
+              <label class="option-label"><input type="radio" name="spouse" value="no"> No</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <span class="question-label">4. Who are the primary heirs or beneficiaries?</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="heirs" value="adult_family"> Surviving spouse and/or adult children only</label>
+              <label class="option-label"><input type="radio" name="heirs" value="mixed"> Mix of family members — some may be minors</label>
+              <label class="option-label"><input type="radio" name="heirs" value="other"> Non-family beneficiaries, charities, or significant creditors</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <span class="question-label">5. Are there significant outstanding debts or known creditor claims?</span>
+            <span class="question-hint">Include medical bills, personal loans, credit cards, or potential Medicaid estate recovery claims.</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="debts" value="no"> No — debts are minimal</label>
+              <label class="option-label"><input type="radio" name="debts" value="yes"> Yes — there are significant debts or claims</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <span class="question-label">6. Is the will being challenged, or are family disputes likely?</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="disputes" value="no"> No — no disputes anticipated</label>
+              <label class="option-label"><input type="radio" name="disputes" value="yes"> Yes — there may be a will contest or heir disputes</label>
+            </div>
+          </div>
+
+          <div class="question-block">
+            <span class="question-label">7. Are there bank or financial accounts with no named beneficiary and no joint owner?</span>
+            <div class="option-group">
+              <label class="option-label"><input type="radio" name="accounts" value="no"> No — all accounts have beneficiaries or joint owners</label>
+              <label class="option-label"><input type="radio" name="accounts" value="yes"> Yes — there are sole accounts that need to be accessed</label>
+            </div>
+          </div>
+
+          <!-- Result -->
+          <div class="result-panel" id="result-panel">
+            <div class="result-badge" id="result-badge"></div>
+            <div class="result-headline" id="result-headline"></div>
+            <div class="result-body" id="result-body"></div>
+            <div id="options-div"></div>
+
+            <div style="margin-top:var(--space-md); padding:var(--space-md); background:var(--color-canvas); border:1px solid var(--color-border); border-radius:var(--radius);">
+              <strong style="display:block; margin-bottom:6px;">Get a definitive answer — free</strong>
+              <p style="font-size:0.88rem; color:var(--color-muted); margin-bottom:var(--space-sm);">This tool screens for eligibility but cannot replace a review of the actual assets and documents. We'll confirm which path is available in a brief consultation — no obligation.</p>
+              <a href="/contact/" class="cta-button" style="display:inline-block;">Schedule Free Consultation</a>
+            </div>
+
+            <div class="result-disclaimer">
+              <strong>Important — not legal advice.</strong> This tool provides a general eligibility screening only. Pennsylvania's simplified estate procedures depend on specific statutory thresholds, asset classifications, and county court practice that vary by jurisdiction. The thresholds described reflect Pennsylvania law as generally understood and may not reflect recent amendments or county-specific procedures. Do not rely on this tool to make legal or financial decisions. Consult a licensed Pennsylvania attorney.
+            </div>
+
+            <button class="reset-btn" id="reset-btn">Start Over</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="practice-area-sidebar">
+        <div class="sidebar-widget">
+          <h4>PA Simplified Procedures</h4>
+          <ul class="sidebar-links">
+            <li><strong>Voluntary Administration</strong> — estates under $50,000 with no real estate (20 Pa. C.S. § 3101)</li>
+            <li><strong>Family Exemption</strong> — up to $3,500 in personal property to spouse or children, priority over creditors</li>
+            <li><strong>Direct Payment</strong> — many PA financial institutions release accounts under $10,000 with proper documentation</li>
+          </ul>
+        </div>
+        <div class="sidebar-widget contact-widget">
+          <h4>Not Sure Which Applies?</h4>
+          <p>We assess eligibility in every initial consultation at no charge.</p>
+          <p class="sidebar-phone"><a href="tel:724-733-3500">(724) 733-3500</a></p>
+          <a href="/contact/" class="cta-button-light">Free Consultation</a>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Related Tools</h4>
+          <ul class="sidebar-links">
+            <li><a href="/tools/inheritance-tax-calculator/">Inheritance Tax Calculator</a></li>
+            <li><a href="/tools/probate-timeline/">Probate Timeline Estimator</a></li>
+            <li><a href="/tools/assessment-appeal/">Assessment Appeal Analyzer</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Related Pages</h4>
+          <ul class="sidebar-links">
+            <li><a href="/practice-areas/probate-administration/">Probate Administration</a></li>
+            <li><a href="/practice-areas/probate/westmoreland-county/">Westmoreland County Probate</a></li>
+            <li><a href="/practice-areas/probate/allegheny-county/">Allegheny County Probate</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  document.querySelectorAll('.option-label input').forEach(function (inp) {
+    inp.addEventListener('change', function () {
+      document.querySelectorAll('input[name="' + inp.name + '"]').forEach(function (i) {
+        i.closest('.option-label').classList.toggle('selected', i.checked);
+      });
+      tryCalc();
+    });
+  });
+
+  function val(name) { var e = document.querySelector('input[name="' + name + '"]:checked'); return e ? e.value : null; }
+  function ready() { return ['assets','realestate','spouse','heirs','debts','disputes','accounts'].every(function(n){return val(n);}); }
+
+  function box(title, body, highlight) {
+    return '<div class="option-box' + (highlight ? ' highlight' : '') + '"><h4>' + title + '</h4><p>' + body + '</p></div>';
+  }
+
+  function tryCalc() {
+    if (!ready()) return;
+
+    var assets    = val('assets');
+    var realestate= val('realestate');
+    var spouse    = val('spouse');
+    var heirs     = val('heirs');
+    var debts     = val('debts');
+    var disputes  = val('disputes');
+    var accounts  = val('accounts');
+
+    var badgeClass, badgeText, headline, bodyText, optionsHTML = '';
+
+    var hasRE      = realestate === 'yes';
+    var hasDispute = disputes === 'yes';
+    var hasDebts   = debts === 'yes';
+    var smallAssets= assets === 'under25k';
+    var medAssets  = assets === '25to50k';
+    var minors     = heirs === 'mixed';
+
+    if (hasDispute) {
+      badgeClass = 'badge-unlikely';
+      badgeText  = '❌ Full Probate Recommended';
+      headline   = 'Disputes require formal court oversight';
+      bodyText   = 'Where the will or distribution is contested, formal estate administration provides the court supervision necessary to protect all parties. Simplified procedures are not designed for contested matters and courts will typically require full administration.';
+      optionsHTML = '<h3 style="font-size:0.95rem;margin-bottom:10px;">What this means</h3>'
+        + box('Formal Estate Administration', 'Petition for letters testamentary or administration, creditor notice period, inventory, inheritance tax return, and family settlement or audit before distribution.', false);
+    } else if (hasRE) {
+      badgeClass = 'badge-unlikely';
+      badgeText  = '📋 Full Probate Likely Required';
+      headline   = 'Real estate typically requires formal administration';
+      bodyText   = 'Pennsylvania real estate titled in the decedent\'s name alone generally requires a formal probate proceeding to transfer title — simplified procedures do not cover real property. The non-real estate assets may still qualify for streamlined handling depending on their value.';
+      optionsHTML = '<h3 style="font-size:0.95rem;margin-bottom:10px;">What may still apply</h3>'
+        + box('Family Exemption', 'The surviving spouse or minor children may claim up to $3,500 in personal property as a priority claim — regardless of estate size or whether probate is required.', false)
+        + (accounts === 'yes' && !hasDebts ? box('Direct Payment (non-real-estate assets)', 'Many PA financial institutions will release accounts under $10,000 directly to heirs or the spouse with proper documentation and an affidavit — no court filing required. Ask each institution about their procedure.', false) : '');
+    } else if (hasDebts && !smallAssets) {
+      badgeClass = 'badge-maybe';
+      badgeText  = '⚠️ Simplified Procedures May Be Limited';
+      headline   = 'Significant debts complicate simplified administration';
+      bodyText   = 'Voluntary Administration and other simplified procedures still require payment of valid creditor claims. With significant debts, formal administration may provide better protection for the personal representative and ensure creditors are handled in the correct order of priority.';
+      optionsHTML = '<h3 style="font-size:0.95rem;margin-bottom:10px;">Options to explore</h3>'
+        + box('Voluntary Administration (if assets under $50K)', 'May still be available — but the personal representative remains liable for correct creditor distribution. An attorney review is strongly advisable.', false)
+        + box('Family Exemption', 'Up to $3,500 in personal property may be claimed by the surviving spouse or minor children as a priority exemption before general creditors.', false);
+    } else if (smallAssets && !minors) {
+      badgeClass = 'badge-likely';
+      badgeText  = '✅ Simplified Procedures Likely Available';
+      headline   = 'This estate has strong characteristics for Voluntary Administration';
+      bodyText   = 'Based on your answers, this estate appears to be a good candidate for Pennsylvania\'s simplified Voluntary Administration procedure — a streamlined process that avoids the formal appointment of a personal representative. Eligibility requires no real estate and probate assets under $50,000.';
+      optionsHTML = '<h3 style="font-size:0.95rem;margin-bottom:10px;">Procedures likely available</h3>'
+        + box('Voluntary Administration (20 Pa. C.S. § 3101)', 'For estates under $50,000 with no real estate. An authorized person files a simplified petition with the Register of Wills — no formal letters testamentary required. Creditors must still be paid from the estate.', true)
+        + box('Family Exemption', 'The surviving spouse or minor children may claim up to $3,500 in personal property as a priority claim before distribution to other beneficiaries.', false)
+        + (accounts === 'yes' ? box('Direct Payment from Financial Institutions', 'Many PA financial institutions will release accounts under $10,000 directly to heirs with an affidavit of entitlement — worth checking with each institution before filing anything.', false) : '');
+    } else if (medAssets && !minors) {
+      badgeClass = 'badge-maybe';
+      badgeText  = '🟡 May Qualify — Verification Needed';
+      headline   = 'Simplified administration may be available';
+      bodyText   = 'This estate is near the $50,000 threshold for Voluntary Administration. Eligibility depends on a precise inventory of assets that are actually subject to probate — accounts with beneficiaries, joint accounts, and IRAs/401(k)s do not count toward the threshold.';
+      optionsHTML = '<h3 style="font-size:0.95rem;margin-bottom:10px;">Procedures to explore</h3>'
+        + box('Voluntary Administration', 'Available if total probate assets (excluding beneficiary-designated accounts and real estate) are confirmed under $50,000. A precise inventory is needed to confirm eligibility.', false)
+        + box('Family Exemption', 'Up to $3,500 in personal property for surviving spouse or minor children — available regardless of which procedure is used.', false);
+    } else {
+      badgeClass = 'badge-unlikely';
+      badgeText  = '📋 Full Administration Likely Required';
+      headline   = 'Standard probate administration is likely needed';
+      bodyText   = 'Based on your answers — asset size, beneficiary complexity, or other factors — this estate likely requires standard estate administration through the Register of Wills. This involves formal appointment of a personal representative, creditor notification, an inventory, inheritance tax return, and a family settlement agreement or court audit before distribution.';
+      optionsHTML = '<h3 style="font-size:0.95rem;margin-bottom:10px;">What this involves</h3>'
+        + box('Formal Estate Administration', 'Appointment of personal representative, 1-month creditor notice period, asset inventory and appraisals, inheritance tax return (REV-1500), and family settlement or Orphans\' Court audit before final distribution.', false)
+        + (spouse === 'yes' ? box('Family Exemption', 'Surviving spouse may still claim up to $3,500 in personal property as a priority exemption before other distributions.', false) : '');
+    }
+
+    document.getElementById('result-badge').innerHTML = badgeText;
+    document.getElementById('result-badge').className = 'result-badge ' + badgeClass;
+    document.getElementById('result-headline').textContent = headline;
+    document.getElementById('result-body').textContent = bodyText;
+    document.getElementById('options-div').innerHTML = optionsHTML;
+
+    var panel = document.getElementById('result-panel');
+    panel.classList.add('visible');
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  document.getElementById('reset-btn').addEventListener('click', function () {
+    document.querySelectorAll('.option-label input').forEach(function (i) {
+      i.checked = false;
+      i.closest('.option-label').classList.remove('selected');
+    });
+    document.getElementById('result-panel').classList.remove('visible');
+  });
+})();
+</script>

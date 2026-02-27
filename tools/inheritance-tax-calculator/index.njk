@@ -1,0 +1,491 @@
+---
+layout: layouts/base.njk
+title: "Pennsylvania Inheritance Tax Calculator | Ament Law Group, P.C."
+description: "Estimate Pennsylvania inheritance tax for your estate. Instant calculations by beneficiary relationship — spouse, children, siblings, and others. Free tool from Ament Law Group."
+permalink: /tools/inheritance-tax-calculator/index.html
+og_image: https://www.ament.law/images/og-default.png
+---
+
+{% block head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Pennsylvania Inheritance Tax Calculator",
+  "description": "Estimate Pennsylvania inheritance tax by beneficiary relationship. Provided by Ament Law Group, P.C.",
+  "url": "https://www.ament.law/tools/inheritance-tax-calculator/",
+  "applicationCategory": "FinanceApplication",
+  "provider": {
+    "@type": "LegalService",
+    "name": "Ament Law Group, P.C.",
+    "url": "https://www.ament.law/"
+  }
+}
+</script>
+
+<style>
+  /* ── Calculator page styles ── */
+  .calc-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  /* Hero override for tool pages */
+  .tool-header {
+    background: linear-gradient(160deg, #0a1530 0%, #0f1d40 40%, #162550 100%);
+    color: #fff;
+    padding: var(--space-xl) 0 var(--space-lg);
+    text-align: center;
+  }
+  .tool-header h1 { color: #fff; margin-bottom: var(--space-xs); }
+  .tool-header p { color: rgba(255,255,255,0.72); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+
+  /* Rate table */
+  .rate-table-compact {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+    margin-bottom: var(--space-md);
+  }
+  .rate-table-compact th {
+    background: var(--color-heading);
+    color: #fff;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+  .rate-table-compact td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--color-border);
+    vertical-align: middle;
+  }
+  .rate-table-compact tr:last-child td { border-bottom: none; }
+  .rate-table-compact tr:nth-child(even) td { background: var(--color-canvas); }
+  .rate-pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.82rem;
+  }
+  .rate-0   { background: #dcfce7; color: #166534; }
+  .rate-4   { background: #eff6ff; color: #1e40af; }
+  .rate-12  { background: #fef3c7; color: #92400e; }
+  .rate-15  { background: #fef2f2; color: #991b1b; }
+
+  /* Calculator card */
+  .calc-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+  }
+
+  .calc-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-md);
+    margin-top: 0;
+  }
+
+  /* Beneficiary rows */
+  .beneficiary-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .beneficiary-row {
+    display: grid;
+    grid-template-columns: 1fr 180px 100px;
+    gap: var(--space-sm);
+    align-items: center;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .beneficiary-row:first-child { border-top: 1px solid var(--color-border); }
+
+  .beneficiary-label {
+    font-weight: 500;
+    font-size: 0.92rem;
+    color: var(--color-heading);
+  }
+  .beneficiary-label span {
+    display: block;
+    font-weight: 400;
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    margin-top: 2px;
+  }
+
+  .calc-input {
+    width: 100%;
+    padding: 10px 13px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.92rem;
+    font-family: var(--font-body);
+    background: var(--color-surface);
+    transition: border-color var(--transition);
+    text-align: right;
+  }
+  .calc-input:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+    border-color: var(--color-accent);
+  }
+
+  .row-tax {
+    text-align: right;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--color-heading);
+    min-width: 90px;
+  }
+
+  /* Totals */
+  .calc-totals {
+    background: var(--color-canvas);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    margin-top: var(--space-md);
+  }
+
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 0.92rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .total-row:last-child { border-bottom: none; }
+  .total-row.highlight {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-heading);
+    padding-top: 12px;
+    margin-top: 4px;
+  }
+  .total-row.discount {
+    color: #166534;
+    font-weight: 600;
+  }
+  .total-label { color: var(--color-body); }
+  .total-value { font-weight: 600; color: var(--color-heading); font-variant-numeric: tabular-nums; }
+  .total-row.highlight .total-value { font-size: 1.3rem; }
+  .total-row.discount .total-value { color: #166534; }
+
+  /* Add beneficiary btn */
+  .add-row-btn {
+    background: none;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 9px var(--space-md);
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    color: var(--color-muted);
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: all var(--transition);
+    margin-bottom: var(--space-md);
+  }
+  .add-row-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  /* Reset */
+  .calc-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+  }
+
+  .reset-btn {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 8px 16px;
+    font-size: 0.82rem;
+    font-family: var(--font-body);
+    color: var(--color-muted);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+  .reset-btn:hover { border-color: var(--color-accent); color: var(--color-heading); }
+
+  /* Disclaimer */
+  .calc-disclaimer {
+    font-size: 0.78rem;
+    color: var(--color-muted);
+    font-style: italic;
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+    line-height: 1.55;
+  }
+
+  /* Responsive */
+  @media (max-width: 992px) {
+    .calc-layout { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .beneficiary-row { grid-template-columns: 1fr 1fr; }
+    .beneficiary-row .row-tax { grid-column: 2; text-align: right; }
+    .beneficiary-row .beneficiary-label { grid-column: 1 / -1; }
+  }
+</style>
+{% endblock %}
+
+<div class="tool-header">
+  <div class="container">
+    <h1>Pennsylvania Inheritance Tax Calculator</h1>
+    <p>Estimate the inheritance tax on an estate based on beneficiary relationships. Instant results — no email required.</p>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="calc-layout">
+
+      <!-- Main calculator -->
+      <div>
+        <div class="calc-card">
+          <h2>Estimate Your Inheritance Tax</h2>
+          <p style="font-size:0.92rem; color:var(--color-muted); margin-bottom:var(--space-md);">Enter the estimated value of assets passing to each type of beneficiary. The calculator applies Pennsylvania's current inheritance tax rates automatically.</p>
+
+          <div class="beneficiary-rows" id="beneficiaryRows">
+
+            <div class="beneficiary-row" data-rate="0">
+              <div class="beneficiary-label">
+                Surviving Spouse
+                <span>0% — no tax</span>
+              </div>
+              <input type="text" class="calc-input asset-input" placeholder="$0" inputmode="numeric" aria-label="Assets to surviving spouse">
+              <div class="row-tax">—</div>
+            </div>
+
+            <div class="beneficiary-row" data-rate="0.045">
+              <div class="beneficiary-label">
+                Children &amp; Grandchildren
+                <span>4.5% rate</span>
+              </div>
+              <input type="text" class="calc-input asset-input" placeholder="$0" inputmode="numeric" aria-label="Assets to children and grandchildren">
+              <div class="row-tax">$0</div>
+            </div>
+
+            <div class="beneficiary-row" data-rate="0.045">
+              <div class="beneficiary-label">
+                Parents
+                <span>4.5% rate</span>
+              </div>
+              <input type="text" class="calc-input asset-input" placeholder="$0" inputmode="numeric" aria-label="Assets to parents">
+              <div class="row-tax">$0</div>
+            </div>
+
+            <div class="beneficiary-row" data-rate="0.12">
+              <div class="beneficiary-label">
+                Siblings
+                <span>12% rate</span>
+              </div>
+              <input type="text" class="calc-input asset-input" placeholder="$0" inputmode="numeric" aria-label="Assets to siblings">
+              <div class="row-tax">$0</div>
+            </div>
+
+            <div class="beneficiary-row" data-rate="0.15">
+              <div class="beneficiary-label">
+                All Other Individuals
+                <span>15% rate</span>
+              </div>
+              <input type="text" class="calc-input asset-input" placeholder="$0" inputmode="numeric" aria-label="Assets to other individuals">
+              <div class="row-tax">$0</div>
+            </div>
+
+          </div>
+
+          <!-- Totals -->
+          <div class="calc-totals">
+            <div class="total-row">
+              <span class="total-label">Total Estate Value</span>
+              <span class="total-value" id="totalAssets">$0</span>
+            </div>
+            <div class="total-row highlight">
+              <span class="total-label">Estimated Tax Due</span>
+              <span class="total-value" id="totalTax">$0</span>
+            </div>
+            <div class="total-row discount">
+              <span class="total-label">If paid within 3 months (5% discount)</span>
+              <span class="total-value" id="discountedTax">$0</span>
+            </div>
+            <div class="total-row">
+              <span class="total-label">Discount savings</span>
+              <span class="total-value" id="discountSavings" style="color:#166534;">$0</span>
+            </div>
+          </div>
+
+          <div class="calc-actions">
+            <button class="reset-btn" id="resetBtn">Reset</button>
+          </div>
+
+          <p class="calc-disclaimer">This calculator provides estimates only and does not constitute legal or tax advice. Actual inheritance tax liability depends on asset classifications, exemptions, deductions, and other factors specific to each estate. Pennsylvania inheritance tax is governed by 72 P.S. § 9101 et seq. Consult an attorney before making tax or estate planning decisions.</p>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="practice-area-sidebar">
+
+        <div class="sidebar-widget">
+          <h4>Pennsylvania Tax Rates</h4>
+          <table class="rate-table-compact">
+            <thead>
+              <tr><th>Beneficiary</th><th>Rate</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Surviving spouse</td><td><span class="rate-pill rate-0">0%</span></td></tr>
+              <tr><td>Children / grandchildren</td><td><span class="rate-pill rate-4">4.5%</span></td></tr>
+              <tr><td>Parents</td><td><span class="rate-pill rate-4">4.5%</span></td></tr>
+              <tr><td>Siblings</td><td><span class="rate-pill rate-12">12%</span></td></tr>
+              <tr><td>All others</td><td><span class="rate-pill rate-15">15%</span></td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.78rem; color:var(--color-muted); line-height:1.5;">Tax is due within <strong>9 months</strong> of the date of death. A <strong>5% discount</strong> applies to amounts paid within 3 months.</p>
+        </div>
+
+        <div class="sidebar-widget contact-widget">
+          <h4>Review Your Estimate</h4>
+          <p>A number on a calculator is just the start. We can review your specific estate and identify strategies to reduce the tax burden before it's due.</p>
+          <p class="sidebar-phone"><a href="tel:724-733-3500">(724) 733-3500</a></p>
+          <a href="/contact/" class="cta-button-light">Free Consultation</a>
+        </div>
+
+        <div class="sidebar-widget">
+          <h4>What's Taxable?</h4>
+          <ul class="sidebar-links">
+            <li>Real estate titled in decedent's name</li>
+            <li>Bank and investment accounts</li>
+            <li>Business interests</li>
+            <li>Personal property</li>
+            <li>Certain joint assets (proportionate share)</li>
+          </ul>
+          <p style="font-size:0.78rem; color:var(--color-muted); margin-top:10px; line-height:1.5;">IRAs and 401(k)s are generally subject to inheritance tax. Life insurance payable to a named beneficiary is typically exempt.</p>
+        </div>
+
+        <div class="sidebar-widget">
+          <h4>Related Tools &amp; Guides</h4>
+          <ul class="sidebar-links">
+            <li><a href="/practice-areas/probate-administration/">Probate Administration</a></li>
+            <li><a href="/practice-areas/probate/westmoreland-county/">Westmoreland County Probate</a></li>
+            <li><a href="/practice-areas/probate/allegheny-county/">Allegheny County Probate</a></li>
+            <li><a href="/practice-areas/estate-planning/">Estate Planning</a></li>
+          </ul>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--color-surface); border-top:1px solid var(--color-border); border-bottom:1px solid var(--color-border); padding:var(--space-xl) 0;">
+  <div class="container" style="max-width:760px;">
+    <h2>Common Questions About Pennsylvania Inheritance Tax</h2>
+
+    <div class="faq-item" style="border-bottom:1px solid var(--color-border); padding:var(--space-md) 0;">
+      <h3 style="font-size:1rem; margin-bottom:8px;">When is Pennsylvania inheritance tax due?</h3>
+      <p>The tax is due within nine months of the date of death. If paid within three months, Pennsylvania allows a 5% discount on the amount paid — a meaningful savings on larger estates.</p>
+    </div>
+
+    <div class="faq-item" style="border-bottom:1px solid var(--color-border); padding:var(--space-md) 0;">
+      <h3 style="font-size:1rem; margin-bottom:8px;">Are IRAs and 401(k)s subject to Pennsylvania inheritance tax?</h3>
+      <p>Yes. Retirement accounts are generally subject to Pennsylvania inheritance tax, even though they pass directly to named beneficiaries and avoid probate. This surprises many families — a named beneficiary on an IRA does not exempt it from inheritance tax.</p>
+    </div>
+
+    <div class="faq-item" style="border-bottom:1px solid var(--color-border); padding:var(--space-md) 0;">
+      <h3 style="font-size:1rem; margin-bottom:8px;">What about joint accounts?</h3>
+      <p>The treatment of jointly held assets depends on the nature of the joint ownership. Accounts held jointly with right of survivorship are generally subject to inheritance tax on the decedent's proportionate share. Spousal joint accounts are typically exempt.</p>
+    </div>
+
+    <div class="faq-item" style="border-bottom:1px solid var(--color-border); padding:var(--space-md) 0;">
+      <h3 style="font-size:1rem; margin-bottom:8px;">Can inheritance tax be reduced through estate planning?</h3>
+      <p>Yes. Strategic planning — including titling, beneficiary designations, and gifting — can reduce or eliminate Pennsylvania inheritance tax for certain beneficiaries. The time to plan is before death, not after. We help clients structure their estates to minimize the tax burden on their heirs.</p>
+    </div>
+
+    <div class="faq-item" style="padding:var(--space-md) 0;">
+      <h3 style="font-size:1rem; margin-bottom:8px;">Is there a Pennsylvania estate tax in addition to inheritance tax?</h3>
+      <p>No. Pennsylvania does not have a separate estate tax. The inheritance tax is the primary death tax in Pennsylvania, assessed against the beneficiary's share rather than the estate as a whole. There is also a federal estate tax, but it applies only to estates above the federal exemption amount (over $13 million per person as of 2024).</p>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var fmt = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+
+  function parseVal(str) {
+    var n = parseFloat(str.replace(/[^0-9.]/g, ''));
+    return isNaN(n) ? 0 : n;
+  }
+
+  function formatInput(input) {
+    var val = parseVal(input.value);
+    input.value = val > 0 ? fmt.format(val) : '';
+  }
+
+  function calculate() {
+    var rows = document.querySelectorAll('#beneficiaryRows .beneficiary-row');
+    var totalAssets = 0, totalTax = 0;
+
+    rows.forEach(function (row) {
+      var rate = parseFloat(row.getAttribute('data-rate')) || 0;
+      var input = row.querySelector('.calc-input');
+      var taxEl = row.querySelector('.row-tax');
+      var val = parseVal(input.value);
+      var tax = val * rate;
+
+      totalAssets += val;
+      totalTax += tax;
+
+      if (rate === 0) {
+        taxEl.textContent = val > 0 ? '0% — exempt' : '—';
+      } else {
+        taxEl.textContent = val > 0 ? fmt.format(tax) : '$0';
+      }
+    });
+
+    var discounted = totalTax * 0.95;
+    var savings = totalTax - discounted;
+
+    document.getElementById('totalAssets').textContent = fmt.format(totalAssets);
+    document.getElementById('totalTax').textContent = fmt.format(totalTax);
+    document.getElementById('discountedTax').textContent = fmt.format(discounted);
+    document.getElementById('discountSavings').textContent = savings > 0 ? '−' + fmt.format(savings) : '$0';
+  }
+
+  // Wire up inputs
+  document.querySelectorAll('.calc-input').forEach(function (input) {
+    input.addEventListener('input', calculate);
+    input.addEventListener('blur', function () { formatInput(input); calculate(); });
+    input.addEventListener('focus', function () {
+      var val = parseVal(input.value);
+      input.value = val > 0 ? String(val) : '';
+    });
+  });
+
+  // Reset
+  document.getElementById('resetBtn').addEventListener('click', function () {
+    document.querySelectorAll('.calc-input').forEach(function (i) { i.value = ''; });
+    document.querySelectorAll('.row-tax').forEach(function (el) { el.textContent = '—'; });
+    ['totalAssets','totalTax','discountedTax','discountSavings'].forEach(function (id) {
+      document.getElementById(id).textContent = '$0';
+    });
+  });
+})();
+</script>

@@ -1,0 +1,73 @@
+---
+layout: layouts/base.njk
+title: "Free Legal Tools | Ament Law Group, P.C."
+description: "Free online tools from Ament Law Group — Pennsylvania inheritance tax calculator, probate timeline estimator, small estate checker, and property assessment appeal analyzer."
+permalink: /tools/index.html
+---
+
+<style>
+  .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+  .tool-card { display: flex; flex-direction: column; background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--space-lg); text-decoration: none; transition: box-shadow 0.2s, border-color 0.2s, transform 0.2s; }
+  .tool-card:hover { box-shadow: 0 8px 24px rgba(15,29,64,0.1); border-color: var(--color-accent); transform: translateY(-2px); text-decoration: none; }
+  .tool-icon { font-size: 2rem; margin-bottom: 12px; }
+  .tool-card h2 { font-size: 1.05rem; color: var(--color-heading); margin-bottom: 10px; }
+  .tool-card p { font-size: 0.88rem; color: var(--color-body); line-height: 1.65; flex: 1; margin-bottom: var(--space-md); }
+  .tool-link { font-size: 0.88rem; font-weight: 600; color: var(--color-accent); }
+  .tool-disclaimer { font-size: 0.75rem; color: var(--color-muted); font-style: italic; margin-top: 6px; }
+  @media (max-width: 640px) { .tools-grid { grid-template-columns: 1fr; } }
+</style>
+
+<section class="simple-header">
+  <div class="container">
+    <h1>Free Tools &amp; Calculators</h1>
+    <p>Practical tools to help you understand your situation before we talk. All tools are free, require no email, and are for general information only — not legal advice.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container" style="max-width:900px; padding:var(--space-xl) var(--space-md);">
+    <div class="tools-grid">
+
+      <a href="/tools/inheritance-tax-calculator/" class="tool-card">
+        <div class="tool-icon">🧮</div>
+        <h2>Pennsylvania Inheritance Tax Calculator</h2>
+        <p>Estimate the inheritance tax on an estate by beneficiary relationship — spouse, children, parents, siblings, and others. Shows the 5% early-payment discount savings instantly.</p>
+        <span class="tool-link">Open Calculator →</span>
+        <span class="tool-disclaimer">Estimate only — not legal or tax advice</span>
+      </a>
+
+      <a href="/tools/probate-timeline/" class="tool-card">
+        <div class="tool-icon">📅</div>
+        <h2>Pennsylvania Probate Timeline Estimator</h2>
+        <p>Answer questions about the will, real estate, creditors, heirs, and executor location to get a realistic month-range estimate with a phase-by-phase breakdown.</p>
+        <span class="tool-link">Open Estimator →</span>
+        <span class="tool-disclaimer">Estimate only — not legal advice</span>
+      </a>
+
+      <a href="/tools/small-estate-checker/" class="tool-card">
+        <div class="tool-icon">📋</div>
+        <h2>Small Estate Eligibility Checker</h2>
+        <p>Screen whether a Pennsylvania estate may qualify for Voluntary Administration or other simplified procedures — potentially avoiding full probate. Explains which options apply and what each involves.</p>
+        <span class="tool-link">Open Checker →</span>
+        <span class="tool-disclaimer">General screening only — not legal advice</span>
+      </a>
+
+      <a href="/tools/assessment-appeal/" class="tool-card">
+        <div class="tool-icon">🏠</div>
+        <h2>Property Assessment Appeal Analyzer</h2>
+        <p>Find out if your Allegheny or Westmoreland County property may be over-assessed. Allegheny County pulls live comparable sales from the county database automatically.</p>
+        <span class="tool-link">Open Analyzer →</span>
+        <span class="tool-disclaimer">Informational only — not legal advice</span>
+      </a>
+
+    </div>
+
+    <div style="padding:var(--space-lg); background:var(--color-canvas); border:1px solid var(--color-border); border-radius:var(--radius); text-align:center;">
+      <h3 style="margin-bottom:8px;">Questions about what your numbers mean?</h3>
+      <p style="color:var(--color-muted); margin-bottom:var(--space-md);">These tools give you a starting point. We give you a plan — no obligation, no pressure.</p>
+      <a href="/contact/" class="cta-button">Schedule a Free Consultation</a>
+    </div>
+
+    <p style="font-size:0.78rem; color:var(--color-muted); font-style:italic; margin-top:var(--space-md); text-align:center; line-height:1.6;">All tools on this page are for general informational purposes only and do not constitute legal advice. Use of these tools does not create an attorney-client relationship with Ament Law Group, P.C. Consult a licensed Pennsylvania attorney before making legal or financial decisions.</p>
+  </div>
+</section>
