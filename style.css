@@ -275,7 +275,7 @@ nav > ul > li:hover > a {
     transition: transform var(--transition);
 }
 
-.has-dropdown:hover .dropdown-trigger::after {
+.has-dropdown.dropdown-open .dropdown-trigger::after {
     transform: rotate(-135deg);
 }
 
@@ -296,7 +296,7 @@ nav > ul > li:hover > a {
     z-index: 200;
 }
 
-.has-dropdown:hover .dropdown { display: flex; }
+.has-dropdown.dropdown-open .dropdown { display: flex; }
 
 .dropdown li { padding: 0; }
 

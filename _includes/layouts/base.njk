@@ -330,20 +330,18 @@
             });
         }
 
-        /* Mobile dropdown toggles */
+        /* Dropdown toggles — desktop and mobile */
         var dropdownTriggers = document.querySelectorAll('.has-dropdown > .dropdown-trigger');
         dropdownTriggers.forEach(function(trigger) {
             trigger.addEventListener('click', function(e) {
-                if (window.innerWidth <= 900) {
-                    var parent = trigger.parentElement;
-                    e.preventDefault();
-                    var wasOpen = parent.classList.contains('dropdown-open');
-                    /* Close all other dropdowns */
-                    document.querySelectorAll('.has-dropdown.dropdown-open').forEach(function(el) {
-                        el.classList.remove('dropdown-open');
-                    });
-                    if (!wasOpen) parent.classList.add('dropdown-open');
-                }
+                var parent = trigger.parentElement;
+                e.preventDefault();
+                var wasOpen = parent.classList.contains('dropdown-open');
+                /* Close all other dropdowns */
+                document.querySelectorAll('.has-dropdown.dropdown-open').forEach(function(el) {
+                    el.classList.remove('dropdown-open');
+                });
+                if (!wasOpen) parent.classList.add('dropdown-open');
             });
         });
 
