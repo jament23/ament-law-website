@@ -1,3 +1,7 @@
+---
+eleventyExcludeFromCollections: true
+---
+
 <!--
   HOW TO CREATE A NEW BLOG POST
   =============================

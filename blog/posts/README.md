@@ -1,3 +1,7 @@
+---
+eleventyExcludeFromCollections: true
+---
+
 # How to Add a Blog Post
 
 ## Quick Steps
