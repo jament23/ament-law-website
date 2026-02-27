@@ -1,7 +1,7 @@
 ---
 title: "Estate Planning in Pennsylvania: Changes You Need to Know About in 2026"
 description: "Congress made the elevated federal estate tax exemption permanent at $15 million per person. Here's what that means for Pennsylvania families — plus updates on annual gifting, unclaimed property, and small estate changes."
-date: 2026-03-13
+date: 2026-03-09
 tags: ["estate-planning", "blog"]
 author: "John W. Ament, Esq."
 ---

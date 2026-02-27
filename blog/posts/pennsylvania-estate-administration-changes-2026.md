@@ -1,7 +1,7 @@
 ---
 title: "What's New in Pennsylvania Estate Administration: Changes Executors Need to Know"
 description: "From SECURE Act impacts on inherited retirement accounts to remote probate appointments and updated court procedures, here's what's changed in Pennsylvania estate administration."
-date: 2026-03-20
+date: 2026-03-16
 tags: ["probate", "blog"]
 author: "John W. Ament, Esq."
 ---

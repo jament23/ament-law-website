@@ -1,7 +1,7 @@
 ---
 title: "Pennsylvania Business Law: What's Changed in the Last Two Years (And What It Means for Your Business)"
 description: "From mandatory annual reports to Corporate Transparency Act filings, Pennsylvania business law has seen significant changes. Here's what every small business owner needs to know."
-date: 2026-03-06
+date: 2026-03-02
 tags: ["business-law", "blog"]
 author: "John W. Ament, Esq."
 ---

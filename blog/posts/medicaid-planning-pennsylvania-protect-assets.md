@@ -1,7 +1,7 @@
 ---
 title: "Medicaid Planning in Pennsylvania: How to Protect Assets Without Losing Benefits"
 description: "Pennsylvania Medicaid has strict asset and income limits for long-term care. Attorney Laura Cohen explains what families can do — and when — to protect assets while qualifying for benefits."
-date: 2026-03-27
+date: 2026-03-23
 tags: ["elder-law", "blog"]
 author: "Laura Cohen, Esq."
 ---

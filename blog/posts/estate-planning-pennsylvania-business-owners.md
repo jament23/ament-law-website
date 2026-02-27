@@ -1,7 +1,7 @@
 ---
 title: "Estate Planning for Pennsylvania Business Owners: What's Different and Why It Matters"
 description: "Business owners face estate planning challenges that employees don't — from business valuation and buy-sell agreements to succession planning and liquidity for inheritance tax. Here's what every Pennsylvania business owner needs to address."
-date: 2026-04-24
+date: 2026-04-20
 tags: ["estate-planning", "business-law", "blog"]
 author: "John W. Ament, Esq."
 ---

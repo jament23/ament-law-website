@@ -1,7 +1,7 @@
 ---
 title: "Guardianship in Pennsylvania: When It's Necessary, How It Works, and How to Avoid It"
 description: "Pennsylvania guardianship gives a court-appointed person legal authority over an incapacitated adult. Attorney Patrick Shannon explains when it's needed, what the process involves, and how proper estate planning can make it unnecessary."
-date: 2026-04-17
+date: 2026-04-13
 tags: ["elder-law", "estate-planning", "blog"]
 author: "Patrick J. Shannon, Esq."
 ---

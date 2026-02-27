@@ -1,7 +1,7 @@
 ---
 title: "Selling Your Home Without a Realtor in Pennsylvania: What FSBO Sellers Need to Know"
 description: "Selling your home without a real estate agent in Pennsylvania can save thousands in commission — but it comes with legal obligations most sellers don't anticipate. Attorney W. Robert Ament explains what FSBO sellers need to get right."
-date: 2026-04-10
+date: 2026-04-06
 tags: ["real-estate", "blog"]
 author: "W. Robert Ament, Esq."
 ---
