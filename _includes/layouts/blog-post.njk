@@ -64,7 +64,9 @@ layout: layouts/base.njk
 
                 {% if aBio %}
                 <div class="author-box">
-                    <div class="author-box-photo"></div>
+                    <div class="author-box-photo">
+                        {% if a.photo %}<img src="{{ a.photo }}" alt="{{ author }}" width="80" height="80" loading="lazy">{% endif %}
+                    </div>
                     <div class="author-box-info">
                         <h4>About the Author</h4>
                         <h3>{% if aUrl %}<a href="{{ aUrl }}">{{ author }}</a>{% else %}{{ author }}{% endif %}</h3>

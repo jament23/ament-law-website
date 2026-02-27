@@ -1094,6 +1094,15 @@ main section {
     min-width: 72px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--color-border), #d8d8dd);
+    overflow: hidden;
+}
+
+.author-box-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
 }
 
 .author-box-info h4 {

@@ -4,6 +4,7 @@
     "url": "/attorneys/john-ament/",
     "jobtitle": "Partner",
     "credentials": "J.D./M.B.A., Duquesne University",
+    "photo": "/images/attorneys/john-ament.jpg",
     "bio": "John W. Ament is a partner and co-founder of Ament Law Group, P.C. in Murrysville, PA."
   },
   "W. Robert Ament, Esq.": {
@@ -11,6 +12,7 @@
     "url": "/attorneys/robert-ament/",
     "jobtitle": "Partner",
     "credentials": "J.D., Duquesne University School of Law",
+    "photo": "/images/attorneys/robert-ament.jpg",
     "bio": "W. Robert Ament is a founding partner of Ament Law Group, P.C. with over 50 years of legal experience in Western Pennsylvania."
   },
   "Katlynn Oliver, Esq.": {
@@ -18,6 +20,7 @@
     "url": "/attorneys/katlynn-oliver/",
     "jobtitle": "Associate Attorney",
     "credentials": "J.D., Duquesne University Kline School of Law",
+    "photo": "/images/attorneys/katlynn-oliver.jpg",
     "bio": "Katlynn Oliver is an associate attorney at Ament Law Group, P.C. in Murrysville, PA, focusing on estate planning, estate administration, real estate, and business law."
   },
   "Laura Cohen, Esq.": {
@@ -25,6 +28,7 @@
     "url": "/attorneys/laura-cohen/",
     "jobtitle": "Of Counsel",
     "credentials": "J.D., University of Pittsburgh School of Law",
+    "photo": "/images/attorneys/laura-cohen.jpg",
     "bio": "Laura Cohen is Of Counsel at Ament Law Group, P.C., with over 30 years of experience in estate planning and estate administration."
   },
   "Patrick J. Shannon, Esq.": {
@@ -32,6 +36,7 @@
     "url": "/attorneys/patrick-shannon/",
     "jobtitle": "Of Counsel",
     "credentials": "J.D., Duquesne University School of Law",
+    "photo": "/images/attorneys/patrick-shannon.jpg",
     "bio": "Patrick J. Shannon is Of Counsel at Ament Law Group, P.C., with over 40 years of experience in estate planning and estate administration."
   },
   "Ament Law Group": {
@@ -39,6 +44,7 @@
     "url": "",
     "jobtitle": "",
     "credentials": "",
+    "photo": "",
     "bio": "Ament Law Group, P.C. is a Murrysville, PA law firm serving Western Pennsylvania in estate planning, probate, real estate, and business law."
   }
 }
