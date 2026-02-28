@@ -2932,6 +2932,18 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
     .error-links { grid-template-columns: 1fr; }
     .error-code { font-size: 4rem; }
 
+    /* Buttons — reduce padding on mobile */
+    .cta-button,
+    .cta-button-light,
+    .cta-button-outline {
+        padding: 12px 24px;
+        font-size: 0.88rem;
+    }
+    .cta-button-secondary {
+        padding: 10px 22px;
+        font-size: 0.86rem;
+    }
+
     /* Chat widget — above mobile bar */
     #ament-chat { bottom: 76px; right: 16px; }
     #chat-panel {
@@ -2948,6 +2960,17 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
     .logo { font-size: 1.15rem; }
     body { font-size: 16px; }
     .form-row { grid-template-columns: 1fr; }
+
+    /* Stack side-by-side buttons on narrow screens */
+    .hero-ctas,
+    .cta-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .hero-ctas a,
+    .cta-group a {
+        text-align: center;
+    }
 }
 
 /* Referral Grid */
