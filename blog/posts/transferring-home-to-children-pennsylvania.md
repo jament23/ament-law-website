@@ -7,7 +7,7 @@ author: "W. Robert Ament, Esq."
 ---
 
 <div class="quick-answer">
-<p>Transferring your home to your children during your lifetime is one of the most common — and most misunderstood — estate planning moves we see. It feels simple, it seems like it avoids probate, and it appears to protect the home from nursing home costs. In reality, an outright lifetime transfer often creates more problems than it solves. Before you sign a deed, here is what you need to understand.</p>
+<p>Transferring your home to your children during your lifetime is one of the most common — and most misunderstood — [estate planning](/practice-areas/estate-planning/) moves we see. It feels simple, it seems like it avoids probate, and it appears to protect the home from nursing home costs. In reality, an outright lifetime transfer often creates more problems than it solves. Before you sign a deed, here is what you need to understand.</p>
 </div>
 
 ## Why People Do It — And Why the Reasoning Often Falls Short
@@ -64,7 +64,7 @@ Fortunately, there are planning techniques that accomplish the legitimate goals 
 
 There is no single right answer for every family. The best approach depends on your health, your age, your Medicaid planning timeline, your relationship with your children, and your other assets. What works well for one family may be a significant mistake for another.
 
-At Ament Law Group, W. Robert Ament, Esq. helps families throughout Western Pennsylvania think through the full range of options before signing any deed. If you are considering transferring your home to your children, contact us before you act — the decision is easier to make correctly the first time than to undo after the fact.
+At Ament Law Group, W. Robert Ament, Esq. helps families throughout Western Pennsylvania think through the full range of options before signing any deed. Our [real estate services](/practice-areas/real-estate-services/) include deed transfers and related property transactions. If you are considering transferring your home to your children, [contact us](/contact/) before you act — the decision is easier to make correctly the first time than to undo after the fact.
 
 ---
 

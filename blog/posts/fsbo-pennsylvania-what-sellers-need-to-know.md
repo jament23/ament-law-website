@@ -7,7 +7,7 @@ author: "W. Robert Ament, Esq."
 ---
 
 <div class="quick-answer">
-<p>For sale by owner (FSBO) transactions are perfectly legal in Pennsylvania and can save a seller a significant amount in real estate commission. But Pennsylvania law imposes disclosure obligations, contract requirements, and settlement procedures that FSBO sellers must follow regardless of whether a real estate agent is involved. Here is what you need to know before you put up the sign.</p>
+<p>[For sale by owner (FSBO)](/practice-areas/for-sale-by-owner/) transactions are perfectly legal in Pennsylvania and can save a seller a significant amount in real estate commission. But Pennsylvania law imposes disclosure obligations, contract requirements, and settlement procedures that FSBO sellers must follow regardless of whether a real estate agent is involved. Here is what you need to know before you put up the sign.</p>
 </div>
 
 ## Why Sellers Choose FSBO
@@ -76,7 +76,7 @@ In our experience handling FSBO settlements and assisting sellers who encounter 
 
 Many FSBO sellers engage an attorney not to replace an agent, but to handle the legal aspects of the transaction — reviewing the Agreement of Sale, advising on disclosure obligations, and overseeing settlement. This provides meaningful protection at a fraction of the cost of a full listing commission.
 
-At Ament Law Group, W. Robert Ament, Esq. regularly assists FSBO sellers throughout Western Pennsylvania — from reviewing contracts to handling settlement. If you are considering selling your home without an agent, contact us to discuss how we can help you do it right.
+At Ament Law Group, W. Robert Ament, Esq. regularly assists FSBO sellers throughout Western Pennsylvania — from reviewing contracts to handling settlement. If you are considering selling your home without an agent, [contact us](/contact/) to discuss how we can help you do it right.
 
 ---
 

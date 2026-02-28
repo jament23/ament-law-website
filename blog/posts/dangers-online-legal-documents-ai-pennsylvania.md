@@ -69,7 +69,7 @@ When you work with an estate planning attorney, you are not paying for document 
 - Accountability — an attorney's license is on the line
 - A professional relationship that allows you to come back when your circumstances change
 
-For most Pennsylvania families, a complete estate plan — will, trust if needed, powers of attorney, and healthcare documents — costs less than a single month of a car payment. The cost of getting it wrong is measured in legal fees, family conflict, lost assets, and outcomes the client would never have chosen.
+For most Pennsylvania families, a complete [estate plan](/practice-areas/estate-planning/) — will, trust if needed, powers of attorney, and healthcare documents — costs less than a single month of a car payment. The cost of getting it wrong is measured in legal fees, family conflict, lost assets, and outcomes the client would never have chosen.
 
 ## The Bottom Line
 
@@ -77,7 +77,7 @@ Online document services and AI tools are not useless. For simple, low-stakes do
 
 Use technology to research, to learn, and to understand your options. Then work with a licensed Pennsylvania attorney to make it right.
 
-At Ament Law Group, we offer flat-fee estate planning with no surprises and no sales pressure. Contact us to schedule a consultation.
+At Ament Law Group, we offer flat-fee estate planning with no surprises and no sales pressure. [Contact us](/contact/) to schedule a consultation.
 
 ---
 

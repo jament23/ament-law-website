@@ -66,9 +66,9 @@ Executors in Pennsylvania serve in a fiduciary capacity, which means they owe du
 - Failing to treat beneficiaries equally and impartially
 - Missing deadlines for notifying beneficiaries or creditors
 
-Working with an experienced probate attorney from the beginning of the administration is the most effective way to protect yourself as executor. The attorney's role is not just to file paperwork — it is to guide you through a process with real legal obligations and real personal liability.
+Working with an experienced [probate](/practice-areas/probate-administration/) attorney from the beginning of the administration is the most effective way to protect yourself as executor. The attorney's role is not just to file paperwork — it is to guide you through a process with real legal obligations and real personal liability.
 
-If you are serving as executor of a Pennsylvania estate, or anticipate doing so, contact Ament Law Group for a free consultation.
+If you are serving as executor of a Pennsylvania estate, or anticipate doing so, [contact us](/contact/) for a free consultation.
 
 ---
 

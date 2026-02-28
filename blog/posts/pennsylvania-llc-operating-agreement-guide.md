@@ -62,7 +62,7 @@ Operating agreement disputes are among the most expensive and disruptive busines
 
 A well-drafted operating agreement, prepared at the time of formation, costs a fraction of what litigation costs if things go wrong.
 
-At Ament Law Group, Katlynn Oliver, Esq. drafts operating agreements for Pennsylvania LLCs that reflect your specific business structure and protect your interests from day one. Contact us to schedule a consultation.
+At Ament Law Group, Katlynn Oliver, Esq. drafts operating agreements for Pennsylvania LLCs that reflect your specific business structure and protect your interests from day one. Learn more about our [business formation](/practice-areas/business-formation/) services, or [contact us](/contact/) to schedule a consultation.
 
 ---
 
