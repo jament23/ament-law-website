@@ -14,8 +14,8 @@ layout: layouts/base.njk
     "@type": "BlogPosting",
     "headline": "{{ title }}",
     "description": "{{ description }}",
-    "datePublished": "{{ date | dateFormat }}",
-    "dateModified": "{{ date | dateFormat }}",
+    "datePublished": "{{ date | dateISO }}",
+    "dateModified": "{{ date | dateISO }}",
     "url": "https://www.ament.law{{ page.url }}",
     "inLanguage": "en-US",
     "isPartOf": {
