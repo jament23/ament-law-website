@@ -3,6 +3,7 @@ title: "5 Things Every Western PA Homebuyer Needs to Know About Title Insurance"
 description: "What Murrysville, Greensburg, and Monroeville homebuyers should know about title insurance before closing on a house in Western Pennsylvania."
 date: 2026-01-12
 tags: ["real estate", "title insurance", "homebuyers"]
+author: "John W. Ament, Esq."
 ---
 
 Buying a home in Western Pennsylvania — whether in Murrysville, Greensburg, Monroeville, or anywhere in Westmoreland or Allegheny County — is one of the biggest financial commitments you will make. Title insurance is a critical part of protecting that investment, yet many buyers go through the closing process without fully understanding what it is, why they need it, or what it actually covers.
@@ -37,7 +38,7 @@ Our attorneys encounter and resolve these issues regularly. When we identify a t
 
 Pennsylvania regulates title insurance rates, which means the premium is the same regardless of which title company or agent you use. This means your decision should be based on the quality of the title search, the expertise of the person reviewing your transaction, and the level of service you receive — not on price shopping for the lowest premium.
 
-When you work with Ament Law Group for your real estate closing, your title insurance is issued by the same attorneys who review your agreement of sale, conduct the title examination, and attend your settlement. You get comprehensive legal protection from start to finish, at the same cost you would pay anywhere else.
+When you work with Ament Law Group for your [real estate settlement](/practice-areas/real-estate-law/), your title insurance is issued by the same attorneys who review your agreement of sale, conduct the title examination, and attend your settlement. You get comprehensive legal protection from start to finish, at the same cost you would pay anywhere else.
 
 ## Ready to Close with Confidence?
 

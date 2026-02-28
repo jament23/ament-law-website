@@ -47,9 +47,9 @@ If you formed an LLC to hold real estate and have not addressed your CTA filing 
 
 ## Practical Steps for Buyers Using Entity Structures
 
-If you are purchasing real estate through an LLC, trust, or other entity, the most important thing you can do is work with an experienced settlement attorney early in the process. Have your entity documents organized and be prepared to identify the beneficial owners of your entity before closing. Last-minute disclosure issues can delay settlement.
+If you are purchasing [real estate](/practice-areas/real-estate-law/) through an LLC, trust, or other entity, the most important thing you can do is work with an experienced settlement attorney early in the process. Have your entity documents organized and be prepared to identify the beneficial owners of your entity before closing. Last-minute disclosure issues can delay settlement.
 
-At Ament Law Group, we handle real estate settlements throughout Western Pennsylvania and can guide you through the disclosure process as part of your closing. If you have questions about how these requirements apply to your specific transaction, contact us before you get to the closing table.
+At Ament Law Group, we handle real estate settlements throughout Western Pennsylvania and can guide you through the disclosure process as part of your closing. If you have questions about how these requirements apply to your specific transaction, [contact us](/contact/) before you get to the closing table.
 
 ---
 

@@ -55,7 +55,7 @@ Pennsylvania's Uniform Limited Liability Company Act continues to be updated thr
 
 **4. Consider your entity structure holistically.** Annual report requirements, BOI filing obligations, and tax treatment all interact. If you are operating multiple entities, a structure review may identify opportunities to simplify.
 
-At Ament Law Group, we help small businesses throughout Western Pennsylvania stay current on their compliance obligations and structure their entities to protect their interests. If you have questions about your business's compliance status, contact us for a consultation.
+At Ament Law Group, we help small businesses throughout Western Pennsylvania stay current on their compliance obligations and structure their entities to protect their interests. Our [business law](/practice-areas/business-law/) services cover everything from entity formation to ongoing compliance. If you have questions about your business's compliance status, [contact us](/contact/) for a consultation.
 
 ---
 

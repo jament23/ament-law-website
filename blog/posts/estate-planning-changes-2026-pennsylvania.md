@@ -14,7 +14,7 @@ author: "John W. Ament, Esq."
 
 Congress acted before the scheduled sunset and made the elevated federal estate and gift tax exemption permanent — increasing it to **$15 million per person** (approximately $30 million for a married couple). This removes the uncertainty that had been hanging over estate planning for years and allows families to plan with confidence.
 
-**What this means for most Pennsylvania families:** The vast majority of estates will never be subject to federal estate tax at a $15 million exemption. For these families, the focus of estate planning remains what it has always been — ensuring assets pass to the right people, minimizing Pennsylvania inheritance tax, avoiding probate complications, and protecting against incapacity.
+**What this means for most Pennsylvania families:** The vast majority of estates will never be subject to federal estate tax at a $15 million exemption. For these families, the focus of [estate planning](/practice-areas/estate-planning/) remains what it has always been — ensuring assets pass to the right people, minimizing Pennsylvania inheritance tax, avoiding probate complications, and protecting against incapacity.
 
 **What this means for higher-net-worth families and business owners:** The permanent elevated exemption is an opportunity to revisit strategies that were designed around uncertainty. Irrevocable trusts, family limited partnerships, and other vehicles created specifically to minimize estate tax exposure should be reviewed to confirm they still serve your goals.
 
@@ -85,7 +85,7 @@ As a general rule, review your estate plan when:
 - You move to a new state
 - Three to five years have passed since your last review
 
-At Ament Law Group, we offer estate plan reviews for clients who want to make sure their documents still accomplish their goals. Contact us to schedule a consultation.
+At Ament Law Group, we offer estate plan reviews for clients who want to make sure their documents still accomplish their goals. [Contact us](/contact/) to schedule a consultation.
 
 ---
 

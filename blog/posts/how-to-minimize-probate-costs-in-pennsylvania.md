@@ -21,7 +21,7 @@ related_services:
 
 ## Understanding Probate Costs in Pennsylvania
 
-Probate is the legal process of administering a deceased person's estate. In Pennsylvania, probate can involve significant court fees, legal expenses, and administrative costs. Many families are surprised by how quickly these costs add up—especially if the estate is complex or contested.
+[Probate](/practice-areas/probate-administration/) is the legal process of administering a deceased person's estate. In Pennsylvania, probate can involve significant court fees, legal expenses, and administrative costs. Many families are surprised by how quickly these costs add up—especially if the estate is complex or contested.
 
 Proper estate planning allows you to minimize or even avoid probate costs, ensuring that more of your assets go directly to your heirs. In this guide, we'll explain the typical costs involved in Pennsylvania probate and outline strategies to reduce them.
 
@@ -104,3 +104,5 @@ Outdated wills, beneficiary designations, or ownership structures can lead to co
 The best way to minimize probate costs in Pennsylvania is to plan ahead with an experienced estate attorney. Every estate is unique, and cookie-cutter solutions often lead to expensive mistakes.
 
 An estate planning attorney can draft a custom plan to reduce probate, prepare trusts, wills, and deeds correctly, assist with beneficiary designations, guide you on tax-saving strategies, and help your family navigate probate if needed.
+
+At Ament Law Group, we help Pennsylvania families minimize probate costs through thoughtful estate planning. [Contact us](/contact/) to schedule a consultation.

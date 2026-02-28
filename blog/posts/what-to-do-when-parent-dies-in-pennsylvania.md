@@ -3,6 +3,7 @@ title: "What to Do When a Parent Dies in Pennsylvania: A Step-by-Step Legal Guid
 description: "A practical guide for adult children in Western PA who have lost a parent, covering the legal steps from obtaining a death certificate through probate and inheritance tax."
 date: 2025-12-01
 tags: ["probate", "estate administration", "executors"]
+author: "John W. Ament, Esq."
 ---
 
 Losing a parent is one of the most difficult experiences in life, and the legal responsibilities that follow can feel overwhelming. If your parent lived in Pennsylvania — whether in Westmoreland County, Allegheny County, or elsewhere in Western PA — there are specific legal steps you need to take in the days, weeks, and months after their death.
@@ -23,7 +24,7 @@ This guide walks you through the process in practical terms, so you know what to
 
 **Open the estate and obtain Short Certificates.** The Register of Wills will issue Letters Testamentary (if there is a will) or Letters of Administration (if there is no will) and Short Certificates. Short Certificates are the documents that give the executor or administrator legal authority to manage the estate — banks and financial institutions will require them before releasing any information or funds.
 
-**Hire a probate attorney.** While Pennsylvania does not require an attorney for probate, the process involves legal deadlines, fiduciary duties, tax filings, and potential personal liability for the executor. An experienced probate attorney handles the complexity so you can focus on your family. At Ament Law Group, we guide executors through every step from the initial filing through final distribution.
+**Hire a probate attorney.** While Pennsylvania does not require an attorney for [probate](/practice-areas/probate-administration/), the process involves legal deadlines, fiduciary duties, tax filings, and potential personal liability for the executor. An experienced probate attorney handles the complexity so you can focus on your family. At Ament Law Group, we guide executors through every step from the initial filing through final distribution.
 
 ## Months Two Through Six
 

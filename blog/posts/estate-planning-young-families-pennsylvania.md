@@ -72,9 +72,9 @@ Every Pennsylvania adult should have:
 
 Estate planning is the task that is always easy to defer because nothing bad has happened yet. But the cost of not having a plan is paid by the people you love, not by you.
 
-A basic estate plan for a young Pennsylvania family — a will with a testamentary trust, a durable power of attorney, and healthcare documents for each spouse — can typically be completed in a matter of weeks and does not need to be expensive or complicated.
+A basic [estate plan](/practice-areas/estate-planning/) for a young Pennsylvania family — a will with a testamentary trust, a durable power of attorney, and healthcare documents for each spouse — can typically be completed in a matter of weeks and does not need to be expensive or complicated.
 
-If you have children and no estate plan, the most important thing you can do is start. At Ament Law Group, Patrick J. Shannon, Esq. works with young families throughout Western Pennsylvania to put straightforward, effective estate plans in place. Contact us to schedule a consultation — flat-fee pricing, no surprises.
+If you have children and no estate plan, the most important thing you can do is start. At Ament Law Group, Patrick J. Shannon, Esq. works with young families throughout Western Pennsylvania to put straightforward, effective estate plans in place. [Contact us](/contact/) to schedule a consultation — flat-fee pricing, no surprises.
 
 ---
 

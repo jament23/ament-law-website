@@ -71,7 +71,7 @@ For straightforward appeals before the Board — particularly those based on a r
 
 For appeals involving higher-value commercial or residential properties, complex valuation issues, uniformity arguments, or appeals that proceed to the Court of Common Pleas, legal representation is generally worth the investment. The stakes are higher and the procedures more formal.
 
-At Ament Law Group, Katlynn Oliver, Esq. represents property owners in assessment appeals in both Westmoreland and Allegheny County. We also offer a free online Assessment Appeal Analyzer tool at ament.law/tools/assessment-appeal/ to help you evaluate whether an appeal makes financial sense for your property. Contact us to discuss your situation.
+At Ament Law Group, Katlynn Oliver, Esq. represents property owners in assessment appeals in both Westmoreland and Allegheny County as part of our [real estate legal services](/practice-areas/real-estate-services/). We also offer a free online Assessment Appeal Analyzer tool at ament.law/tools/assessment-appeal/ to help you evaluate whether an appeal makes financial sense for your property. [Contact us](/contact/) to discuss your situation.
 
 ---
 

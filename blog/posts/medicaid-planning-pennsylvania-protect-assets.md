@@ -52,9 +52,9 @@ Despite the five-year lookback, there are planning strategies that can protect m
 
 The single most important thing families can do is consult with an elder law attorney before a crisis occurs. Every year of lead time expands your options. Waiting until a nursing home admission is imminent limits what can be done — but does not eliminate the possibility of meaningful planning.
 
-If you have an aging parent, a spouse with a chronic illness, or are planning for your own potential long-term care needs, an elder law consultation is one of the most valuable steps you can take.
+If you have an aging parent, a spouse with a chronic illness, or are planning for your own potential long-term care needs, an [elder law](/practice-areas/elder-law/) consultation is one of the most valuable steps you can take.
 
-At Ament Law Group, Laura Cohen, Esq. has decades of experience helping families navigate Pennsylvania Medicaid planning with compassion and practical legal guidance. Contact us to schedule a consultation.
+At Ament Law Group, Laura Cohen, Esq. has decades of experience helping families navigate Pennsylvania Medicaid planning with compassion and practical legal guidance. [Contact us](/contact/) to schedule a consultation.
 
 ---
 

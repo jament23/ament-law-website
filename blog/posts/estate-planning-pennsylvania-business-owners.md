@@ -14,7 +14,7 @@ author: "John W. Ament, Esq."
 
 For most small business owners, the business represents the majority of their net worth. A thriving law firm, construction company, retail business, or professional practice may be worth far more than the owner's home, retirement accounts, and other assets combined.
 
-This creates a fundamental estate planning challenge: the business is illiquid. You cannot easily divide it among multiple heirs, and you cannot write a check from it to pay an estate tax bill without either borrowing against it or selling it. A well-designed estate plan addresses these issues before they become a crisis.
+This creates a fundamental estate planning challenge: the business is illiquid. You cannot easily divide it among multiple heirs, and you cannot write a check from it to pay an estate tax bill without either borrowing against it or selling it. A well-designed [estate plan](/practice-areas/estate-planning/) addresses these issues before they become a crisis.
 
 ## Business Valuation: What Is Your Business Actually Worth?
 
@@ -77,9 +77,9 @@ One of the most common problems we see is a disconnect between a business owner'
 - A power of attorney that does not explicitly authorize the agent to act on behalf of the business, leaving a gap if the owner becomes incapacitated
 - An operating agreement that treats a deceased member's estate as a mere economic interest holder — not a voting member — creating governance problems
 
-These conflicts are avoidable. The solution is to have the same attorney review both your personal estate plan and your business documents together, as a coordinated set.
+These conflicts are avoidable. The solution is to have the same attorney review both your personal estate plan and your [business formation](/practice-areas/business-formation/) documents together, as a coordinated set.
 
-At Ament Law Group, John W. Ament, Esq. works with business owners throughout Western Pennsylvania to develop estate plans that address the unique challenges of business ownership — from buy-sell agreements and succession planning to inheritance tax mitigation and document coordination. Contact us to schedule a consultation.
+At Ament Law Group, John W. Ament, Esq. works with business owners throughout Western Pennsylvania to develop estate plans that address the unique challenges of business ownership — from buy-sell agreements and succession planning to inheritance tax mitigation and document coordination. [Contact us](/contact/) to schedule a consultation.
 
 ---
 

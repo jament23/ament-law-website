@@ -55,7 +55,7 @@ Guardianship is necessary when an adult lacks capacity to manage their own affai
 
 For most families, guardianship is entirely avoidable. The documents that prevent guardianship are the same documents that should be in every adult's estate plan:
 
-**Durable Power of Attorney:** Authorizes a named agent to make financial and legal decisions on your behalf if you become incapacitated. Pennsylvania's Power of Attorney Act (20 Pa. C.S. § 5601 et seq.) governs these documents and includes specific execution requirements — the document must be signed before a notary and two witnesses to be valid.
+**[Durable Power of Attorney](/practice-areas/estate-planning/):** Authorizes a named agent to make financial and legal decisions on your behalf if you become incapacitated. Pennsylvania's Power of Attorney Act (20 Pa. C.S. § 5601 et seq.) governs these documents and includes specific execution requirements — the document must be signed before a notary and two witnesses to be valid.
 
 **Healthcare Power of Attorney / Healthcare Proxy:** Designates a healthcare agent to make medical decisions on your behalf when you cannot make them yourself.
 
@@ -63,13 +63,13 @@ For most families, guardianship is entirely avoidable. The documents that preven
 
 Together, these three documents cover virtually every situation where guardianship would otherwise be required. They are far less expensive to prepare than guardianship is to obtain, and they allow your chosen agents to act immediately — without court involvement.
 
-**A note for parents of young adults:** When a child turns 18 in Pennsylvania, parents lose the automatic legal authority to make medical and financial decisions on their behalf — even if the child has a disability. Parents of adult children with intellectual or developmental disabilities should consult with an elder law attorney about guardianship or supported decision-making alternatives before the child's 18th birthday.
+**A note for parents of young adults:** When a child turns 18 in Pennsylvania, parents lose the automatic legal authority to make medical and financial decisions on their behalf — even if the child has a disability. Parents of adult children with intellectual or developmental disabilities should consult with an [elder law](/practice-areas/elder-law/) attorney about guardianship or supported decision-making alternatives before the child's 18th birthday.
 
 ## We Can Help — Whether You're Planning Ahead or Facing a Crisis
 
 At Ament Law Group, Patrick J. Shannon, Esq. assists families with both advance planning to avoid guardianship and guardianship proceedings when they become necessary. Whether you are drafting powers of attorney for peace of mind or navigating a guardianship proceeding for a family member who can no longer manage their own affairs, we are here to guide you through the process.
 
-Contact us to schedule a consultation.
+[Contact us](/contact/) to schedule a consultation.
 
 ---
 

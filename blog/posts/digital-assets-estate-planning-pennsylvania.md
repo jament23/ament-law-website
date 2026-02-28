@@ -47,7 +47,7 @@ The law creates a three-tier hierarchy for determining access:
 
 **Tier 3 — Platform terms of service:** If neither of the above applies, the platform's own terms of service govern access. For most platforms, those terms of service prohibit account access by anyone other than the account holder — effectively locking the executor out.
 
-The practical implication: without explicit language in your estate planning documents granting your executor authority over digital assets, your executor may be legally unable to access accounts that contain valuable or important information.
+The practical implication: without explicit language in your [estate planning](/practice-areas/estate-planning/) documents granting your executor authority over digital assets, your executor may be legally unable to access accounts that contain valuable or important information.
 
 ## The Cryptocurrency Problem
 
@@ -75,7 +75,7 @@ Clients sometimes focus on the financial value of digital assets and overlook th
 
 Make sure your estate plan addresses not just who gets the financial value but who gets to manage or preserve the personal accounts.
 
-At Ament Law Group, Laura Cohen, Esq. helps clients build estate plans that address the full range of modern assets — including digital ones. If your current estate plan was drafted before digital assets were a common planning consideration, it may be time for a review. Contact us to schedule a consultation.
+At Ament Law Group, Laura Cohen, Esq. helps clients build estate plans that address the full range of modern assets — including digital ones. If your current estate plan was drafted before digital assets were a common planning consideration, it may be time for a review. [Contact us](/contact/) to schedule a consultation.
 
 ---
 
