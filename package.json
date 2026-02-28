@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "build": "npx @11ty/eleventy",
-    "start": "npx @11ty/eleventy --serve"
+    "start": "npx @11ty/eleventy --serve",
+    "audit-content": "node scripts/audit-content.js --verbose"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2"

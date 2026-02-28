@@ -1,0 +1,62 @@
+name: Monthly Content Accuracy Audit
+
+on:
+  # First of every month at 9:00 AM Eastern (14:00 UTC)
+  schedule:
+    - cron: '0 14 1 * *'
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run content accuracy audit
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          DATE=$(date +%Y-%m-%d)
+          node scripts/audit-content.js \
+            --output=audit-reports/audit-${DATE}.md \
+            --verbose
+
+      - name: Create issue with audit results
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          DATE=$(date +%Y-%m-%d)
+          REPORT="audit-reports/audit-${DATE}.md"
+
+          if [ ! -f "$REPORT" ]; then
+            echo "No report generated."
+            exit 0
+          fi
+
+          # Check if there are any issues (look for "High severity" or "Medium severity")
+          if grep -q "Pages with no issues.*${PAGES_AUDITED}" "$REPORT" 2>/dev/null || \
+             ! grep -qE "^## (High|Medium|Low) Severity" "$REPORT"; then
+            echo "All pages clean — no issue needed."
+            exit 0
+          fi
+
+          # Create a GitHub issue with the report
+          gh issue create \
+            --title "Content Audit: ${DATE}" \
+            --body "$(cat $REPORT)" \
+            --label "content-audit"
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: content-audit-report
+          path: audit-reports/
+          retention-days: 90
