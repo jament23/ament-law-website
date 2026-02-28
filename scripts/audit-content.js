@@ -15,7 +15,7 @@
  *
  * Options:
  *   --output=<path>    Write report to file (default: stdout)
- *   --model=<model>    Claude model to use (default: claude-sonnet-4-6)
+ *   --model=<model>    Claude model to use (default: claude-haiku-4-5-20251001)
  *   --verbose          Print progress to stderr
  */
 
@@ -74,7 +74,7 @@ Respond in this exact JSON format:
 // ---------------------------------------------------------------------------
 
 function parseArgs() {
-  const args = { verbose: false, output: null, model: "claude-sonnet-4-6" };
+  const args = { verbose: false, output: null, model: "claude-haiku-4-5-20251001" };
   for (const arg of process.argv.slice(2)) {
     if (arg === "--verbose") args.verbose = true;
     else if (arg.startsWith("--output=")) args.output = arg.split("=")[1];
