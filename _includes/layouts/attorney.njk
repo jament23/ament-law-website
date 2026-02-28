@@ -8,6 +8,7 @@ layout: layouts/base.njk
     "@type": "Attorney",
     "name": "{{ attorney_name }}",
     "jobTitle": "{{ attorney_role }}",
+    {% if attorney_photo %}"image": "https://www.ament.law{{ attorney_photo }}",{% endif %}
     "telephone": "+1-724-733-3500",
     "url": "https://www.ament.law{{ page.url }}",
     "worksFor": {
@@ -36,7 +37,7 @@ layout: layouts/base.njk
                 {% else %}
                 <div class="attorney-photo-placeholder"></div>
                 {% endif %}
-                <h2>{{ attorney_name }}</h2>
+                <h1>{{ attorney_name }}</h1>
                 <p class="attorney-title">{{ attorney_role }}</p>
                 <div class="attorney-contact-info">
                     <h4>Contact</h4>
