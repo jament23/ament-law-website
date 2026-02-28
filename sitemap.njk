@@ -5,7 +5,7 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for page in collections.all %}
-{%- if page.url and page.url != "/sitemap.xml" and page.url != "/robots.txt" %}
+{%- if page.url and page.url != "/sitemap.xml" and page.url != "/robots.txt" and not (page.date | isFuture) %}
     <url>
         <loc>https://www.ament.law{{ page.url }}</loc>
         {%- if page.date %}

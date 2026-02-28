@@ -33,6 +33,11 @@ module.exports = function(eleventyConfig) {
     return new Date(date).toISOString().split('T')[0];
   });
 
+  // Check if a date is in the future (for sitemap filtering)
+  eleventyConfig.addFilter("isFuture", function(date) {
+    return new Date(date) > new Date();
+  });
+
   // Excerpt filter
   eleventyConfig.addFilter("excerpt", function(content) {
     if (!content) return "";
