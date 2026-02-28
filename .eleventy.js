@@ -7,7 +7,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("_headers");
   eleventyConfig.addPassthroughCopy("_redirects");
   eleventyConfig.addPassthroughCopy("favicon.ico");
-  eleventyConfig.addPassthroughCopy("llms.txt");
   eleventyConfig.addPassthroughCopy("CNAME");
 
   // Blog post collection sorted by date (newest first), excluding future posts
