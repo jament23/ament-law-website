@@ -257,12 +257,12 @@
     </nav>
 
     <!-- Chat Assistant Widget -->
-    <div id="ament-chat" aria-label="Chat with our virtual assistant">
-        <button id="chat-toggle" aria-label="Open chat assistant" aria-expanded="false" aria-controls="chat-panel">
+    <div id="ament-chat" aria-label="Chat with our AI assistant">
+        <button id="chat-toggle" aria-label="Open AI chat assistant" aria-expanded="false" aria-controls="chat-panel">
             <svg class="chat-icon-open" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
             <svg class="chat-icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
-        <div id="chat-panel" role="dialog" aria-label="Virtual assistant chat" aria-hidden="true">
+        <div id="chat-panel" role="dialog" aria-label="AI assistant chat" aria-hidden="true">
             <div class="chat-header">
                 <div class="chat-header-info">
                     <div class="chat-avatar" aria-hidden="true">
@@ -270,7 +270,7 @@
                     </div>
                     <div>
                         <div class="chat-header-title">Ament Law Group</div>
-                        <div class="chat-header-sub">Virtual Assistant</div>
+                        <div class="chat-header-sub">AI Assistant</div>
                     </div>
                 </div>
                 <button id="chat-close" aria-label="Close chat">
@@ -279,7 +279,7 @@
             </div>
             <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-label="Chat messages">
                 <div class="chat-msg assistant">
-                    <p>Hi! I'm the virtual assistant for Ament Law Group. I can answer questions about our firm, our services, and general information about estate planning, probate, real estate, and business law in Pennsylvania.</p>
+                    <p>Hi! I'm the AI assistant for Ament Law Group. I can answer questions about our firm, our services, and general information about estate planning, probate, real estate, and business law in Pennsylvania.</p>
                     <p>I can't provide legal advice — but I can help you figure out if we're the right firm for your needs. What can I help you with?</p>
                 </div>
             </div>
@@ -305,7 +305,7 @@
             </div>
             <div class="chat-meta">
                 <span id="chat-remaining">10 messages remaining</span>
-                <span class="chat-disclaimer">General info only · Not legal advice</span>
+                <span class="chat-disclaimer">Powered by AI · General info only · Not legal advice</span>
             </div>
         </div>
     </div>
@@ -325,18 +325,40 @@
             });
         }
 
-        /* Dropdown toggles — desktop and mobile */
+        /* Dropdown toggles — desktop: navigate on click, hover opens dropdown.
+           Mobile: click toggles dropdown (no hover). */
+        var isMobile = function() { return window.innerWidth <= 900; };
         var dropdownTriggers = document.querySelectorAll('.has-dropdown > .dropdown-trigger');
         dropdownTriggers.forEach(function(trigger) {
             trigger.addEventListener('click', function(e) {
                 var parent = trigger.parentElement;
-                e.preventDefault();
-                var wasOpen = parent.classList.contains('dropdown-open');
-                /* Close all other dropdowns */
-                document.querySelectorAll('.has-dropdown.dropdown-open').forEach(function(el) {
-                    el.classList.remove('dropdown-open');
-                });
-                if (!wasOpen) parent.classList.add('dropdown-open');
+                if (isMobile()) {
+                    /* Mobile: toggle dropdown, don't navigate */
+                    e.preventDefault();
+                    var wasOpen = parent.classList.contains('dropdown-open');
+                    document.querySelectorAll('.has-dropdown.dropdown-open').forEach(function(el) {
+                        el.classList.remove('dropdown-open');
+                    });
+                    if (!wasOpen) parent.classList.add('dropdown-open');
+                }
+                /* Desktop: allow default navigation (no preventDefault) */
+            });
+        });
+
+        /* Desktop: open dropdown on hover */
+        document.querySelectorAll('.has-dropdown').forEach(function(item) {
+            item.addEventListener('mouseenter', function() {
+                if (!isMobile()) {
+                    document.querySelectorAll('.has-dropdown.dropdown-open').forEach(function(el) {
+                        el.classList.remove('dropdown-open');
+                    });
+                    item.classList.add('dropdown-open');
+                }
+            });
+            item.addEventListener('mouseleave', function() {
+                if (!isMobile()) {
+                    item.classList.remove('dropdown-open');
+                }
             });
         });
 

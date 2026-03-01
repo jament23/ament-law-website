@@ -176,34 +176,6 @@ header .container {
 /* Navigation - takes the center */
 nav#main-nav { margin-right: auto; order: 2; }
 
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 0;
-    align-items: center;
-}
-
-nav > ul > li { position: relative; }
-
-nav a {
-    color: var(--color-body);
-    font-size: 0.95rem;
-    font-weight: 500;
-    letter-spacing: 0.01em;
-    padding: 10px 14px;
-    display: block;
-    white-space: nowrap;
-    border-radius: 6px;
-    transition: all var(--transition);
-}
-
-nav > ul > li > a:hover,
-nav > ul > li:hover > a {
-    color: var(--color-heading);
-    background: var(--color-canvas);
-    text-decoration: none;
-}
-
 /* Header contact info */
 .header-contact {
     display: flex;
@@ -218,8 +190,8 @@ nav > ul > li:hover > a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     color: var(--color-heading);
     transition: background var(--transition), color var(--transition);
@@ -390,7 +362,7 @@ nav > ul > li:hover > a {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 10px;
+    padding: 12px;
     z-index: 101;
 }
 
@@ -1016,7 +988,7 @@ main section {
 }
 
 .attorney-review-stars {
-    color: #f59e0b;
+    color: #c8a45a;
     font-size: 1rem;
     letter-spacing: 2px;
     margin-bottom: 8px;
@@ -1933,67 +1905,6 @@ main section {
 }
 
 /* =================================================================
-   404 PAGE
-   ================================================================= */
-.error-page {
-    padding: var(--space-xl) 0;
-}
-
-.error-content {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.error-code {
-    font-family: var(--font-body);
-    font-size: 6rem;
-    font-weight: 400;
-    color: var(--color-border);
-    line-height: 1;
-    margin-bottom: var(--space-sm);
-}
-
-.error-content > p {
-    color: var(--color-muted);
-    margin-bottom: var(--space-lg);
-}
-
-.error-links {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-sm);
-    text-align: left;
-}
-
-.error-link {
-    display: block;
-    padding: var(--space-sm) var(--space-md);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    text-decoration: none;
-    transition: border-color var(--transition), box-shadow var(--transition);
-}
-
-.error-link:hover {
-    border-color: var(--color-accent);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-
-.error-link strong {
-    display: block;
-    color: var(--color-ink);
-    font-size: 0.95rem;
-    margin-bottom: 2px;
-}
-
-.error-link span {
-    color: var(--color-muted);
-    font-size: 0.82rem;
-}
-
-/* =================================================================
    REVIEWS PAGE
    ================================================================= */
 .reviews-summary {
@@ -2783,8 +2694,8 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
         border-top: 1px solid var(--color-border);
         box-shadow: 0 8px 30px rgba(0,0,0,0.15);
         z-index: 9999;
-        height: calc(100vh - 120px);
-        height: calc(100dvh - 120px);
+        height: calc(100vh - 80px);
+        height: calc(100dvh - 80px);
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }

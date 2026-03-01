@@ -99,7 +99,7 @@ permalink: /assessment-appeal/index.html
 .metric-card { background: #fff; border: 1px solid #e0e4ed; border-radius: 10px; padding: 18px 20px; box-shadow: 0 2px 8px rgba(15,29,64,.05); }
 .metric-card .metric-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #888; margin-bottom: 6px; }
 .metric-card .metric-value { font-size: 1.5rem; font-weight: 700; color: var(--color-heading); line-height: 1.1; }
-.metric-card .metric-note  { font-size: 0.75rem; color: #999; margin-top: 4px; }
+.metric-card .metric-note  { font-size: 0.75rem; color: #737373; margin-top: 4px; }
 .metric-card.highlight     { border-color: var(--color-accent); background: #f5f7fd; }
 .metric-card.highlight .metric-value { color: var(--color-accent); }
 .metric-card.savings-positive { border-color: #15803d; background: #f0fdf4; }
@@ -147,7 +147,7 @@ permalink: /assessment-appeal/index.html
 .appeal-cta p  { color: rgba(255,255,255,.8); margin: 0; font-size: 0.93rem; }
 .appeal-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; flex-shrink: 0; }
 .appeal-cta-inline { margin-bottom: 20px; padding: 24px 28px; }
-.appeal-disclaimer { font-size: 0.78rem; color: #999; line-height: 1.5; margin-top: 20px; padding-top: 16px; border-top: 1px solid #eef0f5; }
+.appeal-disclaimer { font-size: 0.78rem; color: #737373; line-height: 1.5; margin-top: 20px; padding-top: 16px; border-top: 1px solid #eef0f5; }
 
 /* ── Email capture ─────────────────────────────────────────── */
 .email-capture {
@@ -282,7 +282,7 @@ permalink: /assessment-appeal/index.html
         <label>School Millage <a href="https://apps.alleghenycounty.us/website/millsd.asp" target="_blank" rel="noopener" style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.75rem;color:var(--color-heading);margin-left:4px;">Look up &#8599;</a></label>
         <input type="number" id="alleg-school-mill" placeholder="Auto-loaded…" step="0.01" min="0" max="60"
                title="School district millage — auto-loaded after you enter a parcel ID. You can override it manually.">
-        <div id="alleg-school-mill-note" style="font-size:.72rem;color:#aaa;margin-top:3px;"></div>
+        <div id="alleg-school-mill-note" style="font-size:.72rem;color:#666;margin-top:3px;"></div>
       </div>
     </div>
   </div>
@@ -291,7 +291,7 @@ permalink: /assessment-appeal/index.html
 
   <div id="alleg-results" style="display:none;">
     <div style="margin-bottom:20px;">
-      <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;margin-bottom:4px;">Subject Property</div>
+      <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#666;margin-bottom:4px;">Subject Property</div>
       <div id="alleg-addr" style="font-size:1.3rem;font-weight:700;color:var(--color-heading);"></div>
       <div id="alleg-muni" style="font-size:.9rem;color:#666;margin-top:2px;"></div>
     </div>
@@ -315,12 +315,12 @@ permalink: /assessment-appeal/index.html
       <h3>Market Analysis</h3>
       <div style="display:flex;gap:24px;flex-wrap:wrap;">
         <div style="flex:1;min-width:220px;">
-          <div style="font-size:.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em;">Value Variance</div>
+          <div style="font-size:.8rem;color:#666;font-weight:600;text-transform:uppercase;letter-spacing:.04em;">Value Variance</div>
           <span id="alleg-vbadge" class="variance-badge" style="margin:6px 0;display:inline-block;font-size:1rem;"></span>
           <p id="alleg-vexpl" style="font-size:.88rem;color:#555;margin:8px 0 0;line-height:1.6;"></p>
         </div>
         <div style="flex:1;min-width:220px;">
-          <div style="font-size:.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Tax Estimate Breakdown</div>
+          <div style="font-size:.8rem;color:#666;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Tax Estimate Breakdown</div>
           <table style="font-size:.85rem;width:100%;border-collapse:collapse;">
             <tr><td style="padding:3px 0;color:#555;">School Millage</td><td id="alleg-t1" style="text-align:right;font-weight:600;">&#8212;</td></tr>
             <tr><td style="padding:3px 0;color:#555;">Muni + County Millage</td><td id="alleg-t2" style="text-align:right;font-weight:600;">&#8212;</td></tr>
@@ -337,7 +337,7 @@ permalink: /assessment-appeal/index.html
         <table class="comps-table"><thead><tr><th>Address</th><th>Sale Price</th><th>Sale Date</th><th>Sq. Ft.</th><th class="col-secondary">Grade</th><th class="col-secondary">Parcel ID</th></tr></thead>
         <tbody id="alleg-tbody"></tbody></table>
       </div>
-      <div id="alleg-no-comps" style="display:none;font-size:.9rem;color:#888;padding:12px 0;">No comparable sales found within the selected filters. Try widening the sq. ft. variance or extending the lookback.</div>
+      <div id="alleg-no-comps" style="display:none;font-size:.9rem;color:#666;padding:12px 0;">No comparable sales found within the selected filters. Try widening the sq. ft. variance or extending the lookback.</div>
     </div>
     <div class="email-capture" id="alleg-email-capture">
       <h4>&#128231; Email this report to yourself</h4>
@@ -384,11 +384,11 @@ permalink: /assessment-appeal/index.html
       </div>
     </div>
 
-    <div style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#888;margin-bottom:10px;">Comparable Sales</div>
+    <div style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#666;margin-bottom:10px;">Comparable Sales</div>
     <div style="display:grid;grid-template-columns:1fr 150px 140px auto;gap:10px;margin-bottom:6px;">
-      <div style="font-size:.72rem;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.04em;">Address (optional)</div>
-      <div style="font-size:.72rem;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.04em;">Sale Price</div>
-      <div style="font-size:.72rem;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.04em;">Sq. Ft. (opt.)</div>
+      <div style="font-size:.72rem;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:.04em;">Address (optional)</div>
+      <div style="font-size:.72rem;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:.04em;">Sale Price</div>
+      <div style="font-size:.72rem;font-weight:600;color:#666;text-transform:uppercase;letter-spacing:.04em;">Sq. Ft. (opt.)</div>
       <div></div>
     </div>
     <div id="wm-comps-container"></div>
@@ -399,7 +399,7 @@ permalink: /assessment-appeal/index.html
 
   <div id="wm-results" style="display:none;">
     <div style="margin-bottom:20px;">
-      <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;margin-bottom:4px;">Your Property</div>
+      <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#666;margin-bottom:4px;">Your Property</div>
       <div style="font-size:1.1rem;font-weight:700;color:var(--color-heading);">Westmoreland County Assessment Analysis</div>
       <div id="wm-sub" style="font-size:.9rem;color:#666;margin-top:2px;"></div>
     </div>
@@ -423,7 +423,7 @@ permalink: /assessment-appeal/index.html
       <h3>Appeal Analysis</h3>
       <div style="display:flex;gap:24px;flex-wrap:wrap;">
         <div style="flex:1;min-width:220px;">
-          <div style="font-size:.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em;">Value Variance</div>
+          <div style="font-size:.8rem;color:#666;font-weight:600;text-transform:uppercase;letter-spacing:.04em;">Value Variance</div>
           <span id="wm-vbadge" class="variance-badge" style="margin:6px 0;display:inline-block;font-size:1rem;"></span>
           <p id="wm-vexpl" style="font-size:.88rem;color:#555;margin:8px 0 0;line-height:1.6;"></p>
           <div style="margin-top:14px;padding:12px 14px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;font-size:.82rem;color:#78350f;line-height:1.5;">
@@ -431,7 +431,7 @@ permalink: /assessment-appeal/index.html
           </div>
         </div>
         <div style="flex:1;min-width:220px;">
-          <div style="font-size:.8rem;color:#888;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Tax Estimate Breakdown</div>
+          <div style="font-size:.8rem;color:#666;font-weight:600;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;">Tax Estimate Breakdown</div>
           <table style="font-size:.85rem;width:100%;border-collapse:collapse;">
             <tr><td style="padding:3px 0;color:#555;">Current Assessment</td><td id="wm-t1" style="text-align:right;font-weight:600;">&#8212;</td></tr>
             <tr><td style="padding:3px 0;color:#555;">Target Assessment (Comps &times; CLR)</td><td id="wm-t2" style="text-align:right;font-weight:600;">&#8212;</td></tr>
@@ -650,7 +650,7 @@ function runAllegheny() {
             {text:(r.SALEDATE||"—").substring(0,10), style:"color:#666;white-space:nowrap;"},
             {text:isNaN(sq)?"—":sq.toLocaleString()},
             {text:r.GRADE||"—", cls:"col-secondary"},
-            {text:r.PARID||"—", cls:"col-secondary", style:"font-size:.78rem;color:#888;"}
+            {text:r.PARID||"—", cls:"col-secondary", style:"font-size:.78rem;color:#666;"}
           ];
           cells.forEach(function(c){var td=document.createElement("td");td.textContent=c.text;if(c.style)td.setAttribute("style",c.style);if(c.cls)td.className=c.cls;tr.appendChild(td);});
           tbody.appendChild(tr);
