@@ -119,6 +119,10 @@ permalink: /assessment-appeal/index.html
 .comps-table tr:last-child td { border-bottom: none; }
 .comps-table tr:hover td { background: #f9fafc; }
 .comps-table .td-price { font-weight: 600; color: var(--color-heading); white-space: nowrap; }
+.comps-table .col-secondary { }
+@media (max-width: 768px) {
+  .comps-table .col-secondary { display: none; }
+}
 
 /* ── Variance badge ────────────────────────────────────────── */
 .variance-badge { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; }
@@ -142,6 +146,7 @@ permalink: /assessment-appeal/index.html
 .appeal-cta h3 { color: #fff; margin: 0 0 6px; font-size: 1.2rem; }
 .appeal-cta p  { color: rgba(255,255,255,.8); margin: 0; font-size: 0.93rem; }
 .appeal-cta-btns { display: flex; gap: 10px; flex-wrap: wrap; flex-shrink: 0; }
+.appeal-cta-inline { margin-bottom: 20px; padding: 24px 28px; }
 .appeal-disclaimer { font-size: 0.78rem; color: #999; line-height: 1.5; margin-top: 20px; padding-top: 16px; border-top: 1px solid #eef0f5; }
 
 /* ── Email capture ─────────────────────────────────────────── */
@@ -296,6 +301,16 @@ permalink: /assessment-appeal/index.html
       <div class="metric-card"><div class="metric-label">Avg Comparable Sale</div><div class="metric-value" id="alleg-m3">&#8212;</div><div class="metric-note" id="alleg-m3n">&#8212;</div></div>
       <div class="metric-card" id="alleg-m4c"><div class="metric-label">Est. Annual Tax Savings</div><div class="metric-value" id="alleg-m4">&#8212;</div><div class="metric-note" id="alleg-m4n">&#8212;</div></div>
     </div>
+    <div class="appeal-cta appeal-cta-inline" id="alleg-inline-cta">
+      <div>
+        <h3>Ready to appeal? We can help.</h3>
+        <p>Our attorneys handle assessment appeals in Allegheny and Westmoreland County.</p>
+      </div>
+      <div class="appeal-cta-btns">
+        <a href="/contact/" class="cta-button-light">Schedule a Consultation</a>
+        <a href="tel:724-733-3500" class="cta-button-outline">Call (724) 733-3500</a>
+      </div>
+    </div>
     <div class="result-section">
       <h3>Market Analysis</h3>
       <div style="display:flex;gap:24px;flex-wrap:wrap;">
@@ -319,7 +334,7 @@ permalink: /assessment-appeal/index.html
     <div class="result-section">
       <h3>Comparable Sales Evidence</h3>
       <div class="comps-table-wrap">
-        <table class="comps-table"><thead><tr><th>Address</th><th>Sale Price</th><th>Sale Date</th><th>Sq. Ft.</th><th>Grade</th><th>Parcel ID</th></tr></thead>
+        <table class="comps-table"><thead><tr><th>Address</th><th>Sale Price</th><th>Sale Date</th><th>Sq. Ft.</th><th class="col-secondary">Grade</th><th class="col-secondary">Parcel ID</th></tr></thead>
         <tbody id="alleg-tbody"></tbody></table>
       </div>
       <div id="alleg-no-comps" style="display:none;font-size:.9rem;color:#888;padding:12px 0;">No comparable sales found within the selected filters. Try widening the sq. ft. variance or extending the lookback.</div>
@@ -393,6 +408,16 @@ permalink: /assessment-appeal/index.html
       <div class="metric-card highlight"><div class="metric-label">Implied Market Value</div><div class="metric-value" id="wm-m2">&#8212;</div><div class="metric-note">At 2026 CLR of 8.88%</div></div>
       <div class="metric-card"><div class="metric-label">Avg Comparable Sale</div><div class="metric-value" id="wm-m3">&#8212;</div><div class="metric-note" id="wm-m3n">&#8212;</div></div>
       <div class="metric-card" id="wm-m4c"><div class="metric-label">Est. Annual Tax Savings</div><div class="metric-value" id="wm-m4">&#8212;</div><div class="metric-note" id="wm-m4n">&#8212;</div></div>
+    </div>
+    <div class="appeal-cta appeal-cta-inline" id="wm-inline-cta">
+      <div>
+        <h3>Ready to appeal? We can help.</h3>
+        <p>Our attorneys handle assessment appeals in Allegheny and Westmoreland County.</p>
+      </div>
+      <div class="appeal-cta-btns">
+        <a href="/contact/" class="cta-button-light">Schedule a Consultation</a>
+        <a href="tel:724-733-3500" class="cta-button-outline">Call (724) 733-3500</a>
+      </div>
     </div>
     <div class="result-section">
       <h3>Appeal Analysis</h3>
@@ -624,8 +649,8 @@ function runAllegheny() {
             {text:fmt$(parseFloat(r.SALEPRICE)), cls:"td-price"},
             {text:(r.SALEDATE||"—").substring(0,10), style:"color:#666;white-space:nowrap;"},
             {text:isNaN(sq)?"—":sq.toLocaleString()},
-            {text:r.GRADE||"—"},
-            {text:r.PARID||"—", style:"font-size:.78rem;color:#888;"}
+            {text:r.GRADE||"—", cls:"col-secondary"},
+            {text:r.PARID||"—", cls:"col-secondary", style:"font-size:.78rem;color:#888;"}
           ];
           cells.forEach(function(c){var td=document.createElement("td");td.textContent=c.text;if(c.style)td.setAttribute("style",c.style);if(c.cls)td.className=c.cls;tr.appendChild(td);});
           tbody.appendChild(tr);

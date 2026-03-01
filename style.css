@@ -25,7 +25,7 @@
     --space-sm:  16px;
     --space-md:  24px;
     --space-lg:  48px;
-    --space-xl:  80px;
+    --space-xl:  60px;
     --space-2xl: 120px;
     --radius:    8px;
     --radius-sm: 6px;
@@ -165,13 +165,13 @@ header {
 header .container {
     display: flex;
     align-items: center;
-    height: 120px;
+    height: 80px;
 }
 
 /* Logo */
 .logo { display: flex; align-items: center; flex-shrink: 0; margin-right: var(--space-lg); }
 .logo:hover { text-decoration: none; }
-.logo-img { height: 110px; width: auto; }
+.logo-img { height: 70px; width: auto; }
 
 /* Navigation - takes the center */
 nav#main-nav { margin-right: auto; order: 2; }
