@@ -14,9 +14,9 @@ At Ament Law Group, we work with blended families regularly and understand the c
 
 ### Intestacy (No Will)
 
-If you die without a will in Pennsylvania, the intestacy statutes (20 Pa.C.S. § 2101 et seq.) determine who inherits your estate. For a married person with children from a prior relationship, the surviving spouse receives the first $50,000 of the estate plus one-half of the balance. The remaining one-half goes to the decedent's children. This split may or may not reflect your actual wishes.
+If you die without a will in Pennsylvania, the intestacy statutes (20 Pa.C.S. § 2101 et seq.) determine who inherits your estate. For a married person with children from a prior relationship (children who are not also children of the surviving spouse), the surviving spouse receives one-half of the estate — with no preferential share. The remaining one-half goes to the decedent's children.
 
-For example, if your estate is worth $500,000, your surviving spouse would receive $275,000 (the first $50,000 plus half of $450,000) and your children would share $225,000. If you intended for your children to receive more — or less — intestacy law does not accommodate that preference.
+For example, if your estate is worth $500,000, your surviving spouse would receive $250,000 (one-half) and your children would share the other $250,000. Note: this is different from the rule when all children are shared with the surviving spouse, where the spouse receives the first $30,000 plus half the balance. If you intended for your children or spouse to receive more or less, intestacy law does not accommodate that preference.
 
 ### The Elective Share
 

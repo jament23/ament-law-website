@@ -28,7 +28,7 @@ An LLC makes the most sense when you have **significant personal assets to prote
 
 It also makes sense when you own **multiple rental properties**. Holding each property (or a group of properties) in a separate LLC means a liability event at one property cannot affect the others.
 
-For Pennsylvania landlords, forming an LLC is straightforward under the Pennsylvania Uniform Limited Liability Company Act (15 Pa.C.S. § 8811 et seq.). The filing fee is $125 with the Department of State, and the entity can be formed in a matter of days.
+For Pennsylvania landlords, forming an LLC is straightforward under the Pennsylvania Uniform Limited Liability Company Act (15 Pa.C.S. § 8811 et seq.). The filing fee with the Department of State is currently $125 (verify at dos.pa.gov for the most current fee), and the entity can be formed in a matter of days.
 
 ## The Case Against (or at Least: Not Yet)
 

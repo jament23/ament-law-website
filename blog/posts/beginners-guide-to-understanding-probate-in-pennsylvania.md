@@ -23,7 +23,7 @@ Understanding probate is essential for anyone involved in the administration of 
 
 ## What Is Probate?
 
-Probate is the legal process by which a deceased person's assets are collected, debts are paid, and the remaining assets are distributed to beneficiaries according to the terms of the will — or according to state law if there is no will. In Pennsylvania, probate is overseen by the Orphans' Court.
+Probate is the legal process by which a deceased person's assets are collected, debts are paid, and the remaining assets are distributed to beneficiaries according to the terms of the will — or according to state law if there is no will. In Pennsylvania, routine probate is administered through the Register of Wills, while the Orphans' Court handles contested matters, accountings, and other judicial proceedings within the estate.
 
 ## When Is Probate Required?
 
@@ -51,7 +51,7 @@ Creditors must be notified of the death and given the opportunity to make claims
 
 ### Paying Debts and Taxes
 
-The executor pays valid debts, files final income tax returns, and files the Pennsylvania Inheritance Tax return (REV-1500 or REV-1510).
+The executor pays valid debts, files final income tax returns, and files the Pennsylvania Inheritance Tax return (REV-1500 for resident decedents).
 
 ### Distributing Assets
 

@@ -27,13 +27,11 @@ The annual report is filed online through the Pennsylvania Department of State's
 
 ## The Corporate Transparency Act: Federal Beneficial Ownership Reporting
 
-The Corporate Transparency Act (CTA), enacted as part of the National Defense Authorization Act, created a new federal reporting obligation for most small businesses. Under the CTA, "reporting companies" — which includes most LLCs, corporations, and similar entities — must file a Beneficial Ownership Information (BOI) report with FinCEN identifying the individuals who own or control the company.
+The Corporate Transparency Act (CTA), enacted as part of the National Defense Authorization Act, created a new federal reporting obligation for business entities. Under the original CTA framework, "reporting companies" — which included most LLCs, corporations, and similar entities — were required to file a Beneficial Ownership Information (BOI) report with FinCEN identifying the individuals who own or control the company.
 
-The BOI report requires the name, date of birth, address, and a copy of a government-issued ID for each beneficial owner — defined as anyone who owns 25% or more of the company or exercises substantial control over it.
+**Important update — March 2025:** After multiple federal court challenges and a Supreme Court stay, FinCEN announced in March 2025 that it would not enforce CTA beneficial ownership reporting requirements against U.S. citizens and domestic reporting companies. FinCEN issued an interim final rule narrowing the CTA's scope to foreign reporting companies only. This is a dramatic change from the original law.
 
-**The current status of CTA enforcement** has been subject to ongoing litigation and regulatory updates. Reporting deadlines have shifted multiple times. The practical advice: consult with your attorney about your specific entity's current filing obligations, as the landscape has been fluid.
-
-**Key exemptions to know:** Large operating companies (more than 20 full-time employees, more than $5 million in gross receipts, and a physical presence in the US), regulated entities like banks and insurance companies, and certain inactive entities are exempt from reporting. Most small business LLCs and holding companies are not exempt.
+**What this means for Pennsylvania small businesses:** If your LLC or corporation is a domestic entity (formed in the U.S. and owned by U.S. persons), you are likely no longer required to file a BOI report under FinCEN's current guidance. However, this area of law remains fluid — FinCEN has indicated it intends to issue a revised final rule, and Congress could act further. Consult with your attorney about your specific situation.
 
 ## Updated Pennsylvania LLC Act Provisions
 

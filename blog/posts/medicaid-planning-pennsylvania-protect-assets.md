@@ -24,7 +24,7 @@ To qualify for Pennsylvania Medicaid for long-term care, an individual must meet
 
 **Exempt assets:** Not all assets count toward the resource limit. The applicant's primary residence is exempt (subject to estate recovery rules), one vehicle is exempt, personal property and household goods are exempt, and certain prepaid funeral and burial arrangements are exempt.
 
-**The community spouse:** If the Medicaid applicant has a spouse living at home (the "community spouse"), the rules are more generous. The community spouse may retain the Community Spouse Resource Allowance — currently up to approximately $154,140 — plus the exempt assets. The community spouse also receives a Monthly Maintenance Needs Allowance to ensure adequate income for living expenses.
+**The community spouse:** If the Medicaid applicant has a spouse living at home (the "community spouse"), the rules are more generous. The community spouse may retain the Community Spouse Resource Allowance — currently up to approximately $157,920 (2025 figure, adjusted annually) — plus the exempt assets. The community spouse also receives a Monthly Maintenance Needs Allowance to ensure adequate income for living expenses.
 
 ## The Five-Year Lookback Period
 

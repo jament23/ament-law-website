@@ -59,11 +59,11 @@ Transfers between spouses are tax-free. For married couples, structuring ownersh
 
 ### Use Irrevocable Trusts
 
-Assets placed in an irrevocable trust more than one year before death are generally not subject to Pennsylvania inheritance tax. This requires advance planning, but the tax savings can be substantial for larger estates.
+Assets placed in an irrevocable trust more than one year before death may be excluded from Pennsylvania inheritance tax, provided the grantor retained no prohibited interests or powers over the trust assets (72 P.S. § 9107). The specific terms of the trust determine whether this exclusion applies. This requires advance planning, but the tax savings can be substantial for larger estates.
 
 ### Lifetime Gifting
 
-Gifts made more than one year before death are not included in the taxable estate. Pennsylvania does not have its own gift tax, so lifetime gifting can be an effective strategy. However, gifts made within one year of death are pulled back into the estate for inheritance tax purposes.
+Gifts made more than one year before death are generally not included in the taxable estate for Pennsylvania inheritance tax purposes (72 P.S. § 9107). Pennsylvania does not have its own gift tax, so lifetime gifting can be an effective strategy. However, gifts made within one year of death are pulled back into the estate for inheritance tax purposes. Note that the federal annual gift tax exclusion ($19,000 per recipient in 2025) does not exempt gifts from Pennsylvania's one-year clawback — all gifts within one year of death may be subject to inheritance tax regardless of size.
 
 ### Life Insurance Planning
 

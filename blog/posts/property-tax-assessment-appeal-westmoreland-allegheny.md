@@ -25,7 +25,7 @@ In both Westmoreland and Allegheny County, assessments are periodically updated 
 
 In Westmoreland County, assessment appeals are filed with the **Westmoreland County Board of Assessment Appeals**.
 
-**Deadline:** The annual appeal deadline in Westmoreland County is generally **August 1** for the following tax year. Appeals filed after this deadline are not accepted for that cycle.
+**Deadline:** The annual appeal deadline in Westmoreland County is generally **August 1** for the following tax year, though this date is set annually and may change. Verify the current year's deadline directly with the Westmoreland County Assessment Office before filing.
 
 **Filing:** Appeals are filed at the Westmoreland County Assessment Office. The appeal form requires basic property information and a statement of the value you believe is correct.
 
@@ -37,7 +37,7 @@ In Westmoreland County, assessment appeals are filed with the **Westmoreland Cou
 
 Allegheny County has its own Board of Property Assessment Appeals and Review (BPAAR).
 
-**Deadline:** The annual appeal deadline in Allegheny County is typically **March 31** for the current tax year. Allegheny County also permits appeals based on a change in assessment or a recent sale of the property.
+**Deadline:** The annual appeal deadline in Allegheny County is typically **March 31** for the current tax year, though this date is set annually and can change. Verify the current year's deadline directly with the Allegheny County Board of Property Assessment Appeals and Review (BPAAR) before filing. Allegheny County also permits appeals based on a change in assessment or a recent sale of the property.
 
 **The hearing:** Hearings before the BPAAR are conducted similarly to Westmoreland County — you present evidence, the assessor presents the county's position, and the Board decides.
 
