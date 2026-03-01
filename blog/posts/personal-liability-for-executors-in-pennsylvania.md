@@ -18,7 +18,7 @@ As executor, you owe fiduciary duties to the estate and its beneficiaries. These
 
 ### Premature Distributions
 
-One of the most common and costly mistakes executors make is distributing assets to beneficiaries before all debts, taxes, and claims have been paid. Under Pennsylvania law (20 Pa.C.S. § 3532), creditors generally have one year from the decedent's date of death to file claims against the estate. If you distribute assets before this period expires and a creditor later comes forward with a valid claim, you are personally liable for the amount distributed.
+One of the most common and costly mistakes executors make is distributing assets to beneficiaries before all debts, taxes, and claims have been paid. Under Pennsylvania law (20 Pa.C.S. § 3532), creditors have one year from the date of first publication of the estate notice (in the local legal journal and a newspaper of general circulation) to file claims against the estate. If you distribute assets before this period expires and a creditor later comes forward with a valid claim, you are personally liable for the amount distributed.
 
 This does not mean you must wait a full year before making any distributions. With proper guidance, interim distributions can be made while retaining sufficient reserves for known and potential claims. But the risk of premature distribution is real, and executors who act too quickly can find themselves writing personal checks to satisfy estate debts.
 
