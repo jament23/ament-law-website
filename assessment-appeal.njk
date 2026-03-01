@@ -619,12 +619,15 @@ function runAllegheny() {
         disp.forEach(function(r) {
           var tr = document.createElement("tr");
           var sq = parseFloat(r.FINISHEDLIVINGAREA);
-          tr.innerHTML = "<td style='max-width:200px;'>" + (r.PROPERTYADDRESS||"—").trim() + "</td>"
-            + "<td class='td-price'>" + fmt$(parseFloat(r.SALEPRICE)) + "</td>"
-            + "<td style='color:#666;white-space:nowrap;'>" + (r.SALEDATE||"—").substring(0,10) + "</td>"
-            + "<td>" + (isNaN(sq)?"—":sq.toLocaleString()) + "</td>"
-            + "<td>" + (r.GRADE||"—") + "</td>"
-            + "<td style='font-size:.78rem;color:#888;'>" + (r.PARID||"—") + "</td>";
+          var cells = [
+            {text:(r.PROPERTYADDRESS||"—").trim(), style:"max-width:200px;"},
+            {text:fmt$(parseFloat(r.SALEPRICE)), cls:"td-price"},
+            {text:(r.SALEDATE||"—").substring(0,10), style:"color:#666;white-space:nowrap;"},
+            {text:isNaN(sq)?"—":sq.toLocaleString()},
+            {text:r.GRADE||"—"},
+            {text:r.PARID||"—", style:"font-size:.78rem;color:#888;"}
+          ];
+          cells.forEach(function(c){var td=document.createElement("td");td.textContent=c.text;if(c.style)td.setAttribute("style",c.style);if(c.cls)td.className=c.cls;tr.appendChild(td);});
           tbody.appendChild(tr);
         });
 
@@ -749,7 +752,13 @@ function runWestmoreland() {
     comps.forEach(function(c) {
       var tr = document.createElement("tr");
       var ppsf = (c.price && c.sqft) ? fmt$(c.price/c.sqft) + "/sf" : "—";
-      tr.innerHTML = "<td>" + c.addr + "</td><td class='td-price'>" + fmt$(c.price) + "</td><td>" + (c.sqft?c.sqft.toLocaleString():"—") + "</td><td style='color:#666;'>" + ppsf + "</td>";
+      var cells = [
+        {text:c.addr},
+        {text:fmt$(c.price), cls:"td-price"},
+        {text:c.sqft?c.sqft.toLocaleString():"—"},
+        {text:ppsf, style:"color:#666;"}
+      ];
+      cells.forEach(function(cl){var td=document.createElement("td");td.textContent=cl.text;if(cl.style)td.setAttribute("style",cl.style);if(cl.cls)td.className=cl.cls;tr.appendChild(td);});
       tbody.appendChild(tr);
     });
   } else { co.style.display = "none"; }
@@ -764,8 +773,10 @@ wmAddComp(); wmAddComp(); wmAddComp();
 //  EMAIL REPORT
 // ══════════════════════════════════════════════════════════
 var lastAllegReport = null;
+var sendingReport = false;
 
 function sendReport(county, reportData, emailId, firstId, lastId, errId, btnId, formId, successId) {
+  if (sendingReport) return;
   var email = (document.getElementById(emailId).value || "").trim();
   var firstName = (document.getElementById(firstId).value || "").trim();
   var lastName  = (document.getElementById(lastId).value || "").trim();
@@ -778,6 +789,7 @@ function sendReport(county, reportData, emailId, firstId, lastId, errId, btnId, 
   }
   errEl.style.display = "none";
 
+  sendingReport = true;
   var btn = document.getElementById(btnId);
   btn.disabled = true;
   btn.textContent = "Sending…";
@@ -791,6 +803,7 @@ function sendReport(county, reportData, emailId, firstId, lastId, errId, btnId, 
   })
   .then(function(r) { return r.json(); })
   .then(function(d) {
+    sendingReport = false;
     if (d.ok) {
       document.getElementById(formId).style.display = "none";
       document.getElementById(successId).style.display = "block";
@@ -802,6 +815,7 @@ function sendReport(county, reportData, emailId, firstId, lastId, errId, btnId, 
     }
   })
   .catch(function() {
+    sendingReport = false;
     errEl.textContent = "Could not connect. Please try again.";
     errEl.style.display = "block";
     btn.disabled = false;

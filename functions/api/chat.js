@@ -191,11 +191,17 @@ export async function onRequestPost(context) {
 }
 
 // Handle CORS preflight
-export async function onRequestOptions() {
+export async function onRequestOptions(context) {
+  const origin = context.request.headers.get("Origin") || "";
+  const isAllowed = ALLOWED_ORIGINS.includes(origin) ||
+    origin.endsWith(".ament-law-website.pages.dev") ||
+    origin.startsWith("http://localhost") ||
+    origin.startsWith("http://127.0.0.1");
+
   return new Response(null, {
     status: 204,
     headers: {
-      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Origin": isAllowed ? origin : ALLOWED_ORIGINS[0],
       "Access-Control-Allow-Methods": "POST, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
       "Access-Control-Max-Age": "86400",
