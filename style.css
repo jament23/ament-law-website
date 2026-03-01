@@ -3033,3 +3033,43 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
     text-transform: uppercase;
     letter-spacing: 0.03em;
 }
+
+/* Careers page */
+.job-listings { margin: var(--space-md) 0; }
+.job-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    margin-bottom: var(--space-sm);
+}
+.job-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-xs);
+}
+.job-card-header h3 { margin: 0; font-size: 1.15rem; }
+.job-type {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    background: rgba(15,29,64,0.06);
+    padding: 3px 10px;
+    border-radius: var(--radius-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.careers-apply-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    margin: var(--space-md) 0;
+}
+.careers-equal-opportunity {
+    font-size: 0.88rem;
+    color: var(--color-muted);
+    margin-top: var(--space-md);
+}
