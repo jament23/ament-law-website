@@ -14,7 +14,7 @@ author: "Katlynn Oliver, Esq."
 
 An operating agreement is the governing document of your LLC. It establishes the rights and responsibilities of the members, determines how profits and losses are allocated, specifies how the LLC is managed, and addresses what happens when a member wants to leave, becomes incapacitated, or dies.
 
-Pennsylvania law does not require an LLC to have an operating agreement. But the absence of one does not mean the LLC has no rules — it means the LLC is governed by the default provisions of Pennsylvania's Uniform Limited Liability Company Act (15 Pa. C.S. § 8821 et seq.). Those default rules were designed for the average LLC, not for yours.
+Pennsylvania law does not require an LLC to have an operating agreement. But the absence of one does not mean the LLC has no rules — it means the LLC is governed by the default provisions of Pennsylvania's Uniform Limited Liability Company Act (15 Pa. C.S. § 8811 et seq.). Those default rules were designed for the average LLC, not for yours.
 
 ## What Pennsylvania's Default Rules Actually Say
 

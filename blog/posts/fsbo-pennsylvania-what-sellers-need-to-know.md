@@ -56,7 +56,7 @@ Settlement in Pennsylvania is typically conducted by a title company or attorney
 
 As a FSBO seller, you will need to select a settlement company. Your buyer's lender may have preferences, but the seller generally has the right to choose the settlement agent. Using an experienced settlement attorney — rather than a title company alone — provides an additional layer of legal oversight and someone who can advise you if issues arise at the closing table.
 
-**Transfer taxes:** Pennsylvania imposes a realty transfer tax of 1% of the sale price at the state level. Local municipalities impose an additional transfer tax that varies by location — in most Western Pennsylvania municipalities, the total transfer tax is 2% of the sale price, typically split equally between buyer and seller.
+**Transfer taxes:** Pennsylvania imposes a realty transfer tax of 1% of the sale price at the state level. Local municipalities impose an additional transfer tax that varies by location — in most Western Pennsylvania municipalities, the total transfer tax is 2% of the sale price, typically split equally between buyer and seller. However, some municipalities impose higher local rates — for example, Pittsburgh's total transfer tax is 4% — so verify the rate for your specific municipality.
 
 **The deed:** The seller's attorney or the settlement agent prepares the deed transferring title to the buyer. The deed must be properly executed, acknowledged, and recorded with the county recorder of deeds.
 

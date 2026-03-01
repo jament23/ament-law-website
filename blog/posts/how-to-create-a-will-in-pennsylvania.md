@@ -50,7 +50,7 @@ While you can use online templates, working with an experienced estate planning 
 
 ### 6. Sign Your Will with Witnesses
 
-Although Pennsylvania does not legally require witnesses for a will to be valid, it's best practice to have **two disinterested adults** witness your signature. You and your witnesses should sign in each other's presence.
+Under 20 Pa.C.S. § 2502, Pennsylvania does not strictly require witnesses for a typed will to be valid — only the testator's signature is required. However, it is strongly recommended to have **two disinterested adults** witness your signature. You and your witnesses should sign in each other's presence.
 
 ### 7. Add a Self-Proving Affidavit
 

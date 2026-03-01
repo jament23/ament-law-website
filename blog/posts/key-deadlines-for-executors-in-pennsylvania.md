@@ -30,7 +30,7 @@ Serving as an executor is both an honor and a legal responsibility. One of the m
 - **File the will** with the Register of Wills in the county where the decedent lived.
 - **Petition for Letters Testamentary** to be formally appointed as executor.
 - **Obtain Short Certificates** to access and manage estate accounts.
-- **Publish notice to creditors** — this starts the one-year statute of limitations for creditor claims.
+- **Publish notice to creditors** — under 20 Pa.C.S. § 3532, creditors generally have one year from the date of death to file claims against the estate. Publishing notice helps establish constructive notice and can shorten the claims period for creditors with actual knowledge.
 - **Send notice to heirs and beneficiaries** — notify all interested parties of your appointment.
 - **File Certificate of Notice** with the Register of Wills confirming required notifications were sent.
 
@@ -45,7 +45,7 @@ Serving as an executor is both an honor and a legal responsibility. One of the m
 
 ## Within One Year
 
-- **Creditor claims deadline** — creditors have one year from the date of the published notice to file claims against the estate.
+- **Creditor claims deadline** — under 20 Pa.C.S. § 3532, creditors generally have one year from the decedent's date of death to file claims against the estate.
 - **Final income tax returns** — file the decedent's final federal and state income tax returns.
 
 ## Final Steps

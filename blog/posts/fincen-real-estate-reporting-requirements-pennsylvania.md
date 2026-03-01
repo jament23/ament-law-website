@@ -41,9 +41,11 @@ However, if you are:
 
 ## The Corporate Transparency Act Connection
 
-The FinCEN real estate rule operates alongside the Corporate Transparency Act (CTA), which separately requires most small businesses — including real estate holding LLCs — to file beneficial ownership information with FinCEN's database. While the CTA and the real estate rule are separate requirements, they reflect the same federal policy: greater transparency about who owns and controls business entities.
+The FinCEN real estate rule was developed alongside the Corporate Transparency Act (CTA), which was intended to require most small businesses — including real estate holding LLCs — to file beneficial ownership information with FinCEN's database.
 
-If you formed an LLC to hold real estate and have not addressed your CTA filing obligations, that is a separate compliance issue worth discussing with your attorney.
+**Important update:** In March 2025, FinCEN announced it would not enforce CTA beneficial ownership reporting requirements against U.S. citizens and domestic reporting companies, and issued an interim final rule narrowing CTA applicability to foreign reporting companies only. This is a significant change from the original CTA framework.
+
+If you formed an LLC to hold real estate, the CTA filing landscape has shifted substantially. Consult with your attorney to understand your current obligations, as the regulatory environment continues to evolve.
 
 ## Practical Steps for Buyers Using Entity Structures
 

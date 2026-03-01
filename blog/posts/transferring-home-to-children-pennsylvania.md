@@ -52,7 +52,7 @@ This has several practical consequences:
 
 Fortunately, there are planning techniques that accomplish the legitimate goals of a lifetime transfer without the drawbacks:
 
-**Life estate deed:** You transfer the home but retain a life estate — the right to live in and use the property for the rest of your life. At your death, ownership passes automatically to the remainder beneficiaries (your children) without probate, and they receive a stepped-up basis. The home is still subject to Medicaid estate recovery, but it avoids the capital gains tax problem of an outright transfer.
+**Life estate deed:** You transfer the home but retain a life estate — the right to live in and use the property for the rest of your life. At your death, ownership passes automatically to the remainder beneficiaries (your children) without probate, and they receive a stepped-up basis. This avoids the capital gains tax problem of an outright transfer. However, be aware that creating a life estate deed is itself a transfer of the remainder interest, which triggers the five-year Medicaid lookback period. The home may also be subject to Medicaid estate recovery under Pennsylvania's expanded estate definition. A life estate deed should be part of a broader Medicaid planning strategy, not a standalone solution.
 
 **Irrevocable Medicaid Asset Protection Trust (MAPT):** For clients focused on Medicaid planning with sufficient lead time, transferring the home to an irrevocable trust can remove it from countable Medicaid resources after the five-year lookback period expires. You can retain the right to live in the home. The trust provides better asset protection than a life estate and still allows for a stepped-up basis at death in many structures.
 
