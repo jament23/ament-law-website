@@ -113,6 +113,7 @@ permalink: /contact/index.html
 (function() {
     var AMENTCASE_URL = 'https://amentcase.com/api/website-lead';
     var PAGE_LOAD_TIME = Date.now();
+    var submitting = false;
 
     var form = document.getElementById('main-contact-form');
     var btn  = document.getElementById('submit-btn');
@@ -123,6 +124,9 @@ permalink: /contact/index.html
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
+
+        // Prevent double-submit
+        if (submitting) return;
 
         // Bot check 1: honeypot filled
         if (form.website_url.value) return;
@@ -141,7 +145,8 @@ permalink: /contact/index.html
             return;
         }
 
-        // Disable button
+        // Disable button and lock
+        submitting = true;
         btn.disabled = true;
         btn.textContent = 'Sending...';
         errorDiv.style.display = 'none';
@@ -196,6 +201,7 @@ permalink: /contact/index.html
             // Error — show message, re-enable button
             errorText.textContent = err.message || 'Something went wrong. Please call us at (724) 733-3500.';
             errorDiv.style.display = 'block';
+            submitting = false;
             btn.disabled = false;
             btn.textContent = 'Send Message';
         });
