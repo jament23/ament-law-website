@@ -2,8 +2,7 @@
 title: "Why Your Pennsylvania LLC Needs a Proper Operating Agreement (And What Happens Without One)"
 description: "An LLC without a proper operating agreement is governed by Pennsylvania's default statutory rules — which may not reflect what you want. Attorney Katlynn Oliver explains what every PA LLC owner needs to know."
 date: 2026-03-30
-tags: ["business-law", "blog"]
-author: "Katlynn Oliver, Esq."
+author: "W. Robert Ament, Esq."
 ---
 
 <div class="quick-answer">
