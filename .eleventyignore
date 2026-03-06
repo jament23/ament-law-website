@@ -2,3 +2,7 @@ README.md
 node_modules
 scripts
 audit-reports
+blog/posts/_TEMPLATE.md
+blog/posts/README.md
+careers/positions/_TEMPLATE.md
+careers/positions/README.md

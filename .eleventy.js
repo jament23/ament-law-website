@@ -21,6 +21,18 @@ module.exports = function(eleventyConfig) {
       });
   });
 
+  // Career postings collection sorted by date (newest first)
+  eleventyConfig.addCollection("careers", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("careers/positions/*.md")
+      .filter(function(item) {
+        var slug = item.fileSlug || '';
+        return slug !== 'README' && !slug.startsWith('_');
+      })
+      .sort(function(a, b) {
+        return b.date - a.date;
+      });
+  });
+
   // Date formatting filter
   eleventyConfig.addFilter("dateFormat", function(date) {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -29,7 +41,13 @@ module.exports = function(eleventyConfig) {
 
   // ISO date filter (for sitemap lastmod)
   eleventyConfig.addFilter("dateISO", function(date) {
-    return new Date(date).toISOString().split('T')[0];
+    try {
+      var d = new Date(date);
+      if (isNaN(d.getTime())) return '';
+      return d.toISOString().split('T')[0];
+    } catch(e) {
+      return '';
+    }
   });
 
   // Check if a date is in the future (for sitemap filtering)

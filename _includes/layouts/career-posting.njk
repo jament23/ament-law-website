@@ -1,0 +1,75 @@
+---
+layout: layouts/base.njk
+---
+{% block head %}
+{% if active == false or active == "false" %}<meta name="robots" content="noindex, nofollow">{% endif %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "{{ title }}",
+    "description": "{{ description }}",
+    "datePosted": "{{ date | dateISO }}",
+    "employmentType": "{{ type | upper | replace(' ', '_') }}",
+    "hiringOrganization": {
+        "@type": "LegalService",
+        "name": "Ament Law Group, P.C.",
+        "sameAs": "https://www.ament.law",
+        "logo": "https://www.ament.law/images/logo.svg"
+    },
+    "jobLocation": {
+        "@type": "Place",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "3950 William Penn Highway",
+            "addressLocality": "Murrysville",
+            "addressRegion": "PA",
+            "postalCode": "15668",
+            "addressCountry": "US"
+        }
+    }
+}
+</script>
+{% endblock %}
+<section class="simple-header">
+    <div class="container">
+        <h1>{{ title }}</h1>
+        <p class="post-meta-header">{{ type }} &bull; {{ location }} &bull; Posted {{ date | dateFormat }}</p>
+    </div>
+</section>
+<section id="blog-post-content">
+    <div class="container">
+        <div class="practice-area-layout">
+            <article class="practice-area-main blog-article">
+                {{ content | safe }}
+
+                <div class="blog-cta">
+                    <h3>Interested in This Position?</h3>
+                    <p>Submit your resume and cover letter to <a href="mailto:careers@ament.law">careers@ament.law</a>. Please include <strong>"{{ title }}"</strong> in your subject line.</p>
+                    <p>Questions? Call us at <a href="tel:724-733-3500">(724) 733-3500</a>.</p>
+                </div>
+            </article>
+            <aside class="practice-area-sidebar">
+                <div class="sidebar-widget">
+                    <h4>Position Details</h4>
+                    <ul class="sidebar-links" style="list-style:none; padding:0;">
+                        <li style="padding:6px 0;"><strong>Type:</strong> {{ type }}</li>
+                        <li style="padding:6px 0;"><strong>Location:</strong> {{ location }}</li>
+                        <li style="padding:6px 0;"><strong>Posted:</strong> {{ date | dateFormat }}</li>
+                    </ul>
+                </div>
+                <div class="sidebar-widget contact-widget">
+                    <h4>Apply Now</h4>
+                    <p>Send your resume to:</p>
+                    <p class="sidebar-phone"><a href="mailto:careers@ament.law">careers@ament.law</a></p>
+                </div>
+                <div class="sidebar-widget">
+                    <h4>All Openings</h4>
+                    <ul class="sidebar-links">
+                        <li><a href="/careers/">View All Positions</a></li>
+                    </ul>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

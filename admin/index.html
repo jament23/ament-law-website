@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog Editor — Ament Law Group</title>
+<title>Content Editor — Ament Law Group</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
 <style>
@@ -106,8 +106,11 @@
 
 <!-- ═══ Top Bar ═══════════════════════════════════════════════════════════ -->
 <div class="topbar">
-  <a href="/admin/" class="topbar-brand" onclick="showList(); return false;">Ament Law <span>Blog Editor</span></a>
+  <a href="/admin/" class="topbar-brand" onclick="switchSection(activeSection); return false;">Ament Law <span>Content Editor</span></a>
   <div class="topbar-right hidden" id="topbarRight">
+    <button onclick="switchSection('blog')" id="tabBlog" style="font-weight:700; color:#fff;">Blog</button>
+    <button onclick="switchSection('careers')" id="tabCareers">Careers</button>
+    <span style="color:#333;">|</span>
     <a href="/" target="_blank">← Back to Site</a>
     <button onclick="logout()">Sign Out</button>
   </div>
@@ -116,8 +119,8 @@
 <!-- ═══ Login Screen ═════════════════════════════════════════════════════ -->
 <div id="loginView" class="login-wrap">
   <div class="card login-card">
-    <h2>Sign in to Blog Editor</h2>
-    <p>Enter your GitHub personal access token to manage blog posts on ament.law.</p>
+    <h2>Sign in to Content Editor</h2>
+    <p>Enter your GitHub personal access token to manage blog posts and career postings on ament.law.</p>
     <div class="form-group">
       <label>GitHub Token</label>
       <input type="password" id="tokenInput" placeholder="github_pat_…" autocomplete="off">
@@ -139,18 +142,18 @@
 <!-- ═══ Post List ════════════════════════════════════════════════════════ -->
 <div id="listView" class="container hidden">
   <div class="page-hdr">
-    <h1>Blog Posts</h1>
-    <button class="btn btn-primary" onclick="showEditor('new')">+ New Post</button>
+    <h1 id="listTitle">Blog Posts</h1>
+    <button class="btn btn-primary" id="newBtn" onclick="showEditor('new')">+ New Post</button>
   </div>
   <div id="flash"></div>
   <div class="card" style="padding:0; overflow-x:auto;">
     <div id="postListLoading" class="loading-msg"><div class="spinner"></div> Loading posts…</div>
     <table id="postTable" class="hidden">
-      <thead><tr><th>Title</th><th>Author</th><th>Date</th><th style="text-align:right;">Actions</th></tr></thead>
+      <thead><tr><th>Title</th><th id="colTwoHead">Author</th><th>Date</th><th style="text-align:right;">Actions</th></tr></thead>
       <tbody id="postTableBody"></tbody>
     </table>
     <div id="emptyState" class="empty hidden">
-      No blog posts yet. <a href="#" onclick="showEditor('new'); return false;">Write your first post →</a>
+      No items yet. <a href="#" onclick="showEditor('new'); return false;">Create the first one →</a>
     </div>
   </div>
 </div>
@@ -161,7 +164,7 @@
     <h1 id="editorTitle">New Blog Post</h1>
     <div style="display:flex; gap:8px;">
       <a id="viewOnSiteLink" href="#" target="_blank" class="btn btn-outline btn-sm hidden">View on Site ↗</a>
-      <button class="btn btn-outline btn-sm" onclick="showList()">← All Posts</button>
+      <button class="btn btn-outline btn-sm" onclick="showList()">← All Items</button>
     </div>
   </div>
   <div id="editorFlash"></div>
@@ -179,7 +182,7 @@
       <div class="char-count" id="descCount"></div>
     </div>
 
-    <div class="form-row">
+    <div class="form-row" id="authorRow">
       <div class="form-group">
         <label>Publish Date</label>
         <input type="date" id="postDateInput">
@@ -194,6 +197,37 @@
           <option value="Patrick J. Shannon, Esq.">Patrick J. Shannon, Esq.</option>
           <option value="Ament Law Group">Ament Law Group</option>
         </select>
+      </div>
+    </div>
+
+    <div id="careerRow" style="display:none;">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Post Date</label>
+          <input type="date" id="careerDateMirror" onchange="document.getElementById('postDateInput').value=this.value;">
+        </div>
+        <div class="form-group">
+          <label>Job Type</label>
+          <select id="jobTypeInput">
+            <option value="Full-Time">Full-Time</option>
+            <option value="Part-Time">Part-Time</option>
+            <option value="Contract">Contract</option>
+            <option value="Internship">Internship</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" id="jobLocationInput" value="Murrysville, PA" placeholder="Murrysville, PA">
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="jobActiveInput">
+            <option value="true">Active — visible on site</option>
+            <option value="false">Inactive — hidden from site</option>
+          </select>
+        </div>
       </div>
     </div>
 
@@ -233,14 +267,30 @@
 <script>
 const REPO = 'jament23/ament-law-website';
 const BRANCH = 'main';
-const BLOG_PATH = 'blog/posts';
-const API = 'https://api.github.com/repos/' + REPO + '/contents/' + BLOG_PATH;
+const SECTIONS = {
+  blog:    { path: 'blog/posts',        label: 'Blog Post',    plural: 'Blog Posts',    siteBase: '/blog/',    fields: ['title','description','date','author'] },
+  careers: { path: 'careers/positions',  label: 'Job Posting',  plural: 'Career Postings', siteBase: '/careers/', fields: ['title','description','date','type','location','active'] },
+};
 
+let activeSection = 'blog';
 let token = '';
 let easyMDE = null;
 let currentMode = 'new';
 let currentSlug = '';
 let currentSha = '';
+
+function sectionAPI() {
+  return 'https://api.github.com/repos/' + REPO + '/contents/' + SECTIONS[activeSection].path;
+}
+
+function switchSection(sec) {
+  activeSection = sec;
+  document.getElementById('tabBlog').style.fontWeight = sec === 'blog' ? '700' : '400';
+  document.getElementById('tabBlog').style.color = sec === 'blog' ? '#fff' : '#a1a1aa';
+  document.getElementById('tabCareers').style.fontWeight = sec === 'careers' ? '700' : '400';
+  document.getElementById('tabCareers').style.color = sec === 'careers' ? '#fff' : '#a1a1aa';
+  showList();
+}
 
 // ── Auth ──────────────────────────────────────────
 function login() {
@@ -249,7 +299,7 @@ function login() {
   var errEl = document.getElementById('loginError');
   errEl.classList.add('hidden');
 
-  fetch(API + '?ref=' + BRANCH, {
+  fetch(sectionAPI() + '?ref=' + BRANCH, {
     headers: ghHeaders(t),
     mode: 'cors',
   })
@@ -293,6 +343,10 @@ function ghHeaders(t) {
 function showList() {
   document.getElementById('listView').classList.remove('hidden');
   document.getElementById('editorView').classList.add('hidden');
+  var S = SECTIONS[activeSection];
+  document.getElementById('listTitle').textContent = S.plural;
+  document.getElementById('newBtn').textContent = '+ New ' + S.label;
+  document.getElementById('colTwoHead').textContent = activeSection === 'careers' ? 'Type / Status' : 'Author';
   loadPosts();
 }
 
@@ -300,6 +354,13 @@ function showEditor(mode, slug) {
   document.getElementById('listView').classList.add('hidden');
   document.getElementById('editorView').classList.remove('hidden');
   document.getElementById('editorFlash').innerHTML = '';
+
+  var S = SECTIONS[activeSection];
+  var isCareers = (activeSection === 'careers');
+
+  // Show/hide career-specific fields
+  document.getElementById('authorRow').style.display = isCareers ? 'none' : '';
+  document.getElementById('careerRow').style.display = isCareers ? '' : 'none';
 
   currentMode = mode;
   currentSlug = slug || '';
@@ -310,26 +371,32 @@ function showEditor(mode, slug) {
       element: document.getElementById('editor'),
       spellChecker: true,
       minHeight: '340px',
-      placeholder: 'Write your blog post here…\n\nUse the toolbar above for formatting, or write in Markdown.',
+      placeholder: isCareers ? 'Write the job description here…' : 'Write your blog post here…\n\nUse the toolbar above for formatting, or write in Markdown.',
       toolbar: ['bold','italic','heading-2','|','quote','unordered-list','ordered-list','|','link','|','preview','side-by-side','|','undo','redo','|','guide'],
       status: ['lines','words'],
     });
   }
 
   if (mode === 'new') {
-    document.getElementById('editorTitle').textContent = 'New Blog Post';
-    document.getElementById('publishBtn').textContent = 'Publish Post';
+    document.getElementById('editorTitle').textContent = 'New ' + S.label;
+    document.getElementById('publishBtn').textContent = 'Publish ' + S.label;
     document.getElementById('deleteBtn').classList.add('hidden');
     document.getElementById('viewOnSiteLink').classList.add('hidden');
     document.getElementById('postTitleInput').value = '';
     document.getElementById('postDescInput').value = '';
     document.getElementById('postDateInput').value = new Date().toISOString().split('T')[0];
     document.getElementById('postAuthorInput').value = 'Katlynn Oliver, Esq.';
+    if (isCareers) {
+      document.getElementById('jobTypeInput').value = 'Full-Time';
+      document.getElementById('jobLocationInput').value = 'Murrysville, PA';
+      document.getElementById('jobActiveInput').value = 'true';
+      document.getElementById('careerDateMirror').value = document.getElementById('postDateInput').value;
+    }
     easyMDE.value('');
     updateCounts();
   } else {
-    document.getElementById('editorTitle').textContent = 'Edit Post';
-    document.getElementById('publishBtn').textContent = 'Update Post';
+    document.getElementById('editorTitle').textContent = 'Edit ' + S.label;
+    document.getElementById('publishBtn').textContent = 'Update ' + S.label;
     document.getElementById('deleteBtn').classList.remove('hidden');
     loadPostForEdit(slug);
   }
@@ -346,7 +413,7 @@ function loadPosts() {
   table.classList.add('hidden');
   empty.classList.add('hidden');
 
-  fetch(API + '?ref=' + BRANCH, { headers: ghHeaders() })
+  fetch(sectionAPI() + '?ref=' + BRANCH, { headers: ghHeaders() })
     .then(function(r) {
       if (!r.ok) throw new Error('Failed to load posts');
       return r.json();
@@ -362,6 +429,8 @@ function loadPosts() {
         return;
       }
 
+      var siteBase = SECTIONS[activeSection].siteBase;
+
       // Fetch each file to get front matter
       var promises = mdFiles.map(function(f) {
         return fetch(f.url, { headers: ghHeaders() })
@@ -376,6 +445,8 @@ function loadPosts() {
               title: parsed.title || f.name.replace('.md', '').replace(/-/g, ' '),
               date: parsed.date || '',
               author: parsed.author || '',
+              type: parsed.type || '',
+              active: parsed.active,
               sha: data.sha,
             };
           })
@@ -390,18 +461,26 @@ function loadPosts() {
       posts.sort(function(a, b) { return (b.date || '').localeCompare(a.date || ''); });
 
       tbody.innerHTML = '';
+      var isCareers = (activeSection === 'careers');
       posts.forEach(function(p) {
+        var statusBadge = '';
+        if (isCareers) {
+          var isActive = p.active !== 'false' && p.active !== false;
+          statusBadge = '<span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.72rem;font-weight:600;' +
+            (isActive ? 'background:#f0fdf4;color:#16a34a;"' : 'background:#fef2f2;color:#dc2626;"') +
+            '>' + (isActive ? 'Active' : 'Inactive') + '</span>';
+        }
         var tr = document.createElement('tr');
         tr.innerHTML =
           '<td>' +
             '<span class="post-title" onclick="showEditor(\'edit\',\'' + p.slug + '\')">' + esc(p.title) + '</span>' +
-            '<div class="post-slug">/blog/' + p.slug + '/</div>' +
+            '<div class="post-slug">' + siteBase + p.slug + '/</div>' +
           '</td>' +
-          '<td style="color:var(--muted);">' + esc(p.author) + '</td>' +
+          '<td style="color:var(--muted);">' + (isCareers ? (esc(p.type) + ' ' + statusBadge) : esc(p.author)) + '</td>' +
           '<td style="color:var(--muted); white-space:nowrap;">' + esc(p.date) + '</td>' +
           '<td class="post-actions">' +
             '<button class="btn btn-outline btn-sm" onclick="showEditor(\'edit\',\'' + p.slug + '\')">Edit</button> ' +
-            '<a href="https://www.ament.law/blog/' + p.slug + '/" target="_blank" class="btn btn-outline btn-sm" title="View on site">↗</a>' +
+            '<a href="https://www.ament.law' + siteBase + p.slug + '/" target="_blank" class="btn btn-outline btn-sm" title="View on site">↗</a>' +
           '</td>';
         tbody.appendChild(tr);
       });
@@ -416,7 +495,7 @@ function loadPosts() {
 
 // ── Load single post for editing ──────────────────
 function loadPostForEdit(slug) {
-  fetch(API + '/' + slug + '.md?ref=' + BRANCH, { headers: ghHeaders() })
+  fetch(sectionAPI() + '/' + slug + '.md?ref=' + BRANCH, { headers: ghHeaders() })
     .then(function(r) {
       if (!r.ok) throw new Error('Post not found');
       return r.json();
@@ -430,10 +509,18 @@ function loadPostForEdit(slug) {
       document.getElementById('postDescInput').value = parsed.description || '';
       document.getElementById('postDateInput').value = parsed.date || '';
       document.getElementById('postAuthorInput').value = parsed.author || 'Katlynn Oliver, Esq.';
+
+      if (activeSection === 'careers') {
+        document.getElementById('jobTypeInput').value = parsed.type || 'Full-Time';
+        document.getElementById('jobLocationInput').value = parsed.location || 'Murrysville, PA';
+        document.getElementById('jobActiveInput').value = (parsed.active === 'false' || parsed.active === false) ? 'false' : 'true';
+        document.getElementById('careerDateMirror').value = parsed.date || '';
+      }
+
       easyMDE.value(parsed.body || '');
 
       var siteLink = document.getElementById('viewOnSiteLink');
-      siteLink.href = 'https://www.ament.law/blog/' + slug + '/';
+      siteLink.href = 'https://www.ament.law' + SECTIONS[activeSection].siteBase + slug + '/';
       siteLink.classList.remove('hidden');
 
       updateCounts();
@@ -452,28 +539,38 @@ function publish() {
   var body = easyMDE.value().trim();
 
   if (!title) { flash('editorFlash', 'Title is required.', 'error'); return; }
-  if (!body) { flash('editorFlash', 'Post body is required.', 'error'); return; }
+  if (!body) { flash('editorFlash', 'Body is required.', 'error'); return; }
 
   var btn = document.getElementById('publishBtn');
   var origText = btn.textContent;
   btn.disabled = true;
   btn.innerHTML = '<span class="spinner"></span> Publishing…';
 
-  var fm = '---\ntitle: "' + title + '"\ndescription: "' + desc + '"\ndate: ' + date + '\nauthor: "' + author + '"\n---';
+  var fm;
+  if (activeSection === 'careers') {
+    var jobType = document.getElementById('jobTypeInput').value;
+    var jobLoc = document.getElementById('jobLocationInput').value.trim() || 'Murrysville, PA';
+    var jobActive = document.getElementById('jobActiveInput').value;
+    var careerDate = document.getElementById('careerDateMirror').value.trim() || date;
+    fm = '---\ntitle: "' + title + '"\ndescription: "' + desc + '"\ndate: ' + careerDate + '\ntype: "' + jobType + '"\nlocation: "' + jobLoc + '"\nactive: ' + jobActive + '\n---';
+  } else {
+    fm = '---\ntitle: "' + title + '"\ndescription: "' + desc + '"\ndate: ' + date + '\nauthor: "' + author + '"\n---';
+  }
   var fullContent = fm + '\n\n' + body + '\n';
 
   var filename = (currentMode === 'edit' && currentSlug)
     ? currentSlug + '.md'
     : slugify(title) + '.md';
 
+  var S = SECTIONS[activeSection];
   var payload = {
-    message: (currentMode === 'edit' ? 'Update' : 'Add') + ' blog post: ' + title,
+    message: (currentMode === 'edit' ? 'Update' : 'Add') + ' ' + S.label.toLowerCase() + ': ' + title,
     content: encodeBase64(fullContent),
     branch: BRANCH,
   };
   if (currentSha) payload.sha = currentSha;
 
-  fetch(API + '/' + filename, {
+  fetch(sectionAPI() + '/' + filename, {
     method: 'PUT',
     headers: Object.assign({}, ghHeaders(), { 'Content-Type': 'application/json' }),
     body: JSON.stringify(payload),
@@ -482,7 +579,7 @@ function publish() {
       if (!r.ok) return r.json().then(function(err) { throw new Error(err.message || 'GitHub API error'); });
       showList();
       setTimeout(function() {
-        flash('flash', 'Post ' + (currentMode === 'edit' ? 'updated' : 'published') + '! It will be live on ament.law in about 1 minute.', 'success');
+        flash('flash', S.label + ' ' + (currentMode === 'edit' ? 'updated' : 'published') + '! It will be live on ament.law in about 1 minute.', 'success');
       }, 200);
     })
     .catch(function(err) {
@@ -496,22 +593,23 @@ function publish() {
 
 // ── Delete ────────────────────────────────────────
 function deletePost() {
-  if (!confirm('Are you sure you want to delete this post? This cannot be undone.')) return;
+  var S = SECTIONS[activeSection];
+  if (!confirm('Are you sure you want to delete this ' + S.label.toLowerCase() + '? This cannot be undone.')) return;
 
   var btn = document.getElementById('deleteBtn');
   btn.disabled = true;
   btn.textContent = 'Deleting…';
 
   var doDelete = function(sha) {
-    fetch(API + '/' + currentSlug + '.md', {
+    fetch(sectionAPI() + '/' + currentSlug + '.md', {
       method: 'DELETE',
       headers: Object.assign({}, ghHeaders(), { 'Content-Type': 'application/json' }),
-      body: JSON.stringify({ message: 'Delete blog post: ' + currentSlug, sha: sha, branch: BRANCH }),
+      body: JSON.stringify({ message: 'Delete ' + S.label.toLowerCase() + ': ' + currentSlug, sha: sha, branch: BRANCH }),
     })
       .then(function(r) {
         if (!r.ok) throw new Error('Delete failed');
         showList();
-        setTimeout(function() { flash('flash', 'Post deleted.', 'success'); }, 200);
+        setTimeout(function() { flash('flash', S.label + ' deleted.', 'success'); }, 200);
       })
       .catch(function(err) {
         flash('editorFlash', 'Failed to delete: ' + err.message, 'error');
@@ -523,7 +621,7 @@ function deletePost() {
   if (currentSha) {
     doDelete(currentSha);
   } else {
-    fetch(API + '/' + currentSlug + '.md?ref=' + BRANCH, { headers: ghHeaders() })
+    fetch(sectionAPI() + '/' + currentSlug + '.md?ref=' + BRANCH, { headers: ghHeaders() })
       .then(function(r) { return r.json(); })
       .then(function(data) { doDelete(data.sha); })
       .catch(function() {
@@ -547,7 +645,7 @@ function parseFrontMatter(content) {
     if (idx === -1) return;
     var key = line.substring(0, idx).trim();
     var val = line.substring(idx + 1).trim().replace(/^["']|["']$/g, '');
-    if (['title','description','date','author'].indexOf(key) !== -1) data[key] = val;
+    if (['title','description','date','author','type','location','active'].indexOf(key) !== -1) data[key] = val;
   });
   return data;
 }

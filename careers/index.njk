@@ -1,0 +1,59 @@
+---
+layout: layouts/base.njk
+title: "Careers at Ament Law Group"
+description: "Explore career opportunities at Ament Law Group, P.C. in Murrysville, PA. We're always looking for talented attorneys and staff to join our team."
+permalink: /careers/index.html
+---
+<section class="simple-header">
+    <div class="container">
+        <h1>Careers</h1>
+        <p>Join our team in Murrysville, PA.</p>
+    </div>
+</section>
+<section id="careers-content">
+    <div class="container">
+        <div class="practice-area-layout">
+            <div class="practice-area-main">
+                <p>At Ament Law Group, P.C., we value professionalism, collaboration, and a genuine commitment to serving our clients. We're always interested in hearing from qualified candidates who share our dedication to providing exceptional legal services in estate planning, real estate, and business law.</p>
+
+                {% set activePostings = [] %}
+                {% for posting in collections.careers %}
+                    {% if posting.data.active != false and posting.data.active != "false" %}
+                        {% set _ = activePostings.push(posting) %}
+                    {% endif %}
+                {% endfor %}
+
+                {% if activePostings.length > 0 %}
+                <h2>Open Positions</h2>
+                {% for posting in activePostings %}
+                <div class="career-card">
+                    <h3><a href="{{ posting.url }}">{{ posting.data.title }}</a></h3>
+                    <p class="career-meta">{{ posting.data.type }} &bull; {{ posting.data.location }} &bull; Posted {{ posting.date | dateFormat }}</p>
+                    <p>{{ posting.data.description }}</p>
+                    <a href="{{ posting.url }}" class="cta-button-secondary">View Details</a>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="career-no-openings">
+                    <h2>No Current Openings</h2>
+                    <p>We don't have any open positions at this time, but we're always happy to hear from talented professionals. If you're interested in future opportunities, feel free to send your resume to <a href="mailto:careers@ament.law">careers@ament.law</a>.</p>
+                </div>
+                {% endif %}
+
+                <div class="career-general">
+                    <h2>Why Ament Law Group?</h2>
+                    <p>We are a growing firm serving clients throughout Western Pennsylvania with a focus on estate planning, probate and trust administration, real estate, and business formation. Our Murrysville office is conveniently located along the William Penn Highway corridor, offering a collegial work environment and the opportunity to develop meaningful client relationships.</p>
+                    <p>Interested in joining us? Email your resume and cover letter to <a href="mailto:careers@ament.law">careers@ament.law</a>.</p>
+                </div>
+            </div>
+            <aside class="practice-area-sidebar">
+                <div class="sidebar-widget contact-widget">
+                    <h4>General Inquiries</h4>
+                    <p>Questions about working at Ament Law Group?</p>
+                    <p class="sidebar-phone"><a href="mailto:careers@ament.law">careers@ament.law</a></p>
+                    <p class="sidebar-phone"><a href="tel:724-733-3500">(724) 733-3500</a></p>
+                </div>
+            </aside>
+        </div>
+    </div>
+</section>

@@ -1111,6 +1111,33 @@ main section {
     line-height: 1.6;
 }
 
+/* --- Careers --- */
+.career-card {
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+.career-card:first-of-type { padding-top: 0; }
+.career-card:last-of-type { border-bottom: none; }
+.career-card h3 { font-size: 1.25rem; margin-bottom: var(--space-xs); }
+.career-card h3 a { color: var(--color-ink); }
+.career-card h3 a:hover { color: var(--color-accent-text); text-decoration: none; }
+.career-meta {
+    font-size: 0.82rem;
+    color: var(--color-body);
+    margin-bottom: var(--space-sm);
+}
+.career-no-openings {
+    text-align: center;
+    padding: var(--space-xl) 0;
+    color: var(--color-body);
+}
+.career-no-openings h2 { margin-bottom: var(--space-sm); }
+.career-general {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
+}
+
 /* --- Quick-Answer Block (AI citation target) --- */
 .quick-answer {
     background: var(--color-surface);
