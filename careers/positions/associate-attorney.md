@@ -20,7 +20,8 @@ This isn't a "back-office" role. You will be a visible face of the firm, managin
 - **Strategic Counsel:** Lead consultations for estate planning, administration, and business services, tailoring legal strategies to diverse client needs.
 - **Precision Drafting:** Independently produce high-quality wills, trusts, powers of attorney, deeds, business formation documents, and real estate transaction documents. We expect work product that is client-ready with minimal revision.
 - **Real Estate Transactions:** Manage residential and commercial closings, including title review, document preparation, and settlement. Experience with SoftPro is a plus.
-- **Estate Administration:** Guide personal representatives through the probate process, including preparation of Orphans' Court filings, inheritance tax returns, and accountings.
+- **Estate Administration:** Guide personal representatives through the probate process, including preparation of Orphans' Court filings, inheritance tax returns, and accountings. Experience with Lackner is a plus.
+- **Business Formation & Transactions:** Draft and review operating agreements, articles of incorporation/organization, buy-sell agreements, and related transactional documents. Experience with PA business entity filings is a plus.
 - **Risk Mitigation:** Proactively identify legal hurdles and provide preventative advice to safeguard client assets and legacies.
 - **Business Development:** Actively market yourself and the firm to grow your personal book of business and firm-wide originations.
 
@@ -36,7 +37,8 @@ This isn't a "back-office" role. You will be a visible face of the firm, managin
 ## Preferred Qualifications
 
 - PA Title Insurance Agent license and/or Notary commission.
-- Experience with Lackner, SoftPro, and/or Office 365 in a legal practice setting.
+- Experience with Lackner (estate administration), SoftPro (real estate settlements), and/or Office 365 in a legal practice setting.
+- Experience with business formation and transactional work, including entity structuring, commercial contracts, or buy-sell agreements.
 - Existing professional network or book of business in Western Pennsylvania.
 - Familiarity with local practice in Westmoreland, Allegheny, or surrounding counties.
 
