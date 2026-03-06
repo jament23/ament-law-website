@@ -2,8 +2,7 @@
 title: "How to Appeal Your Property Tax Assessment in Westmoreland or Allegheny County"
 description: "If your property tax assessment is too high, you have the right to appeal. Attorney Katlynn Oliver explains the appeal process in Westmoreland and Allegheny County — deadlines, evidence, and what to expect."
 date: 2026-05-18
-tags: ["real-estate", "blog"]
-author: "Katlynn Oliver, Esq."
+author: "W. Robert Ament, Esq."
 ---
 
 <div class="quick-answer">
