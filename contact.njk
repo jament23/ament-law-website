@@ -61,6 +61,13 @@ permalink: /contact/index.html
                             <option value="marketing">Marketing / Vendor Inquiry</option>
                         </select>
                     </div>
+
+                    <!-- Referral notice for out-of-scope practice areas -->
+                    <div id="referral-notice" style="display:none; margin-bottom:16px; padding:14px 16px; background:#f8f6f1; border-left:3px solid #c8a45a; border-radius:4px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c8a45a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px; margin-right:6px;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        <strong>A note on this area of law:</strong> We don't handle <span id="referral-area-name">this type of matter</span> in our office, but we can still help — we maintain relationships with trusted attorneys in this area and are glad to connect you with someone we know personally. Please fill out the form and we'll follow up directly.
+                    </div>
+
                     <div class="form-group">
                         <label for="message">Tell Us About Your Situation</label>
                         <textarea id="message" name="message" rows="4" placeholder="Briefly describe what you need help with..."></textarea>
@@ -91,7 +98,9 @@ permalink: /contact/index.html
                 <!-- Success message (hidden by default) -->
                 <div id="form-success" style="display:none;">
                     <div class="form-success-box">
-                        <div class="success-icon">✓</div>
+                        <div class="success-icon">
+                            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#2e6b3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+                        </div>
                         <h3>Message Received</h3>
                         <p>Thank you for reaching out. We've sent a <strong>secure intake form</strong> to your email — please check your inbox (and spam folder) to get started.</p>
                         <p>If you need immediate assistance, call us at <a href="tel:724-733-3500">(724) 733-3500</a>.</p>
@@ -178,6 +187,18 @@ permalink: /contact/index.html
         .then(function(data) {
             // Success — hide form, show confirmation
             form.style.display = 'none';
+            var selectedType = payload.matter_type;
+            if (selectedType === 'family-law' || selectedType === 'personal-injury') {
+                var areaLabel = selectedType === 'family-law' ? 'family law' : 'personal injury';
+                successDiv.innerHTML = '<div class="form-success-box">' +
+                    '<div class="success-icon"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#2e6b3e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg></div>' +
+                    '<h3>We Received Your Message</h3>' +
+                    '<p>While we don’t handle ' + areaLabel + ' matters in our office, we have trusted relationships with attorneys who do. A member of our team will reach out to personally connect you with someone we know and trust.</p>' +
+                    '<p>If you need to speak with someone sooner, call us at <a href="tel:724-733-3500">(724) 733-3500</a>.</p>' +
+                    '</div>';
+                successDiv.style.display = 'block';
+                return;
+            }
             if (data.marketing) {
                 // Marketing/vendor inquiry — no intake form
                 successDiv.innerHTML = '<div class="form-success-box">' +
@@ -205,6 +226,27 @@ permalink: /contact/index.html
             btn.disabled = false;
             btn.textContent = 'Send Message';
         });
+    });
+})();
+
+/* Show referral notice for out-of-scope practice areas */
+(function() {
+    var REFERRAL_TYPES = {
+        'family-law':      'family law matters',
+        'personal-injury': 'personal injury or accident claims'
+    };
+    var select = document.getElementById('matter-type');
+    var notice = document.getElementById('referral-notice');
+    var areaName = document.getElementById('referral-area-name');
+    if (!select || !notice) return;
+    select.addEventListener('change', function() {
+        var label = REFERRAL_TYPES[this.value];
+        if (label) {
+            areaName.textContent = label;
+            notice.style.display = 'block';
+        } else {
+            notice.style.display = 'none';
+        }
     });
 })();
 
