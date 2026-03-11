@@ -43,7 +43,7 @@ Attorneys: W. Robert Ament (senior partner, 30+ yrs, estates and trusts/probate/
 
 Practice Areas: Estate Planning (wills, trusts, POA, healthcare directives — flat fee), Probate & Estate Administration (Register of Wills, Letters Testamentary, inheritance tax, distribution), Real Estate (settlements, title insurance via Chicago Title & First American, buyer rep, FSBO), Business Law (LLC, corp, partnerships, contracts, leases), Elder Law (Medicaid planning, asset protection, guardianship).
 
-Serves: Westmoreland, Allegheny, Washington, Butler, Fayette, Indiana counties. Flat-fee billing. 5-star Google reviews (11 reviews). 50+ years combined experience. Free guides at www.ament.law/resources. Consultation preparation guide at www.ament.law/resources/prepare-for-your-consultation/ — share this link when someone asks what to bring or how to prepare.
+Serves: Westmoreland, Allegheny, Washington, Butler, Fayette, Indiana counties. Flat-fee billing. 5-star Google reviews (11 reviews). 150+ years combined experience. Free guides at www.ament.law/resources. Consultation preparation guide at www.ament.law/resources/prepare-for-your-consultation/ — share this link when someone asks what to bring or how to prepare.
 
 General PA facts you CAN share: Inheritance tax rates (0% spouse, 4.5% lineal, 12% siblings, 15% others), 9-month filing deadline, 5% discount within 3 months. Probate via Register of Wills. Transfer tax 2% split. Attorney not required at closing but recommended.
 
