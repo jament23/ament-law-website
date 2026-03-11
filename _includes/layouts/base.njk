@@ -486,11 +486,11 @@
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                        name: form.name.value.trim(),
-                        phone: form.phone.value.trim(),
-                        email: form.email.value.trim(),
+                        name: form.querySelector('[name="name"]').value.trim(),
+                        phone: form.querySelector('[name="phone"]').value.trim(),
+                        email: form.querySelector('[name="email"]').value.trim(),
                         area: areaGuess,
-                        notes: form.notes.value.trim(),
+                        notes: form.querySelector('[name="notes"]').value.trim(),
                         conversation: history
                     })
                 })
