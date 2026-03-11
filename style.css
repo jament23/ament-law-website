@@ -1184,6 +1184,18 @@ main section {
 
 .faq-item p { color: var(--color-body); font-size: 0.95rem; }
 
+/* --- Consultation Prep Sections --- */
+.prep-section {
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+.prep-section:last-of-type { border-bottom: none; }
+.prep-section h2 { margin-top: 0; }
+.prep-section h3 { font-size: 1rem; color: var(--color-ink); margin-top: var(--space-md); }
+.prep-section ul { margin-bottom: var(--space-sm); }
+.prep-section li { margin-bottom: var(--space-xs); }
+.prep-cta { margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-border); }
+
 /* =================================================================
    LEGAL PAGES (Privacy, Disclaimer, Terms)
    ================================================================= */
