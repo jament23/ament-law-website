@@ -7,7 +7,7 @@ location: "Murrysville, PA"
 active: true
 ---
 
-Our Murrysville-based firm is growing quickly, and we are looking for a high-energy, detail-oriented Administrative Assistant/Receptionist to join our team. With over over a century of combined legal experience across Westmoreland and surrounding counties, we pride ourselves on being the trusted voice for families and businesses.
+Our Murrysville-based firm is growing quickly, and we are looking for a high-energy, detail-oriented Administrative Assistant/Receptionist to join our team. With over 130 years of combined legal experience across Westmoreland and surrounding counties, we pride ourselves on being the trusted voice for families and businesses.
 
 We need a professional who can juggle a busy multi-line phone system one minute and assist an attorney with sensitive estate documents the next — all while maintaining a calm, welcoming presence for our clients.
 
