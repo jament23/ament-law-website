@@ -110,6 +110,7 @@
   <div class="topbar-right hidden" id="topbarRight">
     <button onclick="switchSection('blog')" id="tabBlog" style="font-weight:700; color:#fff;">Blog</button>
     <button onclick="switchSection('careers')" id="tabCareers">Careers</button>
+    <button onclick="showNewsletter()" id="tabNewsletter">Newsletter</button>
     <span style="color:#333;">|</span>
     <a href="/" target="_blank">← Back to Site</a>
     <button onclick="logout()">Sign Out</button>
@@ -261,6 +262,65 @@
   </div>
 </div>
 
+<!-- ═══ Newsletter ═══════════════════════════════════════════════════════ -->
+<div id="newsletterView" class="container hidden">
+  <div class="page-hdr">
+    <h1>Send Newsletter</h1>
+  </div>
+  <div id="nlFlash"></div>
+
+  <div class="card">
+    <div class="form-group">
+      <label>Subject Line</label>
+      <input type="text" id="nlSubject" placeholder="e.g. Ament Law Group — Spring 2026 Update">
+    </div>
+
+    <div class="form-group">
+      <label>Newsletter Body <span class="hint">— HTML is supported. Write your content below.</span></label>
+      <textarea id="nlBody" rows="18" placeholder="Write your newsletter content here. HTML tags are supported for formatting." style="font-family:monospace; font-size:0.85rem;"></textarea>
+    </div>
+
+    <details style="margin-bottom:16px;">
+      <summary>HTML Quick Reference</summary>
+      <div class="help-content">
+        <code>&lt;h2&gt;Section Heading&lt;/h2&gt;</code><br>
+        <code>&lt;p&gt;Paragraph text&lt;/p&gt;</code><br>
+        <code>&lt;strong&gt;Bold&lt;/strong&gt;</code><br>
+        <code>&lt;a href="https://www.ament.law/blog/"&gt;Link text&lt;/a&gt;</code><br>
+        <code>&lt;ul&gt;&lt;li&gt;Bullet&lt;/li&gt;&lt;/ul&gt;</code><br><br>
+        <strong>Tip:</strong> Keep it simple — 2-3 short sections with a CTA at the bottom. The unsubscribe link and firm address are added automatically.
+      </div>
+    </details>
+
+    <div style="display:flex; align-items:center; gap:12px; padding-top:16px; border-top:1px solid var(--border); flex-wrap:wrap;">
+      <button class="btn btn-primary" id="nlSendBtn" onclick="sendNewsletter()">Send to All Subscribers</button>
+      <button class="btn btn-outline" onclick="previewNewsletter()">Preview</button>
+      <span style="font-size:0.8rem; color:var(--muted);" id="nlStatus"></span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3 style="font-size:0.95rem; margin-bottom:8px;">Newsletter Template</h3>
+    <p style="font-size:0.82rem; color:var(--muted);">Copy and customize this starter template:</p>
+    <pre style="background:#f1f5f9; padding:12px; border-radius:6px; font-size:0.78rem; overflow-x:auto; white-space:pre-wrap;">&lt;div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:560px;margin:0 auto;color:#1e293b;"&gt;
+  &lt;div style="border-bottom:2px solid #c8a862;padding:16px 0;margin-bottom:20px;"&gt;
+    &lt;strong style="color:#0a1530;font-size:15px;"&gt;AMENT LAW GROUP, P.C.&lt;/strong&gt;
+    &lt;span style="float:right;color:#94a3b8;font-size:13px;"&gt;Spring 2026&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;h2 style="color:#0a1530;font-size:18px;margin:0 0 12px;"&gt;Your Headline Here&lt;/h2&gt;
+  &lt;p style="font-size:15px;line-height:1.7;"&gt;Your main article text goes here. Keep it concise and useful.&lt;/p&gt;
+
+  &lt;h2 style="color:#0a1530;font-size:16px;margin:24px 0 8px;"&gt;Quick Reminder&lt;/h2&gt;
+  &lt;p style="font-size:15px;line-height:1.7;"&gt;When did you last review your estate plan? We recommend a review every 3-5 years or after any major life change.&lt;/p&gt;
+
+  &lt;div style="text-align:center;margin:28px 0;"&gt;
+    &lt;a href="https://www.ament.law/contact/" style="background:#0a1530;color:#fff;padding:12px 28px;border-radius:6px;text-decoration:none;font-weight:600;font-size:14px;"&gt;Schedule a Free Consultation&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+</div>
+
 <!-- ═══ Scripts ══════════════════════════════════════════════════════════ -->
 <script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
 <script>
@@ -288,7 +348,65 @@ function switchSection(sec) {
   document.getElementById('tabBlog').style.color = sec === 'blog' ? '#fff' : '#a1a1aa';
   document.getElementById('tabCareers').style.fontWeight = sec === 'careers' ? '700' : '400';
   document.getElementById('tabCareers').style.color = sec === 'careers' ? '#fff' : '#a1a1aa';
+  document.getElementById('tabNewsletter').style.fontWeight = '400';
+  document.getElementById('tabNewsletter').style.color = '#a1a1aa';
+  document.getElementById('newsletterView').classList.add('hidden');
   showList();
+}
+
+function showNewsletter() {
+  document.getElementById('listView').classList.add('hidden');
+  document.getElementById('editorView').classList.add('hidden');
+  document.getElementById('newsletterView').classList.remove('hidden');
+  document.getElementById('tabBlog').style.fontWeight = '400';
+  document.getElementById('tabBlog').style.color = '#a1a1aa';
+  document.getElementById('tabCareers').style.fontWeight = '400';
+  document.getElementById('tabCareers').style.color = '#a1a1aa';
+  document.getElementById('tabNewsletter').style.fontWeight = '700';
+  document.getElementById('tabNewsletter').style.color = '#fff';
+}
+
+function previewNewsletter() {
+  var html = document.getElementById('nlBody').value;
+  if (!html.trim()) { flash('nlFlash', 'Write some content first.', 'error'); return; }
+  var w = window.open('', '_blank', 'width=640,height=800');
+  w.document.write('<html><head><title>Newsletter Preview</title></head><body style="padding:24px;background:#f8fafc;">' + html + '</body></html>');
+  w.document.close();
+}
+
+function sendNewsletter() {
+  var subject = document.getElementById('nlSubject').value.trim();
+  var html = document.getElementById('nlBody').value.trim();
+  if (!subject) { flash('nlFlash', 'Subject line is required.', 'error'); return; }
+  if (!html) { flash('nlFlash', 'Newsletter body is required.', 'error'); return; }
+  if (!confirm('Send this newsletter to ALL subscribers? This cannot be undone.')) return;
+
+  var btn = document.getElementById('nlSendBtn');
+  var status = document.getElementById('nlStatus');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span> Sending…';
+  status.textContent = '';
+
+  fetch('/api/newsletter-send', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+    body: JSON.stringify({ subject: subject, html: html })
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.ok) {
+      flash('nlFlash', 'Newsletter sent to ' + data.sent + ' subscriber' + (data.sent === 1 ? '' : 's') + '!' + (data.errors ? ' (' + data.errors + ' failed)' : ''), 'success');
+    } else {
+      flash('nlFlash', data.error || 'Failed to send newsletter.', 'error');
+    }
+  })
+  .catch(function(err) {
+    flash('nlFlash', 'Error: ' + err.message, 'error');
+  })
+  .finally(function() {
+    btn.disabled = false;
+    btn.textContent = 'Send to All Subscribers';
+  });
 }
 
 // ── Auth ──────────────────────────────────────────

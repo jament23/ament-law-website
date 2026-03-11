@@ -1,0 +1,59 @@
+---
+layout: layouts/base.njk
+title: "Unsubscribe"
+description: "Unsubscribe from the Ament Law Group newsletter."
+permalink: /unsubscribe/index.html
+eleventyExcludeFromCollections: true
+---
+<section class="simple-header">
+    <div class="container">
+        <h1>Unsubscribe</h1>
+        <p>We're sorry to see you go.</p>
+    </div>
+</section>
+<section style="padding: var(--space-xl) 0;">
+    <div class="container" style="max-width: 500px; text-align: center;">
+        <div id="unsub-form">
+            <p>Click below to unsubscribe from our newsletter.</p>
+            <p id="unsub-email-display" style="font-weight: 600; margin: 16px 0;"></p>
+            <button class="cta-button" id="unsub-btn" onclick="doUnsub()">Unsubscribe</button>
+        </div>
+        <div id="unsub-done" style="display:none;">
+            <p style="font-size: 1.1rem; color: var(--color-heading); font-weight: 600;">You've been unsubscribed.</p>
+            <p style="margin-top: 12px;">You won't receive any more newsletter emails from us. If you ever want to resubscribe, you can do so from our website.</p>
+            <p style="margin-top: 24px;"><a href="/" class="cta-button-secondary">Return to Homepage</a></p>
+        </div>
+    </div>
+</section>
+<script>
+(function() {
+    var params = new URLSearchParams(window.location.search);
+    var email = (params.get('email') || '').trim();
+    var display = document.getElementById('unsub-email-display');
+    if (email) {
+        display.textContent = email;
+    } else {
+        display.innerHTML = '<input type="email" id="unsub-email-input" placeholder="Enter your email" style="padding:10px 14px;border:1px solid #d1d5db;border-radius:6px;font-size:0.95rem;width:100%;max-width:320px;">';
+    }
+    window.doUnsub = function() {
+        var e = email || (document.getElementById('unsub-email-input') ? document.getElementById('unsub-email-input').value.trim() : '');
+        if (!e) return;
+        var btn = document.getElementById('unsub-btn');
+        btn.disabled = true;
+        btn.textContent = 'Unsubscribing...';
+        fetch('/api/newsletter-unsubscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: e })
+        })
+        .then(function() {
+            document.getElementById('unsub-form').style.display = 'none';
+            document.getElementById('unsub-done').style.display = 'block';
+        })
+        .catch(function() {
+            document.getElementById('unsub-form').style.display = 'none';
+            document.getElementById('unsub-done').style.display = 'block';
+        });
+    };
+})();
+</script>

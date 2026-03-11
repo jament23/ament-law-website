@@ -234,13 +234,24 @@
                     <li><a href="/how-we-help/">How We Help</a></li>
                     <li><a href="/resources/">Free Resources</a></li>
                     <li><a href="/reviews/">Reviews</a></li>
-                    <li><a href="/seminar/plan-with-confidence/">Free Seminar</a></li>
                     <li><a href="/blog/">Blog</a></li>
                     <li><a href="/careers/">Careers</a></li>
-                    <li><a href="/refer/">Refer a Client</a></li>
-                    <li><a href="/areas-we-serve/">Areas We Serve</a></li>
                     <li><a href="/contact/">Free Consultation</a></li>
                 </ul>
+            </div>
+            <div class="footer-newsletter">
+                <h4>Stay Informed</h4>
+                <p>Get quarterly updates on PA law changes, estate planning tips, and firm news.</p>
+                <div id="newsletter-form-wrap">
+                    <div class="newsletter-input-row">
+                        <input type="email" id="newsletter-email" placeholder="Your email address" autocomplete="email" aria-label="Email for newsletter">
+                        <button id="newsletter-submit" onclick="subscribeNewsletter()">Subscribe</button>
+                    </div>
+                    <p class="newsletter-fine">No spam. Unsubscribe anytime. We respect your privacy.</p>
+                </div>
+                <div id="newsletter-success" style="display:none;">
+                    <p class="newsletter-thanks">You're subscribed! Watch for our next quarterly update.</p>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
@@ -606,6 +617,43 @@
             btn.addEventListener('click', function() { send(btn.getAttribute('data-q')); });
         });
     })();
+    </script>
+    <script>
+    function subscribeNewsletter() {
+        var emailInput = document.getElementById('newsletter-email');
+        var email = emailInput.value.trim();
+        var btn = document.getElementById('newsletter-submit');
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            emailInput.style.borderColor = '#dc2626';
+            return;
+        }
+        btn.disabled = true;
+        btn.textContent = '...';
+        fetch('/api/newsletter-subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email })
+        })
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            if (data.ok) {
+                document.getElementById('newsletter-form-wrap').style.display = 'none';
+                document.getElementById('newsletter-success').style.display = 'block';
+            } else {
+                btn.disabled = false;
+                btn.textContent = 'Subscribe';
+                emailInput.style.borderColor = '#dc2626';
+            }
+        })
+        .catch(function() {
+            btn.disabled = false;
+            btn.textContent = 'Subscribe';
+        });
+    }
+    document.getElementById('newsletter-email').addEventListener('keydown', function(e) {
+        this.style.borderColor = '';
+        if (e.key === 'Enter') { e.preventDefault(); subscribeNewsletter(); }
+    });
     </script>
 </body>
 </html>
