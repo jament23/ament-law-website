@@ -44,12 +44,12 @@ eleventyExcludeFromCollections: true
 title: ""
 description: ""
 date: 2026-01-01
-author: "Katlynn Oliver, Esq."
+author: "John W. Ament, Esq."
 author_type: "Person"
-author_url: "/attorneys/katlynn-oliver/"
-author_jobtitle: "Associate Attorney"
-author_credentials: "J.D., Duquesne University Kline School of Law"
-author_bio: "Katlynn Oliver is an associate attorney at Ament Law Group, P.C. in Murrysville, PA, focusing on estate planning, estate administration, real estate, and business law."
+author_url: "/attorneys/john-ament/"
+author_jobtitle: "Partner"
+author_credentials: "J.D./M.B.A., Duquesne University"
+author_bio: "John W. Ament is a partner and co-founder of Ament Law Group, P.C. in Murrysville, PA."
 ---
 
 Write your blog post here. Delete this line and start typing.

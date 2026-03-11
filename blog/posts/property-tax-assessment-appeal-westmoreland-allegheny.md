@@ -1,6 +1,6 @@
 ---
 title: "How to Appeal Your Property Tax Assessment in Westmoreland or Allegheny County"
-description: "If your property tax assessment is too high, you have the right to appeal. Attorney Katlynn Oliver explains the appeal process in Westmoreland and Allegheny County — deadlines, evidence, and what to expect."
+description: "If your property tax assessment is too high, you have the right to appeal. Learn about the appeal process in Westmoreland and Allegheny County — deadlines, evidence, and what to expect."
 date: 2026-05-18
 author: "W. Robert Ament, Esq."
 ---
@@ -70,7 +70,7 @@ For straightforward appeals before the Board — particularly those based on a r
 
 For appeals involving higher-value commercial or residential properties, complex valuation issues, uniformity arguments, or appeals that proceed to the Court of Common Pleas, legal representation is generally worth the investment. The stakes are higher and the procedures more formal.
 
-At Ament Law Group, Katlynn Oliver, Esq. represents property owners in assessment appeals in both Westmoreland and Allegheny County as part of our [real estate legal services](/practice-areas/real-estate-services/). We also offer a free online Assessment Appeal Analyzer tool at ament.law/tools/assessment-appeal/ to help you evaluate whether an appeal makes financial sense for your property. [Contact us](/contact/) to discuss your situation.
+At Ament Law Group, our attorneys represent property owners in assessment appeals in both Westmoreland and Allegheny County as part of our [real estate legal services](/practice-areas/real-estate-services/). We also offer a free online Assessment Appeal Analyzer tool at ament.law/tools/assessment-appeal/ to help you evaluate whether an appeal makes financial sense for your property. [Contact us](/contact/) to discuss your situation.
 
 ---
 

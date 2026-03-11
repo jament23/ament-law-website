@@ -17,7 +17,7 @@ The site rebuilds automatically. Your post will appear at:
 
 ## Author Info
 
-The template defaults to Katlynn. To change the author, replace the author fields with one of these:
+The template defaults to John. To change the author, replace the author fields with one of these:
 
 **John Ament:**
 ```

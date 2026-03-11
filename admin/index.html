@@ -190,7 +190,6 @@
       <div class="form-group">
         <label>Author</label>
         <select id="postAuthorInput">
-          <option value="Katlynn Oliver, Esq.">Katlynn Oliver, Esq.</option>
           <option value="John W. Ament, Esq.">John W. Ament, Esq.</option>
           <option value="W. Robert Ament, Esq.">W. Robert Ament, Esq.</option>
           <option value="Laura Cohen, Esq.">Laura Cohen, Esq.</option>
@@ -385,7 +384,7 @@ function showEditor(mode, slug) {
     document.getElementById('postTitleInput').value = '';
     document.getElementById('postDescInput').value = '';
     document.getElementById('postDateInput').value = new Date().toISOString().split('T')[0];
-    document.getElementById('postAuthorInput').value = 'Katlynn Oliver, Esq.';
+    document.getElementById('postAuthorInput').value = 'John W. Ament, Esq.';
     if (isCareers) {
       document.getElementById('jobTypeInput').value = 'Full-Time';
       document.getElementById('jobLocationInput').value = 'Murrysville, PA';
@@ -508,7 +507,7 @@ function loadPostForEdit(slug) {
       document.getElementById('postTitleInput').value = parsed.title || '';
       document.getElementById('postDescInput').value = parsed.description || '';
       document.getElementById('postDateInput').value = parsed.date || '';
-      document.getElementById('postAuthorInput').value = parsed.author || 'Katlynn Oliver, Esq.';
+      document.getElementById('postAuthorInput').value = parsed.author || 'John W. Ament, Esq.';
 
       if (activeSection === 'careers') {
         document.getElementById('jobTypeInput').value = parsed.type || 'Full-Time';

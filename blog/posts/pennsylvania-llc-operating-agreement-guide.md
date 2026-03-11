@@ -1,6 +1,6 @@
 ---
 title: "Why Your Pennsylvania LLC Needs a Proper Operating Agreement (And What Happens Without One)"
-description: "An LLC without a proper operating agreement is governed by Pennsylvania's default statutory rules — which may not reflect what you want. Attorney Katlynn Oliver explains what every PA LLC owner needs to know."
+description: "An LLC without a proper operating agreement is governed by Pennsylvania's default statutory rules — which may not reflect what you want. Learn what every PA LLC owner needs to know."
 date: 2026-03-30
 author: "W. Robert Ament, Esq."
 ---
@@ -61,7 +61,7 @@ Operating agreement disputes are among the most expensive and disruptive busines
 
 A well-drafted operating agreement, prepared at the time of formation, costs a fraction of what litigation costs if things go wrong.
 
-At Ament Law Group, Katlynn Oliver, Esq. drafts operating agreements for Pennsylvania LLCs that reflect your specific business structure and protect your interests from day one. Learn more about our [business formation](/practice-areas/business-formation/) services, or [contact us](/contact/) to schedule a consultation.
+At Ament Law Group, our attorneys draft operating agreements for Pennsylvania LLCs that reflect your specific business structure and protect your interests from day one. Learn more about our [business formation](/practice-areas/business-formation/) services, or [contact us](/contact/) to schedule a consultation.
 
 ---
 
