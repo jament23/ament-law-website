@@ -281,15 +281,15 @@
             </div>
             <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-label="Chat messages">
                 <div class="chat-msg assistant">
-                    <p>Hi! I'm the AI assistant for Ament Law Group. I can answer questions about our firm, our services, and general information about estate planning, probate, real estate, and business law in Pennsylvania.</p>
-                    <p>I can't provide legal advice — but I can help you figure out if we're the right firm for your needs. What can I help you with?</p>
+                    <p>Hi! I'm the AI assistant for Ament Law Group. I can help you figure out if we're the right firm for your situation and connect you with one of our attorneys.</p>
+                    <p>What brings you here today?</p>
                 </div>
             </div>
             <div id="chat-suggestions" class="chat-suggestions">
-                <button class="chat-suggestion" data-q="What practice areas do you cover?">What practice areas do you cover?</button>
-                <button class="chat-suggestion" data-q="How does your fee structure work?">How does your fee structure work?</button>
-                <button class="chat-suggestion" data-q="What should I bring to an estate planning consultation?">What should I bring to a consultation?</button>
-                <button class="chat-suggestion" data-q="Do you help with for sale by owner transactions?">Do you help with FSBO transactions?</button>
+                <button class="chat-suggestion" data-q="I need to create an estate plan">Estate Planning</button>
+                <button class="chat-suggestion" data-q="A family member passed away and I need help with the estate">Probate / Estate</button>
+                <button class="chat-suggestion" data-q="I need help with a real estate transaction">Real Estate</button>
+                <button class="chat-suggestion" data-q="I want to form a business or need business legal help">Business Law</button>
             </div>
             <div id="chat-session-ended" class="chat-session-ended" style="display:none;">
                 <p>Thanks for chatting! Ready to take the next step?</p>
@@ -418,6 +418,7 @@
         var inputArea = document.getElementById('chat-input-area');
         var sessionEnded = document.getElementById('chat-session-ended');
         var isOpen = false, loading = false;
+        var detectedArea = '';
 
         function openChat() {
             isOpen = true;
@@ -455,6 +456,77 @@
             messages.appendChild(div);
             messages.scrollTop = messages.scrollHeight;
         }
+
+        function addContactForm() {
+            var div = document.createElement('div');
+            div.className = 'chat-msg assistant chat-lead-form';
+            div.innerHTML =
+                '<form id="chat-lead-form" autocomplete="on">' +
+                '<p class="chat-form-label">We\'ll reach out to you shortly:</p>' +
+                '<input type="text" name="name" placeholder="Your name" required autocomplete="name">' +
+                '<input type="tel" name="phone" placeholder="Phone number" required autocomplete="tel">' +
+                '<input type="email" name="email" placeholder="Email (optional)" autocomplete="email">' +
+                '<textarea name="notes" placeholder="Anything else we should know?" rows="2"></textarea>' +
+                '<button type="submit" class="chat-lead-submit">Request Callback</button>' +
+                '</form>';
+            messages.appendChild(div);
+            messages.scrollTop = messages.scrollHeight;
+
+            div.querySelector('form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var form = e.target;
+                var btn = form.querySelector('button');
+                btn.disabled = true;
+                btn.textContent = 'Sending...';
+
+                // Detect area from conversation
+                var areaGuess = detectArea();
+
+                fetch('/api/chat-lead', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: form.name.value.trim(),
+                        phone: form.phone.value.trim(),
+                        email: form.email.value.trim(),
+                        area: areaGuess,
+                        notes: form.notes.value.trim(),
+                        conversation: history
+                    })
+                })
+                .then(function(r) { return r.json(); })
+                .then(function(data) {
+                    if (data.ok) {
+                        div.innerHTML = '<p class="chat-form-success">Thank you! Someone from our team will be in touch soon.</p>';
+                    } else {
+                        btn.disabled = false;
+                        btn.textContent = 'Request Callback';
+                        addMsg('assistant', 'I had trouble submitting that. You can also reach us directly at (724) 733-3500 or hello@ament.law.');
+                    }
+                })
+                .catch(function() {
+                    btn.disabled = false;
+                    btn.textContent = 'Request Callback';
+                    addMsg('assistant', 'I had trouble submitting that. You can also reach us directly at (724) 733-3500 or hello@ament.law.');
+                });
+                messages.scrollTop = messages.scrollHeight;
+            });
+
+            // Hide regular input while form is showing
+            inputArea.style.display = 'none';
+            document.querySelector('.chat-meta').style.display = 'none';
+        }
+
+        function detectArea() {
+            var convo = history.map(function(m) { return m.content; }).join(' ').toLowerCase();
+            if (/estate plan|will|trust|power of attorney|poa|healthcare directive/.test(convo)) return 'Estate Planning';
+            if (/probate|passed away|died|estate admin|inheritance|executor|letters testamentary/.test(convo)) return 'Probate & Estate Administration';
+            if (/real estate|closing|settlement|title|deed|property|house|home|buy|sell|fsbo/.test(convo)) return 'Real Estate';
+            if (/business|llc|corp|formation|contract|lease|partnership|entity/.test(convo)) return 'Business Law';
+            if (/elder|medicaid|nursing|long.term|guardian|aging/.test(convo)) return 'Elder Law';
+            return 'General Inquiry';
+        }
+
         function showTyping() {
             var div = document.createElement('div');
             div.className = 'chat-msg assistant';
@@ -496,18 +568,30 @@
                 var reply = data.reply || data.error || "I'm having trouble right now. Please call us at (724) 733-3500.";
                 if (data.error) reply = "I'm having trouble right now. Please call us at (724) 733-3500 or visit www.ament.law/contact.";
                 hideTyping();
+
+                // Check for contact form trigger
+                var showForm = false;
+                if (reply.indexOf('[[CONTACT_FORM]]') !== -1) {
+                    reply = reply.replace(/\s*\[\[CONTACT_FORM\]\]\s*/g, '').trim();
+                    showForm = true;
+                }
+
                 addMsg('assistant', reply);
                 history.push({ role: 'assistant', content: reply });
+
+                if (showForm) {
+                    addContactForm();
+                }
             } catch(e) {
                 hideTyping();
                 addMsg('assistant', "I'm having trouble connecting. The best way to reach us is (724) 733-3500 or www.ament.law/contact.");
             }
             loading = false;
-            if (isLast) {
+            if (isLast && !document.getElementById('chat-lead-form')) {
                 inputArea.style.display = 'none';
                 document.querySelector('.chat-meta').style.display = 'none';
                 sessionEnded.style.display = 'block';
-            } else {
+            } else if (!document.getElementById('chat-lead-form')) {
                 sendBtn.disabled = !input.value.trim();
                 input.focus();
             }
