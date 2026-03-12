@@ -1,0 +1,265 @@
+---
+layout: layouts/base.njk
+title: "First 30 Days After a Death in Pennsylvania | Interactive Checklist"
+description: "An interactive, week-by-week guide to the immediate legal and practical steps after losing a loved one in Pennsylvania. Track your progress and know what comes next."
+permalink: /tools/first-30-days/index.html
+---
+
+{% block head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "First 30 Days After a Death in Pennsylvania",
+  "description": "Interactive week-by-week checklist of legal and practical steps after a death in Pennsylvania.",
+  "url": "https://www.ament.law/tools/first-30-days/",
+  "applicationCategory": "UtilitiesApplication",
+  "provider": { "@type": "LegalService", "name": "Ament Law Group, P.C.", "url": "https://www.ament.law/" }
+}
+</script>
+<style>
+  .cl-layout { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-xl); }
+  .cl-intro { margin-bottom: var(--space-lg); }
+  .cl-intro p { font-size: 0.95rem; color: var(--color-body); line-height: 1.7; }
+  .cl-progress-wrap { background: #f1f5f9; border-radius: 8px; height: 8px; margin-bottom: var(--space-lg); overflow: hidden; }
+  .cl-progress-bar { height: 100%; background: var(--color-accent); border-radius: 8px; transition: width 0.4s ease; width: 0%; }
+  .cl-progress-text { font-size: 0.82rem; color: var(--color-body); margin-bottom: 8px; }
+
+  .cl-week { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); margin-bottom: var(--space-md); overflow: hidden; }
+  .cl-week-header { padding: var(--space-md) var(--space-lg); cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; }
+  .cl-week-header:hover { background: #fafbfc; }
+  .cl-week-header h3 { font-size: 1rem; color: var(--color-heading); margin: 0; display: flex; align-items: center; gap: 10px; }
+  .cl-week-header .cl-week-badge { background: var(--color-accent); color: #fff; font-size: 0.72rem; padding: 3px 10px; border-radius: 12px; font-weight: 600; }
+  .cl-week-header .cl-week-count { font-size: 0.82rem; color: var(--color-body); }
+  .cl-week-header .cl-arrow { transition: transform 0.2s; color: var(--color-body); }
+  .cl-week.open .cl-arrow { transform: rotate(180deg); }
+  .cl-week-body { display: none; padding: 0 var(--space-lg) var(--space-lg); }
+  .cl-week.open .cl-week-body { display: block; }
+
+  .cl-item { padding: 12px 0; border-bottom: 1px solid var(--color-border); display: flex; gap: 12px; align-items: flex-start; }
+  .cl-item:last-child { border-bottom: none; }
+  .cl-item input[type="checkbox"] { margin-top: 3px; width: 18px; height: 18px; accent-color: var(--color-accent); flex-shrink: 0; cursor: pointer; }
+  .cl-item-content { flex: 1; }
+  .cl-item-title { font-size: 0.92rem; font-weight: 600; color: var(--color-heading); cursor: pointer; }
+  .cl-item.done .cl-item-title { color: var(--color-body); text-decoration: line-through; opacity: 0.6; }
+  .cl-item-detail { display: none; font-size: 0.88rem; color: var(--color-body); line-height: 1.6; margin-top: 6px; }
+  .cl-item-detail a { color: var(--color-accent); }
+
+  .cl-mistakes { background: #fef2f2; border: 1px solid #fecaca; border-radius: var(--radius); padding: var(--space-lg); margin-top: var(--space-md); }
+  .cl-mistakes h3 { color: #991b1b; font-size: 1rem; margin-bottom: var(--space-sm); }
+  .cl-mistakes li { font-size: 0.9rem; color: #991b1b; margin-bottom: 8px; line-height: 1.6; }
+
+  .cl-cta-box { background: var(--color-accent); color: #fff; border-radius: var(--radius); padding: var(--space-lg); text-align: center; margin-top: var(--space-lg); }
+  .cl-cta-box h3 { color: #fff; font-size: 1.1rem; margin-bottom: var(--space-xs); }
+  .cl-cta-box p { color: rgba(255,255,255,0.85); font-size: 0.92rem; margin-bottom: var(--space-sm); }
+  .cl-cta-box a { display: inline-block; padding: 10px 24px; background: #fff; color: var(--color-accent); border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.9rem; margin: 0 6px; }
+  .cl-cta-box a:hover { background: #f1f5f9; }
+
+  @media (max-width: 768px) { .cl-layout { grid-template-columns: 1fr; } }
+</style>
+{% endblock %}
+
+<section class="simple-header">
+  <div class="container">
+    <h1>First 30 Days After a Death in PA</h1>
+    <p>An interactive guide to help you through the most important steps.</p>
+  </div>
+</section>
+<section style="padding: var(--space-xl) 0;">
+  <div class="container">
+    <div class="cl-layout">
+      <div class="cl-main">
+        <div class="cl-intro">
+          <p>We understand this is an incredibly difficult time. This interactive checklist provides a clear, week-by-week outline of the most important legal and practical steps so you can focus on what matters most — your family.</p>
+          <p>Click any item to expand it for more detail. Your progress is saved in your browser so you can come back anytime.</p>
+        </div>
+
+        <div class="cl-progress-text"><span id="cl-done">0</span> of <span id="cl-total">0</span> steps completed</div>
+        <div class="cl-progress-wrap"><div class="cl-progress-bar" id="cl-bar"></div></div>
+
+        <div id="cl-weeks"></div>
+
+        <div class="cl-mistakes">
+          <h3>Common Mistakes to Avoid</h3>
+          <ul>
+            <li><strong>Distributing assets before debts and taxes are settled.</strong> Executors can be held personally liable if estate debts aren't paid first.</li>
+            <li><strong>Paying the decedent's personal bills from your own funds.</strong> Estate debts should be paid from the estate bank account, not your personal money.</li>
+            <li><strong>Closing accounts before obtaining proper documentation.</strong> You'll need Letters Testamentary or Letters of Administration before banks will work with you.</li>
+            <li><strong>Discarding financial records, mail, or documents.</strong> You'll need these for tax filings, creditor claims, and distribution records.</li>
+            <li><strong>Making major real property decisions before consulting an attorney.</strong> Don't sell, transfer, or refinance real estate until you understand the legal and tax implications.</li>
+          </ul>
+        </div>
+
+        <div class="cl-cta-box">
+          <h3>You Don't Have to Do This Alone</h3>
+          <p>Our attorneys guide executors through every step of the probate and estate administration process — from filing at the Register of Wills through final distribution. Flat-fee services with no hourly billing surprises.</p>
+          <div>
+            <a href="/contact/">Schedule a Free Consultation</a>
+            <a href="tel:724-733-3500" style="background:transparent; border:1.5px solid #fff; color:#fff;">Call (724) 733-3500</a>
+          </div>
+        </div>
+
+        <p style="font-size:0.78rem; color:var(--color-body); margin-top:var(--space-md); line-height:1.6;">This checklist is for general informational purposes and does not constitute legal advice. Every estate is different. Consult an attorney for guidance specific to your situation.</p>
+      </div>
+      <aside class="cl-sidebar ic-sidebar">
+        <div class="sidebar-widget">
+          <h4>Download PDF Version</h4>
+          <p style="font-size:0.88rem; color:var(--color-body);">Prefer a printable version?</p>
+          <a href="/downloads/first-30-days-after-a-death-in-pa.pdf" class="cta-button-secondary" style="display:block; text-align:center; margin-top:8px;" download>Download PDF</a>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Key Deadlines</h4>
+          <ul class="sidebar-links" style="list-style:none; padding:0;">
+            <li style="padding:6px 0;"><strong>3 months:</strong> 5% inheritance tax discount</li>
+            <li style="padding:6px 0;"><strong>9 months:</strong> Inheritance tax due</li>
+            <li style="padding:6px 0;"><strong>1 year:</strong> Creditor claims period</li>
+            <li style="padding:6px 0;"><strong>12-18 months:</strong> Typical administration</li>
+          </ul>
+        </div>
+        <div class="sidebar-widget">
+          <h4>Related Resources</h4>
+          <ul class="sidebar-links">
+            <li><a href="/downloads/pa-executors-checklist.pdf">PA Executor's Checklist (PDF)</a></li>
+            <li><a href="/downloads/pa-inheritance-tax-guide.pdf">Inheritance Tax Guide (PDF)</a></li>
+            <li><a href="/tools/inheritance-tax-calculator/">Inheritance Tax Calculator</a></li>
+            <li><a href="/tools/probate-timeline/">Probate Timeline Tool</a></li>
+            <li><a href="/practice-areas/probate-administration/">Probate Services</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-widget contact-widget">
+          <h4>Get Help Today</h4>
+          <p>Named as executor? We can guide you through the entire process.</p>
+          <p class="sidebar-phone"><a href="tel:724-733-3500">(724) 733-3500</a></p>
+          <a href="/contact/" class="cta-button-light">Schedule a Free Consultation</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<script>
+var WEEKS = [
+  {
+    title: 'Week 1', badge: 'Immediate Priorities',
+    items: [
+      { title: 'Obtain certified copies of the death certificate', detail: 'Request 10-15 certified copies from the funeral home or the county vital records office. You\'ll need these for banks, insurance companies, the Register of Wills, the Social Security Administration, and more. It\'s much easier to get extras now than to order them later.' },
+      { title: 'Locate the original will and estate planning documents', detail: 'Check the decedent\'s home (safe, filing cabinet, desk), their attorney\'s office, and any safe deposit box. You\'ll need the <em>original</em> will — not a copy — to file with the Register of Wills. Also look for trusts, powers of attorney, deeds, and beneficiary designation forms.' },
+      { title: 'Notify immediate family members and close friends', detail: 'Make sure all close family members are informed. If there are beneficiaries named in the will who live out of state, begin reaching out to them as well.' },
+      { title: 'Secure the decedent\'s home, vehicles, and valuables', detail: 'Change locks if necessary, ensure the home is insured and maintained, and take an inventory of any valuable items (jewelry, art, cash, collections). Do not distribute any personal property yet.' },
+      { title: 'Contact the decedent\'s employer regarding benefits', detail: 'Ask about any final paycheck, unused vacation payout, pension or retirement benefits, and employer-provided life insurance. Get the HR contact name and any claim forms.' },
+      { title: 'Notify the Social Security Administration', detail: 'Call SSA at 1-800-772-1213 to report the death. If the decedent was receiving benefits, they\'ll need to be stopped. The surviving spouse may be eligible for a one-time death benefit of $255 and ongoing survivor benefits.' },
+      { title: 'Contact the decedent\'s insurance agent', detail: 'Notify their life insurance, health insurance, homeowner\'s, and auto insurance carriers. File life insurance claims promptly — proceeds are usually paid quickly and are not subject to Pennsylvania inheritance tax. Maintain property insurance on any real estate owned by the estate.' },
+    ]
+  },
+  {
+    title: 'Week 2', badge: 'Legal & Financial Steps',
+    items: [
+      { title: 'Consult an attorney about probate and estate administration', detail: 'An estate attorney can explain the probate process, help you understand your duties as executor or administrator, and handle the court filings and tax returns. <a href="/contact/">Schedule a free consultation</a> with Ament Law Group — we offer flat-fee probate services.' },
+      { title: 'File the will with the Register of Wills', detail: 'Bring the <em>original</em> will and a certified death certificate to the Register of Wills in the county where the decedent lived. This is required even if probate isn\'t needed for all assets. In Westmoreland County, the Register is located in the courthouse in Greensburg.' },
+      { title: 'Apply for Letters Testamentary or Letters of Administration', detail: 'Letters Testamentary (if there\'s a will) or Letters of Administration (if there isn\'t) grant you legal authority to act on behalf of the estate. Banks, investment firms, and other institutions will require these before they\'ll work with you. You\'ll receive "Short Certificates" as proof of your authority.' },
+      { title: 'Obtain an EIN from the IRS for the estate', detail: 'The estate needs its own tax identification number, separate from the decedent\'s Social Security Number. Apply online at <a href="https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online" target="_blank" rel="noopener">irs.gov</a> using Form SS-4. This is free and takes about 5 minutes.' },
+      { title: 'Open an estate bank account', detail: 'All estate funds should flow through a dedicated estate account — not your personal account. Bring the Letters Testamentary/Administration, death certificate, and estate EIN to the bank. Use this account to pay estate expenses and receive any payments owed to the estate.' },
+      { title: 'Notify banks, investment firms, and credit card companies', detail: 'Provide each institution with a death certificate and your Letters. Some accounts may be frozen until you present documentation. Do not close accounts yet — just notify and request account statements.' },
+      { title: 'Begin gathering asset and liability information', detail: 'Start building a complete picture of the estate: real estate, bank accounts, investments, retirement accounts, life insurance, vehicles, personal property, and all debts (mortgage, credit cards, medical bills, taxes owed). You\'ll need this for the inheritance tax return and for distribution.' },
+    ]
+  },
+  {
+    title: 'Weeks 3-4', badge: 'Notifications & Administration',
+    items: [
+      { title: 'Publish estate notice in newspaper and county legal journal', detail: 'Pennsylvania law requires you to publish a notice of estate administration in a newspaper of general circulation and the county legal journal. This puts creditors on notice and starts the clock on the one-year creditor claims period. Your attorney typically handles this.' },
+      { title: 'Send written notice to known beneficiaries and creditors', detail: 'All beneficiaries named in the will (or intestate heirs if there\'s no will) should receive written notice of your appointment. Known creditors should also be notified in writing. Keep copies of all notices.' },
+      { title: 'Redirect the decedent\'s mail', detail: 'File a change of address with the post office to forward the decedent\'s mail to the executor\'s address or the estate\'s mailing address. This helps you catch bills, statements, and correspondence you might otherwise miss.' },
+      { title: 'Cancel or transfer utilities, subscriptions, and memberships', detail: 'Review recurring charges on bank and credit card statements. Cancel what\'s no longer needed and transfer utilities to the estate or new owner if the property is being maintained.' },
+      { title: 'Review and maintain insurance coverage on estate property', detail: 'Make sure homeowner\'s insurance, auto insurance, and any other property coverage remains active during administration. An uninsured loss during probate can devastate the estate.' },
+      { title: 'Begin organizing financial records for tax filings', detail: 'You\'ll need to file the decedent\'s final income tax return and the PA Inheritance Tax Return (REV-1500 or REV-1502). Start gathering W-2s, 1099s, bank statements, and records of all assets and their date-of-death values.' },
+      { title: 'File claims for life insurance, retirement, or veterans benefits', detail: 'Life insurance and retirement accounts with named beneficiaries pass outside of probate, but claims still need to be filed. If the decedent was a veteran, contact the VA about burial benefits and any pension or survivor benefits.' },
+    ]
+  }
+];
+
+var STORAGE_KEY = 'ament_30day_progress';
+var checked = {};
+try { checked = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) {}
+
+function save() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(checked)); } catch(e) {}
+}
+
+function render() {
+  var container = document.getElementById('cl-weeks');
+  var html = '';
+  var totalItems = 0;
+
+  WEEKS.forEach(function(week, wi) {
+    var weekDone = 0;
+    week.items.forEach(function(item, ii) {
+      totalItems++;
+      if (checked[wi + '-' + ii]) weekDone++;
+    });
+    var isOpen = wi === 0 || weekDone < week.items.length;
+
+    html += '<div class="cl-week' + (isOpen ? ' open' : '') + '" data-week="' + wi + '">';
+    html += '<div class="cl-week-header" onclick="toggleWeek(this)">';
+    html += '<h3><span class="cl-week-badge">' + week.badge + '</span> ' + week.title + '</h3>';
+    html += '<div style="display:flex;align-items:center;gap:12px;"><span class="cl-week-count">' + weekDone + '/' + week.items.length + '</span>';
+    html += '<svg class="cl-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div></div>';
+    html += '<div class="cl-week-body">';
+
+    week.items.forEach(function(item, ii) {
+      var key = wi + '-' + ii;
+      var isDone = checked[key];
+      html += '<div class="cl-item' + (isDone ? ' done' : '') + '">';
+      html += '<input type="checkbox"' + (isDone ? ' checked' : '') + ' onchange="toggleItem(' + wi + ',' + ii + ',this)">';
+      html += '<div class="cl-item-content">';
+      html += '<div class="cl-item-title" onclick="toggleDetail(this)">' + item.title + '</div>';
+      html += '<div class="cl-item-detail">' + item.detail + '</div>';
+      html += '</div></div>';
+    });
+
+    html += '</div></div>';
+  });
+
+  container.innerHTML = html;
+  updateProgress();
+}
+
+function updateProgress() {
+  var total = 0, done = 0;
+  WEEKS.forEach(function(week, wi) {
+    week.items.forEach(function(item, ii) {
+      total++;
+      if (checked[wi + '-' + ii]) done++;
+    });
+  });
+  document.getElementById('cl-done').textContent = done;
+  document.getElementById('cl-total').textContent = total;
+  document.getElementById('cl-bar').style.width = (total > 0 ? (done / total * 100) : 0) + '%';
+}
+
+function toggleWeek(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+function toggleItem(wi, ii, cb) {
+  var key = wi + '-' + ii;
+  checked[key] = cb.checked;
+  cb.closest('.cl-item').classList.toggle('done', cb.checked);
+  save();
+  updateProgress();
+  // Update week count
+  var weekEl = cb.closest('.cl-week');
+  var weekIdx = parseInt(weekEl.getAttribute('data-week'));
+  var weekDone = 0;
+  WEEKS[weekIdx].items.forEach(function(item, i) {
+    if (checked[weekIdx + '-' + i]) weekDone++;
+  });
+  weekEl.querySelector('.cl-week-count').textContent = weekDone + '/' + WEEKS[weekIdx].items.length;
+}
+
+function toggleDetail(titleEl) {
+  var detail = titleEl.nextElementSibling;
+  detail.style.display = detail.style.display === 'block' ? 'none' : 'block';
+}
+
+render();
+</script>

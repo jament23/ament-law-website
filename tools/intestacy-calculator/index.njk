@@ -1,0 +1,347 @@
+---
+layout: layouts/base.njk
+title: "What Happens to My Estate? | Pennsylvania Intestacy Calculator"
+description: "See exactly how Pennsylvania law distributes your estate if you die without a will. Enter your family situation and estate value for an instant breakdown — including inheritance tax."
+permalink: /tools/intestacy-calculator/index.html
+---
+
+{% block head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Pennsylvania Intestacy Calculator",
+  "description": "See how Pennsylvania law distributes your estate without a will. Instant calculation by family situation.",
+  "url": "https://www.ament.law/tools/intestacy-calculator/",
+  "applicationCategory": "FinanceApplication",
+  "provider": {
+    "@type": "LegalService",
+    "name": "Ament Law Group, P.C.",
+    "url": "https://www.ament.law/"
+  }
+}
+</script>
+<style>
+  .ic-layout { display: grid; grid-template-columns: 1fr 340px; gap: var(--space-xl); }
+  .ic-main { }
+  .ic-sidebar { }
+  .ic-card { background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--space-lg); margin-bottom: var(--space-md); }
+  .ic-card h3 { font-size: 1.05rem; color: var(--color-heading); margin-bottom: var(--space-sm); }
+  .ic-field { margin-bottom: var(--space-md); }
+  .ic-field label { display: block; font-size: 0.88rem; font-weight: 600; color: var(--color-heading); margin-bottom: 6px; }
+  .ic-field select, .ic-field input {
+    width: 100%; padding: 10px 14px; border: 1px solid var(--color-border); border-radius: 6px;
+    font-size: 0.92rem; font-family: inherit; background: var(--color-surface); color: var(--color-ink);
+  }
+  .ic-field select:focus, .ic-field input:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 3px rgba(10,21,48,0.08); }
+  .ic-field .hint { font-size: 0.78rem; color: var(--color-body); margin-top: 4px; }
+  .ic-radio-group { display: flex; gap: 12px; flex-wrap: wrap; }
+  .ic-radio-group label { display: flex; align-items: center; gap: 6px; font-weight: 400; cursor: pointer; padding: 8px 16px; border: 1px solid var(--color-border); border-radius: 6px; font-size: 0.88rem; transition: all 0.15s; }
+  .ic-radio-group label:hover { border-color: var(--color-accent); }
+  .ic-radio-group input:checked + span { font-weight: 600; }
+  .ic-radio-group label:has(input:checked) { border-color: var(--color-accent); background: rgba(10,21,48,0.03); }
+  .ic-btn { display: inline-block; padding: 12px 28px; background: var(--color-accent); color: #fff; border: none; border-radius: 6px; font-size: 0.95rem; font-weight: 600; cursor: pointer; font-family: inherit; transition: background 0.15s; }
+  .ic-btn:hover { background: var(--color-accent-hover, #162550); }
+
+  /* Results */
+  #ic-results { display: none; }
+  .ic-results-header { text-align: center; margin-bottom: var(--space-lg); }
+  .ic-results-header h2 { font-size: 1.3rem; color: var(--color-heading); margin-bottom: 4px; }
+  .ic-results-header p { color: var(--color-body); font-size: 0.92rem; }
+  .ic-distribution { margin-bottom: var(--space-lg); }
+  .ic-bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+  .ic-bar-label { width: 140px; font-size: 0.88rem; font-weight: 600; color: var(--color-heading); text-align: right; flex-shrink: 0; }
+  .ic-bar-wrap { flex: 1; background: #f1f5f9; border-radius: 6px; height: 32px; overflow: hidden; position: relative; }
+  .ic-bar-fill { height: 100%; border-radius: 6px; transition: width 0.6s ease; display: flex; align-items: center; padding: 0 10px; min-width: fit-content; }
+  .ic-bar-fill span { font-size: 0.78rem; font-weight: 600; color: #fff; white-space: nowrap; }
+  .ic-bar-amount { width: 120px; font-size: 0.88rem; color: var(--color-body); text-align: right; flex-shrink: 0; }
+  .ic-color-spouse { background: #0a1530; }
+  .ic-color-children { background: #2563eb; }
+  .ic-color-parents { background: #7c3aed; }
+  .ic-color-siblings { background: #0891b2; }
+  .ic-color-state { background: #dc2626; }
+  .ic-tax-table { width: 100%; border-collapse: collapse; margin-top: var(--space-sm); }
+  .ic-tax-table th { text-align: left; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-body); padding: 8px 0; border-bottom: 2px solid var(--color-border); }
+  .ic-tax-table td { padding: 10px 0; border-bottom: 1px solid var(--color-border); font-size: 0.9rem; }
+  .ic-tax-table td:last-child { text-align: right; font-weight: 600; }
+  .ic-tax-total { font-weight: 700; color: #dc2626; }
+  .ic-warning { background: #fef2f2; border: 1px solid #fecaca; border-radius: var(--radius-sm); padding: var(--space-md); margin-top: var(--space-md); }
+  .ic-warning p { color: #991b1b; font-size: 0.88rem; margin: 0; }
+  .ic-cta-box { background: var(--color-accent); color: #fff; border-radius: var(--radius); padding: var(--space-lg); text-align: center; margin-top: var(--space-lg); }
+  .ic-cta-box h3 { color: #fff; font-size: 1.1rem; margin-bottom: var(--space-xs); }
+  .ic-cta-box p { color: rgba(255,255,255,0.85); font-size: 0.92rem; margin-bottom: var(--space-sm); }
+  .ic-cta-box a { display: inline-block; padding: 10px 24px; background: #fff; color: var(--color-accent); border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+  .ic-cta-box a:hover { background: #f1f5f9; }
+  .ic-legal { font-size: 0.78rem; color: var(--color-body); margin-top: var(--space-md); line-height: 1.6; }
+  @media (max-width: 768px) {
+    .ic-layout { grid-template-columns: 1fr; }
+    .ic-bar-label { width: 90px; font-size: 0.8rem; }
+    .ic-bar-amount { width: 90px; font-size: 0.8rem; }
+  }
+</style>
+{% endblock %}
+
+<section class="simple-header">
+  <div class="container">
+    <h1>What Happens to My Estate?</h1>
+    <p>See how Pennsylvania distributes your assets if you die without a will.</p>
+  </div>
+</section>
+<section style="padding: var(--space-xl) 0;">
+  <div class="container">
+    <div class="ic-layout">
+      <div class="ic-main">
+
+        <!-- Input Form -->
+        <div id="ic-form">
+          <div class="ic-card">
+            <h3>Your Family Situation</h3>
+            <div class="ic-field">
+              <label>Marital Status</label>
+              <div class="ic-radio-group">
+                <label><input type="radio" name="marital" value="married" checked> <span>Married</span></label>
+                <label><input type="radio" name="marital" value="single"> <span>Single / Widowed / Divorced</span></label>
+              </div>
+            </div>
+            <div class="ic-field" id="f-children">
+              <label>Do you have children?</label>
+              <div class="ic-radio-group">
+                <label><input type="radio" name="children" value="no" checked> <span>No children</span></label>
+                <label><input type="radio" name="children" value="yes-joint"> <span>Yes — all with my spouse</span></label>
+                <label><input type="radio" name="children" value="yes-mixed"> <span>Yes — some from a prior relationship</span></label>
+              </div>
+            </div>
+            <div class="ic-field" id="f-children-single" style="display:none;">
+              <label>Do you have children?</label>
+              <div class="ic-radio-group">
+                <label><input type="radio" name="children-s" value="no" checked> <span>No children</span></label>
+                <label><input type="radio" name="children-s" value="yes"> <span>Yes</span></label>
+              </div>
+            </div>
+            <div class="ic-field" id="f-parents">
+              <label>Do you have a surviving parent?</label>
+              <div class="ic-radio-group">
+                <label><input type="radio" name="parents" value="yes" checked> <span>Yes</span></label>
+                <label><input type="radio" name="parents" value="no"> <span>No</span></label>
+              </div>
+            </div>
+            <div class="ic-field" id="f-siblings" style="display:none;">
+              <label>Do you have siblings?</label>
+              <div class="ic-radio-group">
+                <label><input type="radio" name="siblings" value="yes" checked> <span>Yes</span></label>
+                <label><input type="radio" name="siblings" value="no"> <span>No</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="ic-card">
+            <h3>Estimated Estate Value</h3>
+            <div class="ic-field">
+              <label>Total Probate Estate</label>
+              <input type="text" id="estate-value" placeholder="e.g. 500,000" inputmode="numeric">
+              <div class="hint">Include real estate (in your name alone), bank accounts, investments, vehicles, and personal property that would pass through probate. Do not include life insurance, joint accounts, or retirement accounts with named beneficiaries.</div>
+            </div>
+          </div>
+          <button class="ic-btn" onclick="calculate()">Show My Results</button>
+        </div>
+
+        <!-- Results -->
+        <div id="ic-results">
+          <div class="ic-card">
+            <div class="ic-results-header">
+              <h2>Without a Will, Pennsylvania Decides</h2>
+              <p id="ic-scenario"></p>
+            </div>
+            <div class="ic-distribution" id="ic-bars"></div>
+          </div>
+          <div class="ic-card">
+            <h3>Inheritance Tax Impact</h3>
+            <p style="font-size:0.88rem; color:var(--color-body); margin-bottom:12px;">Pennsylvania inheritance tax is based on the <em>relationship</em> between the beneficiary and the decedent — not the size of the estate.</p>
+            <table class="ic-tax-table">
+              <thead><tr><th>Beneficiary</th><th>Share</th><th>Tax Rate</th><th style="text-align:right;">Tax</th></tr></thead>
+              <tbody id="ic-tax-body"></tbody>
+            </table>
+          </div>
+          <div id="ic-warnings"></div>
+          <div class="ic-cta-box">
+            <h3>You Don't Have to Accept These Results</h3>
+            <p>An estate plan lets you decide who gets what — not the state. Our attorneys can help you create a plan that reflects your actual wishes, minimizes tax, and avoids unnecessary probate costs.</p>
+            <a href="/contact/">Schedule a Free Consultation</a>
+          </div>
+          <button class="ic-btn" onclick="reset()" style="background:transparent; color:var(--color-accent); border:1.5px solid var(--color-accent); margin-top:var(--space-md);">Start Over</button>
+          <p class="ic-legal">This calculator provides estimates based on Pennsylvania intestacy law (20 Pa.C.S. Chapter 21) and inheritance tax rates as of 2026. Results are for general informational purposes only and do not constitute legal advice. Actual distributions may vary based on specific circumstances, debts, exemptions, and court determinations. Consult an attorney for guidance specific to your situation.</p>
+        </div>
+
+      </div>
+      <aside class="ic-sidebar">
+        <div class="sidebar-widget">
+          <h4>Why This Matters</h4>
+          <p style="font-size:0.88rem; color:var(--color-body); line-height:1.6;">Without a will, you have no say in who inherits your assets, who manages your estate, or who raises your minor children. The court appoints an administrator — who may not be the person you would have chosen.</p>
+        </div>
+        <div class="sidebar-widget">
+          <h4>PA Inheritance Tax Rates</h4>
+          <ul class="sidebar-links" style="list-style:none; padding:0;">
+            <li style="padding:6px 0;"><strong>Spouse:</strong> 0%</li>
+            <li style="padding:6px 0;"><strong>Children:</strong> 4.5%</li>
+            <li style="padding:6px 0;"><strong>Siblings:</strong> 12%</li>
+            <li style="padding:6px 0;"><strong>Others:</strong> 15%</li>
+          </ul>
+          <p style="font-size:0.82rem; color:var(--color-body); margin-top:8px;">5% discount if paid within 3 months of death. Due within 9 months.</p>
+        </div>
+        <div class="sidebar-widget contact-widget">
+          <h4>Get Help Today</h4>
+          <p>Don't leave it to the state. Let's build a plan for your family.</p>
+          <p class="sidebar-phone"><a href="tel:724-733-3500">(724) 733-3500</a></p>
+          <a href="/contact/" class="cta-button-light">Schedule a Free Consultation</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<script>
+function fmt(n) { return '$' + Math.round(n).toLocaleString('en-US'); }
+
+function getRadio(name) {
+  var el = document.querySelector('input[name="' + name + '"]:checked');
+  return el ? el.value : '';
+}
+
+// Show/hide fields based on selections
+document.querySelectorAll('input[name="marital"]').forEach(function(r) {
+  r.addEventListener('change', function() {
+    var married = r.value === 'married';
+    document.getElementById('f-children').style.display = married ? '' : 'none';
+    document.getElementById('f-children-single').style.display = married ? 'none' : '';
+    updateParentVisibility();
+  });
+});
+document.querySelectorAll('input[name="children"], input[name="children-s"]').forEach(function(r) {
+  r.addEventListener('change', updateParentVisibility);
+});
+document.querySelectorAll('input[name="parents"]').forEach(function(r) {
+  r.addEventListener('change', function() {
+    var noParents = r.value === 'no';
+    var married = getRadio('marital') === 'married';
+    var hasKids = married ? getRadio('children') !== 'no' : getRadio('children-s') === 'yes';
+    document.getElementById('f-siblings').style.display = (!married && !hasKids && noParents) ? '' : 'none';
+  });
+});
+
+function updateParentVisibility() {
+  var married = getRadio('marital') === 'married';
+  var hasKids = married ? getRadio('children') !== 'no' : getRadio('children-s') === 'yes';
+  document.getElementById('f-parents').style.display = hasKids ? 'none' : '';
+  document.getElementById('f-siblings').style.display = 'none';
+  if (!married && !hasKids && getRadio('parents') === 'no') {
+    document.getElementById('f-siblings').style.display = '';
+  }
+}
+
+function calculate() {
+  var raw = document.getElementById('estate-value').value.replace(/[^0-9.]/g, '');
+  var estate = parseFloat(raw);
+  if (!estate || estate <= 0) { document.getElementById('estate-value').style.borderColor = '#dc2626'; return; }
+
+  var married = getRadio('marital') === 'married';
+  var children = married ? getRadio('children') : (getRadio('children-s') === 'yes' ? 'yes-joint' : 'no');
+  var hasParents = getRadio('parents') === 'yes';
+  var hasSiblings = getRadio('siblings') === 'yes';
+
+  var shares = [];
+  var scenario = '';
+  var warnings = [];
+
+  if (married) {
+    if (children === 'no') {
+      if (hasParents) {
+        var spouseAmt = Math.min(30000, estate) + Math.max(0, (estate - 30000) * 0.5);
+        var parentAmt = estate - spouseAmt;
+        shares.push({ label: 'Spouse', amount: spouseAmt, color: 'spouse', rate: 0 });
+        if (parentAmt > 0) shares.push({ label: 'Parent(s)', amount: parentAmt, color: 'parents', rate: 4.5 });
+        scenario = 'Married, no children, surviving parent(s). Your spouse receives the first $30,000 plus half the balance. Your parent(s) receive the rest.';
+      } else {
+        shares.push({ label: 'Spouse', amount: estate, color: 'spouse', rate: 0 });
+        scenario = 'Married, no children, no surviving parents. Your spouse inherits your entire estate.';
+      }
+    } else if (children === 'yes-joint') {
+      var spouseAmt = Math.min(30000, estate) + Math.max(0, (estate - 30000) * 0.5);
+      var childAmt = estate - spouseAmt;
+      shares.push({ label: 'Spouse', amount: spouseAmt, color: 'spouse', rate: 0 });
+      if (childAmt > 0) shares.push({ label: 'Children', amount: childAmt, color: 'children', rate: 4.5 });
+      scenario = 'Married with children (all from current marriage). Your spouse receives the first $30,000 plus half the balance. Your children split the remainder equally.';
+    } else {
+      var spouseAmt = estate * 0.5;
+      var childAmt = estate - spouseAmt;
+      shares.push({ label: 'Spouse', amount: spouseAmt, color: 'spouse', rate: 0 });
+      shares.push({ label: 'Children', amount: childAmt, color: 'children', rate: 4.5 });
+      scenario = 'Married with children from a prior relationship. Your spouse receives only half. Your children from all relationships split the other half equally.';
+      warnings.push('With children from a prior relationship, your spouse does NOT receive the first $30,000 preference. This is one of the most common reasons families need estate planning — to ensure the surviving spouse is adequately provided for.');
+    }
+  } else {
+    if (children !== 'no') {
+      shares.push({ label: 'Children', amount: estate, color: 'children', rate: 4.5 });
+      scenario = 'Unmarried with children. Your children inherit everything, divided equally among them.';
+    } else if (hasParents) {
+      shares.push({ label: 'Parent(s)', amount: estate, color: 'parents', rate: 4.5 });
+      scenario = 'Unmarried, no children, surviving parent(s). Your parent(s) inherit everything.';
+    } else if (hasSiblings) {
+      shares.push({ label: 'Siblings', amount: estate, color: 'siblings', rate: 12 });
+      scenario = 'Unmarried, no children, no parents, surviving siblings. Your siblings inherit everything — at a 12% inheritance tax rate.';
+    } else {
+      shares.push({ label: 'Commonwealth', amount: estate, color: 'state', rate: 0 });
+      scenario = 'With no surviving spouse, children, parents, grandparents, aunts, uncles, or cousins — your estate escheats to the Commonwealth of Pennsylvania.';
+      warnings.push('Without any identifiable heirs, the state of Pennsylvania takes your entire estate. An estate plan can direct your assets to friends, charities, or anyone you choose.');
+    }
+  }
+
+  // Build bars
+  var barsHTML = '';
+  shares.forEach(function(s) {
+    var pct = Math.max(3, (s.amount / estate) * 100);
+    barsHTML += '<div class="ic-bar-row">' +
+      '<div class="ic-bar-label">' + s.label + '</div>' +
+      '<div class="ic-bar-wrap"><div class="ic-bar-fill ic-color-' + s.color + '" style="width:' + pct + '%;"><span>' + Math.round(s.amount / estate * 100) + '%</span></div></div>' +
+      '<div class="ic-bar-amount">' + fmt(s.amount) + '</div></div>';
+  });
+  document.getElementById('ic-bars').innerHTML = barsHTML;
+  document.getElementById('ic-scenario').textContent = scenario;
+
+  // Tax table
+  var taxHTML = '';
+  var totalTax = 0;
+  shares.forEach(function(s) {
+    var tax = s.amount * (s.rate / 100);
+    totalTax += tax;
+    taxHTML += '<tr><td>' + s.label + '</td><td>' + fmt(s.amount) + '</td><td>' + s.rate + '%</td><td style="text-align:right;">' + fmt(tax) + '</td></tr>';
+  });
+  taxHTML += '<tr style="border-top:2px solid var(--color-border);"><td colspan="3"><strong>Total Inheritance Tax</strong></td><td style="text-align:right;" class="ic-tax-total">' + fmt(totalTax) + '</td></tr>';
+  if (totalTax > 0) {
+    taxHTML += '<tr><td colspan="3" style="color:var(--color-body);font-size:0.82rem;">5% discount if paid within 3 months</td><td style="text-align:right;color:#16a34a;font-size:0.82rem;">' + fmt(totalTax * 0.95) + '</td></tr>';
+  }
+  document.getElementById('ic-tax-body').innerHTML = taxHTML;
+
+  // Warnings
+  var warnHTML = '';
+  warnings.forEach(function(w) {
+    warnHTML += '<div class="ic-warning"><p><strong>Important:</strong> ' + w + '</p></div>';
+  });
+  document.getElementById('ic-warnings').innerHTML = warnHTML;
+
+  document.getElementById('ic-form').style.display = 'none';
+  document.getElementById('ic-results').style.display = 'block';
+  window.scrollTo({ top: document.getElementById('ic-results').offsetTop - 100, behavior: 'smooth' });
+}
+
+function reset() {
+  document.getElementById('ic-form').style.display = '';
+  document.getElementById('ic-results').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Format estate value input
+document.getElementById('estate-value').addEventListener('input', function() {
+  this.style.borderColor = '';
+  var v = this.value.replace(/[^0-9]/g, '');
+  if (v) this.value = parseInt(v).toLocaleString('en-US');
+});
+</script>
