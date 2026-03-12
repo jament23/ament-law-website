@@ -972,6 +972,16 @@ main section {
 .attorney-contact-info p { font-size: 0.9rem; margin-bottom: 6px; }
 .attorney-contact-info .cta-button { display: block; text-align: center; margin-top: var(--space-sm); }
 
+/* Attorney message form */
+.atty-msg-form input, .atty-msg-form textarea {
+    width: 100%; padding: 9px 12px; border: 1px solid var(--color-border); border-radius: 6px;
+    font-size: 0.88rem; font-family: inherit; margin-bottom: 8px; background: var(--color-surface);
+}
+.atty-msg-form input:focus, .atty-msg-form textarea:focus { outline: none; border-color: var(--color-accent); }
+.atty-msg-form textarea { resize: vertical; min-height: 60px; }
+.msg-fine { font-size: 0.75rem; color: var(--color-body); margin-top: 6px; }
+.msg-thanks { color: var(--color-accent); font-weight: 600; font-size: 0.92rem; margin-top: 12px; }
+
 .attorney-bio h3 {
     font-family: var(--font-body);
     font-weight: 600;

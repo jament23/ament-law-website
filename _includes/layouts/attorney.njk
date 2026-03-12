@@ -26,7 +26,7 @@ layout: layouts/base.njk
 }
 </script>
 {% endblock %}
-<section id="attorney-profile">
+<section id="attorney-profile" data-attorney-slug="{{ page.fileSlug }}">
     <div class="container">
         <div class="attorney-profile-layout">
             <aside class="attorney-sidebar">
@@ -42,7 +42,19 @@ layout: layouts/base.njk
                 <div class="attorney-contact-info">
                     <h4>Contact</h4>
                     <p>Phone: <a href="tel:724-733-3500">(724) 733-3500</a></p>
-                    <a href="/contact/" class="cta-button">Schedule a Consultation</a>
+                    <a href="/contact/" class="cta-button" style="margin-bottom:16px;">Schedule a Consultation</a>
+
+                    <div class="atty-msg-form" id="atty-msg-form">
+                        <h4 style="margin-top:16px;">Message {{ short_name }}</h4>
+                        <input type="text" id="msg-name" placeholder="Your name" autocomplete="name">
+                        <input type="email" id="msg-email" placeholder="Your email" autocomplete="email">
+                        <textarea id="msg-body" placeholder="Your message..." rows="3"></textarea>
+                        <button class="cta-button-secondary" id="msg-send" onclick="sendAttorneyMsg()" style="width:100%;text-align:center;">Send Message</button>
+                        <p class="msg-fine">Sent securely. Your message goes directly to this attorney.</p>
+                    </div>
+                    <div id="atty-msg-success" style="display:none;">
+                        <p class="msg-thanks">Message sent! {{ short_name }} will be in touch.</p>
+                    </div>
                 </div>
             </aside>
             <article class="attorney-bio">
@@ -65,3 +77,42 @@ layout: layouts/base.njk
         </div>
     </div>
 </section>
+<script>
+function sendAttorneyMsg() {
+    var name = document.getElementById('msg-name').value.trim();
+    var email = document.getElementById('msg-email').value.trim();
+    var body = document.getElementById('msg-body').value.trim();
+    var slug = document.getElementById('attorney-profile').getAttribute('data-attorney-slug');
+    var btn = document.getElementById('msg-send');
+
+    if (!name) { document.getElementById('msg-name').style.borderColor = '#dc2626'; return; }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('msg-email').style.borderColor = '#dc2626'; return; }
+    if (!body) { document.getElementById('msg-body').style.borderColor = '#dc2626'; return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    fetch('/api/attorney-message', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ attorney: slug, name: name, email: email, message: body })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+        if (data.ok) {
+            document.getElementById('atty-msg-form').style.display = 'none';
+            document.getElementById('atty-msg-success').style.display = 'block';
+        } else {
+            btn.disabled = false;
+            btn.textContent = 'Send Message';
+        }
+    })
+    .catch(function() {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+    });
+}
+document.querySelectorAll('#atty-msg-form input, #atty-msg-form textarea').forEach(function(el) {
+    el.addEventListener('input', function() { this.style.borderColor = ''; });
+});
+</script>
