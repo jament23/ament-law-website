@@ -5,6 +5,7 @@ date: 2026-03-06
 type: "Full-Time"
 location: "Murrysville, PA"
 active: true
+validThrough: "2026-09-06"
 ---
 
 Our Murrysville-based law firm is seeking an Attorney with 3–5 years of **substantive, verifiable experience** to join our transaction-heavy practice. We don't just process files — we deliver peace of mind through sophisticated commercial and residential real estate, estate planning, and business services.

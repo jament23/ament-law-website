@@ -5,6 +5,7 @@ date: 2026-03-06
 type: "Full-Time"
 location: "Murrysville, PA"
 active: true
+validThrough: "2026-09-06"
 ---
 
 Our Murrysville-based law firm is seeking an experienced Estate Paralegal to join our growing team. With over 130 years of combined legal experience, we represent clients across Westmoreland, Allegheny, Beaver, Butler, Washington, and Fayette Counties in Real Estate, Estate Planning, Estate Administration, and Business Planning.

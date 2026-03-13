@@ -5,6 +5,7 @@ date: 2026-03-06
 type: "Full-Time"
 location: "Murrysville, PA"
 active: true
+validThrough: "2026-09-06"
 ---
 
 Our Murrysville-based firm is growing quickly, and we are looking for a high-energy, detail-oriented Administrative Assistant/Receptionist to join our team. With over 130 years of combined legal experience across Westmoreland and surrounding counties, we pride ourselves on being the trusted voice for families and businesses.

@@ -12,7 +12,7 @@ layout: layouts/base.njk
     "datePosted": "{{ date | dateISO }}",
     "employmentType": "{{ type | upper | replace(' ', '_') }}",
     "hiringOrganization": {
-        "@type": "LegalService",
+        "@type": "Organization",
         "name": "Ament Law Group, P.C.",
         "sameAs": "https://www.ament.law",
         "logo": "https://www.ament.law/images/logo.svg"
@@ -27,7 +27,18 @@ layout: layouts/base.njk
             "postalCode": "15668",
             "addressCountry": "US"
         }
-    }
+    }{% if validThrough %},
+    "validThrough": "{{ validThrough }}"{% endif %}{% if salary_min %},
+    "baseSalary": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": {
+            "@type": "QuantitativeValue",
+            {% if salary_max %}"minValue": {{ salary_min }},
+            "maxValue": {{ salary_max }},{% else %}"value": {{ salary_min }},{% endif %}
+            "unitText": "{{ salary_unit | default('YEAR') }}"
+        }
+    }{% endif %}
 }
 </script>
 {% endblock %}
