@@ -269,6 +269,26 @@
   </div>
   <div id="nlFlash"></div>
 
+  <!-- Subscriber List -->
+  <div class="card" style="margin-bottom:20px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+      <h3 style="font-size:0.95rem; margin:0;">Subscribers <span id="subCount" style="color:var(--muted); font-weight:400;"></span></h3>
+      <button class="btn btn-outline btn-sm" onclick="loadSubscribers()">Refresh</button>
+    </div>
+    <div id="subLoading" style="color:var(--muted); font-size:0.85rem;">Loading subscribers...</div>
+    <div id="subEmpty" class="hidden" style="color:var(--muted); font-size:0.85rem;">No subscribers yet.</div>
+    <table id="subTable" class="hidden" style="width:100%; font-size:0.85rem;">
+      <thead>
+        <tr style="text-align:left; border-bottom:1px solid var(--border);">
+          <th style="padding:6px 8px;">Email</th>
+          <th style="padding:6px 8px;">Subscribed</th>
+          <th style="padding:6px 8px;">Status</th>
+        </tr>
+      </thead>
+      <tbody id="subTbody"></tbody>
+    </table>
+  </div>
+
   <div class="card">
     <div class="form-group">
       <label>Subject Line</label>
@@ -364,6 +384,53 @@ function showNewsletter() {
   document.getElementById('tabCareers').style.color = '#a1a1aa';
   document.getElementById('tabNewsletter').style.fontWeight = '700';
   document.getElementById('tabNewsletter').style.color = '#fff';
+  loadSubscribers();
+}
+
+function loadSubscribers() {
+  var loading = document.getElementById('subLoading');
+  var empty = document.getElementById('subEmpty');
+  var table = document.getElementById('subTable');
+  var tbody = document.getElementById('subTbody');
+  var count = document.getElementById('subCount');
+  loading.classList.remove('hidden');
+  empty.classList.add('hidden');
+  table.classList.add('hidden');
+  tbody.innerHTML = '';
+  count.textContent = '';
+
+  fetch('/api/newsletter-subscribers', { headers: { 'Authorization': 'Bearer ' + token } })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      loading.classList.add('hidden');
+      if (!data.ok || !data.subscribers || data.subscribers.length === 0) {
+        empty.classList.remove('hidden');
+        count.textContent = '(0)';
+        return;
+      }
+      count.textContent = '(' + data.total + ')';
+      table.classList.remove('hidden');
+      data.subscribers.forEach(function(sub) {
+        var tr = document.createElement('tr');
+        tr.style.borderBottom = '1px solid var(--border)';
+        var d = sub.subscribed ? new Date(sub.subscribed) : null;
+        var dateStr = d ? d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '—';
+        tr.innerHTML =
+          '<td style="padding:6px 8px;">' + esc(sub.email) + '</td>' +
+          '<td style="padding:6px 8px; color:var(--muted);">' + dateStr + '</td>' +
+          '<td style="padding:6px 8px;">' +
+            '<span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.72rem;font-weight:600;' +
+            (sub.active ? 'background:#f0fdf4;color:#16a34a;"' : 'background:#fef2f2;color:#dc2626;"') +
+            '>' + (sub.active ? 'Active' : 'Unsubscribed') + '</span>' +
+          '</td>';
+        tbody.appendChild(tr);
+      });
+    })
+    .catch(function(err) {
+      loading.classList.add('hidden');
+      loading.textContent = 'Could not load subscribers. (Is the site on Cloudflare Pages?)';
+      loading.classList.remove('hidden');
+    });
 }
 
 function previewNewsletter() {
