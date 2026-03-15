@@ -52,7 +52,7 @@ layout: layouts/base.njk
             </article>
             <aside class="practice-area-sidebar">
                 <div class="sidebar-widget">
-                    <h4>Related Services</h4>
+                    <p class="sidebar-label">Related Services</p>
                     <ul class="sidebar-links">
                         {% if related_services %}
                             {% for service in related_services %}
@@ -70,7 +70,7 @@ layout: layouts/base.njk
                 </div>
                 {% if attorneys %}
                 <div class="sidebar-widget">
-                    <h4>Attorneys</h4>
+                    <p class="sidebar-label">Attorneys</p>
                     <p>This service is handled by:</p>
                     <ul class="sidebar-links">
                         {% for attorney in attorneys %}
@@ -80,7 +80,7 @@ layout: layouts/base.njk
                 </div>
                 {% endif %}
                 <div class="sidebar-widget contact-widget">
-                    <h4>Get Help Today</h4>
+                    <p class="sidebar-label">Get Help Today</p>
                     <p>Contact us to schedule a consultation.</p>
                     <p class="sidebar-phone"><a href="tel:724-733-3500">(724) 733-3500</a></p>
                     <a href="/contact/" class="cta-button-light">Schedule a Free Consultation</a>

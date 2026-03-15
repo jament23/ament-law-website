@@ -68,22 +68,22 @@ layout: layouts/base.njk
                         {% if a.photo %}<div class="headshot-wrap"><img src="{{ a.photo }}" alt="{{ author }}" class="attorney-headshot {{ a.headshot_class }}" width="80" height="80" loading="lazy"></div>{% endif %}
                     </div>
                     <div class="author-box-info">
-                        <h4>About the Author</h4>
-                        <h3>{% if aUrl %}<a href="{{ aUrl }}">{{ author }}</a>{% else %}{{ author }}{% endif %}</h3>
+                        <p class="sidebar-label">About the Author</p>
+                        <p class="author-name">{% if aUrl %}<a href="{{ aUrl }}">{{ author }}</a>{% else %}{{ author }}{% endif %}</p>
                         <p>{{ aBio }}</p>
                     </div>
                 </div>
                 {% endif %}
 
                 <div class="blog-cta">
-                    <h3>Need Help with Your Estate?</h3>
+                    <h2>Need Help with Your Estate?</h2>
                     <p>At Ament Law Group, P.C., we help Pennsylvania families protect their wealth and plan for the future. Whether you need a trust, will, or probate administration assistance, our team is here to guide you every step of the way.</p>
                     <p><strong>Call us today at <a href="tel:724-733-3500">(724) 733-3500</a> to schedule your consultation.</strong></p>
                 </div>
             </article>
             <aside class="practice-area-sidebar">
                 <div class="sidebar-widget">
-                    <h4>Related Services</h4>
+                    <p class="sidebar-label">Related Services</p>
                     <ul class="sidebar-links">
                         {% if related_services %}
                             {% for service in related_services %}
@@ -97,7 +97,7 @@ layout: layouts/base.njk
                     </ul>
                 </div>
                 <div class="sidebar-widget contact-widget">
-                    <h4>Schedule a Free Consultation</h4>
+                    <p class="sidebar-label">Schedule a Free Consultation</p>
                     <p>We're here to help with your legal needs.</p>
                     <p class="sidebar-phone"><a href="tel:724-733-3500">(724) 733-3500</a></p>
                     <a href="/contact/" class="cta-button-light">Free Consultation</a>

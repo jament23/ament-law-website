@@ -40,7 +40,7 @@ layout: layouts/base.njk
                 <h1>{{ attorney_name }}</h1>
                 <p class="attorney-title">{{ attorney_role }}</p>
                 <div class="attorney-contact-info">
-                    <h4>Contact</h4>
+                    <p class="sidebar-label">Contact</p>
                     <p>Phone: <a href="tel:724-733-3500">(724) 733-3500</a></p>
                     <a href="/contact/" class="cta-button">Schedule a Consultation</a>
                 </div>
@@ -48,7 +48,7 @@ layout: layouts/base.njk
             <article class="attorney-bio">
                 {{ content | safe }}
                 {% if reviews and reviews.length %}
-                <h3>Client Reviews</h3>
+                <h2>Client Reviews</h2>
                 <div class="attorney-reviews">
                     {% for review in reviews %}
                     <div class="attorney-review-card">
