@@ -143,6 +143,15 @@ h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -0.01em; margin-bott
 h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); margin-bottom: var(--space-sm); }
 h4 { font-weight: 600; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-muted); margin-bottom: var(--space-sm); }
 
+.section-eyebrow {
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: var(--space-sm);
+}
+
 p { margin-bottom: var(--space-sm); }
 p:last-child { margin-bottom: 0; }
 
@@ -752,7 +761,7 @@ main section {
 /* Section headings centered */
 #practice-areas-preview h4,
 #practice-areas-preview h2,
-#reviews-preview h4,
+#reviews-preview .section-eyebrow,
 #reviews-preview h2 {
     text-align: center;
 }
@@ -1168,7 +1177,7 @@ main section {
 .quick-answer p { margin-bottom: 0; }
 
 .post-meta-header {
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.75);
     font-size: 0.92rem;
 }
 
@@ -2052,7 +2061,7 @@ main section {
 
 .reviews-disclaimer {
     font-size: 0.78rem;
-    color: #999;
+    color: #767676;
     text-align: center;
     margin-top: 24px;
     line-height: 1.5;
@@ -2716,7 +2725,7 @@ footer .container {
 }
 
 footer h4 {
-    color: rgba(255,255,255,0.45);
+    color: rgba(255,255,255,0.7);
     margin-bottom: var(--space-sm);
 }
 
@@ -2748,7 +2757,7 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
     -webkit-appearance: none;
     appearance: none;
 }
-.footer-newsletter .newsletter-input-row input::placeholder { color: rgba(255,255,255,0.4); }
+.footer-newsletter .newsletter-input-row input::placeholder { color: rgba(255,255,255,0.7); }
 .footer-newsletter .newsletter-input-row input:focus { outline: none; border-color: #c8a862; background: rgba(255,255,255,0.14); }
 .footer-newsletter .newsletter-input-row button {
     padding: 11px 20px;
@@ -2767,7 +2776,7 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
 }
 .footer-newsletter .newsletter-input-row button:hover { background: #b8973e; }
 .footer-newsletter .newsletter-input-row button:disabled { opacity: 0.6; cursor: not-allowed; }
-.newsletter-fine { font-size: 0.75rem !important; color: rgba(255,255,255,0.4) !important; margin-top: 8px !important; }
+.newsletter-fine { font-size: 0.75rem !important; color: rgba(255,255,255,0.7) !important; margin-top: 8px !important; }
 .newsletter-thanks { color: var(--color-accent) !important; font-weight: 600; font-size: 0.92rem !important; }
 
 .footer-bottom {
@@ -2777,8 +2786,8 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
     text-align: center;
 }
 
-.footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
-.footer-bottom a { color: rgba(255,255,255,0.55); }
+.footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+.footer-bottom a { color: rgba(255,255,255,0.75); }
 .footer-bottom a:hover { color: #fff; }
 
 .disclaimer-text {
