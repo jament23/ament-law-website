@@ -546,8 +546,6 @@ function loadPosts() {
         return;
       }
 
-      var siteBase = SECTIONS[activeSection].siteBase;
-
       // Fetch each file to get front matter
       var promises = mdFiles.map(function(f) {
         return fetch(f.url, { headers: ghHeaders() })
@@ -577,6 +575,7 @@ function loadPosts() {
       posts = posts.filter(function(p) { return p !== null; });
       posts.sort(function(a, b) { return (b.date || '').localeCompare(a.date || ''); });
 
+      var siteBase = SECTIONS[activeSection].siteBase;
       tbody.innerHTML = '';
       var isCareers = (activeSection === 'careers');
       posts.forEach(function(p) {
