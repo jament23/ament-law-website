@@ -2016,6 +2016,40 @@ main section {
     margin-bottom: var(--space-sm);
 }
 
+.google-reviews-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid #e0e4ed;
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin: 0 auto 32px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(15,29,64,.06);
+    transition: box-shadow .15s, border-color .15s;
+}
+.google-reviews-badge:hover {
+    border-color: #4285F4;
+    box-shadow: 0 4px 12px rgba(66,133,244,.15);
+}
+.google-badge-rating {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-heading);
+    margin-right: 4px;
+}
+.google-badge-stars-icons {
+    color: #FBBC05;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+.google-badge-count {
+    font-size: 0.82rem;
+    color: #666;
+    margin-top: 1px;
+}
+
 .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
