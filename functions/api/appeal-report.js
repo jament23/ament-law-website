@@ -253,7 +253,7 @@ export async function onRequestPost(context) {
   const prospectPayload = {
     from: fromAddr,
     to: [email],
-    subject: `Your ${county} County Assessment Appeal Report — Ament Law Group`,
+    subject: `Your ${county} County Property Assessment Analysis — Ament Law Group`,
     html: buildProspectEmail(d),
   };
 

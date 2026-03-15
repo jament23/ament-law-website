@@ -233,16 +233,16 @@ permalink: /tools/assessment-appeal/index.html
 
 @media print {
   .simple-header, .county-tabs, .settings-row, .btn-analyze, .wm-add-comp,
-  .btn-remove, .appeal-cta, .email-capture, nav, footer, .chat-widget { display: none !important; }
-  .appeal-wrap { padding: 0; }
-  .result-section, .metric-card { box-shadow: none; border: 1px solid #ccc; }
+  .btn-remove, .appeal-cta, .email-capture, nav, footer, .chat-widget,
+  .appeal-wrap, #alleg-results, #wm-results, .appeal-disclaimer { display: none !important; }
+  body::after { content: "For a full assessment appeal analysis, contact Ament Law Group at (724) 733-3500 or visit ament.law"; display: block; padding: 40px; text-align: center; font-size: 14px; color: #666; }
 }
 </style>
 
 <section class="simple-header">
   <div class="container">
     <h1>Assessment Appeal Analyzer</h1>
-    <p>Find out if your property is over-assessed &mdash; and what you could save.</p>
+    <p>See how your property&rsquo;s assessed value compares to recent sales in your area.</p>
   </div>
 </section>
 
@@ -344,8 +344,8 @@ permalink: /tools/assessment-appeal/index.html
       <div id="alleg-no-comps" style="display:none;font-size:.9rem;color:#888;padding:12px 0;">No comparable sales found within the selected filters. Try widening the sq. ft. variance or extending the lookback.</div>
     </div>
     <div class="email-capture" id="alleg-email-capture">
-      <h4>&#128231; Email this report to yourself</h4>
-      <p>Get a formatted copy of this analysis — including all comparable sales — sent directly to your inbox.</p>
+      <h4>&#128231; Want us to take a closer look?</h4>
+      <p>Enter your information and we'll send you this analysis. An attorney from our firm may follow up to discuss your options.</p>
       <div class="email-capture-success" id="alleg-email-success">&#10003; Report sent! Check your inbox.</div>
       <div id="alleg-email-form">
         <div class="email-capture-row">
@@ -357,7 +357,7 @@ permalink: /tools/assessment-appeal/index.html
         <div class="email-capture-error" id="alleg-email-error"></div>
       </div>
     </div>
-    <div style="text-align:right;margin-bottom:4px;margin-top:8px;"><button onclick="window.print()" style="background:none;border:1px solid #d1d5db;border-radius:6px;padding:8px 18px;font-size:.85rem;font-weight:600;color:#555;cursor:pointer;">&#128424; Print / Save as PDF</button></div>
+    
   </div>
 
 </div><!-- /allegheny -->
@@ -421,7 +421,7 @@ permalink: /tools/assessment-appeal/index.html
           <span id="wm-vbadge" class="variance-badge" style="margin:6px 0;display:inline-block;font-size:1rem;"></span>
           <p id="wm-vexpl" style="font-size:.88rem;color:#555;margin:8px 0 0;line-height:1.6;"></p>
           <div style="margin-top:14px;padding:12px 14px;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;font-size:.82rem;color:#78350f;line-height:1.5;">
-            <strong>Westmoreland County context:</strong> With a CLR of 8.88%, your assessed value is expected to be far below market value &#8212; that is normal for this county. An appeal is worthwhile only when your implied value is meaningfully higher than what comparable homes are actually selling for.
+            <strong>Westmoreland County context:</strong> With a CLR of 8.88%, your assessed value is expected to be far below market value &#8212; that is normal for this county. Whether an appeal makes sense depends on many factors beyond this calculator. An attorney can evaluate your full situation.
           </div>
         </div>
         <div style="flex:1;min-width:220px;">
@@ -444,8 +444,8 @@ permalink: /tools/assessment-appeal/index.html
       </div>
     </div>
     <div class="email-capture" id="wm-email-capture">
-      <h4>&#128231; Email this report to yourself</h4>
-      <p>Get a formatted copy of this analysis sent directly to your inbox.</p>
+      <h4>&#128231; Want us to take a closer look?</h4>
+      <p>Enter your information and we'll send you this analysis. An attorney from our firm may follow up to discuss your options.</p>
       <div class="email-capture-success" id="wm-email-success">&#10003; Report sent! Check your inbox.</div>
       <div id="wm-email-form">
         <div class="email-capture-row">
@@ -457,7 +457,7 @@ permalink: /tools/assessment-appeal/index.html
         <div class="email-capture-error" id="wm-email-error"></div>
       </div>
     </div>
-    <div style="text-align:right;margin-bottom:4px;margin-top:8px;"><button onclick="window.print()" style="background:none;border:1px solid #d1d5db;border-radius:6px;padding:8px 18px;font-size:.85rem;font-weight:600;color:#555;cursor:pointer;">&#128424; Print / Save as PDF</button></div>
+    
   </div>
 
 </div><!-- /westmoreland -->
@@ -468,8 +468,8 @@ permalink: /tools/assessment-appeal/index.html
      ══════════════════════════════════════ -->
 <div class="appeal-cta">
   <div>
-    <h3>Ready to appeal? We can help.</h3>
-    <p>Our attorneys represent property owners in Allegheny and Westmoreland County assessment appeals before the Board of Property Assessment Appeals and the Court of Common Pleas.</p>
+    <h3>Wondering if an appeal makes sense?</h3>
+    <p>This tool provides a preliminary estimate. Our attorneys can evaluate your full situation and advise whether filing an appeal is in your best interest.</p>
   </div>
   <div class="appeal-cta-btns">
     <a href="/contact/" class="cta-button-light">Schedule a Consultation</a>
@@ -614,7 +614,7 @@ function runAllegheny() {
         setEl("alleg-m3n", comps.length ? comps.length + " sale" + (comps.length!==1?"s":"") + " in " + lookback + " months" : "No sales found");
 
         var sc = document.getElementById("alleg-m4c");
-        if (sav > 0) { setEl("alleg-m4",fmt$(sav)); setEl("alleg-m4n","Appeal likely recommended"); sc.className="metric-card savings-positive"; }
+        if (sav > 0) { setEl("alleg-m4",fmt$(sav)); setEl("alleg-m4n","Talk to an attorney about your options"); sc.className="metric-card savings-positive"; }
         else if (avg) { setEl("alleg-m4","$0"); setEl("alleg-m4n","Assessment appears fair"); sc.className="metric-card savings-none"; }
         else { setEl("alleg-m4","—"); setEl("alleg-m4n","Insufficient comp data"); sc.className="metric-card"; }
 
@@ -622,7 +622,7 @@ function runAllegheny() {
         if (vPct !== null) {
           var sign = vPct > 0 ? "+" : "";
           vb.textContent = sign + vPct.toFixed(1) + "%";
-          if (vPct > 10) { vb.className="variance-badge variance-over"; ve.textContent="Your implied value is " + sign + vPct.toFixed(1) + "% above comparable sales. Your property may be over-assessed."; }
+          if (vPct > 10) { vb.className="variance-badge variance-over"; ve.textContent="Your implied value is " + sign + vPct.toFixed(1) + "% above comparable sales. An attorney can evaluate whether an appeal makes sense for your situation."; }
           else if (vPct < -10) { vb.className="variance-badge variance-under"; ve.textContent="Your implied value is " + vPct.toFixed(1) + "% below comparable sales. Your assessment appears conservative."; }
           else { vb.className="variance-badge variance-fair"; ve.textContent="Your implied value is within ±10% of comparable sales. Your assessment appears in line with market values."; }
         } else { vb.textContent="—"; vb.className="variance-badge"; ve.textContent="Not enough comparable sales to calculate variance. Try widening filters."; }
@@ -743,14 +743,14 @@ function runWestmoreland() {
 
   var sc = document.getElementById("wm-m4c");
   if (!avg) { setEl("wm-m4","—"); setEl("wm-m4n","Enter comparable sales to calculate"); sc.className="metric-card"; }
-  else if (sav > 0) { setEl("wm-m4",fmt$(sav)); setEl("wm-m4n","Appeal may be worthwhile"); sc.className="metric-card savings-positive"; }
+  else if (sav > 0) { setEl("wm-m4",fmt$(sav)); setEl("wm-m4n","An attorney can evaluate your options"); sc.className="metric-card savings-positive"; }
   else { setEl("wm-m4","$0"); setEl("wm-m4n","No savings identified"); sc.className="metric-card savings-none"; }
 
   var vb = document.getElementById("wm-vbadge"), ve = document.getElementById("wm-vexpl");
   if (vPct !== null) {
     var sign = vPct > 0 ? "+" : "";
     vb.textContent = sign + vPct.toFixed(1) + "%";
-    if (vPct > 10) { vb.className="variance-badge variance-over"; ve.textContent="Your implied value is " + sign + vPct.toFixed(1) + "% above your comparable sales. This gap supports an appeal."; }
+    if (vPct > 10) { vb.className="variance-badge variance-over"; ve.textContent="Your implied value is " + sign + vPct.toFixed(1) + "% above your comparable sales. An attorney can evaluate whether this gap warrants an appeal."; }
     else if (vPct < -10) { vb.className="variance-badge variance-under"; ve.textContent="Your implied value is " + vPct.toFixed(1) + "% below your comparable sales. Your assessment appears conservative."; }
     else { vb.className="variance-badge variance-fair"; ve.textContent="Your implied value is within ±10% of your comparable sales. Your assessment appears roughly in line with market values."; }
   } else { vb.textContent="—"; vb.className="variance-badge"; ve.textContent="Enter comparable sales above to see the variance analysis."; }
