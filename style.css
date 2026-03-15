@@ -450,9 +450,9 @@ nav > ul > li:hover > a {
     margin-bottom: var(--space-md);
 }
 .hero-subtitle {
-    color: rgba(255,255,255,0.78);
-    font-size: 0.98rem;
-    font-weight: 400;
+    color: rgba(255,255,255,0.9);
+    font-size: 1.02rem;
+    font-weight: 500;
     line-height: 1.75;
     margin-bottom: var(--space-md);
     letter-spacing: 0;
