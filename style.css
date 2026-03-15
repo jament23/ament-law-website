@@ -2050,6 +2050,15 @@ main section {
     margin-top: 1px;
 }
 
+.reviews-disclaimer {
+    font-size: 0.78rem;
+    color: #999;
+    text-align: center;
+    margin-top: 24px;
+    line-height: 1.5;
+    font-style: italic;
+}
+
 .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
