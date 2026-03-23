@@ -418,7 +418,8 @@ nav > ul > li:hover > a {
    ================================================================= */
 
 #hero {
-    background: linear-gradient(160deg, #0a1530 0%, #0f1d40 40%, #162550 100%);
+    background: linear-gradient(160deg, rgba(10,21,48,0.82) 0%, rgba(15,29,64,0.78) 40%, rgba(22,37,80,0.75) 100%),
+                url('/images/hero-conference-room.jpg') center/cover no-repeat;
     color: #fff;
     padding: var(--space-xl) 0;
     position: relative;
@@ -1397,6 +1398,28 @@ main section {
     color: var(--color-muted);
     margin-top: var(--space-xs);
     line-height: 1.5;
+}
+
+.form-trust-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border);
+}
+
+.form-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.82rem;
+    color: var(--color-muted);
+}
+
+.form-trust-item svg {
+    color: #166534;
+    flex-shrink: 0;
 }
 
 /* Success / Error boxes */
@@ -2902,6 +2925,12 @@ footer p { font-size: 0.9rem; margin-bottom: 6px; }
 }
 
 @media (max-width: 900px) {
+
+    /* Hero mobile image */
+    #hero {
+        background: linear-gradient(160deg, rgba(10,21,48,0.85) 0%, rgba(15,29,64,0.82) 40%, rgba(22,37,80,0.78) 100%),
+                    url('/images/hero-conference-room-mobile.jpg') center/cover no-repeat;
+    }
 
     /* Nav */
     .nav-toggle { display: block; order: 4; }
