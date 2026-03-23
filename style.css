@@ -916,9 +916,9 @@ main section {
     display: block;
 }
 
-/* Per-attorney face centering — only John's wide seated shot needs scale */
+/* Per-attorney face centering */
 .hs-robert  { object-position: center 12%; }
-.hs-john    { object-position: center top; transform: scale(1.6); transform-origin: center 22%; }
+.hs-john    { object-position: center 20%; }
 .hs-katlynn { object-position: center 15%; }
 .hs-laura   { object-position: center 18%; }
 .hs-patrick { object-position: center 15%; }
