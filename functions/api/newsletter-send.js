@@ -76,7 +76,7 @@ export async function onRequestPost(context) {
   }
 
   // Send in batches of 50 (Resend supports batch)
-  const fromAddr = env.EMAIL_FROM || "Ament Law Group <jwa@ament.law>";
+  const fromAddr = env.EMAIL_FROM || "Ament Law Group <hello@ament.law>";
   let sent = 0;
   let errors = 0;
 

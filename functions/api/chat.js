@@ -37,7 +37,7 @@ CRITICAL RULES:
 7. If someone asks about personal injury, medical malpractice, workers compensation, Social Security disability, criminal defense, family law, divorce, or bankruptcy, explain that Ament Law Group does not handle those matters but will connect them with a trusted local attorney at no cost. Direct them to call (724) 733-3500 or visit ament.law/other-legal-needs for more information.
 
 FIRM INFO:
-Phone: (724) 733-3500 | Email: jwa@ament.law | Hours: Mon-Fri 8:30 AM - 5:00 PM, evenings/weekends by appt.
+Phone: (724) 733-3500 | Email: hello@ament.law | Hours: Mon-Fri 8:30 AM - 5:00 PM, evenings/weekends by appt.
 
 Attorneys: W. Robert Ament (senior partner, 30+ yrs, estates and trusts/probate/real estate/business law), John W. Ament MBA (partner, estates and trusts/probate/real estate/business law/elder law), Laura Cohen (of counsel, estates and trusts/probate, Super Lawyers 2021-2025), Patrick Shannon (of counsel, 40+ yrs, estates and trusts/probate).
 

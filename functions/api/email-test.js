@@ -12,8 +12,8 @@ export async function onRequestGet(context) {
 
   const checks = {
     RESEND_API_KEY: env.RESEND_API_KEY ? "SET (" + env.RESEND_API_KEY.substring(0, 6) + "...)" : "NOT SET",
-    FIRM_EMAIL: env.FIRM_EMAIL || "NOT SET (will default to jwa@ament.law)",
-    EMAIL_FROM: env.EMAIL_FROM || "NOT SET (will default to 'Ament Law Group <jwa@ament.law>')",
+    FIRM_EMAIL: env.FIRM_EMAIL || "NOT SET (will default to hello@ament.law)",
+    EMAIL_FROM: env.EMAIL_FROM || "NOT SET (will default to 'Ament Law Group <hello@ament.law>')",
   };
 
   // Try sending a test email
@@ -22,8 +22,8 @@ export async function onRequestGet(context) {
     return new Response(JSON.stringify({ checks, error: "No API key" }, null, 2), { headers });
   }
 
-  const firmEmail = env.FIRM_EMAIL || "jwa@ament.law";
-  const fromAddr = env.EMAIL_FROM || "Ament Law Group <jwa@ament.law>";
+  const firmEmail = env.FIRM_EMAIL || "hello@ament.law";
+  const fromAddr = env.EMAIL_FROM || "Ament Law Group <hello@ament.law>";
 
   try {
     const res = await fetch("https://api.resend.com/emails", {
