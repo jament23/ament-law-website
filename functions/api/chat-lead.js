@@ -5,7 +5,7 @@
  * Receives contact info + conversation summary from chat widget,
  * emails the firm via Resend.
  *
- * Required env vars: RESEND_API_KEY, FIRM_EMAIL (or defaults to hello@ament.law)
+ * Required env vars: RESEND_API_KEY, FIRM_EMAIL (or defaults to jwa@ament.law)
  */
 
 const ALLOWED_ORIGINS = [
@@ -81,8 +81,8 @@ export async function onRequestPost(context) {
   }
 
   const areaLabel = area || "Not specified";
-  const firmEmail = env.FIRM_EMAIL || "hello@ament.law";
-  const fromAddr = env.EMAIL_FROM || "Ament Law Group <hello@ament.law>";
+  const firmEmail = env.FIRM_EMAIL || "jwa@ament.law";
+  const fromAddr = env.EMAIL_FROM || "Ament Law Group <jwa@ament.law>";
   const timestamp = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
 
   const html = `

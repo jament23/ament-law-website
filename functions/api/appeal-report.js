@@ -9,10 +9,10 @@
  *
  * Required environment variables (set in Cloudflare Pages → Settings → Env vars):
  *   RESEND_API_KEY  — from resend.com
- *   FIRM_EMAIL      — e.g. hello@ament.law
+ *   FIRM_EMAIL      — e.g. jwa@ament.law
  *
  * Optional (falls back to defaults):
- *   EMAIL_FROM      — verified sender, e.g. "Ament Law Group <hello@ament.law>"
+ *   EMAIL_FROM      — verified sender, e.g. "Ament Law Group <jwa@ament.law>"
  */
 
 const ALLOWED_ORIGINS = [
@@ -219,8 +219,8 @@ export async function onRequestPost(context) {
   }
 
   const apiKey   = env.RESEND_API_KEY;
-  const firmEmail = env.FIRM_EMAIL || "hello@ament.law";
-  const fromAddr  = env.EMAIL_FROM || "Ament Law Group <hello@ament.law>";
+  const firmEmail = env.FIRM_EMAIL || "jwa@ament.law";
+  const fromAddr  = env.EMAIL_FROM || "Ament Law Group <jwa@ament.law>";
 
   if (!apiKey) {
     console.error("RESEND_API_KEY not configured");

@@ -58,8 +58,8 @@ export async function onRequestPost(context) {
   // Send welcome email
   const apiKey = env.RESEND_API_KEY;
   if (apiKey) {
-    const fromAddr = env.EMAIL_FROM || "Ament Law Group <hello@ament.law>";
-    const firmEmail = env.FIRM_EMAIL || "hello@ament.law";
+    const fromAddr = env.EMAIL_FROM || "Ament Law Group <jwa@ament.law>";
+    const firmEmail = env.FIRM_EMAIL || "jwa@ament.law";
 
     // Welcome email to subscriber
     try {
