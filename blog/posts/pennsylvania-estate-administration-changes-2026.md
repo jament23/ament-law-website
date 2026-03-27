@@ -2,7 +2,6 @@
 title: "What's New in Pennsylvania Estate Administration: Changes Executors Need to Know"
 description: "From SECURE Act impacts on inherited retirement accounts to remote probate appointments and updated court procedures, here's what's changed in Pennsylvania estate administration."
 date: 2026-03-16
-tags: ["probate", "blog"]
 author: "John W. Ament, Esq."
 ---
 
@@ -48,13 +47,6 @@ A few administrative notes on inheritance tax practice:
 
 **Life insurance** paid directly to a named beneficiary is generally exempt from Pennsylvania inheritance tax. This makes life insurance a useful planning tool for covering inheritance tax obligations.
 
-## The Johnson Estate Fee Schedule
-
-Pennsylvania courts have long used the Johnson Estate fee schedule as a benchmark for reasonable attorney compensation in estate administration. The schedule provides for a percentage of the estate value — not an hourly rate — which in most cases results in a predictable and reasonable fee for both the attorney and the estate.
-
-Understanding how attorney fees are calculated helps executors budget appropriately. The fee is based on the gross taxable estate for Pennsylvania inheritance tax purposes, and it covers the attorney's work throughout the administration — from opening the estate through final distribution.
-
-At Ament Law Group, we disclose our fee in writing at the start of every estate administration matter, based on the Johnson Estate schedule. There are no surprise invoices and no hourly billing for routine estate work.
 
 ## Executor Liability: A Reminder
 
